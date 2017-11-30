@@ -1,3 +1,29 @@
+## Setup environment
+
+klona repot
+
+----- I TERMINALEN -----
+
+composer install
+
+php artisan preset foundation
+
+npm install
+
+npm run dev
+
+php artisan key:generate
+
+----- I ROTEN UTAV PROJEKTET -----
+
+duplicera .env.example 
+
+döp om den kopierade till .env
+
+----- I TERMINALEN -----
+
+php artisan serve
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
