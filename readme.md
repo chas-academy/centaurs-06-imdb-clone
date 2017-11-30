@@ -16,6 +16,8 @@ php artisan key:generate
 
 ----- I ROTEN UTAV PROJEKTET -----
 
+radera routes/views/welcome.blade.php
+
 duplicera .env.example 
 
 döp om den kopierade till .env
