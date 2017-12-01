@@ -7,6 +7,7 @@
 
     @yield('content')
 
+
     @include('../includes.scripts')
     </body>
 </html>

@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('pages.index');
 });
+
+Route::get('/test', function () {
+    return view('pages.test');
+});
+
+Route::get('/movies', function () {
+    return view('pages.movies');
+});
+
+Route::get('/actors', function () {
+    return view('pages.actors');
+});
