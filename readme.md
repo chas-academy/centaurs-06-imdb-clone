@@ -12,8 +12,6 @@ npm install
 
 npm run dev
 
-php artisan key:generate
-
 ----- I ROTEN UTAV PROJEKTET -----
 
 radera routes/views/welcome.blade.php
@@ -23,6 +21,8 @@ duplicera .env.example
 döp om den kopierade till .env
 
 ----- I TERMINALEN -----
+
+php artisan key:generate
 
 php artisan serve
 
