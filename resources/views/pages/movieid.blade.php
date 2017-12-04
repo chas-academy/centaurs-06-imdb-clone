@@ -1,8 +1,5 @@
 <?php
 
-// First, Get Movie (or movies), extrakt ID.
-// then, get movie detail where Movie_id = Movie_detail_id.
-
 $curl = curl_init();
     
     curl_setopt_array($curl, array(
@@ -35,7 +32,7 @@ $curl = curl_init();
        echo '<pre>';
        
        echo '<pre>';
-       print_r("Rating: " . $movies['vote_average']);
+       print_r("Rating: " . $movies['popularity']);
        echo '<pre>';
     }
 

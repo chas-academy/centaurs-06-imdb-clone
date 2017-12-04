@@ -26,3 +26,5 @@ Route::get('/movies', function () {
 Route::get('/actors', function () {
     return view('pages.actors');
 });
+
+Route::get('/{movieid}', 'MovieController@show');
