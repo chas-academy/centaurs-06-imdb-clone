@@ -9840,11 +9840,14 @@ a.thumbnail image {
   }
 }
 
+body {
+  background: #151515;
+}
+
 .small-header {
   width: 100%;
   height: auto;
   padding: 30px 15px 0px 15px;
-  background: #151515;
 }
 
 .small-header .flex-align {
@@ -9867,15 +9870,102 @@ a.thumbnail image {
 }
 
 .small-header .flex-align .sortBtn {
-  width: 135px;
-  height: 30px;
+  width: 95%;
+  height: 35px;
+  padding: 6px;
+  font-size: 14px;
+  color: #888888;
+  font-weight: 600;
+}
+
+.small-header .flex-align #genre {
+  float: left;
 }
 
 .small-header .flex-align #sortBy {
   float: right;
+  /* remove the original arrow */
+}
+
+.small-header .flex-align select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  margin: 0px;
+}
+
+.small-header .flex-align select::-ms-expand {
+  display: none;
+}
+
+.small-header .flex-align select + i.fa {
+  float: right;
+  margin-top: -26px;
+  margin-right: 10px;
+  /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+  pointer-events: none;
+  /* everything after this is just to cover up the original arrow */
+  /* (for browsers that don't support the syntax used above) */
+  background-color: transparent;
+  color: #D61818;
+  padding-right: 5px;
+}
+
+.small-header .flex-align select + i.fa-fix {
+  float: right;
+  margin-top: -26px;
+  margin-right: 19px;
+  /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+  pointer-events: none;
+  /* everything after this is just to cover up the original arrow */
+  /* (for browsers that don't support the syntax used above) */
+  background-color: transparent;
+  color: #D61818;
+  padding-right: 5px;
+}
+
+.small-header .flex-align select option {
+  padding-right: 21px;
 }
 
 .small-header .flex-align:last-child {
-  padding: 30px 0px 20px 0px;
+  padding: 30px 0px 5px 0px;
+}
+
+.padding-15 {
+  margin-top: 20px;
+  padding: 0px 15px 0px 15px;
+}
+
+.padding-15 .row .movie-title {
+  margin: 5px 0px 5px 0px;
+  text-align: center;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.padding-15 .row .rate-score {
+  text-align: right;
+}
+
+.padding-15 .row .num-rate {
+  display: inline-block;
+  margin: 0px;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.padding-15 .row .fa-star {
+  display: inline-block;
+  color: #FAD400;
+}
+
+.padding-15 .m-left {
+  margin-left: 0px;
+}
+
+.padding-15 .m-right {
+  margin-right: 0px;
 }
 
