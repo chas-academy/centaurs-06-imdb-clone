@@ -9841,25 +9841,41 @@ a.thumbnail image {
 }
 
 .small-header {
-  height: 80px;
+  width: 100%;
+  height: auto;
+  padding: 30px 15px 0px 15px;
+  background: #151515;
+}
+
+.small-header .flex-align {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0px 25px 0px 25px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background: #151515;
 }
 
-.small-header #logo {
-  width: 85px;
+.small-header .flex-align #logo {
+  width: 90px;
 }
 
-.small-header .fa-search {
+.small-header .flex-align .fa-search {
+  float: right;
   color: #FFFFFF;
+  font-size: 24px;
+}
+
+.small-header .flex-align .sortBtn {
+  width: 135px;
+  height: 30px;
+}
+
+.small-header .flex-align #sortBy {
+  float: right;
+}
+
+.small-header .flex-align:last-child {
+  padding: 30px 0px 20px 0px;
 }
 
