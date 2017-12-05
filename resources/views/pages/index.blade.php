@@ -1,8 +1,8 @@
-@extends('layouts.layout')
-@section('content')
+@extends('layouts.layout') @section('content')
 <div class="grid-container">
-    <div class="grid-x grid-margin-x">
-        <h1>Centaurs IMDb-clone</h1>
-    </div>
-  </div>
+    <header class="small-header">
+        <img id="logo" src="{{ asset('img/imdbLogo.png') }}" alt="imdb-logo">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </header>
+</div>
 @endsection
