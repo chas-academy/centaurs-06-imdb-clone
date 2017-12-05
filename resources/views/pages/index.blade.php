@@ -1,15 +1,14 @@
 @extends('layouts.layout')
 @section('content')
-<div class="grid-container">
-    <div class="grid-x grid-margin-x">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
         <h1>Centaurs IMDb-clone</h1>
-    </div>
+        </div>
         <a href="/test" class="button">Test</a>
         <a href="/actors" class="button">Actors</a>
         <a href="/movies" class="button">Movies</a>
-  </div>
+    </div>
 
-  <div>
   <?php
     // Need some work, just for testing.
     $curl = curl_init();
@@ -36,19 +35,24 @@
       echo "cURL Error #:" . $err;
     } else {
 
-        foreach ($movies['results'] as $value) {
+        foreach ($movies['results'] as $value) { ?>
 
-            echo '<pre>'; 
-            print_r("Title: " . "<a href=" . "/" . $value['id'] . ">" . "<button" . "class=" ."button" .">" . $value['original_title'] . "</button>" . "</a>");
-            echo '<pre>';
+        <div class="row large-12 medium-up-4">
+            <div class="column">
+                <div class="card">
+                    <?php echo "<img " . "src=" . "http://image.tmdb.org/t/p/w185/" . $value['poster_path'] . ">"; ?>  
+                    <div class="card-section">
+                    <?php echo "<a href=" . "/" . $value['id'] . ">" . "<button " . "class=" ."button" .">" . $value['original_title'] . "</button>" . "</a>"; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
 
         }
 
     }
-
 ?>
 
-
-
-  </div>
 @endsection
