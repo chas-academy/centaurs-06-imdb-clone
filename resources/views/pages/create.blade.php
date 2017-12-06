@@ -16,6 +16,13 @@
     <section class="row">
         <div class ="small-12 create-acc">
             <h1 class="white">Create account</h1>
+            <form action="/" class="form">
+                <input type="text" name="name" placeholder="Name">
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Confirm Password">
+                <button type="submit">Done</button>
+            </form>        
         </div>
     </section
 
