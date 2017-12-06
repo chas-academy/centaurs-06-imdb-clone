@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActorsTable extends Migration
+class CreateSeasonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateActorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('actors', function (Blueprint $table) {
+        Schema::create('seasons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname');
-            $table->string('surname');
+            $table->integer('season_number');
+            $table->integer('tv_show_id')->unsigned();
+        });
+
+        Schema::table('seasons', function (Blueprint $table) {
+            $table->foreign('tv_show_id')->references('id')->on('tv_shows');
         });
     }
 
@@ -27,6 +31,6 @@ class CreateActorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actors');
+        Schema::dropIfExists('seasons');
     }
 }
