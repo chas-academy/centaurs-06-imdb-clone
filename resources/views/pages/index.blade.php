@@ -1,5 +1,4 @@
 @extends('layouts.layout') @section('content')
-    <div class="grid-x">
         <header class="small-header">
             <div class="row flex-align">
                 <div class="small-6 cell">
@@ -16,8 +15,8 @@
                         <option value="">Genre</option>
                         <option value="">Genre</option>
                         <option value="">Genre</option>
+                        <i class="fa fa-chevron-down fa-fix"></i>
                     </select>
-                    <i class="fa fa-chevron-down fa-fix"></i>
                 </div>
                 <div class="small-6 cell">
                     <select name="sortBy" id="sortBy" class="sortBtn">
@@ -29,7 +28,6 @@
                 </div>
             </div>
         </header>
-    </div>
            <!-- Section with three small movieposters -->
     <section class="grid-x padding-15">
         <div class="row m-left">
