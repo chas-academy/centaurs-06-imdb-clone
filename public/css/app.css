@@ -9968,3 +9968,76 @@ body {
   margin-right: 0px;
 }
 
+footer {
+  height: 100%;
+  width: 100%;
+}
+
+footer .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  text-align: right;
+  margin-bottom: 100px;
+}
+
+footer .footer .white {
+  padding: 0px 15px 0px 15px;
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+footer .footer .place {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 15px;
+}
+
+footer .footer .place .circle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #FFFFFF;
+  color: #FFFFFF;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+footer .footer .place .fa-times {
+  margin: auto;
+  color: #D61818;
+  font-size: 30px;
+}
+
+.create-acc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 25px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  text-align: right;
+  margin-bottom: 100px;
+}
+
+.create-acc .white {
+  padding: 0px 15px 0px 15px;
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
