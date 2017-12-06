@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,600,700);@charset "UTF-8";
 
 /**
  * Foundation for Sites by ZURB
@@ -9840,131 +9840,195 @@ a.thumbnail image {
   }
 }
 
-body {
-  background: #151515;
+header {
+  padding: 25px 15px 0 15px;
+  background-color: #191919;
+  font-family: 'Nunito', sans-serif;
 }
 
-.small-header {
-  width: 100%;
-  height: auto;
-  padding: 30px 15px 0px 15px;
+header #search {
+  display: none;
 }
 
-.small-header .flex-align {
+header #search.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .flex-align-sb-c {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 0 25px 0;
 }
 
-.small-header .flex-align #logo {
-  width: 90px;
+header .flex-align-sb-c .logo {
+  width: 110px;
 }
 
-.small-header .flex-align .fa-search {
-  float: right;
-  color: #FFFFFF;
-  font-size: 24px;
+header .flex-align-sb-c .search-btn {
+  color: #FAFAFA;
+  font-size: 20px;
 }
 
-.small-header .flex-align .sortBtn {
-  width: 95%;
-  height: 35px;
-  padding: 6px;
-  font-size: 14px;
-  color: #888888;
-  font-weight: 600;
-}
-
-.small-header .flex-align #genre {
-  float: left;
-}
-
-.small-header .flex-align #sortBy {
-  float: right;
-}
-
-.small-header .flex-align select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  margin: 0px;
-}
-
-.small-header .flex-align select::-ms-expand {
+header .flex-align-sb-c .search-btn.hidden {
   display: none;
 }
 
-.small-header .flex-align select + i.fa {
-  float: right;
-  margin-top: -26px;
-  margin-right: 10px;
-  /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
-  pointer-events: none;
-  /* everything after this is just to cover up the original arrow */
-  /* (for browsers that don't support the syntax used above) */
-  background-color: transparent;
-  color: #D61818;
-  padding-right: 5px;
+header .flex-align-sb-c .search-exit-btn {
+  display: none;
+  color: #FAFAFA;
+  font-size: 20px;
 }
 
-.small-header .flex-align select + i.fa-fix {
-  float: right;
-  margin-top: -26px;
-  margin-right: 19px;
-  /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
-  pointer-events: none;
-  /* everything after this is just to cover up the original arrow */
-  /* (for browsers that don't support the syntax used above) */
-  background-color: transparent;
-  color: #D61818;
-  padding-right: 5px;
+header .flex-align-sb-c .search-exit-btn.visible {
+  display: inline-block;
 }
 
-.small-header .flex-align select option {
-  padding-right: 21px;
-}
-
-.small-header .flex-align:last-child {
-  padding: 30px 0px 5px 0px;
-}
-
-.padding-15 {
-  margin-top: 20px;
+header .flex-align-sb-c .search-input {
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  font-weight: 14px;
+  border-radius: 25px;
   padding: 0px 15px 0px 15px;
 }
 
-.padding-15 .row .movie-title {
-  margin: 5px 0px 5px 0px;
-  text-align: center;
-  font-size: 14px;
-  color: #FFFFFF;
-}
-
-.padding-15 .row .rate-score {
-  text-align: right;
-}
-
-.padding-15 .row .num-rate {
-  display: inline-block;
-  margin: 0px;
-  color: #FFFFFF;
+header .flex-align-sb-c .sorting {
+  border: 0;
+  margin: 0;
+  width: 48%;
+  height: 35px;
+  color: #C1C1C1;
   font-size: 12px;
+  font-weight: 800;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='30' height='24' viewBox='0 0 30 24'><polygon points='0,0 32,0 16,24' style='fill: %23D61818'></polygon></svg>");
 }
 
-.padding-15 .row .fa-star {
-  display: inline-block;
+main {
+  padding: 5px 15px 0 15px;
+  background-color: #191919;
+  font-family: 'Nunito', sans-serif;
+}
+
+main section {
+  padding: 0 0 30px 0;
+}
+
+main .flex-align-sb-c {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .flex-align-sb-c .small-movie-info {
+  text-align: center;
+}
+
+main .flex-align-sb-c .small-movie-info .movie-rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #F1F1F1;
+  margin: 0 0 5px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .flex-align-sb-c .small-movie-info .movie-rating .fa-star {
   color: #FAD400;
 }
 
-.padding-15 .m-left {
-  margin-left: 0px;
+main .flex-align-sb-c .small-movie-info .movie-rating .rating-num {
+  margin: 0 0 0 5px;
+  font-size: 12px;
+  font-weight: 800;
 }
 
-.padding-15 .m-right {
-  margin-right: 0px;
+main .flex-align-sb-c .small-movie-info .movie-title {
+  margin: 5px 0 0 0;
+  color: #F1F1F1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+main .flex-align-c-c {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .flex-align-c-c .big-movie-info {
+  text-align: center;
+}
+
+main .flex-align-c-c .big-movie-info .movie-rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #F1F1F1;
+  margin: 0 0 5px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .flex-align-c-c .big-movie-info .movie-rating .fa-star {
+  color: #FAD400;
+  font-size: 16px;
+}
+
+main .flex-align-c-c .big-movie-info .movie-rating .rating-num {
+  margin: 0 0 0 5px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+main .flex-align-c-c .big-movie-info .movie-title {
+  margin: 5px 0 0 0;
+  color: #F1F1F1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+main .menu-btn {
+  width: 60px;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #F1F1F1;
+  border-radius: 50%;
+  font-size: 32px;
+  color: #D61818;
+  bottom: 100px;
+  right: 15px;
 }
 
