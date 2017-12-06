@@ -9884,7 +9884,6 @@ body {
 
 .small-header .flex-align #sortBy {
   float: right;
-  /* remove the original arrow */
 }
 
 .small-header .flex-align select {
