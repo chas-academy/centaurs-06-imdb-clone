@@ -10,10 +10,8 @@ class Movie extends Model
 {
     public function createMovie($properties) 
     {
-        // $faker = Faker::create();
-        // var_dump($properties['results'][0]);
-        // die;
         DB::table('movies')->insert([
+            'movie_api_id' => $properties['results'][0]['id'],
             'title' => $properties['results'][0]['title'],
             'plot' => $properties['results'][0]['overview'],
             'playtime' => 55,
@@ -25,5 +23,30 @@ class Movie extends Model
             'created_at' => now(),
             'updated_at' => now()
         ]);
+    }
+
+    public function createMovieStaff($properties) 
+    {
+        for ($i=0; $i < 5; $i++) { 
+            DB::table('actors')->insert([
+                'movie_api_id' => $properties['id'],
+                'name' => $properties['cast'][$i]['name']
+                ]);
+            }
+
+            foreach ($properties['crew'] as $crewMember) {
+                if ($crewMember['job'] === 'Director') {
+                    DB::table('directors')->insert([
+                        'movie_api_id' => $properties['id'],
+                        'name' => $crewMember['name']
+                        ]);
+                } 
+                if ($crewMember['job'] === 'Producer') {
+                    DB::table('producers')->insert([
+                        'movie_api_id' => $properties['id'],
+                        'name' => $crewMember['name']
+                        ]);    
+                }
+            }            
     }
 }

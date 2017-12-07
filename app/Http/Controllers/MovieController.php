@@ -7,39 +7,49 @@ use App\Http\Models\Movie;
 
 class MovieController extends Controller
 {
-    public function MovieApi($argument) 
+    public function MovieApi($argument, $searchMethod) 
     {
         $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
-
+        
         $curl = curl_init();
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?" . $api_key . '&language=en-US&query=' . $argument . '&page=1&include_adult=false',
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_ENCODING => "",
-          CURLOPT_MAXREDIRS => 10,
-          CURLOPT_TIMEOUT => 30,
-          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => "GET",
-          CURLOPT_POSTFIELDS => "{}",
-        ));
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        $result = json_decode($response, true);
-
-        $movie = new Movie();
-
-        $movie->createMovie($result);
-
+            CURLOPT_URL => "https://api.themoviedb.org/3/". $searchMethod . $api_key . $argument,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "{}",
+            ));
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            $result = json_decode($response, true);
+            
+            return $result;
+        }
         
+        public function SearchForMovie() 
+        {
+            $keyword = 'Titanic';
+            $argument = str_replace(' ', '%20', $keyword);
+            $searchMethod = 'search/movie?';
+            $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
+            
+            $result = $this->MovieApi($search, $searchMethod);
+            
+            $movie = new Movie();
+            $movie->createMovie($result);
+            $this->getMovieStaff($result);
+        }
         
+        public function getMovieStaff($argument)
+        {
+            $movieId = $argument['results'][0]['id'];
+            $searchMethod = 'movie/' . $movieId . '/credits?';
+            $movieStaff = $this->MovieApi(null, $searchMethod);
+            $movie = new Movie();
+            $movie->createMovieStaff($movieStaff);
+            
     }
-
-    public function SearchForMovie() 
-    {
-        $keyword = 'fight club';
-        $argument = str_replace(' ', '%20', $keyword);
-        $search = $argument . '&page=1&include_adult=false';
-
-        $this->MovieApi($search);
-    } 
 }
