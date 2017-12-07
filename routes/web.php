@@ -22,3 +22,4 @@ Route::get('/login', function () {
 Route::get('/create', function () {
     return view('pages.create');
 });
+Route::get('/movietest', 'MovieController@SearchForMovie');
