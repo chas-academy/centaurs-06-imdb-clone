@@ -2,7 +2,7 @@
 
 <header class="row">
     <div class="small-12 flex-align-sb-c">
-        <img src="{{ asset('img/imdbLogo.png') }}" alt="IMDb Logo" class="logo">
+        <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
         <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
         <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
     </div>
@@ -30,6 +30,9 @@
 </header>
 
 <main class="row">
+    <div class="menu-btn">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+    </div>
     <section class="small-12 flex-align-sb-c">
         <div class="small-movie-info">
             <div class="movie-rating">
@@ -66,9 +69,115 @@
             <h3 class="movie-title">Movie Title</h3>
         </div>
     </section>
-    <div class="menu-btn">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-    </div>
+    <section class="small-12 flex-align-sb-c">
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">7.7</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">8.4</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">6.3</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+    <section class="small-12 flex-align-c-c">
+        <div class="big-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">9.1</p>
+            </div>
+            <img src="http://via.placeholder.com/300x450">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+    <section class="small-12 flex-align-sb-c">
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">7.7</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">8.4</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">6.3</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+    <section class="small-12 flex-align-c-c">
+        <div class="big-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">9.1</p>
+            </div>
+            <img src="http://via.placeholder.com/300x450">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+    <section class="small-12 flex-align-sb-c">
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">7.7</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">8.4</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">6.3</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+    <section class="small-12 flex-align-c-c">
+        <div class="big-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">9.1</p>
+            </div>
+            <img src="http://via.placeholder.com/300x450">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+    
 </main>
 
 @endsection 

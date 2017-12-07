@@ -1,7 +1,9 @@
-header
-    padding: 25px 15px 0 15px
+body
     background-color: #191919
     font-family: 'Nunito', sans-serif
+header
+    border-bottom: 1px solid #333333
+    padding: 35px 15px 10px 15px
     #search
         display: none
         &.visible
@@ -12,7 +14,7 @@ header
         justify-content: space-between
         padding: 0 0 25px 0
         .logo
-            width: 110px
+            width: 90px
         .search-btn
             color: #FAFAFA
             font-size: 20px
@@ -30,27 +32,30 @@ header
             font-weight: 600
             font-weight: 14px
             border-radius: 25px
+            border: 1px solid #333333
             padding: 0px 15px 0px 15px 
+
         .sorting
-            border: 0
+
             margin: 0
             width: 48%
             height: 35px
-            color: #C1C1C1
+            color: #666666
             font-size: 12px
             font-weight: 800
+            border: 1px solid #333333
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='30' height='24' viewBox='0 0 30 24'><polygon points='0,0 32,0 16,24' style='fill: %23D61818'></polygon></svg>")
 main
-    padding: 5px 15px 0 15px
-    background-color: #191919
-    font-family: 'Nunito', sans-serif
+    padding: 0px 15px 0 15px
     section
-        padding: 0 0 30px 0
+        padding: 25px 0 25px 0
+        
     // Sb-c means Justify content: space between and Align items Center 
     .flex-align-sb-c
         display: flex
         align-items: center
         justify-content: space-between
+        border-bottom: 1px solid #333333
         .small-movie-info
             text-align: center
             .movie-rating
@@ -62,7 +67,7 @@ main
                     color: #FAD400
                 .rating-num
                     margin: 0 0 0 5px
-                    font-size: 12px
+                    font-size: 16px
                     font-weight: 800
             .movie-title
                 margin: 5px 0 0 0
@@ -74,6 +79,7 @@ main
         display: flex
         align-items: center
         justify-content: center
+        border-bottom: 1px solid #333333
         .big-movie-info
             text-align: center
             .movie-rating
@@ -94,15 +100,19 @@ main
                 font-size: 16px
                 font-weight: 600
     .menu-btn
-        width: 60px
-        height: 60px
+        width: 70px
+        height: 70px
         display: flex
-        position: absolute
+        position: fixed
         align-items: center
         justify-content: center
-        background-color: #F1F1F1
+        background: #dba506 // Old browsers */
+        background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%) // FF3.6-15 */
+        background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%) // Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%) // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 ) // IE6-9 */
         border-radius: 50%
-        font-size: 32px
-        color: #D61818
+        font-size: 42px
+        color: #151515
         bottom: 100px
         right: 15px

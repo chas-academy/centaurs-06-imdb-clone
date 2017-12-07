@@ -9840,10 +9840,14 @@ a.thumbnail image {
   }
 }
 
-header {
-  padding: 25px 15px 0 15px;
+body {
   background-color: #191919;
   font-family: 'Nunito', sans-serif;
+}
+
+header {
+  border-bottom: 1px solid #333333;
+  padding: 35px 15px 10px 15px;
 }
 
 header #search {
@@ -9870,7 +9874,7 @@ header .flex-align-sb-c {
 }
 
 header .flex-align-sb-c .logo {
-  width: 110px;
+  width: 90px;
 }
 
 header .flex-align-sb-c .search-btn {
@@ -9898,28 +9902,27 @@ header .flex-align-sb-c .search-input {
   font-weight: 600;
   font-weight: 14px;
   border-radius: 25px;
+  border: 1px solid #333333;
   padding: 0px 15px 0px 15px;
 }
 
 header .flex-align-sb-c .sorting {
-  border: 0;
   margin: 0;
   width: 48%;
   height: 35px;
-  color: #C1C1C1;
+  color: #666666;
   font-size: 12px;
   font-weight: 800;
+  border: 1px solid #333333;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='30' height='24' viewBox='0 0 30 24'><polygon points='0,0 32,0 16,24' style='fill: %23D61818'></polygon></svg>");
 }
 
 main {
-  padding: 5px 15px 0 15px;
-  background-color: #191919;
-  font-family: 'Nunito', sans-serif;
+  padding: 0px 15px 0 15px;
 }
 
 main section {
-  padding: 0 0 30px 0;
+  padding: 25px 0 25px 0;
 }
 
 main .flex-align-sb-c {
@@ -9932,6 +9935,7 @@ main .flex-align-sb-c {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-bottom: 1px solid #333333;
 }
 
 main .flex-align-sb-c .small-movie-info {
@@ -9955,7 +9959,7 @@ main .flex-align-sb-c .small-movie-info .movie-rating .fa-star {
 
 main .flex-align-sb-c .small-movie-info .movie-rating .rating-num {
   margin: 0 0 0 5px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
 }
 
@@ -9976,6 +9980,7 @@ main .flex-align-c-c {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-bottom: 1px solid #333333;
 }
 
 main .flex-align-c-c .big-movie-info {
@@ -10012,22 +10017,25 @@ main .flex-align-c-c .big-movie-info .movie-title {
 }
 
 main .menu-btn {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
+  position: fixed;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #F1F1F1;
+  background: #dba506;
+  background: -webkit-gradient(linear, left top, right top, from(#dba506), color-stop(52%, #f0d876), to(#dba506));
+  background: linear-gradient(to right, #dba506 0%, #f0d876 52%, #dba506 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 );
   border-radius: 50%;
-  font-size: 32px;
-  color: #D61818;
+  font-size: 42px;
+  color: #151515;
   bottom: 100px;
   right: 15px;
 }
