@@ -1,0 +1,43 @@
+.offcanvas-full-screen
+  position: fixed
+  z-index: 1
+  transition: -webkit-transform 0.3s ease-in-out
+  transition: transform 0.3s ease-in-out
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out
+  -webkit-backface-visibility: hidden
+  backface-visibility: hidden
+  background: #0a0a0a
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  -webkit-transform: translateX(-100%)
+  -ms-transform: translateX(-100%)
+  transform: translateX(-100%)
+  overflow-y: auto
+  
+.offcanvas-full-screen
+  &.is-transition-overlap
+    z-index: 10
+    &.is-open
+      box-shadow: 0 0 10px rgba(10, 10, 10, 0.7)
+  &.is-open
+    -webkit-transform: translate(0, 0)
+    -ms-transform: translate(0, 0)
+    transform: translate(0, 0)
+    ~ .off-canvas-content
+      -webkit-transform: translateX(100%)
+      -ms-transform: translateX(100%)
+      transform: translateX(100%)
+  &.is-transition-push::after
+    position: absolute
+    top: 0
+    right: 0
+    height: 100%
+    width: 1px
+    box-shadow: 0 0 10px rgba(10, 10, 10, 0.7)
+    content: " "
+  &.is-transition-overlap.is-open ~ .off-canvas-content
+    -webkit-transform: none
+    -ms-transform: none
+    transform: none

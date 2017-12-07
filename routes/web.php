@@ -15,7 +15,4 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-Route::get('/header', function () {
-    return view('pages.header');
-});
 

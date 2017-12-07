@@ -1,14 +1,17 @@
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import "etc/fonts";
 
 // Variables
-@import "settings";
+@import "etc/settings";
 
 // Bootstrap
-@import "foundation";
+@import "etc/foundation";
 
-//@import "small-style";
+// Mobile style
+@import "styles/mobile-style";
 
-@import "small";
+// Custom style for select2
+@import "fixes/select2";
 
-@import "fonts";
+// Style for Foundations offcanvas full screen menu
+@import "fixes/offcanvas-full-screen";
