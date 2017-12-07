@@ -10,22 +10,22 @@
         <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
     </form>
     <div class="small-12 flex-align-sb-c">
-        <select name="GenreSorting" id="GenreSorting" class="sorting">
-            <option value="#" selected disabled>Genre</option>
-            <option value="Action">Action</option>
-            <option value="Drama">Comedy</option>
-            <option value="Horror">Crime</option>
-            <option value="Comedy">Horror</option>
-            <option value="Action">Drama</option>
-            <option value="Action">Sci-fi</option>
-            <option value="Action">Family</option>
-        </select>
-        <select name="MovieSorting" id="MovieSorting" class="sorting">
-            <option value="#" selected disabled>Sorting By</option>
-            <option value="Action">Top 15 movies</option>
-            <option value="Drama">Most popular</option>
-            <option value="Horror">Top rated all time</option>
-        </select>
+    <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+        <option value="#" selected disabled>Genre</option>
+        <option value="Action">Action</option>
+        <option value="Drama">Comedy</option>
+        <option value="Horror">Crime</option>
+        <option value="Comedy">Horror</option>
+        <option value="Action">Drama</option>
+        <option value="Action">Sci-fi</option>
+        <option value="Action">Family</option>
+    </select>
+    <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+        <option value="#" selected disabled>Sorting By</option>
+        <option value="Action">Top 15 movies</option>
+        <option value="Drama">Most popular</option>
+        <option value="Horror">Top rated all time</option>
+    </select>
     </div>
 </header>
 

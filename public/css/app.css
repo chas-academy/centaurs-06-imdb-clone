@@ -9840,6 +9840,42 @@ a.thumbnail image {
   }
 }
 
+*:focus {
+  outline: none;
+}
+
+.select2-selection:focus {
+  background-color: #FFFFFF !important;
+}
+
+.select2-selection {
+  border: 1px solid #333333 !important;
+}
+
+.select2-selection--multiple {
+  height: 40px;
+  font-size: 14px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #FAD400 !important;
+  font-weight: 800;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color: #191919 !important;
+  background-color: #FAD400 !important;
+}
+
+.select2-search__field {
+  margin: 0 !important;
+}
+
+.select2-selection__arrow {
+  background-color: #FAD400 !important;
+  border-color: #151515 transparent transparent transparent !important;
+}
+
 body {
   background-color: #191919;
   font-family: 'Nunito', sans-serif;
@@ -9901,20 +9937,14 @@ header .flex-align-sb-c .search-input {
   text-align: center;
   font-weight: 600;
   font-weight: 14px;
-  border-radius: 25px;
+  border-radius: 5px;
   border: 1px solid #333333;
   padding: 0px 15px 0px 15px;
 }
 
-header .flex-align-sb-c .sorting {
-  margin: 0;
+header .flex-align-sb-c select {
   width: 48%;
-  height: 35px;
-  color: #666666;
-  font-size: 12px;
-  font-weight: 800;
-  border: 1px solid #333333;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='30' height='24' viewBox='0 0 30 24'><polygon points='0,0 32,0 16,24' style='fill: %23D61818'></polygon></svg>");
+  visibility: hidden;
 }
 
 main {
@@ -10030,13 +10060,14 @@ main .menu-btn {
       -ms-flex-pack: center;
           justify-content: center;
   background: #dba506;
+  border: 2px solid #151515;
   background: -webkit-gradient(linear, left top, right top, from(#dba506), color-stop(52%, #f0d876), to(#dba506));
   background: linear-gradient(to right, #dba506 0%, #f0d876 52%, #dba506 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 );
   border-radius: 50%;
   font-size: 42px;
   color: #151515;
-  bottom: 100px;
+  bottom: 45px;
   right: 15px;
 }
 
