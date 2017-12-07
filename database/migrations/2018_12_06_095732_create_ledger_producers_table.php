@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMovieDirectorsTable extends Migration
+class CreateLedgerProducersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateMovieDirectorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('movie_directors', function (Blueprint $table) {
-            $table->integer('director_id')->unsigned();
+        Schema::create('ledger_producers', function (Blueprint $table) {
+            $table->integer('producer_id')->unsigned();
             $table->integer('movie_id')->unsigned()->nullable();
             $table->integer('episode_id')->unsigned()->nullable();
         });
         
-        // Ska ta emot argument för om det är en film eller en tv-serie
-        Schema::table('movie_directors', function (Blueprint $table) {
-            $table->foreign('director_id')->references('id')->on('directors');
+        Schema::table('ledger_producers', function (Blueprint $table) {
+            $table->foreign('producer_id')->references('id')->on('producers');
             $table->foreign('movie_id')->references('id')->on('movies');
             $table->foreign('episode_id')->references('id')->on('episodes');
         });
@@ -34,6 +33,6 @@ class CreateMovieDirectorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movie_directors');
+        Schema::dropIfExists('movie_producers');
     }
 }
