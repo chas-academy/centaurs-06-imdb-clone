@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,600,700);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,600,700);@charset "UTF-8";
 
 /**
  * Foundation for Sites by ZURB
@@ -9844,38 +9844,6 @@ a.thumbnail image {
   outline: none;
 }
 
-.select2-selection:focus {
-  background-color: #FFFFFF !important;
-}
-
-.select2-selection {
-  border: 1px solid #333333 !important;
-}
-
-.select2-selection--multiple {
-  height: 40px;
-  font-size: 14px !important;
-}
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: #FAD400 !important;
-  font-weight: 800;
-}
-
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-  color: #191919 !important;
-  background-color: #FAD400 !important;
-}
-
-.select2-search__field {
-  margin: 0 !important;
-}
-
-.select2-selection__arrow {
-  background-color: #FAD400 !important;
-  border-color: #151515 transparent transparent transparent !important;
-}
-
 body {
   background-color: #191919;
   font-family: 'Nunito', sans-serif;
@@ -10071,97 +10039,89 @@ main .menu-btn {
   right: 15px;
 }
 
-footer {
+.select2-selection:focus {
+  background-color: #FFFFFF !important;
+}
+
+.select2-selection {
+  border: 1px solid #333333 !important;
+}
+
+.select2-selection--multiple {
+  height: 40px;
+  font-size: 14px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #FAD400 !important;
+  font-weight: 800;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color: #191919 !important;
+  background-color: #FAD400 !important;
+}
+
+.select2-search__field {
+  margin: 0 !important;
+}
+
+.select2-selection__arrow {
+  background-color: #FAD400 !important;
+  border-color: #151515 transparent transparent transparent !important;
+}
+
+.offcanvas-full-screen {
+  position: fixed;
+  z-index: 1;
+  transition: -webkit-transform 0.3s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #0a0a0a;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  width: 100%;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  overflow-y: auto;
 }
 
-footer .footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.offcanvas-full-screen.is-transition-overlap {
+  z-index: 10;
+}
+
+.offcanvas-full-screen.is-transition-overlap.is-open {
+  -webkit-box-shadow: 0 0 10px rgba(10, 10, 10, 0.7);
+          box-shadow: 0 0 10px rgba(10, 10, 10, 0.7);
+}
+
+.offcanvas-full-screen.is-open {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.offcanvas-full-screen.is-open ~ .off-canvas-content {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.offcanvas-full-screen.is-transition-push::after {
   position: absolute;
-  bottom: 0;
-  text-align: right;
-  margin-bottom: 100px;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  -webkit-box-shadow: 0 0 10px rgba(10, 10, 10, 0.7);
+          box-shadow: 0 0 10px rgba(10, 10, 10, 0.7);
+  content: " ";
 }
 
-footer .footer .white {
-  padding: 0px 15px 0px 15px;
-  font-size: 24px;
-  color: #FFFFFF;
-}
-
-footer .footer .place {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 15px;
-}
-
-footer .footer .place .circle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #FFFFFF;
-  color: #FFFFFF;
-  border-radius: 50%;
-  height: 60px;
-  width: 60px;
-}
-
-footer .footer .place .fa-times {
-  margin: auto;
-  color: #D61818;
-  font-size: 30px;
-}
-
-.create-acc {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 25px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: absolute;
-  text-align: right;
-  margin-bottom: 100px;
-}
-
-.create-acc .white {
-  padding: 0px 15px 0px 15px;
-  font-size: 24px;
-  color: #FFFFFF;
-}
-
-.create-acc .form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  padding: 15px;
-  width: 75%;
-  text-align: right;
-}
-
-.create-acc .form button {
-  background-color: #D61818;
-  color: #FFFFFF;
-  width: 50px;
+.offcanvas-full-screen.is-transition-overlap.is-open ~ .off-canvas-content {
+  -webkit-transform: none;
+  transform: none;
 }
 
