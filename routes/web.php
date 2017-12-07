@@ -15,4 +15,10 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::get('/login', function () {
+    return view('pages.login');
+});
 
+Route::get('/create', function () {
+    return view('pages.create');
+});

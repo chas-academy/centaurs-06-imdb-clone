@@ -5,7 +5,7 @@
 // For the rest of the page
 body
     background-color: #191919
-    font-family: 'Nunito', sans-serif
+    font-family: 'Nunito', sans-serif!important
 header
     border-bottom: 1px solid #333333
     padding: 35px 15px 10px 15px
@@ -99,21 +99,68 @@ main
                 color: #F1F1F1
                 font-size: 16px
                 font-weight: 600
-    .menu-btn
-        width: 70px
-        height: 70px
+
+.menu-btn
+    width: 70px
+    height: 70px
+    display: flex
+    position: fixed
+    align-items: center
+    justify-content: center
+    background: #dba506
+    border: 2px solid #151515
+    background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
+    background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
+    background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
+    border-radius: 50%
+    font-size: 42px
+    color: #151515
+    bottom: 45px
+    right: 15px
+
+.menu-btn-back
+    width: 70px
+    height: 70px
+    display: none
+    position: fixed
+    align-items: center
+    justify-content: center
+    background: #dba506
+    border: 2px solid #151515
+    background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
+    background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
+    background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
+    border-radius: 50%
+    font-size: 42px
+    color: #151515
+    bottom: 45px
+    left: 15px
+
+// Menu content
+.menu
+    height: 100%
+    display: flex
+    flex-direction: column
+    padding: 40px 15px 0px 15px 
+    .flex-align-c-c
         display: flex
-        position: fixed
         align-items: center
         justify-content: center
-        background: #dba506
-        border: 2px solid #151515
-        background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
-        background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
-        background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
-        border-radius: 50%
-        font-size: 42px
-        color: #151515
-        bottom: 45px
-        right: 15px
+        .logo
+            width: 140px
+    .flex-align-fd-c
+        padding: 0px 0px 30px 0px
+        display: flex
+        text-align: right
+        flex-direction: column-reverse
+        .btn-wrapper
+            position: absolute
+            right: 15px
+            bottom: 140px
+            color: #F1F1F1
+    #create-acc-form
+        display: none
+    #sign-in-form
+        display: none

@@ -2,6 +2,36 @@
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
         <!-- Content for offcanvas menu goes here -->
+        <div class="row menu">
+            <div class="small-12 flex-align-c-c">
+                <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
+            </div>
+            <div class="small-12 flex-align-fd-c">
+                <form class="small-12" id="sign-in-form">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Confirm Password">
+                    <button type="submit">Sign in</button>
+                </form>
+                <form class="small-12" id="create-acc-form">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Confirm Password">
+                    <button type="submit">Create Account</button>
+                </form>
+                <div class="btn-wrapper">
+                    <h2 id="sign-in">Sign in</h2>
+                    <h2 id="create-acc">Create account</h2>
+                </div>
+            </div>
+            <div id="undo" class="menu-btn-back">
+                <i class="fa fa-undo" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="menu-btn" data-close>
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
     </div>
 </div>
 <div class="off-canvas-content" data-off-canvas-content>
