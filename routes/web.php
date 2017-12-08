@@ -23,3 +23,6 @@ Route::get('/create', function () {
     return view('pages.create');
 });
 Route::get('/movietest', 'MovieController@SearchForMovie');
+Route::get('/movietest', 'MovieController@SearchForMovie');
+
+Route::get('/creategenres', 'MovieController@getMovieGenres');

@@ -31,7 +31,7 @@ class MovieController extends Controller
         
         public function SearchForMovie() 
         {
-            $keyword = 'Titanic';
+            $keyword = 'armageddon';
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
@@ -49,7 +49,18 @@ class MovieController extends Controller
             $searchMethod = 'movie/' . $movieId . '/credits?';
             $movieStaff = $this->MovieApi(null, $searchMethod);
             $movie = new Movie();
-            $movie->createMovieStaff($movieStaff);
-            
-    }
+            $movie->createMovieStaff($movieStaff);    
+        }
+
+        public function getMovieGenres()
+        {
+            $searchMethod = 'genre/movie/list?';
+            $search = '&language=en-US';
+            $movieGenres = $this->MovieApi($search, $searchMethod);
+            $movie = new Movie();
+            $movie->createMovieGenres($movieGenres);    
+        }
+
+
+
 }
