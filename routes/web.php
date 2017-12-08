@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/movietest', 'MovieController@SearchForMovie');
+
+Route::get('/creategenres', 'MovieController@getMovieGenres');
