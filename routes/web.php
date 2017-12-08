@@ -19,6 +19,6 @@ Route::get('/login', function () {
     return view('pages.login');
 });
 
-Route::get('/create', function () {
-    return view('pages.create');
+Route::get('/footer', function () {
+    return view('pages.footer');
 });
