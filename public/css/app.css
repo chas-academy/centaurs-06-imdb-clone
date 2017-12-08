@@ -10014,7 +10014,7 @@ main .flex-align-c-c .big-movie-info .movie-title {
   font-weight: 600;
 }
 
-main .menu-btn {
+.menu-btn {
   width: 70px;
   height: 70px;
   display: -webkit-box;
@@ -10037,6 +10037,122 @@ main .menu-btn {
   color: #151515;
   bottom: 45px;
   right: 15px;
+}
+
+.mobile-btn-quit {
+  width: 70px;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #dba506;
+  border: 2px solid #151515;
+  background: -webkit-gradient(linear, left top, right top, from(#dba506), color-stop(52%, #f0d876), to(#dba506));
+  background: linear-gradient(to right, #dba506 0%, #f0d876 52%, #dba506 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 );
+  border-radius: 50%;
+  font-size: 42px;
+  color: #151515;
+  bottom: 45px;
+  margin: 0 auto 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.mobile-btn-back {
+  width: 70px;
+  height: 70px;
+  display: none;
+  position: fixed;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #dba506;
+  border: 2px solid #151515;
+  background: -webkit-gradient(linear, left top, right top, from(#dba506), color-stop(52%, #f0d876), to(#dba506));
+  background: linear-gradient(to right, #dba506 0%, #f0d876 52%, #dba506 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 );
+  border-radius: 50%;
+  font-size: 42px;
+  color: #151515;
+  bottom: 45px;
+  left: 15px;
+}
+
+.menu {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 40px 15px 0px 15px;
+}
+
+.menu .flex-align-c-c {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #dba506;
+  border: 2px solid #151515;
+  background: -webkit-gradient(linear, left top, right top, from(#dba506), color-stop(52%, #f0d876), to(#dba506));
+  background: linear-gradient(to right, #dba506 0%, #f0d876 52%, #dba506 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 );
+  border-radius: 50%;
+  font-size: 42px;
+  color: #151515;
+  bottom: 45px;
+  right: 15px;
+}
+
+.menu .flex-align-c-c .logo {
+  width: 140px;
+}
+
+.menu .flex-align-fd-c {
+  padding: 0px 0px 30px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: right;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.menu .flex-align-fd-c .mobile-btn-wrap {
+  position: absolute;
+  right: 15px;
+  bottom: 150px;
+  color: #F1F1F1;
+}
+
+.menu #sign-in-f {
+  display: none;
+}
+
+.menu #sign-up-f {
+  display: none;
 }
 
 .select2-selection:focus {
