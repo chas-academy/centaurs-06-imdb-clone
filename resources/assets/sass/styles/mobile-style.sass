@@ -118,8 +118,27 @@ main
     color: #151515
     bottom: 45px
     right: 15px
-
-.menu-btn-back
+.mobile-btn-quit
+    width: 70px
+    height: 70px
+    display: flex
+    position: fixed
+    align-items: center
+    justify-content: center
+    background: #dba506
+    border: 2px solid #151515
+    background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
+    background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
+    background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
+    border-radius: 50%
+    font-size: 42px
+    color: #151515
+    bottom: 45px
+    margin: 0 auto 0 auto
+    left: 0
+    right: 0
+.mobile-btn-back
     width: 70px
     height: 70px
     display: none
@@ -155,12 +174,12 @@ main
         display: flex
         text-align: right
         flex-direction: column-reverse
-        .btn-wrapper
+        .mobile-btn-wrap
             position: absolute
             right: 15px
-            bottom: 140px
+            bottom: 150px
             color: #F1F1F1
-    #create-acc-form
+    #sign-in-f
         display: none
-    #sign-in-form
+    #sign-up-f
         display: none
