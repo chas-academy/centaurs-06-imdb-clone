@@ -29,9 +29,9 @@ class MovieController extends Controller
             return $result;
         }
         
-        public function SearchForMovie() 
+        public function createMovieFromApi() 
         {
-            $keyword = 'Armageddon';
+            $keyword = 'The mask';
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
@@ -58,7 +58,7 @@ class MovieController extends Controller
             $search = '&language=en-US';
             $movieGenres = $this->MovieApi($search, $searchMethod);
             $movie = new Movie();
-            $movie->createMovieGenres($movieGenres);    
+            $movie->createMovieGenres($movieGenres);   
         }
 
 

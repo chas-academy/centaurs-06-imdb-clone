@@ -19,6 +19,7 @@ class CreateGenresTable extends Migration
             $table->string('genre_name');
             $table->integer('movie_api_id')->nullable();
             $table->string('name');
+            $table->string('genre_name')->unique();
         });
     }
 

@@ -22,7 +22,6 @@ Route::get('/login', function () {
 Route::get('/footer', function () {
     return view('pages.footer');
 });
-Route::get('/movietest', 'MovieController@SearchForMovie');
-Route::get('/movietest', 'MovieController@SearchForMovie');
+Route::get('/movietest', 'MovieController@createMovieFromApi');
 
 Route::get('/creategenres', 'MovieController@getMovieGenres');
