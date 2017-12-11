@@ -16,7 +16,7 @@ class CreateProducersTable extends Migration
         Schema::create('producers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('movie_api_id')->nullable();
-            $table->string('name');
+            $table->string('name')->unique();
         });
     }
 

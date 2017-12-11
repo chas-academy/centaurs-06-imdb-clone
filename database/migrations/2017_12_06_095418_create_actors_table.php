@@ -16,7 +16,7 @@ class CreateActorsTable extends Migration
         Schema::create('actors', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('movie_api_id')->nullable();
-            $table->string('name');
+            $table->string('name')->unique();
         });
     }
 
