@@ -19,10 +19,6 @@ Route::get('/login', function () {
     return view('pages.login');
 });
 
-Route::get('/footer', function () {
-    return view('pages.footer');
-});
-
 Route::get('movie', function (){
     return view('pages.movie');
 });
