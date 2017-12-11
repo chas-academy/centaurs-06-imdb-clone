@@ -1,0 +1,418 @@
+// Remove the outline on all elements
+*:focus
+    outline: none
+
+// For the rest of the page
+body
+    background-color: #191919
+    font-family: 'Nunito', sans-serif!important
+header
+    border-bottom: 1px solid #333333
+    padding: 35px 15px 10px 15px
+    #search
+        display: none
+        // Allows motion ui to work
+        &.visible
+            display: flex
+    .flex-align-sb-c
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 0 0 25px 0
+        .logo
+            width: 90px
+        .search-btn
+            color: #FAFAFA
+            font-size: 20px
+            // Allows motion ui to work
+            &.hidden
+                display: none
+        .search-exit-btn
+            display: none
+            color: #FAFAFA
+            font-size: 20px
+            // Allows motion ui to work
+            &.visible
+                display: inline-block
+        .search-input
+            margin: 0
+            text-align: center
+            font-weight: 600
+            font-weight: 14px
+            border-radius: 5px
+            border: 1px solid #333333
+            padding: 0px 15px 0px 15px 
+        select
+            width: 48%
+            visibility: hidden
+main
+    padding: 0px 15px 0 15px
+    section
+        padding: 25px 0 25px 0
+        
+    // Sb-c means Justify content: space between and Align items Center 
+    .flex-align-sb-c
+        display: flex
+        align-items: center
+        justify-content: space-between
+        border-bottom: 1px solid #333333
+        .small-movie-info
+            text-align: center
+            .movie-rating
+                display: flex
+                color: #F1F1F1
+                margin: 0 0 5px 0
+                align-items: center
+                .fa-star
+                    color: #FAD400
+                .rating-num
+                    margin: 0 0 0 5px
+                    font-size: 16px
+                    font-weight: 800
+            .movie-title
+                margin: 5px 0 0 0
+                color: #F1F1F1
+                font-size: 14px
+                font-weight: 600
+        // In this case c-c means Justify content: Center and Align items Center 
+    .flex-align-c-c
+        display: flex
+        align-items: center
+        justify-content: center
+        border-bottom: 1px solid #333333
+        .big-movie-info
+            text-align: center
+            .movie-rating
+                display: flex
+                color: #F1F1F1
+                margin: 0 0 5px 0
+                align-items: center
+                .fa-star
+                    color: #FAD400
+                    font-size: 16px
+                .rating-num
+                    margin: 0 0 0 5px
+                    font-size: 14px
+                    font-weight: 800
+            .movie-title
+                margin: 5px 0 0 0
+                color: #F1F1F1
+                font-size: 16px
+                font-weight: 600
+
+.menu-btn
+    width: 70px
+    height: 70px
+    display: flex
+    position: fixed
+    align-items: center
+    justify-content: center
+    background: #dba506
+    border: 2px solid #151515
+    background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
+    background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
+    background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
+    border-radius: 50%
+    font-size: 42px
+    color: #151515
+    bottom: 45px
+    right: 15px
+.mobile-btn-quit
+    width: 70px
+    height: 70px
+    display: flex
+    position: fixed
+    align-items: center
+    justify-content: center
+    background: #dba506
+    border: 2px solid #151515
+    background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
+    background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
+    background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
+    border-radius: 50%
+    font-size: 42px
+    color: #151515
+    bottom: 45px
+    margin: 0 auto 0 auto
+    left: 0
+    right: 0
+.mobile-btn-back
+    width: 70px
+    height: 70px
+    display: none
+    position: fixed
+    align-items: center
+    justify-content: center
+    background: #dba506
+    border: 2px solid #151515
+    background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
+    background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
+    background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
+    border-radius: 50%
+    font-size: 42px
+    color: #151515
+    bottom: 45px
+    left: 15px
+
+// Menu content
+.menu
+    height: 100%
+    display: flex
+    flex-direction: column
+    padding: 40px 15px 0px 15px 
+    .flex-align-c-c
+        display: flex
+        align-items: center
+        justify-content: center
+        .logo
+            width: 140px
+    .flex-align-fd-c
+        padding: 0px 0px 30px 0px
+        display: flex
+        text-align: right
+        flex-direction: column-reverse
+        .mobile-btn-wrap
+            position: absolute
+            right: 15px
+            bottom: 150px
+            color: #F1F1F1
+    #sign-in-f
+        display: none
+        padding: 25px 0px 25px 0px
+        input
+            margin: 8px 0px 8px 0px
+        input[type=text]
+
+        input[type=password]
+
+        .btn
+            display: flex
+            justify-content: center
+            .submit
+                width: 85%
+                height: 40px
+                margin-top: 15px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
+    #sign-up-f
+        display: none
+        padding: 25px 0px 25px 0px
+        input
+            margin: 8px 0px 8px 0px
+        input[type=text]
+
+        input[type=password]
+
+        .btn
+            display: flex
+            justify-content: center
+            .submit
+                width: 85%
+                height: 40px
+                margin-top: 15px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
+
+
+// Current Movie
+.current-movie
+    .flex-align-c-c
+        border: 0  
+        padding-top: 25px
+    .big-movie-info
+        display: flex
+        color: #F1F1F1
+        flex-direction: column
+        justify-content: center
+        .movie-rating
+            text-align: right
+        .movie-info
+            width: 100%
+            display: flex
+            align-items: center
+            flex-direction: row
+            padding: 25px 0px 25px 0px
+            .movie-title
+                margin: 0
+                width: 50%
+                font-size: 20px
+                text-align: left 
+            .year-genre
+                margin: 0
+                width: 50%
+                display: flex
+                justify-content: flex-end
+                p
+                    margin: 0
+                .separator
+                    margin: 0px 5px 0px 5px
+        .movie-plot
+            text-align: left
+            .plot
+                margin: 0
+
+        .movie-crew
+            padding: 25px 0px 25px 0px
+            text-align: left
+            p
+                margin-bottom: 10px
+        .reviews-btn
+            .mobile-reviews
+                width: 85%
+                height: 40px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
+            .mobile-write-rev
+                width: 85%
+                height: 40px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
+
+        .write-rev
+            display: none
+            padding: 25px 0px 25px 0px
+            &.visible
+                display: block
+            .rev-rate
+                display: flex
+                padding: 0px 0px 15px 0px
+                justify-content: flex-end
+                .fa-star-o
+                    margin: 0px 2.5px 0px 2.5px
+            #write-rev-form
+                .send-rev
+                    width: 85%
+                    height: 40px
+                    color: #151515
+                    font-weight: 800
+                    margin-bottom: 25px
+                    background-color: #FAD400 
+
+        .review
+            padding: 25px 0px 25px 0px
+            .rev-title
+                font-size: 20px
+                font-weight: 800
+                text-align: left
+                margin: 10px 0px 0px 0px
+            .review-info-wrap
+                display: flex
+                padding: 10px 0px 15px 0px
+                .review-info
+                    display: flex
+                    text-align: left
+                    flex-direction: column
+                    p
+                        margin: 0
+                        font-size: 12px
+                .review-rate
+                    color: #FAD400
+            .rev-text
+                text-align: left
+    .rev-separator
+        margin: 0
+        width: 95%
+        height: 1px
+        background: #FAD400
+        border-bottom: 1px solid #FAD400
+
+#rev-container   
+    display: none     
+    &.visible
+        display: block
+
+// FOOTER ETC 
+.footer-cont
+    padding: 15px
+    .footer
+        display: flex
+        flex-direction: row
+        background-color: #151515
+        color: #FFFFFF
+        button
+            padding-left: 12px
+            .fa-users
+                color: #FFFFFF
+
+.developers
+    display: flex
+    justify-content: center
+    color: #FFFFFF
+
+.click-info
+    display: flex
+    justify-content: center
+    color: #FFFFFF
+
+.member-container
+    position: absolute
+    .fa-user-circle-o
+        color: #FFFFFF
+        padding-top: 5px
+
+.member-row
+    display: flex
+    flex-direction: row
+    padding-left: 15px
+    padding-top: 5px
+
+.members
+    color: #FFFFFF
+    padding-left: 12px
+
+.personal-container
+    display: flex
+    flex-direction: column
+    text-align: center
+    padding-top: 24px
+    height: 100%
+    .small-12
+        paddding: 15px
+        .personal
+            padding: 15px
+            margin: auto
+            color: #FFFFFF
+            font-size: 80px
+
+.personal-info
+    color: #FFFFFF
+    padding: 0
+
+.pad-bottom
+    padding-top: 24px
+    padding-bottom: 80px
+
+.info
+    padding-top: 24px
+    padding-left: 15px
+    padding-right: 15px
+
+.mobile-btn-quit
+    width: 70px
+    height: 70px
+    display: flex
+    position: sticky
+    align-items: center
+    justify-content: center
+    background: #dba506
+    border: 2px solid #151515
+    background: -moz-linear-gradient(left, #dba506 0%, #f0d876 52%, #dba506 100%)
+    background: -webkit-linear-gradient(left, #dba506 0%,#f0d876 52%,#dba506 100%)
+    background: linear-gradient(to right, #dba506 0%,#f0d876 52%,#dba506 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dba506', endColorstr='#dba506',GradientType=1 )
+    border-radius: 50%
+    font-size: 42px
+    color: #151515
+    bottom: 45px
+    right: 15px
