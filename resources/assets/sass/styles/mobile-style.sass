@@ -193,5 +193,153 @@ main
             color: #F1F1F1
     #sign-in-f
         display: none
+        padding: 25px 0px 25px 0px
+        input
+            margin: 8px 0px 8px 0px
+        input[type=text]
+
+        input[type=password]
+
+        .btn
+            display: flex
+            justify-content: center
+            .submit
+                width: 85%
+                height: 40px
+                margin-top: 15px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
     #sign-up-f
         display: none
+        padding: 25px 0px 25px 0px
+        input
+            margin: 8px 0px 8px 0px
+        input[type=text]
+
+        input[type=password]
+
+        .btn
+            display: flex
+            justify-content: center
+            .submit
+                width: 85%
+                height: 40px
+                margin-top: 15px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
+
+
+// Current Movie
+.current-movie
+    .flex-align-c-c
+        border: 0  
+        padding-top: 25px
+    .big-movie-info
+        display: flex
+        color: #F1F1F1
+        flex-direction: column
+        justify-content: center
+        .movie-rating
+            text-align: right
+        .movie-info
+            width: 100%
+            display: flex
+            align-items: center
+            flex-direction: row
+            padding: 25px 0px 25px 0px
+            .movie-title
+                margin: 0
+                width: 50%
+                font-size: 20px
+                text-align: left 
+            .year-genre
+                margin: 0
+                width: 50%
+                display: flex
+                justify-content: flex-end
+                p
+                    margin: 0
+                .separator
+                    margin: 0px 5px 0px 5px
+        .movie-plot
+            text-align: left
+            .plot
+                margin: 0
+
+        .movie-crew
+            padding: 25px 0px 25px 0px
+            text-align: left
+            p
+                margin-bottom: 10px
+        .reviews-btn
+            .mobile-reviews
+                width: 85%
+                height: 40px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
+            .mobile-write-rev
+                width: 85%
+                height: 40px
+                color: #151515
+                font-weight: 800
+                margin-bottom: 25px
+                background-color: #FAD400
+
+        .write-rev
+            display: none
+            padding: 25px 0px 25px 0px
+            &.visible
+                display: block
+            .rev-rate
+                display: flex
+                padding: 0px 0px 15px 0px
+                justify-content: flex-end
+                .fa-star-o
+                    margin: 0px 2.5px 0px 2.5px
+            #write-rev-form
+                .send-rev
+                    width: 85%
+                    height: 40px
+                    color: #151515
+                    font-weight: 800
+                    margin-bottom: 25px
+                    background-color: #FAD400 
+
+        .review
+            padding: 25px 0px 25px 0px
+            .rev-title
+                font-size: 20px
+                font-weight: 800
+                text-align: left
+                margin: 10px 0px 0px 0px
+            .review-info-wrap
+                display: flex
+                padding: 10px 0px 15px 0px
+                .review-info
+                    display: flex
+                    text-align: left
+                    flex-direction: column
+                    p
+                        margin: 0
+                        font-size: 12px
+                .review-rate
+                    color: #FAD400
+            .rev-text
+                text-align: left
+    .rev-separator
+        margin: 0
+        width: 95%
+        height: 1px
+        background: #FAD400
+        border-bottom: 1px solid #FAD400
+
+#rev-container   
+    display: none     
+    &.visible
+        display: block

@@ -11,14 +11,18 @@
                     <input type="text" name="username" placeholder="Username">
                     <input type="password" name="password" placeholder="Password">
                     <input type="password" name="password" placeholder="Confirm Password">
-                    <button type="submit">Sign in</button>
+                    <div class="small-12 btn">
+                        <button type="submit" class="submit">Sign in</button>
+                    </div>
                 </form>
                 <form class="small-12" id="sign-up-f">
                     <input type="text" name="username" placeholder="Username">
                     <input type="text" name="email" placeholder="Email">
                     <input type="password" name="password" placeholder="Password">
                     <input type="password" name="password" placeholder="Confirm Password">
-                    <button type="submit">Create Account</button>
+                    <div class="small-12 btn">
+                        <button type="submit" class="submit">Create Account</button>
+                    </div>
                 </form>
                 <div id="mobile-btn-wrap" class="mobile-btn-wrap">
                     <h2 id="sign-in">Sign In</h2>
