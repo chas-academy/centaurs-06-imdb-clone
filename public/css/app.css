@@ -9974,7 +9974,7 @@ main .flex-align-sb-c .small-movie-info .movie-title {
   font-weight: 600;
 }
 
-main .small-movie-info:nth-child(4n) {
+main .none:nth-child(4n) {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -9982,15 +9982,15 @@ main .small-movie-info:nth-child(4n) {
       flex-basis: 100%;
 }
 
-main .small-movie-info:nth-child(4n) .movie-rating .fa-star {
+main .none:nth-child(4n) .movie-rating .fa-star {
   font-size: 16px;
 }
 
-main .small-movie-info:nth-child(4n) .movie-rating .fa-star .rating-num {
+main .none:nth-child(4n) .movie-rating .fa-star .rating-num {
   font-size: 14px;
 }
 
-main .small-movie-info:nth-child(4n) .poster-size {
+main .none:nth-child(4n) .poster-size {
   width: 100%;
 }
 

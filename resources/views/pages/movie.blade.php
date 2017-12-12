@@ -16,19 +16,17 @@
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <p class="rating-num">9.1</p>
             </div>
-            <img src="http://via.placeholder.com/300x300">
+            <img src="https://image.tmdb.org/t/p/w1000<?php echo $movie->poster ?>">
             <div class="small-12 movie-info">
-                <h3 class="movie-title">Movie Title</h3>
+                <h3 class="movie-title"><?php echo $movie->title ?></h3>
                 <div class="year-genre">
-                    <p class="movie-year">2019</p>
+                    <p class="movie-year"><?php echo $movie->releasedate ?></p>
                     <p class="separator">|</p>
                     <p class="movie-genre">Drama</p>
                 </div>
             </div>
             <div class="small-12 movie-plot">
-                <p class="plot"> When Greg Sestero, an aspiring film actor, meets the weird and mysterious 
-                Tommy Wiseau in an acting class, they form a unique friendship and travel
-                to Hollywood to make their dreams come true.</p>
+                <p class="plot"><?php echo $movie->plot ?></p>
             </div>
             <div class="small-12 movie-crew">
                 <p class="director"><b>Director :</b> James Franco</p>

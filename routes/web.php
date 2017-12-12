@@ -23,8 +23,12 @@ Route::get('/login', function () {
     return view('pages.login');
 });
 
-Route::get('movie', function (){
-    return view('pages.movie');
+Route::get('movie/{movieId}', function ($movieId)
+{
+    $movieModel = new Movie();
+    $movie = $movieModel->getMovieById($movieId);
+    $view = View::make('pages.movie')->with('movie', $movie);
+    return $view;
 });
 
 Route::get('/movietest', 'MovieController@createMovieFromApi');

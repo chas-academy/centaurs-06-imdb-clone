@@ -257,6 +257,7 @@
 
     <section class="small-12 flex-align-sb-c">
     <?php foreach($movies as $movie): ?>
+    <a href="movie/<?php echo $movie->id ?>" class="none">
             <div class="small-movie-info">
                 <div class="movie-rating">
                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -265,6 +266,7 @@
                 <img class="poster-size" src="https://image.tmdb.org/t/p/w500<?php echo $movie->poster ?>" >
                 <h3 class="movie-title"><?php echo $movie->title ?></h3>
             </div>
+    </a>
     <?php endforeach; ?>
     </section>
 
