@@ -4,7 +4,7 @@
         <!-- Content off Mobile-menu -->
         <div id="menu" class="row menu">
             <div class="small-12 flex-align-c-c">
-                <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
+                <img src="{{ asset('img/Artboard.png') }}" alt="IMDb Logo" class="logo">
             </div>
             <div class="small-12 flex-align-fd-c">
                 <form class="small-12" id="sign-in-f">
@@ -222,7 +222,7 @@
 <div class="off-canvas-content" data-off-canvas-content>
 <header class="row">
     <div class="small-12 flex-align-sb-c">
-        <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
+        <img src="{{ asset('img/Artboard.png') }}" alt="IMDb Logo" class="logo">
         <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
         <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
     </div>
