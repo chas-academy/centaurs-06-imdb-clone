@@ -154,4 +154,10 @@ class Movie extends Model
 
         return $movies;
     }
+
+    public function getMovieById($movieId) {
+        $movies = DB::table('movies')->get()->where('id', $movieId);
+
+        return array_first($movies);
+    }
 }
