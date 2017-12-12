@@ -112,10 +112,12 @@ class Movie extends Model
     {
         foreach ($properties['genres'] as $genre) 
         {
-            DB::table('genres')->insert([
-                'genre_name' => $genre['name'],
-                'api_genre_id' => $genre['id']
-            ]);
+            if(!DB::table('genres')->where('genre_name', $genre['name'])->exists()){
+                    DB::table('genres')->insert([
+                        'genre_name' => $genre['name'],
+                        'api_genre_id' => $genre['id']
+                    ]);
+            }
         }             
     }
 
@@ -255,4 +257,21 @@ class Movie extends Model
         
         return $genres;
     }
+
+    //Takes actor name as string and check in database if it exists
+    public function checkIfActorExists($actor) : bool
+    {
+        return DB::table('actors')->where('name', $actor)->exists();
+    }
+
+    public function checkIfProducerExists($producer) : bool
+    {
+        return DB::table('producers')->where('name', $producer)->exists();
+    }
+
+    public function checkIfDirectorExists($director)
+    {
+        return DB::table('directors')->where('name', $director)->exists();
+    }
+
 }
