@@ -1,4 +1,5 @@
 @extends('layouts.layout') @section('content')
+
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
         <!-- Content off Mobile-menu -->
@@ -254,8 +255,22 @@
         <i class="fa fa-cog" aria-hidden="true" data-toggle="offcanvas-full-screen"></i>
     </div>
 
-               <!-- Section with three small movieposters -->
     <section class="small-12 flex-align-sb-c">
+    <?php foreach($movies as $movie): ?>
+            <div class="small-movie-info">
+                <div class="movie-rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <p class="rating-num"><?php echo $movie->imdb_rating ?></p>
+                </div>
+                <img class="poster-size" src="https://image.tmdb.org/t/p/w500<?php echo $movie->poster ?>" >
+                <h3 class="movie-title"><?php echo $movie->title ?></h3>
+            </div>
+    <?php endforeach; ?>
+    </section>
+
+
+               <!-- Section with three small movieposters -->
+    <!-- <section class="small-12 flex-align-sb-c">
         <div class="small-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -291,12 +306,12 @@
             <img src="http://via.placeholder.com/90x150">
             <h3 class="movie-title">Movie Title</h3>
         </div>
-    </section>
+    </section> -->
                 <!-- Section with three small movieposters -->
 
 
                 <!-- Section with one big poster -->
-    <section class="small-12 flex-align-c-c">
+    <!-- <section class="small-12 flex-align-c-c">
         <div class="big-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -305,11 +320,11 @@
             <img src="http://via.placeholder.com/300x450">
             <h3 class="movie-title">Movie Title</h3>
         </div>
-    </section>
+    </section> -->
                 <!-- Section with one big poster -->
 
                 <!-- Section with three small movieposters -->
-    <section class="small-12 flex-align-sb-c">
+    <!-- <section class="small-12 flex-align-sb-c">
         <div class="small-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -334,11 +349,11 @@
             <img src="http://via.placeholder.com/90x150">
             <h3 class="movie-title">Movie Title</h3>
         </div>
-    </section>
+    </section> -->
             <!-- Section with three small movieposters -->
 
             <!-- Section with one big poster -->
-    <section class="small-12 flex-align-c-c">
+    <!-- <section class="small-12 flex-align-c-c">
         <div class="big-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -347,11 +362,11 @@
             <img src="http://via.placeholder.com/300x450">
             <h3 class="movie-title">Movie Title</h3>
         </div>
-    </section>
+    </section> -->
             <!-- Section with one big poster -->
 
             <!-- Section with three small movieposters -->
-    <section class="small-12 flex-align-sb-c">
+    <!-- <section class="small-12 flex-align-sb-c">
         <div class="small-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -376,12 +391,12 @@
             <img src="http://via.placeholder.com/90x150">
             <h3 class="movie-title">Movie Title</h3>
         </div>
-    </section>
+    </section> -->
             <!-- Section with three small movieposters -->
 
 
             <!-- Section with one big poster -->
-    <section class="small-12 flex-align-c-c">
+    <!-- <section class="small-12 flex-align-c-c">
         <div class="big-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -390,11 +405,11 @@
             <img src="http://via.placeholder.com/300x450">
             <h3 class="movie-title">Movie Title</h3>
         </div>
-    </section>
+    </section> -->
             <!-- Section with one big poster -->
 
             <!-- Section with three small movieposters -->
-    <section class="small-12 flex-align-sb-c">
+    <!-- <section class="small-12 flex-align-sb-c">
         <div class="small-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -419,7 +434,7 @@
             <img src="http://via.placeholder.com/90x150">
             <h3 class="movie-title">Movie Title</h3>
         </div>
-    </section>
+    </section> -->
         <!-- Section with three small movieposters -->
 </main>
 

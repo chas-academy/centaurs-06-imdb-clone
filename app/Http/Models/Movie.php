@@ -148,4 +148,10 @@ class Movie extends Model
             
         return $genres;
     }
+
+    public function getAllMovies() {
+        $movies = DB::table('movies')->get();
+
+        return $movies;
+    }
 }
