@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Models\Movie;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
+Route::get('/', function () 
+{
+    $movieModel = new Movie();
+    $movies = $movieModel->getAllMovies();
+    $view = View::make('pages.index')->with('movies', $movies);
+    return $view;
 });
 
 Route::get('/login', function () {
