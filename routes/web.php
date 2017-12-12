@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-Auth::routes();
+Route::get('/login', function () {
+    return view('pages.login');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('movie', function (){
+    return view('pages.movie');
+});
+
+Route::get('/movietest', 'MovieController@createMovieFromApi');
+Route::get('/creategenres', 'MovieController@getMovieGenres');
+
