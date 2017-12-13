@@ -41,6 +41,14 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+
+<!-- ************************************************************************** -->
+<!-- ************************************************************************** -->
+<!-- ************************************************************************** -->
+<!-- ************************************************************************** -->
+<!-- ************************************************************************** -->
+        <!-- HERE I WILL MAKE SOME CHANGES TO ADD PROFILE PAGE AND AVATAR -->
+
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -52,6 +60,16 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+
+                                <!-- HERE ARE THE PROFILE PAGE CHANGES -->
+                                    <li>
+                                        <a href="{{ route('profile') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <i class="fa fa-user" aria-hidden="true"></i>
+                                            Profile
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
