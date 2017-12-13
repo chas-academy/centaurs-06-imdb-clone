@@ -11,7 +11,7 @@ class Movie extends Model
 {
     public function createMovie($properties) 
     {
-        if(!$this->checkIfMovieExists($properties['results'][0]['title'])) {
+        if(!$this->ifMovieExists($properties['results'][0]['title'])) {
             
             DB::table('movies')->insert([
                 'movie_api_id' => $properties['results'][0]['id'],
@@ -41,11 +41,11 @@ class Movie extends Model
 
     public function createMovieStaff($properties)
     {        
-        for ($i=0; $i < 5; $i++) 
-        { 
+        $movie = $this->getLatestCreatedMovie();
 
-            $movieId = $this->getMovie();
-            if(!$this->checkIfActorExists($movieId->title)) {
+        for ($i=0; $i < 5; $i++) { 
+
+            if(!$this->ifActorExists($properties['cast'][$i]['name'])) {
                 DB::table('actors')->insert([
                     'movie_api_id' => $properties['id'],
                     'name' => $properties['cast'][$i]['name']
@@ -53,46 +53,52 @@ class Movie extends Model
             }
 
             $actor = $this->getActors($properties['cast'][$i]['name']);
-            
-            DB::table('ledger_actors')->insert([
-                'actor_id' => $actor->id,
-                'movie_id' => $movieId->id
-                ]);
+
+            if(!$this->ifActorMovieLedgerExists($actor->id, $movie->id)){
+                DB::table('ledger_actors')->insert([
+                    'actor_id' => $actor->id,
+                    'movie_id' => $movie->id
+                    ]);
+            }
         }
 
         foreach ($properties['crew'] as $crewMember) 
         {
             
-            $movieId = $this->getMovie();
-            
             if ($crewMember['job'] === 'Director') {
-                
-                if($this->checkIfDirectorExists($crewMember['name']))
-                DB::table('directors')->insert([
-                    'movie_api_id' => $properties['id'],
-                    'name' => $crewMember['name']
-                    ]);
+                if(!$this->ifDirectorExists($crewMember['name'])) {
+                    DB::table('directors')->insert([
+                        'movie_api_id' => $properties['id'],
+                        'name' => $crewMember['name']
+                        ]);
+                }                
 
                 $director = $this->getDirectors($crewMember['name']);
+                
+                if(!$this->ifMovieDirectorLedgerExists($director->id, $movie->id)){
+                    DB::table('ledger_directors')->insert([
+                        'director_id' => $director->id,
+                        'movie_id' => $movie->id
+                        ]);
+
+                }
+            } 
                     
-                DB::table('ledger_directors')->insert([
-                    'director_id' => $director->id,
-                    'movie_id' => $movieId->id
-                    ]);
-                } 
-                    
-            if ($crewMember['job'] === 'Producer') 
-            {     
-                DB::table('producers')->insert([
-                    'movie_api_id' => $properties['id'],
-                    'name' => $crewMember['name']
-                    ]);
+            if ($crewMember['job'] === 'Producer') {
+                
+                if(!$this->ifProducerExists($crewMember['name'])) {
+                    DB::table('producers')->insert([
+                        'movie_api_id' => $properties['id'],
+                        'name' => $crewMember['name']
+                        ]);
+                }
                     
                 $producer = $this->getProducers($crewMember['name']);
 
+                if(!$this->ifMovieProducerLedgerExists($producer->id, $movie->id))
                 DB::table('ledger_producers')->insert([
                     'producer_id' => $producer->id,
-                    'movie_id' => $movieId->id
+                    'movie_id' => $movie->id
                 ]);
             }
 
@@ -115,9 +121,8 @@ class Movie extends Model
 
     public function createMovieGenres($properties) 
     {
-        foreach ($properties['genres'] as $genre) 
-        {
-            if(!DB::table('genres')->where('genre_name', $genre['name'])->exists()){
+        foreach ($properties['genres'] as $genre) {
+            if(!$this->ifGenreExists($genre['name'])){
                     DB::table('genres')->insert([
                         'genre_name' => $genre['name'],
                         'api_genre_id' => $genre['id']
@@ -126,7 +131,7 @@ class Movie extends Model
         }             
     }
 
-    public function getMovie() 
+    public function getLatestCreatedMovie() 
     {
         $movie = DB::table('movies')->orderBy('created_at', 'desc')->first();
 
@@ -264,34 +269,83 @@ class Movie extends Model
     }
 
     //Takes actor name as string and check in database if it exists
-    public function checkIfActorExists($actor) : bool
+    public function ifActorExists($actorName) : bool
     {
-        return DB::table('actors')->where('name', $actor)->exists();
+        return DB::table('actors')->where('name', $actorName)->exists();
     }
 
-    public function checkIfProducerExists($producer) : bool
+    public function ifActorMovieLedgerExists($actorId, $movieId): bool
     {
-        return DB::table('producers')->where('name', $producer)->exists();
+        return DB::table('ledger_actors')->where('actor_id', $actorId)->where('movie_id', $movieId)->exists();
+    }
+    
+    public function ifActorEpisodeLedgerExists($actorId, $episodeId): bool
+    {
+        return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
     }
 
-    public function checkIfDirectorExists($director)
+    public function ifMovieExists($movieTitle): bool
     {
-        return DB::table('directors')->where('name', $director)->exists();
+        return DB::table('movies')->where('title', $movieTitle)->exists();
     }
 
-    public function checkIfMovieExists($movie)
+    public function ifGenreExists($genreName): bool
     {
-        return DB::table('movies')->where('title', $movie)->exists();
+        return DB::table('genres')->where('genre_name', $genreName)->exists();
     }
 
-    public function checkIfMovieProducerLedgerExists($producerId, $movieId)
+    public function ifGenreMovieLedgerExists($movieId, $genreId): bool
     {
-        return DB::table('ledger_producers')->where('producer_id', $producerId)->where('movie_id, $movieId')->exists();
+        return DB::table('ledger_genres')->where('movie_id', $movieId)->where('genre_id', $genreId)->exists();
     }
 
-    public function checkIfEpisodeProducerLedgerExists($producerId, $episodeId)
+    public function ifGenreEpisodeLedgerExists($episodeId, $genreId): bool
+    {
+        return DB::table('ledger_genres')->where('episode_id', $episodeId)->where('genre_id', $genreId)->exists();
+    }
+
+    public function ifProducerExists($producerName): bool
+    {
+        return DB::table('producers')->where('name', $producerName)->exists();
+    }
+    
+    public function ifMovieProducerLedgerExists($producerId, $movieId): bool
+    {
+        return DB::table('ledger_producers')->where('producer_id', $producerId)->where('movie_id', $movieId)->exists();
+    }
+
+    public function ifEpisodeProducerLedgerExists($producerId, $episodeId): bool
     {
         return DB::table('ledger_producers')->where('producer_id', $producerId)->where('episode_id', $episodeId)->exists();
     }
 
+    public function ifDirectorExists($directorName): bool
+    {
+        return DB::table('directors')->where('name', $directorName)->exists();
+    }
+
+    public function ifMovieDirectorLedgerExists($directorId, $movieId): bool
+    {
+        return DB::table('ledger_directors')->where('director_id', $directorId)->where('movie_id', $movieId)->exists();
+    }
+
+    public function ifEpisodeDirectorLedgerExists($directorId, $episodeId): bool
+    {
+        return DB::table('ledger_directors')->where('director_id', $directorId)->where('episode_id', $episodeId)->exists();
+    }
+
+    public function ifTvShowExists($TvShowTitle): bool
+    {
+        return DB::table('tv_shows')->where('title', $TvShowTitle)->exists();
+    }
+
+    public function ifEpisodeExists($seasonId, $episodeTitle): bool
+    {
+        return DB::table('episodes')->where('season_id', $seasonId)->where('title', $episodeTitle)->exists();
+    }
+    
+    public function IfSeasonExists($tvShowId, $seasonNumber): bool
+    {
+        return DB::table('seasons')->where('tv_show_id', $tvShowId)->where('season_number', $seasonNumber)->exists();
+    }
 }
