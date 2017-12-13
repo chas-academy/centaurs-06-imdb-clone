@@ -2,6 +2,7 @@
 
 namespace App\Http\Models;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
@@ -9,6 +10,8 @@ use DB;
 
 class Movie extends Model
 {
+    use Searchable;
+    
     public function createMovie($properties) 
     {
         if(!$this->ifMovieExists($properties['results'][0]['title'])) {
