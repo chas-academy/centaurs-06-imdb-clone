@@ -1,4 +1,8 @@
 @extends('layouts.layout') @section('content')
+<?php
+// var_dump($movie->title);
+// die;
+?>
 <header class="row">
     <div class="small-12 flex-align-sb-c">
         <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
@@ -29,9 +33,28 @@
                 <p class="plot"><?php echo $movie->plot ?></p>
             </div>
             <div class="small-12 movie-crew">
-                <p class="director"><b>Director :</b> James Franco</p>
-                <p class="producer"><b>Producer :</b> J. Miles Dale, Guillermo del Toro, David Greenbaum, Matthew Greenfield, Daniel Kraus, Liz Sayre</p>
-                <p class="movie-cast"><b>Cast :</b> James Franco, Dave Franco, Ari Graynor, Alison Brie, Jacki Weaver, Paul Scheer, Zac Efron, Martin Roach, Josh Hutcherson, John Kapelos, Marvin Kaye & Karen Glave. </p>
+                
+                <p class="director"><b>Director :</b>                     
+                    <ul>
+                <?php foreach ($directors as $director): ?>
+                    <li><?php echo $director ?></li>
+                <?php endforeach; ?>
+                    </ul></p>
+                
+                <p class="producer"><b>Producer :</b>                     
+                    <ul>
+                <?php foreach ($producers as $producer): ?>
+                    <li><?php echo $producer ?></li>
+                <?php endforeach; ?>
+                    </ul></p>
+
+                    <p class="producer">
+                    <ul>
+                <?php foreach ($actors as $actor): ?>
+                    <li><?php echo $actor ?></li>
+                <?php endforeach; ?>
+                    </ul></p>
+
                 <p class="w-credits"><b>Writing Credits :</b> Scott Neustadter, Michael H. Weber</p>
             </div>
             <div class="small-12 reviews-btn">

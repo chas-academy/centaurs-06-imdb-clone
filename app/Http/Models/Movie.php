@@ -163,4 +163,46 @@ class Movie extends Model
 
         return array_first($movies);
     }
+
+    public function getMovieActors($movieId)
+    {
+        $actorIds = DB::table('ledger_actors')->get()->where('movie_id', $movieId);
+
+        $actors = [];
+
+        foreach ($actorIds as $actorId)
+        {
+            array_push($actors, DB::table('actors')->where('id', $actorId->actor_id)->value('name'));
+        }
+        
+        return $actors;
+    }
+
+    public function getMovieDirectors($movieId)
+    {
+        $directorIds = DB::table('ledger_directors')->get()->where('movie_id', $movieId);
+
+        $directors = [];
+
+        foreach ($directorIds as $directorId)
+        {
+            array_push($directors, DB::table('directors')->where('id', $directorId->director_id)->value('name'));
+        }
+        
+        return $directors;
+    }
+
+    public function getMovieProducers($movieId)
+    {
+        $producerIds = DB::table('ledger_producers')->get()->where('movie_id', $movieId);
+
+        $producers = [];
+
+        foreach ($producerIds as $producerId)
+        {
+            array_push($producers, DB::table('producers')->where('id', $producerId->producer_id)->value('name'));
+        }
+        
+        return $producers;
+    }
 }
