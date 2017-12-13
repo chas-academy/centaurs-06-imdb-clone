@@ -90,6 +90,21 @@ class Movie extends Model
                     'movie_id' => $movieId->id
                 ]);
             }
+
+            if ($crewMember['department'] === 'Writing') 
+            {     
+                DB::table('writers')->insert([
+                    'movie_api_id' => $properties['id'],
+                    'name' => $crewMember['name']
+                    ]);
+                    
+                $writer = $this->getWriters($crewMember['name']);
+
+                DB::table('ledger_writers')->insert([
+                    'writer_id' => $writer->id,
+                    'movie_id' => $movieId->id
+                ]);
+            }
         }            
     }
 
@@ -130,6 +145,13 @@ class Movie extends Model
         $directorName = DB::table('directors')->get()->where('name', $name);
 
         return array_first($directorName);
+    }
+
+    public function getWriters($name)
+    {
+        $writerName = DB::table('writers')->get()->where('name', $name);
+
+        return array_first($writerName);
     }
 
     public function getActors($name)
@@ -204,5 +226,33 @@ class Movie extends Model
         }
         
         return $producers;
+    }
+
+    public function getMovieWriters($movieId)
+    {
+        $writerIds = DB::table('ledger_writers')->get()->where('movie_id', $movieId);
+
+        $writers = [];
+
+        foreach ($writerIds as $writerId)
+        {
+            array_push($writers, DB::table('writers')->where('id', $writerId->writer_id)->value('name'));
+        }
+        
+        return $writers;
+    }
+
+    public function getMovieGenres($movieId)
+    {
+        $genreIds = DB::table('ledger_genres')->get()->where('movie_id', $movieId);
+
+        $genres = [];
+
+        foreach ($genreIds as $genreId)
+        {
+            array_push($genres, DB::table('genres')->where('id', $genreId->genre_id)->value('genre_name'));
+        }
+        
+        return $genres;
     }
 }

@@ -31,15 +31,16 @@ Route::get('movie/{movieId}', function ($movieId)
     $actors = $movieModel->getMovieActors($movieId);
     $directors = $movieModel->getMovieDirectors($movieId);
     $producers = $movieModel->getMovieProducers($movieId);
+    $writers = $movieModel->getMovieWriters($movieId);
+    $genres = $movieModel->getMovieGenres($movieId);
 
-    // $movieDetails = [];
-
-    // array_push($movieDetails, ['movie' => $movie, 'actors' => $actors]);
     $movieDetails = array(
         'movie' => $movie,
         'actors' => $actors,
         'directors' => $directors,
-        'producers' => $producers
+        'producers' => $producers,
+        'writers' => $writers,
+        'genres' => $genres
     );
     // var_dump($movieDetails);
     // die;

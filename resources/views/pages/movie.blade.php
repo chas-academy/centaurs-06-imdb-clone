@@ -26,7 +26,13 @@
                 <div class="year-genre">
                     <p class="movie-year"><?php echo $movie->releasedate ?></p>
                     <p class="separator">|</p>
-                    <p class="movie-genre">Drama</p>
+                    <p class="movie-genre">
+                    <ul>
+                <?php foreach ($genres as $genre): ?>
+                    <li><?php echo $genre ?></li>
+                <?php endforeach; ?>
+                    </ul>
+                    </p>
                 </div>
             </div>
             <div class="small-12 movie-plot">
@@ -55,7 +61,12 @@
                 <?php endforeach; ?>
                     </ul></p>
 
-                <p class="w-credits"><b>Writing Credits :</b> Scott Neustadter, Michael H. Weber</p>
+                <p class="w-credits"><b>Writing Credits :</b>                     
+                    <ul>
+                <?php foreach ($writers as $writer): ?>
+                    <li><?php echo $writer ?></li>
+                <?php endforeach; ?>
+                    </ul></p></p>
             </div>
             <div class="small-12 reviews-btn">
                 <button class="mobile-write-rev" data-toggle="write-rev">Write a review</button>
