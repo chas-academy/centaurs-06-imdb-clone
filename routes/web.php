@@ -25,9 +25,26 @@ Route::get('/login', function () {
 
 Route::get('movie/{movieId}', function ($movieId)
 {
+
     $movieModel = new Movie();
     $movie = $movieModel->getMovieById($movieId);
-    $view = View::make('pages.movie')->with('movie', $movie);
+    $actors = $movieModel->getMovieActors($movieId);
+    $directors = $movieModel->getMovieDirectors($movieId);
+    $producers = $movieModel->getMovieProducers($movieId);
+
+    // $movieDetails = [];
+
+    // array_push($movieDetails, ['movie' => $movie, 'actors' => $actors]);
+    $movieDetails = array(
+        'movie' => $movie,
+        'actors' => $actors,
+        'directors' => $directors,
+        'producers' => $producers
+    );
+    // var_dump($movieDetails);
+    // die;
+
+    $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
 Route::get('/movietest', 'MovieController@createMovieFromApi');
