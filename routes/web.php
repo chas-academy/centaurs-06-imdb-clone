@@ -49,6 +49,8 @@ Route::get('movie/{movieId}', function ($movieId)
     return $view;
 });
 
+Route::get('profile', 'UserController@profile');
+
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
