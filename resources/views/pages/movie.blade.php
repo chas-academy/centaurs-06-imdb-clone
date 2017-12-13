@@ -14,7 +14,7 @@
         <div class="big-movie-info">
             <div class="movie-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
-                <p class="rating-num">9.1</p>
+                <p class="rating-num"><?php echo $movie->imdb_rating ?></p>
             </div>
             <img src="https://image.tmdb.org/t/p/w1000<?php echo $movie->poster ?>">
             <div class="small-12 movie-info">
