@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use DB;
 
+use Laravel\Scout\Searchable;
 class TvShow extends Model
 {
+<<<<<<< HEAD
     public function createTvSHowFromApi($tvShow)
     {
         if(!$this->ifTvShowExists($tvShow['name'])){
@@ -179,4 +181,7 @@ class TvShow extends Model
     {
         return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
     }
+=======
+    use Searchable;
+>>>>>>> Started with the searchfunction, install scout in Laravel and add the  Laravel\Scout\Searchable trait to the models
 }

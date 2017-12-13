@@ -11,7 +11,9 @@
         "laravel-frontend-presets/zurb-foundation": "^1.2",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "intervention/image": "dev-master"
+        "intervention/image": "dev-master",
+        "laravel/scout": "^3.0",
+        "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
