@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Models\Movie;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,16 +11,42 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
+Route::get('/', function () 
+{
+    $movieModel = new Movie();
+    $movies = $movieModel->getAllMovies();
+    $view = View::make('pages.index')->with('movies', $movies);
+    return $view;
 });
 
 Route::get('/login', function () {
     return view('pages.login');
 });
 
-Route::get('movie', function (){
-    return view('pages.movie');
+Route::get('movie/{movieId}', function ($movieId)
+{
+
+    $movieModel = new Movie();
+    $movie = $movieModel->getMovieById($movieId);
+    $actors = $movieModel->getMovieActors($movieId);
+    $directors = $movieModel->getMovieDirectors($movieId);
+    $producers = $movieModel->getMovieProducers($movieId);
+    $writers = $movieModel->getMovieWriters($movieId);
+    $genres = $movieModel->getMovieGenres($movieId);
+
+    $movieDetails = array(
+        'movie' => $movie,
+        'actors' => $actors,
+        'directors' => $directors,
+        'producers' => $producers,
+        'writers' => $writers,
+        'genres' => $genres
+    );
+    // var_dump($movieDetails);
+    // die;
+
+    $view = View::make('pages.movie')->with($movieDetails);
+    return $view;
 });
 
 Route::get('/movietest', 'MovieController@createMovieFromApi');

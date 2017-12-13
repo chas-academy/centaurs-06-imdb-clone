@@ -9934,6 +9934,8 @@ main .flex-align-sb-c {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-bottom: 1px solid #333333;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 main .flex-align-sb-c .small-movie-info {
@@ -9961,6 +9963,10 @@ main .flex-align-sb-c .small-movie-info .movie-rating .rating-num {
   font-weight: 800;
 }
 
+main .flex-align-sb-c .small-movie-info .poster-size {
+  width: 90px;
+}
+
 main .flex-align-sb-c .small-movie-info .movie-title {
   margin: 5px 0 0 0;
   color: #F1F1F1;
@@ -9968,50 +9974,24 @@ main .flex-align-sb-c .small-movie-info .movie-title {
   font-weight: 600;
 }
 
-main .flex-align-c-c {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+main .none:nth-child(4n) {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-bottom: 1px solid #333333;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 
-main .flex-align-c-c .big-movie-info {
-  text-align: center;
-}
-
-main .flex-align-c-c .big-movie-info .movie-rating {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: #F1F1F1;
-  margin: 0 0 5px 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-main .flex-align-c-c .big-movie-info .movie-rating .fa-star {
-  color: #FAD400;
+main .none:nth-child(4n) .movie-rating .fa-star {
   font-size: 16px;
 }
 
-main .flex-align-c-c .big-movie-info .movie-rating .rating-num {
-  margin: 0 0 0 5px;
+main .none:nth-child(4n) .movie-rating .fa-star .rating-num {
   font-size: 14px;
-  font-weight: 800;
 }
 
-main .flex-align-c-c .big-movie-info .movie-title {
-  margin: 5px 0 0 0;
-  color: #F1F1F1;
-  font-size: 16px;
-  font-weight: 600;
+main .none:nth-child(4n) .poster-size {
+  width: 100%;
 }
 
 .menu-btn {

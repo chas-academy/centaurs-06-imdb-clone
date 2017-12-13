@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Models\Movie;
+use Resources\views\pages;
 
 class MovieController extends Controller
 {
@@ -31,7 +32,7 @@ class MovieController extends Controller
         
         public function createMovieFromApi() 
         {
-            $keyword = 'The mask';
+            $keyword = 'Fifty shades';
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
@@ -58,9 +59,15 @@ class MovieController extends Controller
             $search = '&language=en-US';
             $movieGenres = $this->MovieApi($search, $searchMethod);
             $movie = new Movie();
-            $movie->createMovieGenres($movieGenres);   
+            $movie->createMovieGenres($movieGenres);
         }
 
+        public function getAllMovies()
+        {
+            $movieModel = new Movie();
+            $movies = $movieModel->getAllMovies();
 
+            return $movies;  
+        }
 
 }
