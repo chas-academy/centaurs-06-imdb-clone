@@ -38,7 +38,8 @@ class Movie extends Model
 
     public function createMovieStaff($properties)
     {        
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < 5; $i++) 
+        { 
 
             $movieId = $this->getMovie();
 
@@ -53,15 +54,15 @@ class Movie extends Model
                 'actor_id' => $actor->id,
                 'movie_id' => $movieId->id
                 ]);
-            }
+        }
 
-        foreach ($properties['crew'] as $crewMember) {
+        foreach ($properties['crew'] as $crewMember) 
+        {
             
             $movieId = $this->getMovie();
             
-            if ($crewMember['job'] === 'Director') {
-                
-                
+            if ($crewMember['job'] === 'Director') 
+            {
                 DB::table('directors')->insert([
                     'movie_api_id' => $properties['id'],
                     'name' => $crewMember['name']
@@ -75,8 +76,8 @@ class Movie extends Model
                     ]);
                 } 
                     
-            if ($crewMember['job'] === 'Producer') {
-                        
+            if ($crewMember['job'] === 'Producer') 
+            {     
                 DB::table('producers')->insert([
                     'movie_api_id' => $properties['id'],
                     'name' => $crewMember['name']
@@ -94,8 +95,8 @@ class Movie extends Model
 
     public function createMovieGenres($properties) 
     {
-        foreach ($properties['genres'] as $genre) {
-            
+        foreach ($properties['genres'] as $genre) 
+        {
             DB::table('genres')->insert([
                 'genre_name' => $genre['name'],
                 'api_genre_id' => $genre['id']
@@ -149,13 +150,15 @@ class Movie extends Model
         return $genres;
     }
 
-    public function getAllMovies() {
+    public function getAllMovies() 
+    {
         $movies = DB::table('movies')->get();
 
         return $movies;
     }
 
-    public function getMovieById($movieId) {
+    public function getMovieById($movieId) 
+    {
         $movies = DB::table('movies')->get()->where('id', $movieId);
 
         return array_first($movies);
