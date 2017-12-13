@@ -51,4 +51,3 @@ Route::get('movie/{movieId}', function ($movieId)
 
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
-

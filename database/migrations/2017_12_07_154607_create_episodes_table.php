@@ -19,8 +19,8 @@ class CreateEpisodesTable extends Migration
             $table->string('title');
             $table->text('plot');
             $table->integer('playtime');
-            $table->lineString('poster');
-            $table->lineString('backdrop');
+            $table->string('poster');
+            $table->string('backdrop');
             $table->date('releasedate');
             $table->integer('imdb_rating');
             $table->timestamps();
