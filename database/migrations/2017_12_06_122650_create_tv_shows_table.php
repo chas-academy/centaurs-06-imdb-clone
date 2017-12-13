@@ -21,7 +21,7 @@ class CreateTvShowsTable extends Migration
             $table->lineString('poster');
             $table->lineString('backdrop');
             $table->date('releasedate');
-            $table->integer('imdb_rating');
+            $table->string('imdb_rating');
             $table->integer('chas_rating');
         });
     }
