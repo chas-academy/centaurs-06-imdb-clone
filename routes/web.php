@@ -48,6 +48,9 @@ Route::get('movie/{movieId}', function ($movieId)
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
+
+Route::get('profile', 'UserController@profile');
+
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
