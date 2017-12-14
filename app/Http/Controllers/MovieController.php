@@ -32,7 +32,7 @@ class MovieController extends Controller
         
         public function createMovieFromApi() 
         {
-            $keyword = 'Fifty shades';
+            $keyword = 'Kalle';
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
