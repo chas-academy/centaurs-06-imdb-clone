@@ -22,8 +22,8 @@ class CreateMoviesTable extends Migration
             $table->string('poster');
             $table->string('backdrop');
             $table->date('releasedate');
-            $table->string('imdb_rating');
-            $table->integer('chas_rating');
+            $table->string('imdb_rating')->nullable();
+            $table->integer('chas_rating')->nullable();
             $table->timestamps();
         });
     }
