@@ -10521,14 +10521,26 @@ main .none:nth-child(4n) .poster-size {
   right: 15px;
 }
 
+<<<<<<< HEAD
 #profile-page {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+=======
+main .flex-align-sb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 25px 0 0px 0;
+>>>>>>> Template view for watch-list created needs minor fixes in css
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+<<<<<<< HEAD
   color: #FFFFFF;
   -webkit-box-align: end;
       -ms-flex-align: end;
@@ -10562,10 +10574,38 @@ main .none:nth-child(4n) .poster-size {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+=======
+}
+
+main .flex-align-sb h2 {
+  margin: 0px;
+  color: #FAFAFA;
+  font-size: 32px;
+}
+
+main .flex-align-sb-c {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px 0px 30px 0px !important;
+}
+
+main .flex-align-sb-c select {
+  width: 65%;
+  display: none;
+}
+
+main .flex-align-sb-c .watch-list-movie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #FAFAFA;
+>>>>>>> Template view for watch-list created needs minor fixes in css
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+<<<<<<< HEAD
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -10684,6 +10724,62 @@ main .none:nth-child(4n) .poster-size {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+=======
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 40px 0px 40px 0px;
+}
+
+main .flex-align-sb-c .watch-list-movie .movie-poster {
+  width: 35%;
+}
+
+main .flex-align-sb-c .watch-list-movie .movie-rating {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0px 10px 0px;
+}
+
+main .flex-align-sb-c .watch-list-movie .movie-rating .rating-num {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0px 0px 0px 5px;
+}
+
+main .flex-align-sb-c .watch-list-movie .movie-rating .fa-star {
+  color: #FAD400;
+}
+
+main .flex-align-sb-c .watch-list-movie .movie-title {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+main .flex-align-sb-c .watch-list-movie .fa-times {
+  color: #FF0000;
+  font-size: 32px;
+}
+
+main .flex-align-sb-c .watch-list-separator {
+  margin: 0;
+  width: 95%;
+  height: 1px;
+  background: #E2A534;
+  border-bottom: 1px solid #E2A534;
+>>>>>>> Template view for watch-list created needs minor fixes in css
 }
 
 .select2-selection:focus {

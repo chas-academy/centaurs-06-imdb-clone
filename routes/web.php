@@ -18,7 +18,12 @@ Route::get('/', function ()
     $view = View::make('pages.index')->with('movies', $movies);
     return $view;
 });
-
+Route::get('/watchlist', function(){
+    $movieModel = new Movie();
+    $movies = $movieModel->getAllMovies();
+    $view = View::make('pages.watchlist')->with('movies', $movies);
+    return $view;
+});
 Route::get('/login', function () {
     return view('pages.login');
 });
@@ -42,9 +47,7 @@ Route::get('movie/{movieId}', function ($movieId)
         'writers' => $writers,
         'genres' => $genres
     );
-    // var_dump($movieDetails);
-    // die;
-
+    
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
@@ -61,3 +64,4 @@ Auth::routes();
 Route::get('/home', function () {
     return view('pages.index');
 });
+
