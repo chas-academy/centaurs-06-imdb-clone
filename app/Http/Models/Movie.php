@@ -44,22 +44,23 @@ class Movie extends Model
         $movie = $this->getLatestCreatedMovie();
 
         for ($i=0; $i < 5; $i++) { 
-
-            if(!$this->ifActorExists($properties['cast'][$i]['name'])) {
-                DB::table('actors')->insert([
-                    'movie_api_id' => $properties['id'],
-                    'name' => $properties['cast'][$i]['name']
-                    ]);
-            }
-
-            $actor = $this->getActors($properties['cast'][$i]['name']);
-
-            if(!$this->ifActorMovieLedgerExists($actor->id, $movie->id)){
-                DB::table('ledger_actors')->insert([
-                    'actor_id' => $actor->id,
-                    'movie_id' => $movie->id
-                    ]);
-            }
+            if(isset($properties['cast'][$i])){                                 //if there is less than 5 casts then dont to add to db.             
+                if(!$this->ifActorExists($properties['cast'][$i]['name'])) {    //Checks if actor exists in db
+                    DB::table('actors')->insert([
+                        'movie_api_id' => $properties['id'],
+                        'name' => $properties['cast'][$i]['name']
+                        ]);
+                }
+    
+                $actor = $this->getActors($properties['cast'][$i]['name']);
+    
+                if(!$this->ifActorMovieLedgerExists($actor->id, $movie->id)){
+                    DB::table('ledger_actors')->insert([
+                        'actor_id' => $actor->id,
+                        'movie_id' => $movie->id
+                        ]);
+                }
+            } 
         }
 
         foreach ($properties['crew'] as $crewMember) 
@@ -111,7 +112,7 @@ class Movie extends Model
                         ]);
                 }
                 $writer = $this->getWriters($crewMember['name']);
-                
+
                 if(!$this->ifWriterMovieLedgerExists($writer->id, $movie->id)){
                     DB::table('ledger_writers')->insert([
                         'writer_id' => $writer->id,
