@@ -104,19 +104,22 @@ class Movie extends Model
 
             if ($crewMember['department'] === 'Writing') 
             {     
-                DB::table('writers')->insert([
-                    'movie_api_id' => $properties['id'],
-                    'name' => $crewMember['name']
-                    ]);
-                    
+                if(!$this->ifWriterExists($crewMember['name'])){
+                    DB::table('writers')->insert([
+                        'movie_api_id' => $properties['id'],
+                        'name' => $crewMember['name']
+                        ]);
+                }
                 $writer = $this->getWriters($crewMember['name']);
-
-                DB::table('ledger_writers')->insert([
-                    'writer_id' => $writer->id,
-                    'movie_id' => $movieId->id
-                ]);
+                
+                if(!$this->ifWriterMovieLedgerExists($writer->id, $movie->id)){
+                    DB::table('ledger_writers')->insert([
+                        'writer_id' => $writer->id,
+                        'movie_id' => $movie->id
+                    ]);
+                } 
             }
-        }            
+        } 
     }
 
     public function createMovieGenres($properties) 
@@ -347,5 +350,20 @@ class Movie extends Model
     public function IfSeasonExists($tvShowId, $seasonNumber): bool
     {
         return DB::table('seasons')->where('tv_show_id', $tvShowId)->where('season_number', $seasonNumber)->exists();
+    }
+    
+    public function ifWriterExists($writerName): bool
+    {
+        return DB::table('writers')->where('name', $writerName)->exists();
+    }
+
+    public function ifWriterMovieLedgerExists($writerId, $movieId): bool
+    {
+        return DB::table('ledger_writers')->where('writer_id', $writerId)->where('movie_id', $movieId)->exists();
+    }
+
+    public function ifWriterEpisodeLedgerExists($writerId, $episodeId): bool
+    {
+        return DB::table('ledger_writers')->where('writer_id', $writerId)->where('episode_id', $episodeId)->exists();
     }
 }
