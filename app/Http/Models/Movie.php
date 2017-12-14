@@ -338,21 +338,6 @@ class Movie extends Model
         return DB::table('ledger_directors')->where('director_id', $directorId)->where('episode_id', $episodeId)->exists();
     }
 
-    public function ifTvShowExists($TvShowTitle): bool
-    {
-        return DB::table('tv_shows')->where('title', $TvShowTitle)->exists();
-    }
-
-    public function ifEpisodeExists($seasonId, $episodeTitle): bool
-    {
-        return DB::table('episodes')->where('season_id', $seasonId)->where('title', $episodeTitle)->exists();
-    }
-    
-    public function IfSeasonExists($tvShowId, $seasonNumber): bool
-    {
-        return DB::table('seasons')->where('tv_show_id', $tvShowId)->where('season_number', $seasonNumber)->exists();
-    }
-    
     public function ifWriterExists($writerName): bool
     {
         return DB::table('writers')->where('name', $writerName)->exists();
