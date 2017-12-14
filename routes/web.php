@@ -17,4 +17,6 @@ Route::get('/creategenres', 'MovieController@getMovieGenres');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return view('pages.index');
+});
