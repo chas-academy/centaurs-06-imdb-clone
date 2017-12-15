@@ -43,9 +43,10 @@ class Movie extends Model
     {        
         $movie = $this->getLatestCreatedMovie();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < 5; $i++) {
             if(isset($properties['cast'][$i])){                                 //if there is less than 5 casts then dont to add to db.             
                 if(!$this->ifActorExists($properties['cast'][$i]['name'])) {    //Checks if actor exists in db
+                    dd($properties);
                     DB::table('actors')->insert([
                         'movie_api_id' => $properties['id'],
                         'name' => $properties['cast'][$i]['name']
