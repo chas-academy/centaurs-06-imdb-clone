@@ -37,16 +37,22 @@ class TvShowController extends Controller
         $search = '&language=en-US&query=' . $argument . '&page=1';
 
         $result = $this->TvShowApi($search, $searchMethod);
-
+        //print_r($result);
         $tvShow = new TvShow();
         $tvShow->createTvSHowFromApi($result['results'][0]);
 
         //$this->getTvShowStaffFromApi($result['results'][0]);
     }
-    // public function getTvShowStaffFromApi($tvShow)
-    // {
-    //     $tvShowId = $tvShow['id'];
-    //     $searchMethod = ksdk;
-    // }
-    //public function get
+    public function getTvShowStaffFromApi($tvShow)
+    {
+        $tvShowId = $tvShow['id'];
+        $searchMethod = ksdk;
+    }
+    public function getTvShowSeasons($tvShow)
+    {
+        $searchMethod = 'tv/' . $tvShow['id'];
+
+    }
 }
+
+//https://api.themoviedb.org/3/tv/1399?api_key=6975fbab174d0a26501b5ba81f0e0b3c&language=en-US
