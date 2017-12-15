@@ -37,12 +37,18 @@ class TvShowController extends Controller
         $search = '&language=en-US&query=' . $argument . '&page=1';
 
         $result = $this->TvShowApi($search, $searchMethod);
+<<<<<<< HEAD
         
         $tvShowModel = new TvShow();
         $tvShowModel->createTvSHowFromApi($result['results'][0]);
 
         $seasons = $this->getTvShowSeasons($result['results'][0]);
         $tvShow = $tvShowModel->getTvShowByName($seasons['name']);
+=======
+        //print_r($result);
+        $tvShow = new TvShow();
+        $tvShow->createTvSHowFromApi($result['results'][0]);
+>>>>>>> Made som changes in db tables for tvshows and episodes
 
         foreach ($seasons['seasons'] as $k => $season) {
             if($k <> 0) { 
@@ -80,5 +86,21 @@ class TvShowController extends Controller
 
         return $this->TvShowApi($languageEndString, $searchMethod);
     }
+<<<<<<< HEAD
 }
 
+=======
+    public function getTvShowStaffFromApi($tvShow)
+    {
+        $tvShowId = $tvShow['id'];
+        $searchMethod = ksdk;
+    }
+    public function getTvShowSeasons($tvShow)
+    {
+        $searchMethod = 'tv/' . $tvShow['id'];
+
+    }
+}
+
+//https://api.themoviedb.org/3/tv/1399?api_key=6975fbab174d0a26501b5ba81f0e0b3c&language=en-US
+>>>>>>> Made som changes in db tables for tvshows and episodes
