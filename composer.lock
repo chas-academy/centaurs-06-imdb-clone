@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "19d8704b1131c180ddbeb625132c86a9",
-=======
-    "content-hash": "45aebc0090640da3ecebb9a70d2922ea",
->>>>>>> Started with the searchfunction, install scout in Laravel and add the  Laravel\Scout\Searchable trait to the models
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
