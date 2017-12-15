@@ -9939,6 +9939,8 @@ main .flex-align-sb-c {
 }
 
 main .flex-align-sb-c .small-movie-info {
+  margin-bottom: 10px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -9967,11 +9969,20 @@ main .flex-align-sb-c .small-movie-info .poster-size {
   width: 90px;
 }
 
-main .flex-align-sb-c .small-movie-info .movie-title {
+main .flex-align-sb-c .movie-title-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 90px;
+}
+
+main .flex-align-sb-c .movie-title-container .movie-title {
   margin: 5px 0 0 0;
   color: #F1F1F1;
   font-size: 14px;
   font-weight: 600;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 main .none:nth-child(4n) {
@@ -9980,6 +9991,19 @@ main .none:nth-child(4n) {
           justify-content: center;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+}
+
+main .none:nth-child(4n) .movie-title-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 180px;
+}
+
+main .none:nth-child(4n) .movie-title-container .movie-title {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 main .none:nth-child(4n) .movie-rating .fa-star {

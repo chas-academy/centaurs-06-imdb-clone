@@ -264,7 +264,9 @@
                     <p class="rating-num"><?php echo $movie->imdb_rating ?></p>
                 </div>
                 <img class="poster-size" src="https://image.tmdb.org/t/p/w500<?php echo $movie->poster ?>" >
+                <div class="movie-title-container">
                 <h3 class="movie-title"><?php echo $movie->title ?></h3>
+                </div>
             </div>
     </a>
     <?php endforeach; ?>
