@@ -26,6 +26,20 @@ host('165.227.236.122')
     ->set('deploy_path', '/var/www/www.centaurs-imdb.me')   
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
+    ->stage('master')
+    ->set('branch', 'master');
+
+host('165.227.236.122')
+    ->set('deploy_path', '/var/www/staging.centaurs-imdb.me')   
+    ->user('deployer')
+    ->identityFile('~/.ssh/id_rsa')
+    ->stage('staging')
+    ->set('branch', 'staging');
+
+host('165.227.236.122')
+    ->set('deploy_path', '/var/www/develop.centaurs-imdb.me')   
+    ->user('deployer')
+    ->identityFile('~/.ssh/id_rsa')
     ->stage('production')
     ->set('branch', 'master');
 
