@@ -20,6 +20,7 @@ class CreateTvShowsTable extends Migration
             $table->string('poster');
             $table->string('backdrop');
             $table->date('releasedate');
+            $table->date('end_date')->nullable();
             $table->string('imdb_rating')->nullable();
             $table->integer('chas_rating')->nullable();
             $table->timestamps();

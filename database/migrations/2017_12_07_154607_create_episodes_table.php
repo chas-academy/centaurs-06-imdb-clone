@@ -16,13 +16,15 @@ class CreateEpisodesTable extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('season_id')->unsigned();            
+            $table->integer('episode_nr');
             $table->string('title');
             $table->text('plot');
             $table->integer('playtime');
             $table->string('poster');
             $table->string('backdrop');
             $table->date('releasedate');
-            $table->integer('imdb_rating');
+            $table->integer('imdb_rating')->nullable();
+            $table->integer('chas_rating')->nullable();
             $table->timestamps();
         });
 
