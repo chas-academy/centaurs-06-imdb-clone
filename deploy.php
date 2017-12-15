@@ -59,5 +59,4 @@ desc('Restart PHP-FPM service');
 task('php-fpm:restart', function () {
     run('sudo service php7.1-fpm reload');
 });
-before('deploy:symlink', 'artisan:migrate');
 
