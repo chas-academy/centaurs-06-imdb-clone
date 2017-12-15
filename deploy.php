@@ -42,7 +42,6 @@ host('165.227.236.122')
     ->identityFile('~/.ssh/id_rsa')
     ->stage('develop')
     ->set('branch', 'develop');
-    
 // Tasks
 
 task('build', function () {
