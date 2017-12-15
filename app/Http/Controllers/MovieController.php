@@ -104,7 +104,10 @@ class MovieController extends Controller
         // Create movie
         public function createMovie()
         {
-            return view('pages.test');
+            
+            $actors = Actor::all()->toArray();
+
+            return view('pages.test', ['actors' => $actors]);
             // // Validate the request...
             // if ($request->isMethod('post') && validateRequest($request)) {
             //     $movie = new Movie;
