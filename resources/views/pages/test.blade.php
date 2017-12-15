@@ -21,20 +21,36 @@
 
         <input type="text" name="poster">
 
+        <div class="js-actor-list">
+            <h3 style="color: white;">ACTORS</h3>
 
-        <input type="text" name="actor[]" value="1">
-        <input type="text" name="actor[]" value="2">
-        <input type="text" name="actor[]" value="3">
+            <div>
+                <lable style="color: white;">EXISTING ACTOR</lable>
+                <select class="js-example-basic-single js-existing-actor-chooser" name="state">
+                  @foreach ($actors as $actor)
+                    <option value="{{ $actor["id"] }}">{{ $actor["name"] }}</option>
+                  @endforeach
+                </select>
+                <button class="button secondary js-existing-actor-add">Add</button>
+            <div>
 
-        <input type="text" name="new_actor[]" value="Tom Waits1">
-        <input type="text" name="new_actor[]" value="Frank Zappa1">
-        <input type="text" name="new_actor[]" value="Bobby1">
+            <div>
+                <lable style="color: white;">NEW ACTOR</lable>
+                <input type="text" name="new_actor">
+                <button class="button secondary">Add</button>
+            <div>
+        </div>
+
+        <div>
+          <ul class="js-my-actors-list">
+          </ul>
+        </div> 
 
         <button class="button" type="submit" value="BOBBY!">Submit</button>
     </form>
-    <div>
-
-    </div>
+    
+        
+    
 </body>
 
 @endsection 
