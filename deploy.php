@@ -26,7 +26,7 @@ host('165.227.236.122')
     ->set('deploy_path', '/var/www/www.centaurs-imdb.me')   
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
-    ->stage('master')
+    ->stage('production')
     ->set('branch', 'master');
 
 host('165.227.236.122')
@@ -42,6 +42,7 @@ host('165.227.236.122')
     ->identityFile('~/.ssh/id_rsa')
     ->stage('develop')
     ->set('branch', 'develop');
+
 // Tasks
 
 task('build', function () {
