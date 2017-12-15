@@ -40,6 +40,13 @@ class TvShowController extends Controller
 
         $tvShow = new TvShow();
         $tvShow->createTvSHowFromApi($result['results'][0]);
-        $this->getMovieStaffFromApi($result['results'][0]);
+
+        //$this->getTvShowStaffFromApi($result['results'][0]);
     }
+    // public function getTvShowStaffFromApi($tvShow)
+    // {
+    //     $tvShowId = $tvShow['id'];
+    //     $searchMethod = ksdk;
+    // }
+    //public function get
 }
