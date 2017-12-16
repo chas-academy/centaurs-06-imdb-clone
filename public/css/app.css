@@ -10139,9 +10139,9 @@ main .none:nth-child(4n) .poster-size {
   display: flex;
   text-align: right;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .menu .flex-align-fd-c .mobile-btn-wrap {
@@ -10665,6 +10665,36 @@ main .none:nth-child(4n) .poster-size {
   font-weight: 800;
   margin-bottom: 25px;
   background-color: #FAD400;
+}
+
+.reset-pwd-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.reset-pwd-btn .reset-pwd {
+  width: 85%;
+  height: 40px;
+  margin-top: 15px;
+  color: #151515;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background-color: #FAD400;
+}
+
+#password-form {
+  display: none;
+}
+
+#password-form.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .select2-selection:focus {
