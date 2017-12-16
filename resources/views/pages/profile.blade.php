@@ -13,10 +13,15 @@
                 </div>
                 <h2 class="avatar">Hi {{ $user->name }}!</h2>
                 <div class"width-100">
-                <form enctype="multipart/form-data" action="/profile" method="POST">
-                    <label>Update Profile Picture Here</label>
+                
                     <div id="right">
-                    <input id="file-style" type="file" name="avatar">
+                    <!-- FIX THE FILE BUTTON HERE -->
+                        <div class="upload-btn-wrapper">
+                            <button class="butn">Upload a file</button>
+                            <form enctype="multipart/form-data" action="/profile" method="POST">
+                            <input id="input-file" type="file" name="myfile">
+                        </div>
+                        <!-- FIX THE FILE BUTTON HERE -->
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input class="send-pic" type="submit" class="button">
                     </div>
