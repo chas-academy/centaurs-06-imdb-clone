@@ -10618,6 +10618,24 @@ main .flex-align-c-c .big-movie-info .movie-title {
   background-color: #FAD400;
 }
 
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper .butn {
+  background-color: #FAD400;
+  padding: 8px 20px;
+}
+
+#input-file {
+  font-size: 100px;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+}
+
 .select2-selection:focus {
   background-color: #FFFFFF !important;
 }
