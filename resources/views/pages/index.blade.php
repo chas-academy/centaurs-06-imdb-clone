@@ -6,7 +6,7 @@
             <div class="small-12 flex-align-c-c">
                 <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
             </div>            
-        <!-- SIGN IN FORM -->
+            <!-- Sign in -->
             <div class="small-12 flex-align-fd-c">
                 <form class="small-12" id="sign-in-f" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
@@ -17,26 +17,18 @@
                     </div>
                     <!-- Forgot password -->
                     <div class="col-md-8 col-md-offset-4">
-                        <a id="forgot-pwd" href="{{ route('password.request') }}">
-                            Forgot Your Password?
-                        </a>
+                        <p id="forgot-pwd" data-toggle="password-form">Forgot Your Password?</p>
                     </div>
                 </form>
-
-                <div>
-                <form class="small-12" method="POST" action="{{ route('password.email') }}">
+                <!-- Reset password link by email -->
+                <form id="password-form" class="small-12" method="POST" action="{{ route('password.email') }}" data-toggler=".visible" data-animate="fade-in fade-out">
                     {{ csrf_field() }}    
                     <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
-                    <button type="submit" class="submit">
-                        Send Password Reset Link
-                    </button>        
+                    <div class="small-12 btn reset-pwd-btn">
+                        <button type="submit" class="reset-pwd">Send Password Reset Link</button>        
+                    </div>               
                 </form>
-                </div>
-
-
-
-
-        <!-- REGISTER FORM -->
+                <!-- Register new user -->
                 <form class="small-12" id="sign-up-f" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
                     <input type="text" name="name" placeholder="Name">
@@ -148,7 +140,6 @@
             <p class="personal-info pad-bottom">github.com/andreas</p>
         </div>
     </div>
-
         <!-- Another personal page -->
     <div class="row personal-container" id="ida">
         <div class="small-12">
@@ -166,7 +157,7 @@
             <p class="personal-info pad-bottom">github.com/Ida</p>
         </div>
     </div>
-
+    <!-- Another personal page -->
     <div class="row personal-container" id="patryk">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -183,7 +174,7 @@
             <p class="personal-info pad-bottom">github.com/Patryk</p>
         </div>
     </div>
-
+    <!-- Another personal page -->
     <div class="row personal-container" id="laya">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -200,7 +191,7 @@
             <p class="personal-info pad-bottom">github.com/Laya</p>
         </div>
     </div>
-
+    <!-- Another personal page -->
     <div class="row personal-container" id="pontus">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -217,7 +208,7 @@
             <p class="personal-info pad-bottom">github.com/Pontus</p>
         </div>
     </div>
-
+    <!-- Another personal page -->
     <div class="row personal-container" id="eleonor">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -234,9 +225,6 @@
             <p class="personal-info pad-bottom">github.com/Eleonor</p>
         </div>
     </div>
-
-
-
      <!-- Button to close off-canvas -->
     <div id="mobile-btn-quit" class="mobile-btn-quit" data-close>
         <i class="fa fa-times" aria-hidden="true"></i>
