@@ -23,6 +23,20 @@
                         </a>
                     </div>
                 </form>
+
+                <div>
+                <form class="small-12" method="POST" action="{{ route('password.email') }}">
+                    {{ csrf_field() }}    
+                    <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                    <button type="submit" class="submit">
+                        Send Password Reset Link
+                    </button>        
+                </form>
+                </div>
+
+
+
+
         <!-- REGISTER FORM -->
                 <form class="small-12" id="sign-up-f" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}

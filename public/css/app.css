@@ -10640,6 +10640,22 @@ main .none:nth-child(4n) .poster-size {
   opacity: 0;
 }
 
+.reset-password {
+  margin: 5px 0 0 0;
+  color: #F1F1F1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.reset-btn {
+  height: 40px;
+  margin-top: 15px;
+  color: #151515;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background-color: #FAD400;
+}
+
 .select2-selection:focus {
   background-color: #FFFFFF !important;
 }
