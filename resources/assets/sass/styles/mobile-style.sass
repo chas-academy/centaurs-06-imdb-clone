@@ -205,7 +205,7 @@ main
         padding: 0px 0px 30px 0px
         display: flex
         text-align: right
-        flex-direction: column-reverse
+        flex-direction: column
         .mobile-btn-wrap
             position: absolute
             right: 15px
@@ -539,3 +539,22 @@ main
     font-weight: 800
     margin-bottom: 25px
     background-color: #FAD400
+
+.reset-pwd-btn
+    display: flex
+    justify-content: center
+    width: 100%
+    .reset-pwd
+        width: 85%
+        height: 40px
+        margin-top: 15px
+        color: #151515
+        font-weight: 800
+        margin-bottom: 25px
+        background-color: #FAD400
+
+#password-form
+    display: none
+    // Allows motion ui to work
+    &.visible
+        display: flex
