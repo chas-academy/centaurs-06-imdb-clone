@@ -115,20 +115,9 @@ class MovieController extends Controller
             $producers = Producer::all()->toArray();
 
             return view('pages.test', ['actors' => $actors, 'directors' => $directors,'producers' => $producers ]);
-
-            //     //$movie->movie_api_id = $request->movie_api_id;
-            //     $movie->title = $request->title;
-            //     $movie->plot = $request->plot;
-            //     //$movie->playtime = $request->playtime;
-            //     //$movie->poster = $request->poster;
-            //     //$movie->backdrop = $request->backdrop;
-            //     //$movie->releasedate = $request->releasedate;
-            //     //$movie->imdb_rating = $request->imdb_rating;
-            //     //$movie->chas_rating = $request->chas_rating;
-            //     //$movie->created_at = $request->created_at;
-            //     //$movie->updated_at = $request->updated_at;
         }
 
+        //Helperfunktion för hantera alla actors, directors, producers
         public function storeMovieHelper($person, $model, $request) {
            
             $persons = array_map(function ($id) use ($model) {
@@ -183,9 +172,10 @@ class MovieController extends Controller
             //     //...
             // ]);
 
-
-
-            // $db_actors = Actor::all();
+            //Lägga till genre?
+            //Lägga till validering
+            //Lägga till autorizaton
+            //Lägga till korrekta movievärden
 
             $actors = $this->storeMovieHelper('actor', Actor::class, $request);
             $directors = $this->storeMovieHelper('director', Director::class, $request);
@@ -193,16 +183,24 @@ class MovieController extends Controller
 
             $movie = new Movie;
             $movie->title = $request->title;
-            $movie->plot = 'test';
-            $movie->playtime = 123;
+            $movie->plot = $request->plot;
+            $movie->playtime = $request->playtime;
             $movie->poster = 'test';
             $movie->backdrop = '';
             $movie->releasedate = now();
-            $movie->imdb_rating = 1;
-            $movie->chas_rating = 2;
+            //$movie->imdb_rating = 1;
+            //$movie->chas_rating = 2;
             $movie->save();
-
-            // $actors = array_merge($actors, $newActors);
+            
+                   //$movie->movie_api_id = $request->movie_api_id;
+            //     //$movie->playtime = $request->playtime;
+            //     //$movie->poster = $request->poster;
+            //     //$movie->backdrop = $request->backdrop;
+            //     //$movie->releasedate = $request->releasedate;
+            //     //$movie->imdb_rating = $request->imdb_rating;
+            //     //$movie->chas_rating = $request->chas_rating;
+            //     //$movie->created_at = $request->created_at;
+            //     //$movie->updated_at = $request->updated_at;
             
             foreach ($actors as $actor) {
                 $ledgerActor = new LedgerActor;
