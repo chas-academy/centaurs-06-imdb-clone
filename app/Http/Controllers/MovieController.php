@@ -10,6 +10,8 @@ use App\Http\Models\Producer;
 use App\Http\Models\LedgerProducer;
 use App\Http\Models\Director;
 use App\Http\Models\LedgerDirector;
+use App\Http\Models\Genre;
+use App\Http\Models\LedgerGenre;
 
 use Resources\views\pages;
 use App\Http\Controllers\UserController;
@@ -113,17 +115,21 @@ class MovieController extends Controller
             $actors = Actor::all()->toArray();
             $directors = Director::all()->toArray();
             $producers = Producer::all()->toArray();
+            $genres = Genre::all()->toArray();
+            $releaseyears = range(date('Y'), 1910);
+            
 
-            return view('pages.test', ['actors' => $actors, 'directors' => $directors,'producers' => $producers ]);
+            return view('pages.createmovie', ['actors' => $actors, 'directors' => $directors,'producers' => $producers,'genres' => $genres, 'releaseyears' => $releaseyears]);
         }
 
         //Helperfunktion för hantera alla actors, directors, producers
-        public function storeMovieHelper($person, $model, $request) {
-           
+        private function storeMovieHelper($person, $model, $request) {
+            $persons = $request[$person] ?? [];
             $persons = array_map(function ($id) use ($model) {
                 return $model::find($id);
-            }, $request[$person]);
+            }, $persons);
 
+            $newPersons = $request[$person.'_new'] ?? [];
             $newPersons = array_map(function($name) use ($model) {
                 $existingPerson = $model::where('name', $name)->first();
 
@@ -136,7 +142,7 @@ class MovieController extends Controller
                 $person->timestamps = false;
                 $person->save();
                 return $person;
-            }, $request[$person.'_new']);
+            }, $newPersons);
 
             return $persons = array_merge($persons, $newPersons);
         }
@@ -166,16 +172,18 @@ class MovieController extends Controller
             }, $db_actors->toArray());
             
             // Validate the request...
-            // $validatedData = $request->validate([
-            //     'title' => 'required|unique:movies|max:255',
-            //     'plot' => 'required'
-            //     //...
-            // ]);
+            $validatedData = $request->validate([
+                'title' => 'required|unique:movies|max:255',
+                'plot' => 'required',
+                'playtimeHours' => 'required|digits_between:0,9',
+                'playtimeMins' => 'required|digits_between:0,59',
+                'releaseyear' => 'required',
+            ]);
 
-            //Lägga till genre?
-            //Lägga till validering
+            //Lägga till validering, digits funkar ej
             //Lägga till autorizaton
-            //Lägga till korrekta movievärden
+            //kolla hur hämtas playtime
+            $request->file('poster')->store('posters');
 
             $actors = $this->storeMovieHelper('actor', Actor::class, $request);
             $directors = $this->storeMovieHelper('director', Director::class, $request);
@@ -184,21 +192,13 @@ class MovieController extends Controller
             $movie = new Movie;
             $movie->title = $request->title;
             $movie->plot = $request->plot;
-            $movie->playtime = $request->playtime;
-            $movie->poster = 'test';
-            $movie->backdrop = '';
-            $movie->releasedate = now();
+            $movie->playtime = ($request->playtimeHours).($request->playtimeMins);
+            $movie->poster = $request->file('poster')->hashName();;
+            //$movie->backdrop = null;
+            $movie->releasedate = ($request->releaseyear.'-01-01');
             //$movie->imdb_rating = 1;
             //$movie->chas_rating = 2;
             $movie->save();
-            
-                   //$movie->movie_api_id = $request->movie_api_id;
-            //     //$movie->playtime = $request->playtime;
-            //     //$movie->poster = $request->poster;
-            //     //$movie->backdrop = $request->backdrop;
-            //     //$movie->releasedate = $request->releasedate;
-            //     //$movie->imdb_rating = $request->imdb_rating;
-            //     //$movie->chas_rating = $request->chas_rating;
             //     //$movie->created_at = $request->created_at;
             //     //$movie->updated_at = $request->updated_at;
             

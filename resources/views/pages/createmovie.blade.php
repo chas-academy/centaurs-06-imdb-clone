@@ -11,15 +11,28 @@
             </ul>
         </div>
     @endif
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
-        <input type="text" name="title">
+        <input type="text" name="title" placeholder="Movie title">
+        <input type="file" name="poster" placeholder="Browse for a poster image">
+        <select class="js-example-basic-single" name="genre">
+          @foreach ($genres as $genre)
+            <option value="{{ $genre["id"] }}">{{ $genre["genre_name"] }}</option>
+          @endforeach
+        </select>
+
+        <select class="js-example-basic-single" name="releaseyear">
+          @foreach ($releaseyears as $releaseyear)
+            <option value="{{ $releaseyear }}">{{ $releaseyear }}</option>
+          @endforeach
+        </select>
+
+        <input type="text" name="playtimeHours" placeholder="Hours">
+        <input type="text" name="playtimeMins" placeholder="Minutes">
+
+        <input type="text" name="plot" placeholder="Movie plot">
+
         
-        <input type="text" name="plot">
-
-        <input type="text" name="playtime">
-
-        <input type="text" name="poster">
 
         @include('partials.personlist', ['persons' => $actors, 'personType' => 'actor'])
         @include('partials.personlist', ['persons' => $directors, 'personType' => 'director'])

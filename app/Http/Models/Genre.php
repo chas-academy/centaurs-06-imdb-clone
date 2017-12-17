@@ -14,10 +14,13 @@ class Genre extends Model
         $genres = DB::table('genres')->get();
         return $genres;
     }
+
     use Searchable;
 
     public function searchableAs()
     {
         return 'genre.name';
     }
+
+    protected $table = 'genres';
 }
