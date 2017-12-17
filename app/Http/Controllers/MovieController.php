@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Models\Movie;
 use App\Http\Models\Actor;
+use App\Http\Models\LedgerActor;
+use App\Http\Models\Producer;
+use App\Http\Models\LedgerProducer;
+use App\Http\Models\Director;
+use App\Http\Models\LedgerDirector;
+
 use Resources\views\pages;
 use App\Http\Controllers\UserController;
 use Auth;
@@ -104,14 +110,12 @@ class MovieController extends Controller
         // Create movie
         public function createMovie()
         {
-            
             $actors = Actor::all()->toArray();
+            $directors = Director::all()->toArray();
+            $producers = Producer::all()->toArray();
 
-            return view('pages.test', ['actors' => $actors]);
-            // // Validate the request...
-            // if ($request->isMethod('post') && validateRequest($request)) {
-            //     $movie = new Movie;
-                
+            return view('pages.test', ['actors' => $actors, 'directors' => $directors,'producers' => $producers ]);
+
             //     //$movie->movie_api_id = $request->movie_api_id;
             //     $movie->title = $request->title;
             //     $movie->plot = $request->plot;
@@ -123,18 +127,31 @@ class MovieController extends Controller
             //     //$movie->chas_rating = $request->chas_rating;
             //     //$movie->created_at = $request->created_at;
             //     //$movie->updated_at = $request->updated_at;
-
-            //     $movie->save();
-
-            //     return view('/test', [
-            //         "created" => true,
-            //     ]);
-            // } 
-
-            // return view('/test', [
-            //     "request" => $request,
-            // ]);
         }
+
+        public function storeMovieHelper($person, $model, $request) {
+           
+            $persons = array_map(function ($id) use ($model) {
+                return $model::find($id);
+            }, $request[$person]);
+
+            $newPersons = array_map(function($name) use ($model) {
+                $existingPerson = $model::where('name', $name)->first();
+
+                if($existingPerson) {
+                    return $existingPerson;
+                }
+
+                $person = new $model;
+                $person->name = $name;
+                $person->timestamps = false;
+                $person->save();
+                return $person;
+            }, $request[$person.'_new']);
+
+            return $persons = array_merge($persons, $newPersons);
+        }
+
         // Store movie
         public function storeMovie(Request $request)
         {
@@ -158,23 +175,22 @@ class MovieController extends Controller
                 return $actor;
                 
             }, $db_actors->toArray());
-           
             
-
-            $newActors = array_map(function($name) {
-                $actor = new Actor;
-                $actor->name = $name;
-                $actor->timestamps = false;
-                $actor->save();
-                return $actor;
-            }, $request->new_actor);
-            //var_dump($newActors);
+            // Validate the request...
+            // $validatedData = $request->validate([
+            //     'title' => 'required|unique:movies|max:255',
+            //     'plot' => 'required'
+            //     //...
+            // ]);
 
 
 
-            //var_dump($validatedData);
+            // $db_actors = Actor::all();
 
-            // if ($request->isMethod('post') &&
+            $actors = $this->storeMovieHelper('actor', Actor::class, $request);
+            $directors = $this->storeMovieHelper('director', Director::class, $request);
+            $producers = $this->storeMovieHelper('producer', Producer::class, $request);
+
             $movie = new Movie;
             $movie->title = $request->title;
             $movie->plot = 'test';
@@ -185,5 +201,33 @@ class MovieController extends Controller
             $movie->imdb_rating = 1;
             $movie->chas_rating = 2;
             $movie->save();
+
+            // $actors = array_merge($actors, $newActors);
+            
+            foreach ($actors as $actor) {
+                $ledgerActor = new LedgerActor;
+                $ledgerActor->actor_id = $actor->id;
+                $ledgerActor->movie_id = $movie->id;
+                $ledgerActor->timestamps = false;
+                $ledgerActor->save(); 
+            }
+
+            foreach ($directors as $director) {
+                $ledgerDirector = new LedgerDirector;
+                $ledgerDirector->director_id = $director->id;
+                $ledgerDirector->movie_id = $movie->id;
+                $ledgerDirector->timestamps = false;
+                $ledgerDirector->save(); 
+            }
+
+            foreach ($producers as $producer) {
+                $ledgerProducer = new LedgerProducer;
+                $ledgerProducer->producer_id = $producer->id;
+                $ledgerProducer->movie_id = $movie->id;
+                $ledgerProducer->timestamps = false;
+                $ledgerProducer->save(); 
+            }
+
+            return $this->createMovie();
         }
 }
