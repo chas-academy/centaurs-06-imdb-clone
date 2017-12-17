@@ -98,5 +98,5 @@ Route::get('/home', function () {
     return view('pages.index');
 });
 
-Route::get('/test', 'MovieController@createMovie');
-Route::post('/test', 'MovieController@storeMovie');
+Route::get('/createmovie', 'MovieController@createMovie');
+Route::post('/createmovie', 'MovieController@storeMovie');

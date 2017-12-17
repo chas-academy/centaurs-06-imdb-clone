@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Director extends Model
 {
@@ -13,4 +14,6 @@ class Director extends Model
     {
         return 'director.name';
     }
+
+    protected $table = 'directors';
 }
