@@ -9,6 +9,7 @@
         <div class="panel-body">
             <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
                 {{ csrf_field() }}
+                <input type="hidden" name="token" value="{{ $token }}">
                 <div class="col-md-6">
                     <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ $email or old('email') }}" required autofocus>
                 </div>
@@ -29,3 +30,4 @@
         </div>
     </div>
 </header>
+@endsection 
