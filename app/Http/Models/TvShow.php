@@ -35,17 +35,26 @@ class TvShow extends Model
         }
     }
 
+<<<<<<< HEAD
     public function createEpisodeFromApi($episodeInfo, $tvShowId, $seasons)
     {
         $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
         if(isset($season) && !$this->ifEpisodeExists($season->id, $episodeInfo['episode_number'])) {
             DB::table('episodes')->insert([
                 'season_id' => $season->id,
+=======
+    public function createEpisodeFromApi($episodeInfo, $episodeCredits, $tvShowId, $seasons)
+    {
+        print_r($seasons); print_r($episodeInfo); die;
+        if(!$this->ifEpisodeExists($tvShowId, $episodeInfo['name'])) {
+            DB::table('episodes')->insert([
+>>>>>>> methods for adding tv-show seasons from api
                 'episode_nr' => $episodeInfo['episode_number'],
                 'title' => $episodeInfo['name'],
                 'plot' => $episodeInfo['overview'],
                 'playtime' => $seasons['episode_run_time'][0],
                 'poster' => $episodeInfo['still_path'],
+<<<<<<< HEAD
                 'backdrop' => $seasons['backdrop_path'],
                 'releasedate' => $episodeInfo['air_date'],
                 'imdb_rating' => $episodeInfo['vote_average'],
@@ -137,6 +146,24 @@ class TvShow extends Model
     {   
         return DB::table('seasons')->where('season_number', $seasonNumber)->where('tv_show_id', $tvShowId)->first();
     }
+=======
+                'backdrop' => $seasons['seasons']
+
+            ]);
+        }
+    }
+
+    // season_id	int(10) unsigned	 
+// episode_nr	int(11)	 
+// title	varchar(255)	 
+// plot	text	 
+// playtime	int(11)	 
+// poster	varchar(255)	 
+// backdrop	varchar(255)	 
+// releasedate	date	 
+// imdb_rating	int(11) NULL	 
+// chas_rating	int(11) NULL
+>>>>>>> methods for adding tv-show seasons from api
 
     public function getTvShowByName($tvShowName)
     {
