@@ -27,21 +27,21 @@ host('165.227.236.122')
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
     ->stage('production')
-    ->env('branch', 'master');
+    ->set('branch', 'master');
 
 host('165.227.236.122')
     ->set('deploy_path', '/var/www/staging.centaurs-imdb.me')   
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
     ->stage('staging')
-    ->env('branch', 'staging');
+    ->set('branch', 'staging');
 
 host('165.227.236.122')
     ->set('deploy_path', '/var/www/develop.centaurs-imdb.me')   
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
     ->stage('develop')
-    ->env('branch', 'develop');
+    ->set('branch', 'develop');
 
 // Tasks
 
