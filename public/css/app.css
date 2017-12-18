@@ -10396,6 +10396,21 @@ main .none:nth-child(4n) .poster-size {
   display: block;
 }
 
+.github-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#github {
+  color: #ffffff;
+  font-size: 50px;
+}
+
 .footer-cont {
   padding: 15px;
 }
@@ -10404,12 +10419,16 @@ main .none:nth-child(4n) .poster-size {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  background-color: #151515;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f03e3e;
   color: #FFFFFF;
+  height: 80px;
 }
 
 .footer-cont .footer button {
@@ -10418,6 +10437,11 @@ main .none:nth-child(4n) .poster-size {
 
 .footer-cont .footer button .fa-users {
   color: #FFFFFF;
+}
+
+.line {
+  width: 90%;
+  border-bottom: 3px solid #f03e3e;
 }
 
 .developers {
@@ -10441,7 +10465,16 @@ main .none:nth-child(4n) .poster-size {
 }
 
 .member-container {
-  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .member-container .fa-user-circle-o {
@@ -10457,7 +10490,7 @@ main .none:nth-child(4n) .poster-size {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 5px;
 }
 
@@ -10493,11 +10526,19 @@ main .none:nth-child(4n) .poster-size {
 .personal-info {
   color: #FFFFFF;
   padding: 0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.p-text {
+  color: #ffffff;
+  padding: 0;
 }
 
 .pad-bottom {
   padding-top: 24px;
   padding-bottom: 80px;
+  text-decoration: none;
 }
 
 .info {
