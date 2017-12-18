@@ -10521,11 +10521,15 @@ main .none:nth-child(4n) .poster-size {
   right: 15px;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 #profile-page {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-
+=======
+=======
+>>>>>>> Template view for watch-list created needs minor fixes in css
 main .flex-align-sb {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10534,10 +10538,16 @@ main .flex-align-sb {
       -ms-flex-align: center;
           align-items: center;
   padding: 25px 0 0px 0;
+<<<<<<< HEAD
+>>>>>>> Template view for watch-list created needs minor fixes in css
+=======
+>>>>>>> Template view for watch-list created needs minor fixes in css
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+<<<<<<< HEAD
+<<<<<<< HEAD
   color: #FFFFFF;
   -webkit-box-align: end;
       -ms-flex-align: end;
@@ -10571,6 +10581,9 @@ main .flex-align-sb {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+=======
+=======
+>>>>>>> Template view for watch-list created needs minor fixes in css
 }
 
 main .flex-align-sb h2 {
@@ -10596,10 +10609,16 @@ main .flex-align-sb-c .watch-list-movie {
   display: -ms-flexbox;
   display: flex;
   color: #FAFAFA;
+<<<<<<< HEAD
+>>>>>>> Template view for watch-list created needs minor fixes in css
+=======
+>>>>>>> Template view for watch-list created needs minor fixes in css
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+<<<<<<< HEAD
+<<<<<<< HEAD
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -10718,6 +10737,9 @@ main .flex-align-sb-c .watch-list-movie {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+=======
+=======
+>>>>>>> Template view for watch-list created needs minor fixes in css
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -10772,6 +10794,10 @@ main .flex-align-sb-c .watch-list-separator {
   height: 1px;
   background: #E2A534;
   border-bottom: 1px solid #E2A534;
+<<<<<<< HEAD
+>>>>>>> Template view for watch-list created needs minor fixes in css
+=======
+>>>>>>> Template view for watch-list created needs minor fixes in css
 }
 
 .select2-selection:focus {
