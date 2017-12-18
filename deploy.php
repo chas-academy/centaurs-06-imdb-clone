@@ -22,25 +22,25 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('165.227.236.122')
-    ->set('deploy_path', '/var/www/www.centaurs-imdb.me')   
+host('production')
+    ->hostname('165.227.236.122')
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
-    ->stage('production')
+    ->set('deploy_path', '/var/www/www.centaurs-imdb.me')
     ->set('branch', 'master');
 
-host('165.227.236.122')
-    ->set('deploy_path', '/var/www/staging.centaurs-imdb.me')   
+host('staging')
+    ->hostname('165.227.236.122')
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
-    ->stage('staging')
+    ->set('deploy_path', '/var/www/staging.centaurs-imdb.me')
     ->set('branch', 'staging');
 
-host('165.227.236.122')
-    ->set('deploy_path', '/var/www/develop.centaurs-imdb.me')   
+host('develop')
+    ->hostname('165.227.236.122')
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
-    ->stage('develop')
+    ->set('deploy_path', '/var/www/develop.centaurs-imdb.me')
     ->set('branch', 'develop');
 
 // Tasks
