@@ -364,18 +364,31 @@ main
     &.visible
         display: block
 
+.github-cont
+    display: flex
+    flex-direction: column
+
+#github
+    color: #ffffff
+    font-size: 50px
 // FOOTER ETC 
 .footer-cont
     padding: 15px
     .footer
         display: flex
-        flex-direction: row
-        background-color: #151515
+        flex-direction: column-reverse
+        align-items: center
+        background-color: #f03e3e
         color: #FFFFFF
+        height: 80px
         button
             padding-left: 12px
             .fa-users
                 color: #FFFFFF
+
+.line
+    width: 90%
+    border-bottom: 3px solid #f03e3e
 
 .developers
     display: flex
@@ -388,7 +401,9 @@ main
     color: #FFFFFF
 
 .member-container
-    position: absolute
+    display: flex
+    flex-direction: column
+    align-items: flex-end
     .fa-user-circle-o
         color: #FFFFFF
         padding-top: 5px
@@ -396,7 +411,7 @@ main
 .member-row
     display: flex
     flex-direction: row
-    padding-left: 15px
+    padding-right: 15px
     padding-top: 5px
 
 .members
@@ -420,10 +435,17 @@ main
 .personal-info
     color: #FFFFFF
     padding: 0
+    text-decoration: none
+    font-weight: bold
+
+.p-text
+    color: #ffffff
+    padding: 0
 
 .pad-bottom
     padding-top: 24px
     padding-bottom: 80px
+    text-decoration: none
 
 .info
     padding-top: 24px

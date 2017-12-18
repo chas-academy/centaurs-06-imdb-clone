@@ -65,43 +65,36 @@
         <div class="member-container">
             <a href="#victor">
                 <div class="offcanvas-full-screen-menu member-row">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <h2 class="members">Victor Ciavarella</h2>
                 </div>
             </a>
             <a href="#andreas">
                 <div class="offcanvas-full-screen-menu member-row">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <h2 class="members">Andreas Sjölund</h2>
                 </div>
             </a>
             <a href="#patryk">
                 <div class="offcanvas-full-screen-menu member-row">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <h2 class="members">Patryk Rybaczek</h2>
                 </div>
             </a>
             <a href="#ida">
                 <div class="offcanvas-full-screen-menu member-row">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <h2 class="members">Ida Englund</h2>
                 </div>
             </a>
             <a href="#laya">
                 <div class="offcanvas-full-screen-menu member-row">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <h2 class="members">Laya Sadegh</h2>
                 </div>
             </a>
             <a href="#pontus">
                 <div class="offcanvas-full-screen-menu member-row">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <h2 class="members">Pontus Sarland</h2>
                 </div>
             </a>
             <a href="#eleonor">
                 <div class="offcanvas-full-screen-menu member-row">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <h2 class="members">Eleonor Bergqvist</h2>
                 </div>
             </a>
@@ -112,33 +105,41 @@
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
             <h2 class="personal-info">Victor Ciavarella</h2>
-            <p class="personal-info">Webdeveloper</p>
+            <p class="p-text">Webdeveloper</p>
             <div class="info">
-                <h2 class="personal-info">BEST MOVIE OF ALL TIME:</h2>
-                <p class="personal-info">Godfather</p>
-                <h2 class="personal-info">FAV QUOTE:</h2>
-                <p class="personal-info">"First make it work, then make it pretty"</p>
-                <h2 class="personal-info">FAV SHORT COMMAND:</h2>
-                <p class="personal-info">CMD + Z</p>
+                <h6 class="personal-info">BEST MOVIE OF ALL TIME:</h6>
+                <p class="p-text">Godfather</p>
+                <h6 class="personal-info">FAVORITE QUOTE:</h6>
+                <p class="p-text">"First make it work, then make it pretty"</p>
+                <h6 class="personal-info">BEST SHORT COMMAND:</h6>
+                <p class="p-text">CMD + Z</p>
             </div>
-            <p class="personal-info pad-bottom">github.com/Ciavarella</p>
+            <div class="github-cont">
+                <i id="github" class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/Ciavarella" class="personal-info pad-bottom">Ciavarella</a>
+                <hr class="line"></hr>
+            </div>
         </div>
     </div>
     <!-- Another personal page -->
     <div class="row personal-container" id="andreas">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2 class="personal-info">Andreas Sjölund</h2> 
-            <p class="personal-info">Webdeveloper</p>          
+            <h6 class="personal-info">Andreas Sjölund</h6> 
+            <p class="p-text">Webdeveloper</p>          
             <div class="info">
-                <h2 class="personal-info">BEST MOVIE OF ALL TIME:</h2>
-                <p class="personal-info">Pulp Fiction</p>   
-                <h2 class="personal-info">FAV QUOTE:</h2>   
-                <p class="personal-info">"No man, they got the metric system. They wouldn't know what the fuck a Quarter Pounder is"</p>  
-                <h2 class="personal-info">FAV SHORT COMMAND:</h2>   
-                <p class="personal-info">CMD + A DEL</p>    
+                <h6 class="personal-info">BEST MOVIE OF ALL TIME:</h6>
+                <p class="p-text">Pulp Fiction</p>   
+                <h6 class="personal-info">FAVORITE QUOTE:</h6>   
+                <p class="p-text">"No man, they got the metric system. They wouldn't know what the fuck a Quarter Pounder is"</p>  
+                <h6 class="personal-info">BEST SHORT COMMAND:</h6>   
+                <p class="p-text">CMD + A DEL</p>    
             </div>
-            <p class="personal-info pad-bottom">github.com/andreas</p>
+            <div class="github-cont">
+                <i id="github" class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/Andreas-sjolund-chas" class="personal-info pad-bottom">Andreas-sjolund-chas</a>
+                <hr class="line"></hr>
+            </div>
         </div>
     </div>
         <!-- Another personal page -->
@@ -146,16 +147,20 @@
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
             <h2 class="personal-info">Ida Englund</h2> 
-            <p class="personal-info">Webdeveloper</p>          
+            <p class="p-text">Webdeveloper</p>          
             <div class="info">
-                <h2 class="personal-info">BEST MOVIE OF ALL TIME:</h2>
-                <p class="personal-info">Remember the titans</p>   
-                <h2 class="personal-info">FAV QUOTE:</h2>   
-                <p class="personal-info">"The question is not, can they reason?, nor can they talk? but, can they suffer?"</p>
-                <h2 class="personal-info">FAV SHORT COMMAND:</h2>   
-                <p class="personal-info">CMD + Z</p>    
+                <h6 class="personal-info">BEST MOVIE OF ALL TIME:</h6>
+                <p class="p-text">Remember the titans</p>   
+                <h6 class="personal-info">FAVORITE QUOTE:</h6>   
+                <p class="p-text">"The question is not, can they reason?, nor can they talk? but, can they suffer?"</p>
+                <h6 class="personal-info">BEST SHORT COMMAND:</h6>   
+                <p class="p-text">CMD + Z</p>    
             </div>
-            <p class="personal-info pad-bottom">github.com/Ida</p>
+            <div class="github-cont">
+                <i id="github" class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/idaenglund" class="personal-info pad-bottom">idaenglund</a>
+                <hr class="line"></hr>
+            </div>
         </div>
     </div>
     <!-- Another personal page -->
@@ -163,16 +168,20 @@
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
             <h2 class="personal-info">Patryk Rybaczek</h2> 
-            <p class="personal-info">Webdeveloper</p>          
+            <p class="p-text">Webdeveloper</p>          
             <div class="info">
-                <h2 class="personal-info">BEST MOVIE OF ALL TIME:</h2>
-                <p class="personal-info">In Time</p>   
-                <h2 class="personal-info">FAV QUOTE:</h2>   
-                <p class="personal-info">"I don't care, let's use Jquery"</p>  
-                <h2 class="personal-info">FAV SHORT COMMAND:</h2>   
-                <p class="personal-info">CMD + C</p>    
+                <h6 class="personal-info">BEST MOVIE OF ALL TIME:</h6>
+                <p class="p-text">In Time</p>   
+                <h6 class="personal-info">FAVORITE QUOTE:</h6>   
+                <p class="p-text">"I don't care, let's use Jquery"</p>  
+                <h6 class="personal-info">BEST SHORT COMMAND:</h6>   
+                <p class="p-text">CMD + C</p>    
             </div>
-            <p class="personal-info pad-bottom">github.com/Patryk</p>
+            <div class="github-cont">
+                <i id="github" class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/patryk7rybaczek" class="personal-info pad-bottom">patryk7rybaczek</a>
+                <hr class="line"></hr>
+            </div>
         </div>
     </div>
     <!-- Another personal page -->
@@ -180,16 +189,20 @@
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
             <h2 class="personal-info">Laya Sadegh</h2> 
-            <p class="personal-info">Webdeveloper</p>          
+            <p class="p-text">Webdeveloper</p>          
             <div class="info">
-                <h2 class="personal-info">BEST MOVIE OF ALL TIME:</h2>
-                <p class="personal-info">Le fabuleux destin d’Amélie Poulain</p>   
-                <h2 class="personal-info">FAV QUOTE:</h2>   
-                <p class="personal-info">"Insanity: doing the same thing over and over again and expecting different results."</p>  
-                <h2 class="personal-info">FAV SHORT COMMAND:</h2>   
-                <p class="personal-info">Ctrl + Z</p>    
+                <h6 class="personal-info">BEST MOVIE OF ALL TIME:</h6>
+                <p class="p-text">Le fabuleux destin d’Amélie Poulain</p>   
+                <h6 class="personal-info">FAVORITE QUOTE:</h6>   
+                <p class="p-text">"Insanity: doing the same thing over and over again and expecting different results."</p>  
+                <h6 class="personal-info">BEST SHORT COMMAND:</h6>   
+                <p class="p-text">Ctrl + Z</p>    
             </div>
-            <p class="personal-info pad-bottom">github.com/Laya</p>
+            <div class="github-cont">
+                <i id="github" class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/lalaya" class="personal-info pad-bottom">lalaya</a>
+                <hr class="line"></hr>
+            </div>
         </div>
     </div>
     <!-- Another personal page -->
@@ -197,16 +210,20 @@
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
             <h2 class="personal-info">Pontus Sarland</h2> 
-            <p class="personal-info">Webdeveloper</p>          
+            <p class="p-text">Webdeveloper</p>          
             <div class="info">
-                <h2 class="personal-info">BEST MOVIE OF ALL TIME:</h2>
-                <p class="personal-info">Inception</p>   
-                <h2 class="personal-info">FAV QUOTE:</h2>   
-                <p class="personal-info">"Don't you want to take a leap of faith? Or become an old man, filled with regret, waiting to die alone!"</p>  
-                <h2 class="personal-info">FAV SHORT COMMAND:</h2>   
-                <p class="personal-info">Ctrl + V</p>    
+                <h6 class="personal-info">BEST MOVIE OF ALL TIME:</h6>
+                <p class="p-text">Inception</p>   
+                <h6 class="personal-info">FAVORITE QUOTE:</h6>   
+                <p class="p-text">"Don't you want to take a leap of faith? Or become an old man, filled with regret, waiting to die alone!"</p>  
+                <h6 class="personal-info">BEST SHORT COMMAND:</h6>   
+                <p class="p-text">Ctrl + V</p>    
             </div>
-            <p class="personal-info pad-bottom">github.com/Pontus</p>
+            <div class="github-cont">
+                <i id="github" class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/PontusSarland88" class="personal-info pad-bottom">PontusSarland88</a>
+                <hr class="line"></hr>
+            </div>
         </div>
     </div>
     <!-- Another personal page -->
@@ -214,16 +231,19 @@
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
             <h2 class="personal-info">Eleonor Bergqvist</h2> 
-            <p class="personal-info">Webdeveloper</p>          
+            <p class="p-text">Webdeveloper</p>          
             <div class="info">
-                <h2 class="personal-info">BEST MOVIE OF ALL TIME:</h2>
-                <p class="personal-info">Forrest Gump</p>   
-                <h2 class="personal-info">FAV QUOTE:</h2>   
-                <p class="personal-info">"Life isn't about finding yourself. Life is about creating yourself"</p>  
-                <h2 class="personal-info">FAV SHORT COMMAND:</h2>   
-                <p class="personal-info">CMD + S</p>    
+                <h6 class="personal-info">BEST MOVIE OF ALL TIME:</h6>
+                <p class="p-text">Forrest Gump</p>   
+                <h6 class="personal-info">FAVORITE QUOTE:</h6>   
+                <p class="p-text">"Life isn't about finding yourself. Life is about creating yourself"</p>  
+                <h6 class="personal-info">BEST SHORT COMMAND:</h6>   
+                <p class="p-text">CMD + S</p>    
             </div>
-            <p class="personal-info pad-bottom">github.com/Eleonor</p>
+            <div class="github-cont">
+                <i id="github" class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/eleonorbergqvist" class="personal-info pad-bottom">eleonorbergqvist</a>
+            </div>
         </div>
     </div>
      <!-- Button to close off-canvas -->
@@ -284,15 +304,13 @@
 </main>
 
 <!-- Footer starts here, not sure to use it -->
-<footer class="row footer-cont">
-    <div class="small-12 footer">
-        <p>Chas Academy - Centaurs</p>
-        <div class="off-canvas-cont" data-off-canvas-content>
-            <button data-toggle="offcanvas-full-members">
+    <footer class="row footer-cont" data-toggle="offcanvas-full-members">
+        <div class="small-12 footer">
+            <p>Curious about us?</p>
+            <div class="off-canvas-cont" data-off-canvas-content>
                 <i class="fa fa-users" aria-hidden="true"></i>
-            </button>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </div>
 @endsection 
