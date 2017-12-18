@@ -1,5 +1,7 @@
 <?php
 use App\Http\Models\Movie;
+use App\Http\Models\Genre;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +16,11 @@ use App\Http\Models\Movie;
 Route::get('/', function () 
 {
     $movieModel = new Movie();
+    $genreModel = new Genre();
     $movies = $movieModel->getAllMovies();
-    $view = View::make('pages.index')->with('movies', $movies);
+    $genres = $genreModel->getAllGenres();
+    
+    $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
     return $view;
 });
 

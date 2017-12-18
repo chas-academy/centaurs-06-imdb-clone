@@ -244,13 +244,16 @@
     <div class="small-12 flex-align-sb-c">
     <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
         <option value="#" selected disabled>Genre</option>
-        <option value="Action">Action</option>
+        <?php foreach($genres as $genre): ?>
+            <option value="<?php echo $genre->genre_name ?>"><?php echo $genre->genre_name ?></option>
+        <?php endforeach; ?>
+        <!-- <option value="Action">Action</option>
         <option value="Drama">Comedy</option>
         <option value="Horror">Crime</option>
         <option value="Comedy">Horror</option>
         <option value="Action">Drama</option>
         <option value="Action">Sci-fi</option>
-        <option value="Action">Family</option>
+        <option value="Action">Family</option> -->
     </select>
     <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
         <option value="#" selected disabled>Sorting By</option>
