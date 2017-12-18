@@ -242,22 +242,20 @@
         <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
     </form>
     <div class="small-12 flex-align-sb-c">
-    <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
-        <option value="#" selected disabled>Genre</option>
-        <option value="Action">Action</option>
-        <option value="Drama">Comedy</option>
-        <option value="Horror">Crime</option>
-        <option value="Comedy">Horror</option>
-        <option value="Action">Drama</option>
-        <option value="Action">Sci-fi</option>
-        <option value="Action">Family</option>
-    </select>
-    <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
-        <option value="#" selected disabled>Sorting By</option>
-        <option value="Action">Top 15 movies</option>
-        <option value="Drama">Most popular</option>
-        <option value="Horror">Top rated all time</option>
-    </select>
+        <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+            <option value="#" selected disabled>Genre</option>
+
+            <?php foreach($genres as $genre): ?>
+                <option value="<?php echo $genre->genre_name ?>"><?php echo $genre->genre_name ?></option>
+            <?php endforeach; ?>   
+        </select>
+
+        <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+            <option value="#" selected disabled>Sorting By</option>
+            <option value="Action">Top 15 movies</option>
+            <option value="Drama">Release date</option>
+            <option value="Horror">Top rated all time</option>
+        </select>
     </div>
 </header>
 
@@ -267,20 +265,21 @@
     </div>
 
     <section class="small-12 flex-align-sb-c">
-    <?php foreach($movies as $movie): ?>
-    <a href="movie/<?php echo $movie->id ?>" class="none">
-            <div class="small-movie-info">
-                <div class="movie-rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <p class="rating-num"><?php echo $movie->imdb_rating ?></p>
+        <?php foreach($movies as $movie): ?>
+            <a href="movie/<?php echo $movie->id ?>" class="none">
+                <div class="small-movie-info">
+                    <div class="movie-rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <p class="rating-num"><?php echo $movie->imdb_rating ?></p>
+                    </div>
+
+                    <img class="poster-size" src="https://image.tmdb.org/t/p/w500<?php echo $movie->poster ?>" >
+                    <div class="movie-title-container">
+                        <h3 class="movie-title"><?php echo $movie->title ?></h3>
+                    </div>
                 </div>
-                <img class="poster-size" src="https://image.tmdb.org/t/p/w500<?php echo $movie->poster ?>" >
-                <div class="movie-title-container">
-                <h3 class="movie-title"><?php echo $movie->title ?></h3>
-                </div>
-            </div>
-    </a>
-    <?php endforeach; ?>
+            </a>
+        <?php endforeach; ?>
     </section>
 </main>
 
