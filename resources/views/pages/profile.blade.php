@@ -19,7 +19,7 @@
                         <div class="upload-btn-wrapper">
                             <button class="butn">Upload a file</button>
                             <form enctype="multipart/form-data" action="/profile" method="POST">
-                            <input id="input-file" type="file" name="myfile">
+                            <input id="input-file" type="file" name="avatar">
                         </div>
                         <!-- FIX THE FILE BUTTON HERE -->
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
