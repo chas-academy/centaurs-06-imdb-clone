@@ -24,6 +24,48 @@ class TvShow extends Model
             ]);
         }
     }
+
+    public function createSeasonsFromApi($season, $tvShow)
+    {
+        if(!$this->IfSeasonExists($tvShow->id, $season['season_number'])){
+            DB::table('seasons')->insert([
+                'season_number' => $season['season_number'],
+                'tv_show_id' => $tvShow->id
+            ]);
+        }
+    }
+
+    public function createEpisodeFromApi($episodeInfo, $episodeCredits, $tvShowId, $seasons)
+    {
+        print_r($seasons); print_r($episodeInfo); die;
+        if(!$this->ifEpisodeExists($tvShowId, $episodeInfo['name'])) {
+            DB::table('episodes')->insert([
+                'episode_nr' => $episodeInfo['episode_number'],
+                'title' => $episodeInfo['name'],
+                'plot' => $episodeInfo['overview'],
+                'playtime' => $seasons['episode_run_time'][0],
+                'poster' => $episodeInfo['still_path'],
+                'backdrop' => $seasons['seasons']
+
+            ]);
+        }
+    }
+
+    // season_id	int(10) unsigned	 
+// episode_nr	int(11)	 
+// title	varchar(255)	 
+// plot	text	 
+// playtime	int(11)	 
+// poster	varchar(255)	 
+// backdrop	varchar(255)	 
+// releasedate	date	 
+// imdb_rating	int(11) NULL	 
+// chas_rating	int(11) NULL
+
+    public function getTvShowByName($tvShowName)
+    {
+        return DB::table('tv_shows')->where('title', $tvShowName)->first();
+    }
     
     public function ifTvShowExists($TvShowTitle): bool
     {
