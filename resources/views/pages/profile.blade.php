@@ -1,5 +1,4 @@
 @extends('layouts.layout') @section('content')
-
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
         <!-- Content off Mobile-menu -->
@@ -7,42 +6,39 @@
             <div class="small-12 flex-align-c-c">
                 <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
             </div>            
-            <!-- Sign in -->
-            <div class="small-12 flex-align-fd-c">
-                <form class="small-12" id="sign-in-f" method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
-                    <input type="text" name="email" placeholder="Email">
-                    <input type="password" name="password" placeholder="Password">
-                    <div class="small-12 btn">
-                        <button type="submit" class="submit">Sign in</button>
-                    </div>
-                    <!-- Forgot password -->
-                    <div class="col-md-8 col-md-offset-4">
-                        <p id="forgot-pwd" data-toggle="password-form">Forgot Your Password?</p>
-                    </div>
-                </form>
-                <!-- Reset password link by email -->
-                <form id="password-form" class="small-12" method="POST" action="{{ route('password.email') }}" data-toggler=".visible" data-animate="fade-in fade-out">
-                    {{ csrf_field() }}    
-                    <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
-                    <div class="small-12 btn reset-pwd-btn">
-                        <button type="submit" class="reset-pwd">Send Password Reset Link</button>        
-                    </div>               
-                </form>
-                <!-- Register new user -->
-                <form class="small-12" id="sign-up-f" method="POST" action="{{ route('register') }}">
-                    {{ csrf_field() }}
-                    <input type="text" name="name" placeholder="Name">
-                    <input type="text" name="email" placeholder="Email">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="password" name="password_confirmation" placeholder="Confirm Password">
-                    <div class="small-12 btn">
-                        <button type="submit" class="submit">Create Account</button>
+        <!-- Profilepage -->
+            <div class="small-12 flex-align-fd-c" id="profile-page">
+                <div class"width-100">
+                <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:80px; height:80px; border-radius:50%;">
+                </div>
+                <h2 class="avatar">Hi {{ $user->name }}!</h2>
+                <div class"width-100">
+                
+                    <div id="right">
+                    <!-- FIX THE FILE BUTTON HERE -->
+                        <div class="upload-btn-wrapper">
+                            <button class="butn">Upload a file</button>
+                            <form enctype="multipart/form-data" action="/profile" method="POST">
+                            <input id="input-file" type="file" name="myfile">
+                        </div>
+                        <!-- FIX THE FILE BUTTON HERE -->
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input class="send-pic" type="submit" class="button">
                     </div>
                 </form>
+                </div>
+
                 <div id="mobile-btn-wrap" class="mobile-btn-wrap">
-                    <h2 id="sign-in">Sign In</h2>
-                    <h2 id="sign-up">Create your account</h2>
+                    <li class="sign-out">
+                        <a id="style-none" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
                 </div>
             </div>
             <div id="mobile-btn-back" class="mobile-btn-back">
@@ -141,6 +137,7 @@
             <p class="personal-info pad-bottom">github.com/andreas</p>
         </div>
     </div>
+
         <!-- Another personal page -->
     <div class="row personal-container" id="ida">
         <div class="small-12">
@@ -158,7 +155,7 @@
             <p class="personal-info pad-bottom">github.com/Ida</p>
         </div>
     </div>
-    <!-- Another personal page -->
+
     <div class="row personal-container" id="patryk">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -175,7 +172,7 @@
             <p class="personal-info pad-bottom">github.com/Patryk</p>
         </div>
     </div>
-    <!-- Another personal page -->
+
     <div class="row personal-container" id="laya">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -192,7 +189,7 @@
             <p class="personal-info pad-bottom">github.com/Laya</p>
         </div>
     </div>
-    <!-- Another personal page -->
+
     <div class="row personal-container" id="pontus">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -209,7 +206,7 @@
             <p class="personal-info pad-bottom">github.com/Pontus</p>
         </div>
     </div>
-    <!-- Another personal page -->
+
     <div class="row personal-container" id="eleonor">
         <div class="small-12">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
@@ -226,6 +223,9 @@
             <p class="personal-info pad-bottom">github.com/Eleonor</p>
         </div>
     </div>
+
+
+
      <!-- Button to close off-canvas -->
     <div id="mobile-btn-quit" class="mobile-btn-quit" data-close>
         <i class="fa fa-times" aria-hidden="true"></i>
@@ -235,6 +235,9 @@
 <header class="row">
     <div class="small-12 flex-align-sb-c">
         <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
+        <div class="avatar">
+        <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:50px; height:50px; border-radius:50%;">
+        </div>
         <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
         <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
     </div>
@@ -266,22 +269,162 @@
         <i class="fa fa-cog" aria-hidden="true" data-toggle="offcanvas-full-screen"></i>
     </div>
 
+               <!-- Section with three small movieposters -->
     <section class="small-12 flex-align-sb-c">
-    <?php foreach($movies as $movie): ?>
-    <a href="movie/<?php echo $movie->id ?>" class="none">
-            <div class="small-movie-info">
-                <div class="movie-rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <p class="rating-num"><?php echo $movie->imdb_rating ?></p>
-                </div>
-                <img class="poster-size" src="https://image.tmdb.org/t/p/w500<?php echo $movie->poster ?>" >
-                <div class="movie-title-container">
-                <h3 class="movie-title"><?php echo $movie->title ?></h3>
-                </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">7.7</p>
             </div>
-    </a>
-    <?php endforeach; ?>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">8.4</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">6.3</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
     </section>
+                <!-- Section with three small movieposters -->
+
+
+                <!-- Section with one big poster -->
+    <section class="small-12 flex-align-c-c">
+        <div class="big-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">9.1</p>
+            </div>
+            <img src="http://via.placeholder.com/300x450">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+                <!-- Section with one big poster -->
+
+                <!-- Section with three small movieposters -->
+    <section class="small-12 flex-align-sb-c">
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">7.7</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">8.4</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">6.3</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+            <!-- Section with three small movieposters -->
+
+            <!-- Section with one big poster -->
+    <section class="small-12 flex-align-c-c">
+        <div class="big-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">9.1</p>
+            </div>
+            <img src="http://via.placeholder.com/300x450">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+            <!-- Section with one big poster -->
+
+            <!-- Section with three small movieposters -->
+    <section class="small-12 flex-align-sb-c">
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">7.7</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">8.4</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">6.3</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+            <!-- Section with three small movieposters -->
+
+
+            <!-- Section with one big poster -->
+    <section class="small-12 flex-align-c-c">
+        <div class="big-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">9.1</p>
+            </div>
+            <img src="http://via.placeholder.com/300x450">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+            <!-- Section with one big poster -->
+
+            <!-- Section with three small movieposters -->
+    <section class="small-12 flex-align-sb-c">
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">7.7</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">8.4</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+        <div class="small-movie-info">
+            <div class="movie-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="rating-num">6.3</p>
+            </div>
+            <img src="http://via.placeholder.com/90x150">
+            <h3 class="movie-title">Movie Title</h3>
+        </div>
+    </section>
+        <!-- Section with three small movieposters -->
 </main>
 
 <!-- Footer starts here, not sure to use it -->

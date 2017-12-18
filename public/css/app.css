@@ -10128,9 +10128,9 @@ main .none:nth-child(4n) .poster-size {
   display: flex;
   text-align: right;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .menu .flex-align-fd-c .mobile-btn-wrap {
@@ -10519,6 +10519,171 @@ main .none:nth-child(4n) .poster-size {
   color: #151515;
   bottom: 45px;
   right: 15px;
+}
+
+#profile-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #FFFFFF;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-top: 50px;
+}
+
+#profile-page .avatar {
+  text-align: right;
+}
+
+.width-100 {
+  width: 100;
+  text-align: right;
+}
+
+#right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-right: 14px;
+  width: 100%;
+}
+
+#file-style {
+  width: 190px;
+  padding-bottom: 12px;
+}
+
+.sign-out {
+  height: 40px;
+  margin-top: 15px;
+  color: #151515;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background-color: #FAD400;
+}
+
+.sign-out #style-none {
+  color: #151515;
+  text-decoration: none;
+}
+
+.send-pic {
+  height: 40px;
+  margin-top: 15px;
+  color: #151515;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background-color: #FAD400;
+  text-decoration: none;
+  border: none;
+}
+
+#forgot-pwd {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.reset {
+  margin-top: 15px;
+  color: #151515;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background-color: #FAD400;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper .butn {
+  background-color: #FAD400;
+  padding: 8px 20px;
+}
+
+#input-file {
+  font-size: 100px;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+}
+
+.reset-password {
+  margin: 5px 0 0 0;
+  color: #F1F1F1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.reset-btn {
+  height: 40px;
+  margin-top: 15px;
+  color: #151515;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background-color: #FAD400;
+}
+
+.reset-pwd-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.reset-pwd-btn .reset-pwd {
+  width: 85%;
+  height: 40px;
+  margin-top: 15px;
+  color: #151515;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background-color: #FAD400;
+}
+
+#password-form {
+  display: none;
+}
+
+#password-form.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .select2-selection:focus {
