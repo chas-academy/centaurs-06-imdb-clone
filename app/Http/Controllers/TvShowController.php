@@ -31,7 +31,7 @@ class TvShowController extends Controller
 
     public function createTvShowFromApi()
     {
-        $keyword = "Family guy";
+        $keyword = "Gam of thrones";
         $argument = str_replace(' ', '%20', $keyword);
         $searchMethod = 'search/tv?';
         $search = '&language=en-US&query=' . $argument . '&page=1';
@@ -44,21 +44,19 @@ class TvShowController extends Controller
         $seasons = $this->getTvShowSeasons($result['results'][0]);
         $tvShow = $tvShowModel->getTvShowByName($seasons['name']);
 
-        foreach ($seasons['seasons'] as $season) {
-
-            $tvShowModel->createSeasonsFromApi($season, $tvShow);
-            
-            for ($i=1; $i <= $season['episode_count']; $i++) { 
-                $episodeInfo = $this->getEpisodeInfoFromApi([$seasons][0]['id'], $season['season_number'], $i);
-                $episodeCredits = $this->getEpisodeActorsFromApi([$seasons][0]['id'], $season['season_number'], $i);
-                $tvShowModel->createEpisodeFromApi($episodeInfo, $episodeCredits, $tvShow->id, $seasons);
-                //$tvShowModel->createTvShowEpisode();
-            } 
+        foreach ($seasons['seasons'] as $k => $season) {
+            if($k <> 0) { 
+                $tvShowModel->createSeasonsFromApi($season, $tvShow);
+                
+                for ($i=1; $i <= $season['episode_count']; $i++) { 
+                    $episodeInfo = $this->getEpisodeInfoFromApi([$seasons][0]['id'], $season['season_number'], $i);
+                    $episodeCredits = $this->getEpisodeActorsFromApi([$seasons][0]['id'], $season['season_number'], $i);
+                    $tvShowModel->createEpisodeFromApi($episodeInfo, $episodeCredits, $tvShow->id, $seasons);
+                } 
+            }
         }
-        die;
-        //$this->getTvShowStaffFromApi($result['results'][0]);
     }
-    //https://api.themoviedb.org/3/tv/1399/season/1/episode/1/credits?api_key=6975fbab174d0a26501b5ba81f0e0b3c
+
     public function getEpisodeActorsFromApi($tvShowId, $seasonNr, $episodeNr)
     {
         $searchMethod = 'tv/' . $tvShowId . '/' . 'season/' . $seasonNr . '/' . 'episode/' . $episodeNr . '/credits?';
@@ -82,6 +80,4 @@ class TvShowController extends Controller
         return $this->TvShowApi($languageEndString, $searchMethod);
     }
 }
-                               //"tv/1396/season/0/episode/1?"
-//https://api.themoviedb.org/3/tv/1399/season/1/episode/1?api_key=6975fbab174d0a26501b5ba81f0e0b3c&language=en-US
-//https://api.themoviedb.org/3/tv/1399?api_key=6975fbab174d0a26501b5ba81f0e0b3c&language=en-US
+
