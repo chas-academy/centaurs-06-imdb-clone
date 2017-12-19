@@ -37,30 +37,27 @@ class TvShow extends Model
 
     public function createEpisodeFromApi($episodeInfo, $episodeCredits, $tvShowId, $seasons)
     {
-        print_r($seasons); print_r($episodeInfo); die;
-        if(!$this->ifEpisodeExists($tvShowId, $episodeInfo['name'])) {
+        $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
+        if(!$this->ifEpisodeExists($season->id, $episodeInfo['episode_number'])) {
             DB::table('episodes')->insert([
+                'season_id' => $season->id,
                 'episode_nr' => $episodeInfo['episode_number'],
                 'title' => $episodeInfo['name'],
                 'plot' => $episodeInfo['overview'],
                 'playtime' => $seasons['episode_run_time'][0],
                 'poster' => $episodeInfo['still_path'],
-                'backdrop' => $seasons['seasons']
-
-            ]);
+                'backdrop' => $seasons['backdrop_path'],
+                'releasedate' => $episodeInfo['air_date'],
+                'imdb_rating' => $episodeInfo['vote_average'],
+                'chas_rating' => null
+                ]);
         }
     }
 
-    // season_id	int(10) unsigned	 
-// episode_nr	int(11)	 
-// title	varchar(255)	 
-// plot	text	 
-// playtime	int(11)	 
-// poster	varchar(255)	 
-// backdrop	varchar(255)	 
-// releasedate	date	 
-// imdb_rating	int(11) NULL	 
-// chas_rating	int(11) NULL
+    public function getTvShowSeason($seasonNumber, $tvShowId)
+    {
+        return DB::table('seasons')->where('season_number', $seasonNumber)->where('tv_show_id', $tvShowId)->first();
+    }
 
     public function getTvShowByName($tvShowName)
     {
@@ -72,9 +69,11 @@ class TvShow extends Model
         return DB::table('tv_shows')->where('title', $TvShowTitle)->exists();
     }
 
-    public function ifEpisodeExists($seasonId, $episodeTitle): bool
+    public function ifEpisodeExists($seasonId, $episodeNumber): bool
     {
-        return DB::table('episodes')->where('season_id', $seasonId)->where('title', $episodeTitle)->exists();
+        return DB::table('episodes')->where([
+            'season_id' => $seasonId,
+            'episode_nr'=> $episodeNumber])->exists();
     }
     
     public function IfSeasonExists($tvShowId, $seasonNumber): bool
