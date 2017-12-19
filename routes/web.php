@@ -66,3 +66,12 @@ Auth::routes();
 Route::get('/home', function () {
     return view('pages.index');
 });
+
+// Route::get('/genres/{genres}', function($genres) {
+//     dd($genres);
+
+     // $genreModel = new Genre();
+     // $movies = $genreModel->sortByGenre($genres);
+
+//     return 200;
+// });

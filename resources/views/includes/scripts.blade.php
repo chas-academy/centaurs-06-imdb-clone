@@ -1,4 +1,4 @@
-    <!-- Scripts -->
+   <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Select 2 script -->
     <script src="{{ asset('js/select2.min.js')}}"></script>
@@ -9,6 +9,13 @@
         {
             // Select 2 script foundation
             $('.js-example-basic-single').select2();
+            $('.sort-genre').select2({
+                placeholder: "Sort by genres",
+                closeOnSelect: false,
+                maximumInputLength: 15,
+                maximumSelectionLength: 4
+            });
+            
             // Event listener for buttons in settings menu
             $('#sign-in').click(function(){menuSettingsHandler('in');});
             $('#sign-up').click(function(){menuSettingsHandler('up');});
@@ -30,4 +37,22 @@
                     });
                 }               
         }
+
+        let genres = [];
+        function changeSelect(event)
+        {
+            // let genres = $(event.target).val();
+            // $("#genres").val(genres);
+
+            // const payload = 
+            //     genres
+            //         .map(g => `genres[]=${g}`)
+            //         .join('&');
+
+            // fetch('/genres/?' + JSON.stringify(payload))
+            //     .then(res => res.json())
+            //     .then(res => console.log(res));
+
+        }
+      
     </script>

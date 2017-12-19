@@ -262,12 +262,17 @@
         <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
     </form>
     <div class="small-12 flex-align-sb-c">
-        <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
-            <option value="#" selected disabled>Genre</option>
+        
+    <form action="" method="post" name="submitGenre" id="submitGenre">
+        <input type="hidden" name="genres" id="genres"></input>
+    </form>
+
+        <select class="js-example-basic-single sort-genre js-states form-control" multiple="" id="id_label_single" onchange="changeSelect(event)">
+            <option value="#" disabled>Genres</option>
 
             <?php foreach($genres as $genre): ?>
                 <option value="<?php echo $genre->genre_name ?>"><?php echo $genre->genre_name ?></option>
-            <?php endforeach; ?>   
+            <?php endforeach; ?>
         </select>
 
         <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">

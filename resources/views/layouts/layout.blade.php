@@ -5,6 +5,7 @@
 </head>
 <body>
 
+
     @yield('content')
 
     @include('../includes.scripts')

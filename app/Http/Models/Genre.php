@@ -13,4 +13,12 @@ class Genre extends Model
         $genres = DB::table('genres')->get();
         return $genres;
     }
+
+    public function sortByGenre($selectedGenres)
+    {
+
+        
+        var_dump($genres);
+        die;
+    }
 }
