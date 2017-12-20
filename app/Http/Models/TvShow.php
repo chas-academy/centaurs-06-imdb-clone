@@ -36,6 +36,7 @@ class TvShow extends Model
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function createEpisodeFromApi($episodeInfo, $tvShowId, $seasons)
     {
         $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
@@ -44,9 +45,12 @@ class TvShow extends Model
                 'season_id' => $season->id,
 =======
     public function createEpisodeFromApi($episodeInfo, $episodeCredits, $tvShowId, $seasons)
+=======
+    public function createEpisodeFromApi($episodeInfo, $tvShowId, $seasons)
+>>>>>>> Now also add actors and actor ledgers for tvshows from api
     {
         $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
-        if(!$this->ifEpisodeExists($season->id, $episodeInfo['episode_number'])) {
+        if(isset($season) && !$this->ifEpisodeExists($season->id, $episodeInfo['episode_number'])) {
             DB::table('episodes')->insert([
 <<<<<<< HEAD
 >>>>>>> methods for adding tv-show seasons from api
@@ -176,8 +180,39 @@ class TvShow extends Model
         }
     }
 
-    public function getTvShowSeason($seasonNumber, $tvShowId)
+    public function createEpisodeStaffFromApi($episodeCredits, $tvShowId, $episodeInfo)
     {
+        $movieModel = new Movie();
+        foreach ($episodeCredits['cast'] as $cast) {
+            if(!$movieModel->ifActorExists($cast['name'])) {
+                DB::table('actors')->insert([
+                    'name' => $cast['name']
+                    ]);
+            }
+            $actor = $movieModel->getActors($cast['name']);
+            $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
+            $episode = $this->getEpisode($season->id, $episodeInfo['episode_number']);
+            
+            if(!$this->ifActorEpisodeLedgerExists($actor->id, $episode->id)){
+                DB::table('ledger_actors')->insert([
+                    'actor_id' => $actor->id,
+                    'episode_id' => $episode->id
+                    ]);
+            }
+        } 
+        
+    }
+
+    public function getEpisode($seasonId, $episodeNumber)
+    {
+        return DB::table('episodes')->where([
+            'season_id' => $seasonId,
+            'episode_nr'=> $episodeNumber
+        ])->first();
+    }
+
+    public function getTvShowSeason($seasonNumber, $tvShowId)
+    {   
         return DB::table('seasons')->where('season_number', $seasonNumber)->where('tv_show_id', $tvShowId)->first();
     }
 >>>>>>> can now add tvShow, season, and episode from api
