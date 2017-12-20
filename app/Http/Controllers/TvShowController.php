@@ -51,10 +51,12 @@ class TvShowController extends Controller
                 for ($i=1; $i <= $season['episode_count']; $i++) { 
                     $episodeInfo = $this->getEpisodeInfoFromApi([$seasons][0]['id'], $season['season_number'], $i);
                     $episodeCredits = $this->getEpisodeActorsFromApi([$seasons][0]['id'], $season['season_number'], $i);
-                    $tvShowModel->createEpisodeFromApi($episodeInfo, $episodeCredits, $tvShow->id, $seasons);
+                    $tvShowModel->createEpisodeFromApi($episodeInfo, $tvShow->id, $seasons);
+                    $tvShowModel->createEpisodeStaffFromApi($episodeCredits, $tvShow->id, $episodeInfo);
                 } 
             }
         }
+        var_dump("Success!");
     }
 
     public function getEpisodeActorsFromApi($tvShowId, $seasonNr, $episodeNr)
