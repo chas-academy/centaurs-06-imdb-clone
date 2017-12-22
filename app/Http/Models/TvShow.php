@@ -217,8 +217,37 @@ class TvShow extends Model
                     ]);
                 }
             }
+            if($crew['job'] === 'Producer') {
+                if(!$movieModel->ifProducerExists($crew['name'])) {
+                    DB::table('producers')->insert([
+                        'name' => $crew['name']
+                    ]);
+                }
 
-            
+                $producer = $movieModel->getProducers($crew['name']);
+                if(!$this->ifEpisodeProducerLedgerExists($producer->id, $episodeInfo['episode_number'])) {
+                    DB::table('ledger_producers')->insert([
+                        'producer_id' => $producer->id,
+                        'episode_id' => $episodeInfo['episode_number']
+                    ]);
+                }
+            }
+            if($crew['job'] === 'Writer') {
+                if(!$movieModel->ifWriterExists($crew['name'])){
+                    DB::table('writers')->insert([
+                        'name' => $crew['name']
+                    ]);
+                }
+
+                $writer = $movieModel->getWriters($crew['name']);
+
+                if(!$this->ifWriterEpisodeLedgerExists($writer->id, $episodeInfo['episode_number'])) {
+                    DB::table('ledger_writers')->insert([
+                        'writer_id' => $writer->id,
+                        'episode_id' => $episodeInfo['episode_number']
+                    ]);
+                }
+            }
         }
     }
 
