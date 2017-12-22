@@ -200,7 +200,26 @@ class TvShow extends Model
                     ]);
             }
         } 
-        
+        foreach ($episodeCredits['crew'] as $crew) {
+            if($crew['job'] === 'Director') {
+                if(!$movieModel->ifDirectorExists($crew['name'])) {
+                    DB::table('directors')->insert([
+                        'name' => $crew['name']
+                    ]);
+                }
+
+                $director = $movieModel->getDirectors($crew['name']);
+
+                if(!$this->ifEpisodeDirectorLedgerExists($director->id, $episodeInfo['episode_number'])) {
+                    DB::table('ledger_directors')->insert([
+                        'director_id' => $director->id,
+                        'episode_id' => $episodeInfo['episode_number']
+                    ]);
+                }
+            }
+
+            
+        }
     }
 
     public function getEpisode($seasonId, $episodeNumber)
