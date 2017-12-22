@@ -56,7 +56,6 @@ class TvShowController extends Controller
                 } 
             }
         }
-        var_dump("Success!");
     }
 
     public function getEpisodeActorsFromApi($tvShowId, $seasonNr, $episodeNr)
