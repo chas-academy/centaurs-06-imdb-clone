@@ -46,7 +46,7 @@ class TvShowController extends Controller
 
         foreach ($seasons['seasons'] as $k => $season) {
             if($k <> 0) { 
-                $tvShowModel->createSeasonsFromApi($season, $tvShow);
+                $tvShowModel->createSeasonFromApi($season, $tvShow);
                 
                 for ($i=1; $i <= $season['episode_count']; $i++) { 
                     $episodeInfo = $this->getEpisodeInfoFromApi([$seasons][0]['id'], $season['season_number'], $i);
