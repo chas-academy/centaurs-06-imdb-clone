@@ -25,7 +25,7 @@ class TvShow extends Model
         }
     }
 
-    public function createSeasonsFromApi($season, $tvShow)
+    public function createSeasonFromApi($season, $tvShow)
     {
         if(!$this->IfSeasonExists($tvShow->id, $season['season_number'])){
             DB::table('seasons')->insert([
