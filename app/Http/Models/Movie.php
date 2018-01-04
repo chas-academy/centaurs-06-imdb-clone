@@ -11,6 +11,12 @@ use DB;
 class Movie extends Model
 {
     use Searchable;
+
+    public function searchableAs()
+    {
+        return 'title';
+    }
+
     
     public function createMovie($properties) 
     {

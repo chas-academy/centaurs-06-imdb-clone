@@ -181,4 +181,9 @@ class TvShow extends Model
         return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
     }
     use Searchable;
+
+    public function searchableAs()
+    {
+        return 'title';
+    }
 }

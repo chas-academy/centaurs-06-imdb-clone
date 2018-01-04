@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Director extends Model
 {
     use Searchable;
+
+    public function searchableAs()
+    {
+        return 'name';
+    }
 }

@@ -15,4 +15,9 @@ class Genre extends Model
         return $genres;
     }
     use Searchable;
+
+    public function searchableAs()
+    {
+        return 'genre_name';
+    }
 }

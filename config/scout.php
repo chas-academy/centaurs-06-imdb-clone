@@ -37,11 +37,11 @@ return [
     |
     | This option allows you to control if the operations that sync your data
     | with your search engines are queued. When this is set to "true" then
-    | all automatic data syncing will get queued for better performance.
+    | all automatic data syncing will get queued for better     performance.
     |
     */
 
-    'queue' => env('SCOUT_QUEUE', true),
+    'queue' => env('SCOUT_QUEUE', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,8 +71,18 @@ return [
     */
 
     'algolia' => [
-        'id' => env('ALGOLIA_APP_ID', ''),
-        'secret' => env('ALGOLIA_SECRET', ''),
+        'id' => env('ALGOLIA_APP_ID', 'JK9C95NCI4'),
+        'secret' => env('ALGOLIA_SECRET', '14f4e6c854cf364c9b0e7b80a808d88d'),
     ],
+
+
+    'mysql' => [
+        'mode' => 'NATURAL_LANGUAGE',
+        'model_directories' => [app_path()],
+        'min_search_length' => 0,
+        'min_fulltext_search_length' => 4,
+        'min_fulltext_search_fallback' => 'LIKE',
+        'query_expansion' => false
+    ]
 
 ];

@@ -169,6 +169,7 @@ return [
          */
 
         Laravel\Scout\ScoutServiceProvider::class,
+        Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
         /*
          * Application Service Providers...
