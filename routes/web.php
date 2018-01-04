@@ -13,6 +13,7 @@ use App\Http\Models\Genre;
 |
 */
 
+// Home Also called index view
 Route::get('/', function () 
 {
     $movieModel = new Movie();
@@ -26,6 +27,17 @@ Route::get('/', function ()
 
 Route::get('/login', function () {
     return view('pages.login');
+});
+
+Route::get('/watchlist', function () 
+{
+    $movieModel = new Movie();
+    $genreModel = new Genre();
+    $movies = $movieModel->getAllMovies();
+    $genres = $genreModel->getAllGenres();
+    
+    $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres);
+    return $view;
 });
 
 Route::get('movie/{movieId}', function ($movieId)
@@ -47,12 +59,11 @@ Route::get('movie/{movieId}', function ($movieId)
         'writers' => $writers,
         'genres' => $genres
     );
-    // var_dump($movieDetails);
-    // die;
 
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
+// User Watchlist View
 
 Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');

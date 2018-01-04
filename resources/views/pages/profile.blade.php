@@ -4,7 +4,7 @@
         <!-- Content off Mobile-menu -->
         <div id="menu" class="row menu">
             <div class="small-12 flex-align-c-c">
-                <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
+                <img src="{{ asset('img/Logo.png') }}" alt="IMDb Logo" class="logo">
             </div>            
         <!-- Profilepage -->
             <div class="small-12 flex-align-fd-c" id="profile-page">
@@ -233,7 +233,7 @@
 </div>
 <div class="off-canvas-content" data-off-canvas-content>
 <header class="row">
-    <div class="small-12 flex-align-sb-c">
+    <div class="small-12 header-flex-align-sb-c">
         <img src="{{ asset('img/IMDB_Logo_2016.svg.png') }}" alt="IMDb Logo" class="logo">
         <div class="avatar">
         <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:50px; height:50px; border-radius:50%;">
@@ -241,10 +241,10 @@
         <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
         <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
     </div>
-    <form class="small-12 flex-align-sb-c fast" id="search" data-toggler=".visible" data-animate="fade-in fade-out">
+    <form class="small-12 header-flex-align-sb-c fast" id="search" data-toggler=".visible" data-animate="fade-in fade-out">
         <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
     </form>
-    <div class="small-12 flex-align-sb-c">
+    <div class="small-12 header-flex-align-sb-c">
     <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
         <option value="#" selected disabled>Genre</option>
         <option value="Action">Action</option>

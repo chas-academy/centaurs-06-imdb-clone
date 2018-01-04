@@ -1,0 +1,59 @@
+/*			User Watchlist Layout 			*/
+header
+    .header-flex-align-c-c
+        display: flex
+        padding: 0 0 25px 0
+        align-items: center
+        justify-content: center
+        select
+        	width: 75%
+        	visibility: hidden
+main
+	.watchlist-movie
+		padding: 35px 0px 35px 0px
+		.flex-align-c-c
+			display: flex
+			align-items: center
+			flex-direction: row
+			justify-content: center   
+			padding: 5px 0px 5px 0px
+			a
+				display: flex
+				align-items: center
+				justify-content: center
+				padding: 5px 0px 5px 0px
+				img
+					width: 50%
+			.rating-num
+				margin: 0px 0px 0px 5px 
+			.title
+				margin: 0
+				padding: 0px 0px 5px 0px
+
+
+/*			User Watchlist Style 			*/
+header
+	h1
+		color: white
+		font-size: 28px
+		font-weight: 800
+main
+	.watchlist-movie
+		border-bottom: yellow 1px solid
+		.flex-align-c-c
+            color: #F1F1F1
+            .fa-star
+                color: #FAD400
+            .rating-num
+                font-size: 16px
+                font-weight: 800
+            .title
+            	font-size: 16px
+            	font-weight: 600
+            .fa-close
+            	color: red
+            	font-size: 24px
+
+
+.small-12.watchlist-movie:last-child
+	border: 0

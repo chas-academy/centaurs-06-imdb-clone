@@ -46,7 +46,6 @@ class Movie extends Model
         for ($i=0; $i < 5; $i++) {
             if(isset($properties['cast'][$i])){                                 //if there is less than 5 casts then dont to add to db.             
                 if(!$this->ifActorExists($properties['cast'][$i]['name'])) {    //Checks if actor exists in db
-                    dd($properties);
                     DB::table('actors')->insert([
                         'movie_api_id' => $properties['id'],
                         'name' => $properties['cast'][$i]['name']
@@ -272,7 +271,7 @@ class Movie extends Model
         
         return $genres;
     }
-
+    
     //Takes actor name as string and check in database if it exists
     public function ifActorExists($actorName) : bool
     {
