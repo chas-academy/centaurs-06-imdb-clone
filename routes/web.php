@@ -47,8 +47,6 @@ Route::get('movie/{movieId}', function ($movieId)
         'writers' => $writers,
         'genres' => $genres
     );
-    // var_dump($movieDetails);
-    // die;
 
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
@@ -67,11 +65,15 @@ Route::get('/home', function () {
     return view('pages.index');
 });
 
-// Route::get('/genres/{genres}', function($genres) {
-//     dd($genres);
-
-     // $genreModel = new Genre();
-     // $movies = $genreModel->sortByGenre($genres);
-
-//     return 200;
+// Route::post('/genre/{genre}', function() {
+//     var_dump('hej');
+    
+//     // $genreModel = new Genre();
+//     // $movies = $genreModel->sortByGenre($genres);
+    
+//     // $view = View::make('pages.index')->with('genres', $movies);
+//     // return $view;
+//     return view('pages.index');
 // });
+
+Route::post('/genre', 'MovieController@searchByGenre');

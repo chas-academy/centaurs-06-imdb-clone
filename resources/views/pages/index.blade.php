@@ -263,8 +263,9 @@
     </form>
     <div class="small-12 flex-align-sb-c">
         
-    <form action="" method="post" name="submitGenre" id="submitGenre">
+    <form action="/genre" method="POST" name="submitGenre" id="submitGenre">
         <input type="hidden" name="genres" id="genres"></input>
+        <input type="hidden" id="_token" value="{{ csrf_token() }}">
     </form>
 
         <select class="js-example-basic-single sort-genre js-states form-control" multiple="" id="id_label_single" onchange="changeSelect(event)">

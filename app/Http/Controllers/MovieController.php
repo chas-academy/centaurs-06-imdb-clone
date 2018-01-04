@@ -32,7 +32,7 @@ class MovieController extends Controller
         
         public function createMovieFromApi() 
         {
-            $keyword = 'Armageddon';
+            $keyword = 'jigsaw';
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
@@ -68,6 +68,12 @@ class MovieController extends Controller
             $movies = $movieModel->getAllMovies();
 
             return $movies;  
+        }
+
+        public function searchByGenre()
+        {
+            var_dump('hej');
+            die;
         }
 
 }

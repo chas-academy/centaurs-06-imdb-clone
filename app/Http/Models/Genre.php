@@ -17,8 +17,5 @@ class Genre extends Model
     public function sortByGenre($selectedGenres)
     {
 
-        
-        var_dump($genres);
-        die;
     }
 }

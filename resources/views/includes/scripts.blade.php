@@ -41,10 +41,11 @@
         let genres = [];
         function changeSelect(event)
         {
-            // let genres = $(event.target).val();
-            // $("#genres").val(genres);
-
-            // const payload = 
+            let genres = $(event.target).val();
+            $("#genres").val(genres);
+            var form = document.getElementById('submitGenre');
+            form.submit();
+            // const payload =
             //     genres
             //         .map(g => `genres[]=${g}`)
             //         .join('&');
