@@ -6,10 +6,12 @@
         <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
         <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
     </div>
-    <form class="small-12 header-flex-align-sb-c fast" id="search" data-toggler=".visible" data-animate="fade-in fade-out">
-        <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
-        <button type="submit"><i class="fa fa-search search-btn" id="search-btn" aria-hidden="true"></i></button>
-    </form>
+    <div id="search" class="small-12 header-flex-align-sb-c" data-toggler=".visible">
+        <form class="small-12 search fast" data-animate="fade-in fade-out">
+            <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
+            <button type="submit"><i class="fa fa-search search-btn" id="search-btn" aria-hidden="true"></i></button>
+        </form> 
+    </div>
     <div class="small-12 header-flex-align-c-c">
 		<h1>Watchlist</h1>
     </div>
