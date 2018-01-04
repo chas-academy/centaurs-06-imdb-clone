@@ -272,6 +272,18 @@ class Movie extends Model
         return $genres;
     }
     
+    public function getMoviesByGenre($genre)
+    {
+        $genreId = DB::table('genres')->where('genre_name', $genre)->value('id');
+        $ledgerMovieIds = DB::table('ledger_genres')->where('genre_id', $genreId)->pluck('movie_id');
+
+        $movies = [];
+        foreach ($ledgerMovieIds as $movieId) {
+            array_push($movies, DB::table('movies')->get()->where('id', $movieId)->first());
+        }
+        return $movies;
+    }
+
     //Takes actor name as string and check in database if it exists
     public function ifActorExists($actorName) : bool
     {
