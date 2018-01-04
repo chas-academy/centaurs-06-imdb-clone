@@ -11886,11 +11886,6 @@ main .none:nth-child(4n) .poster-size {
     display: none;
   }
 
-  .menu {
-    display: block;
-    padding-top: 20px;
-  }
-
   .logo {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -11898,7 +11893,7 @@ main .none:nth-child(4n) .poster-size {
   }
 
   .row {
-    max-width: 80rem;
+    max-width: 100%;
   }
 
   .row .flex-align-sb-c {
@@ -11906,89 +11901,27 @@ main .none:nth-child(4n) .poster-size {
         justify-content: space-around;
   }
 
-  .row .flex-align-sb-c .small-movie-info {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+  .row .flex-align-sb-c .movie-poster {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     text-align: center;
   }
 
-  .row .none:nth-child(4n) {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto;
+  .row .flex-align-sb-c .movie-poster .poster-size {
+    width: 250px;
+    height: 396px;
   }
 
-  .row .none:nth-child(4n) .poster-size {
-    width: 170px;
-    height: 220px;
+  .row .flex-align-sb-c .movie-poster:nth-child(4n) {
+    padding-top: 20px;
+    margin: 0px;
   }
 
-  #size {
-    width: 170px;
-    height: 220px;
-  }
-
-  .side-bar {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    padding-bottom: 15px;
-    height: 70%;
-  }
-
-  #footer-side-menu {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  #footer-desk {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-  }
-
-  .footer-cont {
-    display: none;
-    padding-top: 15px;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  #desk-hide {
-    display: none;
-  }
-
-  #desk-show {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding-top: 0;
-  }
-
-  #sign-in {
-    font-size: 24px;
-  }
-
-  #sign-up {
-    font-size: 24px;
+  .row .flex-align-sb-c .movie-poster:nth-child(4n) .poster-size {
+    width: 250px;
+    height: 396px;
   }
 }
 
