@@ -27,6 +27,7 @@
 	<main class="row">
     	@include('includes.menu-btn')
 	    @foreach($movies as $movie)
+	
 	    	<div class="small-12 watchlist-movie">
 	            <div class="small-12 flex-align-c-c">
 	                <a href="movie/{{ $movie->id }}" class="none">

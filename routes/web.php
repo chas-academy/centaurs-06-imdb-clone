@@ -15,6 +15,7 @@ use App\Http\Controllers\UserController;
 */
 
 // Home Also called index view
+
 Route::get('/', function () 
 {
     $movieModel = new Movie();
@@ -39,12 +40,15 @@ Route::get('/login', function () {
 
 Route::get('/watchlist', function () 
 {
+    $user = Auth::user()->id;
     $movieModel = new Movie();
     $genreModel = new Genre();
-    $movies = $movieModel->getAllMoviesFromWatchlist();
+    $movies = $movieModel->getAllMoviesFromWatchlist($user);
     $genres = $genreModel->getAllGenres();
+    $userController = new UserController;
+    $user = $userController->profile();
     
-    $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres);
+    $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres)->with('user', $user);
     return $view;
 });
 
