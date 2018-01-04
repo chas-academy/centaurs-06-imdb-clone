@@ -1,3 +1,7 @@
+<?php
+    // dd($user->name);
+?>
+
 <!-- USER MENU/SETTINGS -->
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
@@ -7,6 +11,9 @@
                 <img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo">
             </div>            
             <!-- Sign in -->
+        
+        <?php if (!Auth::check()): ?>
+            
             <div class="small-12 flex-align-fd-c">
                 <form class="small-12" id="sign-in-f" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
@@ -44,6 +51,50 @@
                 <h2 id="sign-in">Sign In</h2>
                 <h2 id="sign-up">Create your account</h2>
             </div>
+
+        <?php endif; ?>
+
+            <!-- Profilepage -->
+
+            <?php if (Auth::check()): ?>
+
+                <div class="small-12 flex-align-fd-c" id="profile-page">
+                    <div class"width-100">
+                    <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:80px; height:80px; border-radius:50%;">
+                    </div>
+                    <h2 class="avatar">Hi {{ $user->name }}!</h2>
+                    <div class"width-100">
+                    
+                        <div id="right">
+                        <!-- FIX THE FILE BUTTON HERE -->
+                            <div class="upload-btn-wrapper">
+                                <button class="butn">Upload a file</button>
+                                <form enctype="multipart/form-data" action="/profile" method="POST">
+                                <input id="input-file" type="file" name="avatar">
+                            </div>
+                            <!-- FIX THE FILE BUTTON HERE -->
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input class="send-pic" type="submit" class="button">
+                        </div>
+                    </form>
+                </div>
+
+                    <div id="mobile-btn-wrap" class="mobile-btn-wrap">
+                            <li class="sign-out">
+                                <a id="style-none" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </div>
+                    </div>
+
+            <?php endif; ?>
+
             <div id="mobile-btn-back" class="mobile-btn-back">
                 <i class="fa fa-undo" aria-hidden="true"></i>
             </div>

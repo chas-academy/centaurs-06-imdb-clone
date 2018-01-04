@@ -1,6 +1,7 @@
 <?php
 use App\Http\Models\Movie;
 use App\Http\Models\Genre;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,15 @@ Route::get('/', function ()
     $genreModel = new Genre();
     $movies = $movieModel->getAllMovies();
     $genres = $genreModel->getAllGenres();
-    
-    $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
+
+    if(Auth::check()) {
+        $userController = new UserController;
+        $user = $userController->profile();
+
+        $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres)->with('user', $user);
+    } else {
+        $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
+    };
     return $view;
 });
 
@@ -33,7 +41,7 @@ Route::get('/watchlist', function ()
 {
     $movieModel = new Movie();
     $genreModel = new Genre();
-    $movies = $movieModel->getAllMovies();
+    $movies = $movieModel->getAllMoviesFromWatchlist();
     $genres = $genreModel->getAllGenres();
     
     $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres);
