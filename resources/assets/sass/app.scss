@@ -1,17 +1,32 @@
-// Fonts
-@import "etc/fonts";
-
 // Variables
 @import "etc/settings";
 
 // Bootstrap
 @import "etc/foundation";
 
+// Main styling
+@import "etc/main";
+
 // Mobile style
+@import "styles/mobile";
+
+// Mobile style about offcanvas aka footer
+@import "styles/mobile-about";
+
+// Mobile menu style
+@import "styles/mobile-menu";
+
+// Mobile movie view style
+@import "styles/mobile-movie-view";
+
+// Mobile watch list style
+@import "styles/mobile-watchlist";
+
+// OLD MOBILE STYLE
 @import "styles/mobile-style";
 
 // Custom style for select2
 @import "fixes/select2";
 
-// Style for Foundations offcanvas full screen menu
+// Fixes for Foundations offcanvas full screen menu
 @import "fixes/offcanvas-full-screen";
