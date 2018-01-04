@@ -10,6 +10,7 @@
             <button type="submit"><i class="fa fa-search search-btn" id="search-btn" aria-hidden="true"></i></button>
         </form> 
     </div>
+    
     <div class="small-12 header-flex-align-sb-c">
         <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
             <option value="#" selected disabled>Genre</option>

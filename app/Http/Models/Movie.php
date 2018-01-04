@@ -271,6 +271,13 @@ class Movie extends Model
         
         return $genres;
     }
+
+    public function getAllMoviesFromWatchlist()
+    {
+        $movies = DB::table('ledger_watch_lists')->get();
+
+        return $movies;
+    }
     
     public function getMoviesByGenre($genre)
     {
