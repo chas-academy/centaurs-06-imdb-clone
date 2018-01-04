@@ -72,6 +72,8 @@ Route::get('movie/{movieId}', function ($movieId)
         'genres' => $genres
     );
 
+    
+
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
