@@ -11909,6 +11909,8 @@ main .none:nth-child(4n) .poster-size {
   .row .flex-align-sb-c .small-movie-info {
     margin-bottom: 10px;
     margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     text-align: center;
   }
 
