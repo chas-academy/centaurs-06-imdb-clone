@@ -70,4 +70,11 @@ class MovieController extends Controller
             return $movies;  
         }
 
+        public function sortByGenre($genre)
+        {
+            $movieModel = new Movie();
+            $sortedMovies = $movieModel->getMoviesByGenre($genre);
+            return $sortedMovies;
+        }
+
 }
