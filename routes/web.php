@@ -45,10 +45,8 @@ Route::get('/watchlist', function ()
     $genreModel = new Genre();
     $movies = $movieModel->getAllMoviesFromWatchlist($user);
     $genres = $genreModel->getAllGenres();
-    $userController = new UserController;
-    $user = $userController->profile();
-    
-    $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres)->with('user', $user);
+
+    $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres);
     return $view;
 });
 
@@ -71,8 +69,6 @@ Route::get('movie/{movieId}', function ($movieId)
         'writers' => $writers,
         'genres' => $genres
     );
-
-    
 
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
