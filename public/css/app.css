@@ -11891,7 +11891,7 @@ main .none:nth-child(4n) .poster-size {
   }
 
   .mobile-btn-quit {
-    display: none;
+    display: none !important;
   }
 
   .logo {
@@ -11946,11 +11946,11 @@ main .none:nth-child(4n) .poster-size {
     padding: 35px 25px 10px 25px;
   }
 
-  #mobile-hide #search {
+  #mobile-hide #search-desktop {
     display: none;
   }
 
-  #mobile-hide #search.visible {
+  #mobile-hide #search-desktop.visible {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -12023,6 +12023,14 @@ main .none:nth-child(4n) .poster-size {
 
   #sign-up {
     font-size: 2rem;
+  }
+
+  #search-btn {
+    display: none;
+  }
+
+  #search-exit-btn {
+    display: none;
   }
 }
 
