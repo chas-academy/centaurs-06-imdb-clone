@@ -328,7 +328,6 @@ class Movie extends Model
         return $movies;
     }
 
-<<<<<<< HEAD
     public function getMoviesBySpecSorting($option)
     {
 
@@ -454,22 +453,23 @@ class Movie extends Model
             }
             echo json_encode($movies);
             exit();
-=======
-    public function deleteMovie($movieId)
+        }
+    }
+
+    public function deleteMovie($movieId): bool
     {
         if($this->ifMovieExistsId($movieId)) {
-            //Hämta actor ledgers, director, writer, producer
             DB::table('ledger_actors')->where('movie_id', $movieId)->delete();
-            die();
-            //Ta bort dessa från db
-            //Ta bort från ledgerWathclist
-            //Hämta alla genreledgers och ta bort dessa
-
+            DB::table('ledger_directors')->where('movie_id', $movieId)->delete();
+            DB::table('ledger_genres')->where('movie_id', $movieId)->delete();
+            DB::table('ledger_producers')->where('movie_id', $movieId)->delete();
+            DB::table('ledger_writers')->where('movie_id', $movieId)->delete();
+            //TODO: remove comment when ledger_watch_lists exists in db.
+            //DB::table('ledger_watch_lists')->where('movie_id', $movieId)->delete();
             DB::table('movies')->where('id', $movieId)->delete();
             return true;
         }else {
             return false;
->>>>>>> bug fixes for createTvshowfromapi
         }
     }
 

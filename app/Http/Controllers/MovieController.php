@@ -171,6 +171,7 @@ class MovieController extends Controller
             return $choices = array_merge($choices, $newChoices);
         }
 
+<<<<<<< HEAD
         // Update movie
         public function editMovie(Request $request, $id) {
 
@@ -315,14 +316,16 @@ class MovieController extends Controller
         }
 =======
         public function deleteMovie() //TODO: take movieId
+=======
+        public function deleteMovie($movieId)
+>>>>>>> methods to delete movie with all ledgers
         {
-            $movieId = 1;
             $movieModel = new Movie();
             $movieDeleted = $movieModel->deleteMovie($movieId);
             if($movieDeleted == true) {
-                var_dump( "Movie deleted");die();
+                //TODO: Give message that movie was deleted
             } else {
-                var_dump("Something went wrong");die();
+                //Movie with that id did not exists in db.
             }
         }
 
