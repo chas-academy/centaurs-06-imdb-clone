@@ -289,6 +289,14 @@ class Movie extends Model
     {
         DB::table('ledger_watch_lists')->where('user_id', $userId)->where('movie_id', $movieId)->delete();
     }
+
+    public function addMovieToWatchlist($userId, $movieId)
+    {
+        DB::table('ledger_watch_lists')->insert([
+            'user_id' => $userId,
+            'movie_id' => $movieId
+        ]);
+    }
     
     public function getMoviesByGenre($genre)
     {

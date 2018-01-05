@@ -84,7 +84,16 @@ class MovieController extends Controller
             
             $movieModel = new Movie();
             $movieModel->removeMovieFromWatchlist($userId, $movieId);
+        }
 
+        public function addMovieToWatchlist($movieId)
+        {
+            $userId = Auth::user()->id;
+
+            $movieModel = new Movie();
+            $movieModel->addMovieToWatchlist($userId, $movieId);
+
+            redirect('/watchlist');
         }
 
 }

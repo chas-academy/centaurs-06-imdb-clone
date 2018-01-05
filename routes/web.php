@@ -52,6 +52,8 @@ Route::get('/watchlist', function ()
 
 Route::get('/watchlist/delete/{movieId}', 'MovieController@removeMovieFromWatchlist');
 
+Route::get('/movie/{movieId}/addwatchlist', 'MovieController@addMovieToWatchlist');
+
 Route::get('movie/{movieId}', function ($movieId)
 {
 
