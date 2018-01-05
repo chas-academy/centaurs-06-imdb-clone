@@ -11886,6 +11886,10 @@ main .none:nth-child(4n) .poster-size {
     margin-left: 20%;
   }
 
+  .current-movie {
+    margin-left: 20%;
+  }
+
   #mobile-btn-open {
     display: none;
   }
