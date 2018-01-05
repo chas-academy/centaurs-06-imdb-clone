@@ -50,6 +50,8 @@ Route::get('/watchlist', function ()
     return $view;
 });
 
+Route::get('/watchlist/delete/{movieId}', 'MovieController@removeMovieFromWatchlist');
+
 Route::get('movie/{movieId}', function ($movieId)
 {
 

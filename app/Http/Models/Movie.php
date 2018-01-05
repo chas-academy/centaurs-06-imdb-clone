@@ -284,6 +284,11 @@ class Movie extends Model
         
         return $movies;
     }
+
+    public function removeMovieFromWatchlist($userId, $movieId)
+    {
+        DB::table('ledger_watch_lists')->where('user_id', $userId)->where('movie_id', $movieId)->delete();
+    }
     
     public function getMoviesByGenre($genre)
     {
