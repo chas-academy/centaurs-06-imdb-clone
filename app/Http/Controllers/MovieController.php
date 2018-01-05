@@ -150,10 +150,6 @@ class MovieController extends Controller
         // Store movie
         public function storeMovie(Request $request)
         {
-            $validatedData = $request->validate([
-                'title' => 'required|unique:movies|max:255',
-                'plot' => 'required'
-            ]);
 
             $db_actors = Actor::all();
 
@@ -171,10 +167,11 @@ class MovieController extends Controller
                 'playtimeMins' => 'required|digits_between:0,59',
                 'releaseyear' => 'required',
             ]);
-            //Kolla upp detta:
-            //Lägga till validering, digits funkar ej
-            //Lägga till autorizaton
-            //kolla hur hämtas playtime
+            //To do:
+            //Add validation, digits not working
+            //Add autorization
+            //Check how playtime is gotten
+            
             $request->file('poster')->store('posters');
 
             $actors = $this->storeMovieHelper('actor', Actor::class, $request);
