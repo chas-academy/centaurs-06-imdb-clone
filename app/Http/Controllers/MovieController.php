@@ -155,15 +155,7 @@ class MovieController extends Controller
                 'plot' => 'required'
             ]);
 
-            //var_dump($request);
-            //die();
-
-            // for ($i=0; $i<count($request->actor); $i++) {
-
-            // }
             $db_actors = Actor::all();
-            //var_dump($db_actors->name);
-            //die();
 
             $exisitingActors = array_map(function($actor) {
             
@@ -179,7 +171,7 @@ class MovieController extends Controller
                 'playtimeMins' => 'required|digits_between:0,59',
                 'releaseyear' => 'required',
             ]);
-
+            //Kolla upp detta:
             //Lägga till validering, digits funkar ej
             //Lägga till autorizaton
             //kolla hur hämtas playtime
@@ -194,13 +186,8 @@ class MovieController extends Controller
             $movie->plot = $request->plot;
             $movie->playtime = ($request->playtimeHours).($request->playtimeMins);
             $movie->poster = $request->file('poster')->hashName();;
-            //$movie->backdrop = null;
             $movie->releasedate = ($request->releaseyear.'-01-01');
-            //$movie->imdb_rating = 1;
-            //$movie->chas_rating = 2;
             $movie->save();
-            //     //$movie->created_at = $request->created_at;
-            //     //$movie->updated_at = $request->updated_at;
             
             foreach ($actors as $actor) {
                 $ledgerActor = new LedgerActor;
