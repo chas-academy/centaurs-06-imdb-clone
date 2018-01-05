@@ -169,9 +169,9 @@ class MovieController extends Controller
             //To do:
             //Add validation, digits not working
             //Add autorization
-            //Check how playtime is gotten
-            
-            $request->file('poster')->store('posters');
+
+
+
 
             $actors = $this->storeMovieHelper('actor', Actor::class, $request);
             $directors = $this->storeMovieHelper('director', Director::class, $request);
@@ -182,6 +182,13 @@ class MovieController extends Controller
             $movie->plot = $request->plot;
             $movie->playtime = $request->playtimeMins;
             $movie->releasedate = ($request->releaseyear.'-01-01');
+            
+            $poster = $request->file('poster');
+            if ($poster) {
+                $poster->store('posters');
+                $movie->poster = $poster->hashName();
+            }
+
             $movie->save();
             
             foreach ($actors as $actor) {
