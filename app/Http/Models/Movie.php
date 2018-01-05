@@ -328,6 +328,7 @@ class Movie extends Model
         return $movies;
     }
 
+<<<<<<< HEAD
     public function getMoviesBySpecSorting($option)
     {
 
@@ -453,6 +454,22 @@ class Movie extends Model
             }
             echo json_encode($movies);
             exit();
+=======
+    public function deleteMovie($movieId)
+    {
+        if($this->ifMovieExistsId($movieId)) {
+            //Hämta actor ledgers, director, writer, producer
+            DB::table('ledger_actors')->where('movie_id', $movieId)->delete();
+            die();
+            //Ta bort dessa från db
+            //Ta bort från ledgerWathclist
+            //Hämta alla genreledgers och ta bort dessa
+
+            DB::table('movies')->where('id', $movieId)->delete();
+            return true;
+        }else {
+            return false;
+>>>>>>> bug fixes for createTvshowfromapi
         }
     }
 
@@ -470,6 +487,10 @@ class Movie extends Model
     public function ifMovieExists($movieTitle): bool
     {
         return DB::table('movies')->where('title', $movieTitle)->exists();
+    }
+    public function ifMovieExistsId($movieId)
+    {
+        return DB::table('movies')->where('id', $movieId)->exists();
     }
 
     public function ifGenreExists($genreName): bool
