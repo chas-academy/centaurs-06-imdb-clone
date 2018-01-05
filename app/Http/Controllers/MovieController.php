@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Models\Movie;
 use Resources\views\pages;
+use App\Http\Controllers\UserController;
+use Auth;
 
 class MovieController extends Controller
 {
@@ -75,6 +77,14 @@ class MovieController extends Controller
             $movieModel = new Movie();
             $sortedMovies = $movieModel->getMoviesByGenre($genre);
             return $sortedMovies;
+        
+        public function removeMovieFromWatchlist($movieId)
+        {
+            $userId = Auth::user()->id;
+            
+            $movieModel = new Movie();
+            $movieModel->removeMovieFromWatchlist($userId, $movieId);
+
         }
 
 }
