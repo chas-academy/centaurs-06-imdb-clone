@@ -271,6 +271,32 @@ class Movie extends Model
         
         return $genres;
     }
+
+    public function getAllMoviesFromWatchlist($userId)
+    {
+        $watchlistMovies = DB::table('ledger_watch_lists')->where('user_id', $userId)->pluck('movie_id');
+
+        $movies = [];
+
+        foreach ($watchlistMovies as $watchlistMovie) {
+            array_push($movies, DB::table('movies')->get()->where('id', $watchlistMovie)->first());
+        }
+        
+        return $movies;
+    }
+
+    public function removeMovieFromWatchlist($userId, $movieId)
+    {
+        DB::table('ledger_watch_lists')->where('user_id', $userId)->where('movie_id', $movieId)->delete();
+    }
+
+    public function addMovieToWatchlist($userId, $movieId)
+    {
+        DB::table('ledger_watch_lists')->insert([
+            'user_id' => $userId,
+            'movie_id' => $movieId
+        ]);
+    }
     
     public function getMoviesByGenre($genre)
     {

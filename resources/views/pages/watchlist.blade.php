@@ -27,6 +27,7 @@
 	<main class="row">
     	@include('includes.menu-btn')
 	    @foreach($movies as $movie)
+	
 	    	<div class="small-12 watchlist-movie">
 	            <div class="small-12 flex-align-c-c">
 	                <a href="movie/{{ $movie->id }}" class="none">
@@ -41,7 +42,7 @@
 	            	<p class="title">{{ $movie->title }}</p>
 	            </div>
 	            <div class="small-12 flex-align-c-c">
-	            	<a href=""><i class="fa fa-close"></i></a>
+	            	<a href="/watchlist/delete/{{ $movie->id }}"><i class="fa fa-close"></i></a>
 	            </div>
 	    	</div>
 	    @endforeach

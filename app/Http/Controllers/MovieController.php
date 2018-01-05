@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Models\Movie;
 use Resources\views\pages;
+use App\Http\Controllers\UserController;
+use Auth;
 
 class MovieController extends Controller
 {
@@ -32,7 +34,7 @@ class MovieController extends Controller
         
         public function createMovieFromApi() 
         {
-            $keyword = "How the Grinch Stole Christmas";
+            $keyword = "Shrek";
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
@@ -75,6 +77,23 @@ class MovieController extends Controller
             $movieModel = new Movie();
             $sortedMovies = $movieModel->getMoviesByGenre($genre);
             return $sortedMovies;
+        
+        public function removeMovieFromWatchlist($movieId)
+        {
+            $userId = Auth::user()->id;
+            
+            $movieModel = new Movie();
+            $movieModel->removeMovieFromWatchlist($userId, $movieId);
+        }
+
+        public function addMovieToWatchlist($movieId)
+        {
+            $userId = Auth::user()->id;
+
+            $movieModel = new Movie();
+            $movieModel->addMovieToWatchlist($userId, $movieId);
+
+            return redirect('movie/'. $movieId);
         }
 
 }
