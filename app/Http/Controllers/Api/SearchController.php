@@ -28,8 +28,15 @@ class SearchController extends Controller
             ['indexName' => 'actor.name', 'query' => $query],
             ['indexName' => 'director.name', 'query' => $query],
             ['indexName' => 'producer.name', 'query' => $query],
+            ['indexName' => 'genre.name', 'query' => $query],
         ];
         
         $error = ['error' => 'No results found, please try with different keywords.'];
+        $results = $client->multipleQueries($queries);
+        $movies = array_first($results)[0]['hits'];
+        $object = json_decode (json_encode ($movies), FALSE);
+        
+        
+        return view('pages.index')->with('movies', $object);
     }
 }
