@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 
 // Home Also called index view
 
+<<<<<<< HEAD
 Route::get('/', function () 
 {
     $movieModel = new Movie();
@@ -32,6 +33,10 @@ Route::get('/', function ()
         $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
     };
     return $view;
+=======
+Route::get('/', function () {
+    return view('pages.index');
+>>>>>>> continue with search, using scout and algolia
 });
 
 Route::get('/login', function () {
@@ -82,9 +87,15 @@ Route::get('movie/{movieId}', function ($movieId)
 Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');
 
+
+
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
+<<<<<<< HEAD
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
+=======
+Route::get('/search/{searchKey}', 'HomeController@search');
+>>>>>>> continue with search, using scout and algolia
 
 Auth::routes();
 

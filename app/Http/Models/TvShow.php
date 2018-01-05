@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use DB;
 
+use Laravel\Scout\Searchable;
 class TvShow extends Model
 {
     public function createTvSHowFromApi($tvShow)
@@ -178,5 +179,11 @@ class TvShow extends Model
     public function ifActorEpisodeLedgerExists($actorId, $episodeId): bool
     {
         return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
+    }
+    use Searchable;
+
+    public function searchableAs()
+    {
+        return 'title';
     }
 }
