@@ -1,4 +1,4 @@
-<header class="row">
+<header id="desk-hide" class="row">
     <div class="small-12 header-flex-align-sb-c">
         <a href="{{ URL::to('/') }}"><img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo"></a>
         @if(Auth::check())
