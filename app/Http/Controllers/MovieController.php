@@ -34,7 +34,7 @@ class MovieController extends Controller
         
         public function createMovieFromApi() 
         {
-            $keyword = "Shrek";
+            $keyword = "fifty shades of gray";
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
@@ -77,6 +77,7 @@ class MovieController extends Controller
             $movieModel = new Movie();
             $sortedMovies = $movieModel->getMoviesByGenre($genre);
             return $sortedMovies;
+        }
         
         public function removeMovieFromWatchlist($movieId)
         {
