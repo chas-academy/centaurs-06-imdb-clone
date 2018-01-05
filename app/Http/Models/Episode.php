@@ -11,6 +11,6 @@ class Episode extends Model
 
     public function searchableAs()
     {
-        return 'title';
+        return 'episode.title';
     }
 }

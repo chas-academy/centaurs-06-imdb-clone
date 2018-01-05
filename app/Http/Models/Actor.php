@@ -11,6 +11,6 @@ class Actor extends Model
 
     public function searchableAs()
     {
-        return 'name';
+        return 'actor.name';
     }
 }

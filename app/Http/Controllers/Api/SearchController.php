@@ -25,6 +25,9 @@ class SearchController extends Controller
         $queries = [
             ['indexName' => 'movie.title', 'query' => $query],
             ['indexName' => 'tvshow.title', 'query' => $query],
+            ['indexName' => 'actor.name', 'query' => $query],
+            ['indexName' => 'director.name', 'query' => $query],
+            ['indexName' => 'producer.name', 'query' => $query],
         ];
         
         $error = ['error' => 'No results found, please try with different keywords.'];
