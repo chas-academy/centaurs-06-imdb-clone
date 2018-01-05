@@ -93,7 +93,7 @@ class MovieController extends Controller
             $movieModel = new Movie();
             $movieModel->addMovieToWatchlist($userId, $movieId);
 
-            redirect('/watchlist');
+            return redirect('movie/'. $movieId);
         }
 
 }
