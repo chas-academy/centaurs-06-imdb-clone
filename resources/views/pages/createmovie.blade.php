@@ -27,7 +27,6 @@
           @endforeach
         </select>
 
-        <input type="text" name="playtimeHours" placeholder="Hours">
         <input type="text" name="playtimeMins" placeholder="Minutes">
 
         <input type="text" name="plot" placeholder="Movie plot">
