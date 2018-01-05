@@ -156,6 +156,7 @@ class MovieController extends Controller
             $newChoices = array_map(function($name) use ($model) {
                 $existingChoice = $model::where('name', $name)->first();
 
+<<<<<<< HEAD
                 if($existingChoice) {
                     return $existingChoice;
                 }
@@ -312,4 +313,18 @@ class MovieController extends Controller
 
             $movie->save();
         }
+=======
+        public function deleteMovie() //TODO: take movieId
+        {
+            $movieId = 1;
+            $movieModel = new Movie();
+            $movieDeleted = $movieModel->deleteMovie($movieId);
+            if($movieDeleted == true) {
+                var_dump( "Movie deleted");die();
+            } else {
+                var_dump("Something went wrong");die();
+            }
+        }
+
+>>>>>>> bug fixes for createTvshowfromapi
 }
