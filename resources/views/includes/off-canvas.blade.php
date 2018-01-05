@@ -14,13 +14,13 @@
             <header id="mobile-hide" class="row">
                 <div class="small-12 header-flex-align-sb-c">
                     <a href="{{ URL::to('/') }}"><img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo"></a>
-                    <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
-                    <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
+                    <i class="fa fa-search search-btn" id="search-btn-desktop" aria-hidden="true" data-toggle="search-desktop search-btn-desktop search-exit-btn-desktop" data-toggler=".hidden"></i>
+                    <i class="fa fa-times search-exit-btn" id="search-exit-btn-desktop" aria-hidden="true" data-toggle="search-desktop search-btn-desktop search-exit-btn-desktop" data-toggler=".visible"></i>
                 </div>
-                <div id="search" class="small-12 header-flex-align-sb-c" data-toggler=".visible">
+                <div id="search-desktop" class="small-12 header-flex-align-sb-c" data-toggler=".visible">
                     <form class="small-12 search fast" data-animate="fade-in fade-out">
                         <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
-                        <button type="submit"><i class="fa fa-search search-btn" id="search-btn" aria-hidden="true"></i></button>
+                        <button type="submit"><i class="fa fa-search search-btn" id="search-btn-desktop" aria-hidden="true"></i></button>
                     </form> 
                 </div>
                 <div class="small-12 header-flex-align-sb-c">

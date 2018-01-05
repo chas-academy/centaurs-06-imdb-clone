@@ -11287,7 +11287,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   }
 
   .mobile-btn-quit {
-    display: none;
+    display: none !important;
   }
 
   .logo {
@@ -11342,11 +11342,11 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     padding: 35px 25px 10px 25px;
   }
 
-  #mobile-hide #search {
+  #mobile-hide #search-desktop {
     display: none;
   }
 
-  #mobile-hide #search.visible {
+  #mobile-hide #search-desktop.visible {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -11419,6 +11419,14 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   #sign-up {
     font-size: 2rem;
+  }
+
+  #search-btn {
+    display: none;
+  }
+
+  #search-exit-btn {
+    display: none;
   }
 }
 
