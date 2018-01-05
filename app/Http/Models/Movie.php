@@ -272,6 +272,18 @@ class Movie extends Model
         return $genres;
     }
     
+    public function getMoviesByGenre($genre)
+    {
+        $genreId = DB::table('genres')->where('genre_name', $genre)->value('id');
+        $ledgerMovieIds = DB::table('ledger_genres')->where('genre_id', $genreId)->pluck('movie_id');
+
+        $movies = [];
+        foreach ($ledgerMovieIds as $movieId) {
+            array_push($movies, DB::table('movies')->get()->where('id', $movieId)->first());
+        }
+        return $movies;
+    }
+
     //Takes actor name as string and check in database if it exists
     public function ifActorExists($actorName) : bool
     {
@@ -281,11 +293,6 @@ class Movie extends Model
     public function ifActorMovieLedgerExists($actorId, $movieId): bool
     {
         return DB::table('ledger_actors')->where('actor_id', $actorId)->where('movie_id', $movieId)->exists();
-    }
-    
-    public function ifActorEpisodeLedgerExists($actorId, $episodeId): bool
-    {
-        return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
     }
 
     public function ifMovieExists($movieTitle): bool
@@ -318,11 +325,6 @@ class Movie extends Model
         return DB::table('ledger_producers')->where('producer_id', $producerId)->where('movie_id', $movieId)->exists();
     }
 
-    public function ifEpisodeProducerLedgerExists($producerId, $episodeId): bool
-    {
-        return DB::table('ledger_producers')->where('producer_id', $producerId)->where('episode_id', $episodeId)->exists();
-    }
-
     public function ifDirectorExists($directorName): bool
     {
         return DB::table('directors')->where('name', $directorName)->exists();
@@ -333,11 +335,6 @@ class Movie extends Model
         return DB::table('ledger_directors')->where('director_id', $directorId)->where('movie_id', $movieId)->exists();
     }
 
-    public function ifEpisodeDirectorLedgerExists($directorId, $episodeId): bool
-    {
-        return DB::table('ledger_directors')->where('director_id', $directorId)->where('episode_id', $episodeId)->exists();
-    }
-
     public function ifWriterExists($writerName): bool
     {
         return DB::table('writers')->where('name', $writerName)->exists();
@@ -346,10 +343,5 @@ class Movie extends Model
     public function ifWriterMovieLedgerExists($writerId, $movieId): bool
     {
         return DB::table('ledger_writers')->where('writer_id', $writerId)->where('movie_id', $movieId)->exists();
-    }
-
-    public function ifWriterEpisodeLedgerExists($writerId, $episodeId): bool
-    {
-        return DB::table('ledger_writers')->where('writer_id', $writerId)->where('episode_id', $episodeId)->exists();
     }
 }
