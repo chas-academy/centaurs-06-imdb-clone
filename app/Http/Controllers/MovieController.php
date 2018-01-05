@@ -163,8 +163,7 @@ class MovieController extends Controller
             $validatedData = $request->validate([
                 'title' => 'required|unique:movies|max:255',
                 'plot' => 'required',
-                'playtimeHours' => 'required|digits_between:0,9',
-                'playtimeMins' => 'required|digits_between:0,59',
+                'playtimeMins' => 'required|digits_between:1,600',
                 'releaseyear' => 'required',
             ]);
             //To do:
@@ -181,8 +180,7 @@ class MovieController extends Controller
             $movie = new Movie;
             $movie->title = $request->title;
             $movie->plot = $request->plot;
-            $movie->playtime = ($request->playtimeHours).($request->playtimeMins);
-            $movie->poster = $request->file('poster')->hashName();;
+            $movie->playtime = $request->playtimeMins;
             $movie->releasedate = ($request->releaseyear.'-01-01');
             $movie->save();
             
