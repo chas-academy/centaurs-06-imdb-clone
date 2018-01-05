@@ -8,8 +8,52 @@
         <!-- Content off Mobile-menu -->
         <div id="menu" class="row menu">
             <div class="small-12 flex-align-c-c">
-                <img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo">
-            </div>            
+                <img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo hidden">
+            </div>
+            <!-- Only shows on desktop -->
+            <header id="mobile-hide" class="row">
+                <div class="small-12 header-flex-align-sb-c">
+                    <a href="{{ URL::to('/') }}"><img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo"></a>
+                    <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
+                    <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
+                </div>
+                <div id="search" class="small-12 header-flex-align-sb-c" data-toggler=".visible">
+                    <form class="small-12 search fast" data-animate="fade-in fade-out">
+                        <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
+                        <button type="submit"><i class="fa fa-search search-btn" id="search-btn" aria-hidden="true"></i></button>
+                    </form> 
+                </div>
+                <div class="small-12 header-flex-align-sb-c">
+                    <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+                        <option value="#" selected disabled>Genre</option>
+                            <option value="Action">Action</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Animation">Animation</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Crime">Crime</option>
+                            <option value="Documentary">Documentary</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Family">Family</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="History">History</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Music">Music</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Science Fiction">Science Fiction</option>
+                            <option value="TV Movie">TV Movie</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="War">War</option>
+                            <option value="Western">Western</option>
+                    </select>
+                    <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+                        <option value="#" selected disabled>Sort By</option>
+                        <option value="Top15Movies">Top 15 movies</option>
+                        <option value="NewestHits">Release date</option>
+                        <option value="TopRateAllTime">Top rated all time</option>
+                    </select>
+                </div>
+            </header>
             <!-- Sign in -->
         
         <?php if (!Auth::check()): ?>
@@ -47,6 +91,15 @@
                     </div>
                 </form>
             </div>
+            <!-- shows on desktop -->
+            <footer id="mobile-hide" class="row footer-mobile">
+                <div class="small-12 footer">
+                    <button data-toggle="offcanvas-full-members">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </button>
+                    <p>Curious about us?</p>    
+                </div>
+            </footer>
             <div id="mobile-btn-wrap" class="mobile-btn-wrap">
                 <h2 id="sign-in">Sign In</h2>
                 <h2 id="sign-up">Create your account</h2>
@@ -104,7 +157,6 @@
         </div>
     </div>
 </div>
-
 <!-- ABOUT DEVS -->
 <div id="offcanvas-full-members" class="offcanvas-full-members" data-off-canvas data-transition="overlap" data-content-overlay="false">
     <div class="fullscreen-container">

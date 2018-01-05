@@ -9919,6 +9919,10 @@ header .header-flex-align-sb-c .logo {
   width: 90px;
 }
 
+#mobile-hide {
+  display: none;
+}
+
 /*          Main Layout            */
 
 main {
@@ -11100,6 +11104,10 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   display: none;
 }
 
+.select2 {
+  width: 48% !important;
+}
+
 .select2-selection:focus {
   background-color: #FFFFFF !important;
 }
@@ -11290,6 +11298,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .row {
     max-width: 100%;
+    padding-top: 10px;
   }
 
   .row .flex-align-sb-c {
@@ -11318,6 +11327,98 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   .row .flex-align-sb-c .movie-poster:nth-child(4n) .poster-size {
     width: 250px;
     height: 396px;
+  }
+
+  #desk-hide {
+    display: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #mobile-hide {
+    display: block;
+    padding: 35px 25px 10px 25px;
+  }
+
+  #mobile-hide #search {
+    display: none;
+  }
+
+  #mobile-hide #search.visible {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  #mobile-hide .header-flex-align-sb-c {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0 0 25px 0;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+  #mobile-hide .header-flex-align-sb-c .search {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+  #mobile-hide .header-flex-align-sb-c .search-btn {
+    /*      Motion ui class for toggle      */
+  }
+
+  #mobile-hide .header-flex-align-sb-c .search-btn.hidden {
+    display: none;
+  }
+
+  #mobile-hide .header-flex-align-sb-c .search-exit-btn {
+    /*      Motion ui class for toggle      */
+  }
+
+  #mobile-hide .header-flex-align-sb-c .search-exit-btn.visible {
+    display: inline-block;
+  }
+
+  #mobile-hide .header-flex-align-sb-c .search-input {
+    margin: 0;
+    width: 90%;
+    text-align: center;
+    padding: 0px 15px 0px 15px;
+  }
+
+  #mobile-hide .header-flex-align-sb-c select {
+    width: 48%;
+    visibility: hidden;
+  }
+
+  #mobile-hide .header-flex-align-sb-c .logo {
+    width: 90px;
+  }
+
+  .footer-mobile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 104%;
+  }
+
+  #sign-in {
+    font-size: 2rem;
+  }
+
+  #sign-up {
+    font-size: 2rem;
   }
 }
 
