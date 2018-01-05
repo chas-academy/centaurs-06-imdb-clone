@@ -18,6 +18,6 @@ class Genre extends Model
 
     public function searchableAs()
     {
-        return 'genre_name';
+        return 'genre.name';
     }
 }

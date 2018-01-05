@@ -11,6 +11,6 @@ class Producer extends Model
 
     public function searchableAs()
     {
-        return 'name';
+        return 'producer.name';
     }
 }

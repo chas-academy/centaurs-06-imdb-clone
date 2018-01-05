@@ -11,6 +11,6 @@ class Director extends Model
 
     public function searchableAs()
     {
-        return 'name';
+        return 'director.name';
     }
 }
