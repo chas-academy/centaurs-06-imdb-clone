@@ -11282,6 +11282,10 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     margin-left: 20%;
   }
 
+  .current-movie {
+    margin-left: 20%;
+  }
+
   #mobile-btn-open {
     display: none;
   }
