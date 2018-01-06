@@ -97,3 +97,6 @@ Auth::routes();
 Route::get('/home', function () {
     return view('pages.index');
 });
+
+Route::get('/createmovie', 'MovieController@createMovie');
+Route::post('/createmovie', 'MovieController@storeMovie');

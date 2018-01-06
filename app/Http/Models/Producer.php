@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Producer extends Model
 {
@@ -13,4 +14,6 @@ class Producer extends Model
     {
         return 'producer.name';
     }
+
+    protected $table = 'producers';
 }
