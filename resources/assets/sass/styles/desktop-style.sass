@@ -1,0 +1,104 @@
+#offcanvas-full-screen
+    display: flex
+    width: 20%
+    -webkit-transform: translateX(0%)
+    -ms-transform: translateX(0%)
+    transform: translateX(0%)
+    overflow-y: inherit
+
+.offcanvas-full-screen-inner
+    width: 100%
+
+.off-canvas-content
+    margin-left: 20%
+
+.current-movie
+    margin-left: 20%
+
+#mobile-btn-open
+    display: none
+
+.mobile-btn-quit
+    display: none !important
+
+.logo
+    display: flex
+
+.row
+    max-width: 100%
+    padding-top: 10px
+    .flex-align-sb-c
+        justify-content: space-around
+        .movie-poster
+            margin-bottom: 20px
+            margin-top: 20px
+            padding-left: 20px
+            padding-right: 20px
+            text-align: center
+            .poster-size
+                width: 250px
+                height: 396px
+        .movie-poster:nth-child(4n)
+            padding-top: 20px
+            margin: 0px
+            .poster-size
+                width: 250px
+                height: 396px
+
+#desk-hide
+    display: none
+
+.hidden
+    display: none
+
+#mobile-hide
+    display: block
+    padding: 35px 25px 10px 25px
+    #search-desktop
+        display: none
+        &.visible
+            display: flex
+    .header-flex-align-sb-c
+        display: flex
+        align-items: center
+        padding: 0 0 25px 0
+        justify-content: space-between
+        .search
+            display: flex
+            justify-content: space-between
+        .search-btn
+            /*      Motion ui class for toggle      */
+            &.hidden
+                display: none
+        .search-exit-btn
+            /*      Motion ui class for toggle      */
+            &.visible
+                display: inline-block
+        .search-input
+            margin: 0
+            width: 90%
+            text-align: center
+            padding: 0px 15px 0px 15px 
+        select
+            width: 48%
+            visibility: hidden
+        .logo
+            width: 90px
+
+.footer-mobile
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 104%
+
+#sign-in
+    font-size: 2rem
+
+#sign-up
+    font-size: 2rem
+
+#search-btn
+    display: none
+
+#search-exit-btn
+    display: none

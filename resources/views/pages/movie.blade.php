@@ -1,6 +1,6 @@
 @extends('layouts.layout') @section('content')
-<header class="row">
-    <div class="small-12 header-flex-align-sb-c">
+<header id="desk-hide" class="row">
+    <div id="desk-hide" class="small-12 header-flex-align-sb-c">
         <a href="{{ URL::to('/') }}"><img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo"></a>
         <i class="fa fa-search search-btn" id="search-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".hidden"></i>
         <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>

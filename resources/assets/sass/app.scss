@@ -30,3 +30,8 @@
 
 // Fixes for Foundations offcanvas full screen menu
 @import "fixes/offcanvas-full-screen";
+
+// Style for desktop
+@media only screen and (min-width: 1024px) {
+    @import "styles/desktop-style";
+}
