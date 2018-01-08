@@ -11,7 +11,7 @@ class UserController extends Controller
     
     public function profile()
     {
-        return view('pages.profile', array('user' => Auth::user()));
+        return Auth::user();
     }
 
     public function updateAvatar(Request $request)
@@ -28,7 +28,7 @@ class UserController extends Controller
             $user->save();
         }
 
-        return view('pages.profile', array('user' => Auth::user()));
+        return array('user' => Auth::user());
 
     }
 

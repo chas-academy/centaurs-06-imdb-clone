@@ -1,6 +1,7 @@
 <?php
 use App\Http\Models\Movie;
 use App\Http\Models\Genre;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Models\Genre;
 */
 
 // Home Also called index view
+
 Route::get('/', function () 
 {
     $movieModel = new Movie();
@@ -21,6 +23,15 @@ Route::get('/', function ()
     $movies = $movieModel->getAllMovies();
     $genres = $genreModel->getAllGenres();
     $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
+
+    if(Auth::check()) {
+        $userController = new UserController;
+        $user = $userController->profile();
+
+        $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres)->with('user', $user);
+    } else {
+        $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
+    };
     return $view;
 });
 
@@ -30,14 +41,19 @@ Route::get('/login', function () {
 
 Route::get('/watchlist', function () 
 {
+    $user = Auth::user()->id;
     $movieModel = new Movie();
     $genreModel = new Genre();
-    $movies = $movieModel->getAllMovies();
+    $movies = $movieModel->getAllMoviesFromWatchlist($user);
     $genres = $genreModel->getAllGenres();
-    
+
     $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres);
     return $view;
 });
+
+Route::get('/watchlist/delete/{movieId}', 'MovieController@removeMovieFromWatchlist');
+
+Route::get('/movie/{movieId}/addwatchlist', 'MovieController@addMovieToWatchlist');
 
 Route::get('movie/{movieId}', function ($movieId)
 {
@@ -67,9 +83,13 @@ Route::get('movie/{movieId}', function ($movieId)
 Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');
 
+
+
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
+
+Route::get('/search', 'Api\SearchController@search');
 
 Auth::routes();
 
@@ -78,3 +98,5 @@ Route::get('/home', function () {
 });
 
 Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
+Route::get('/createmovie', 'MovieController@createMovie');
+Route::post('/createmovie', 'MovieController@storeMovie');

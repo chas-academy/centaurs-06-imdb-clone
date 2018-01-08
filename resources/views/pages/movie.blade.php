@@ -13,6 +13,10 @@
 <main class="row current-movie">
     <div class="small-12 movie-flex-align">
         <div class="movie-info">
+            <div class="small-12 flex-align-c-c">
+                <a href="{{ $movie->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
+            </div>
+
             <div class="movie-rating">
                 <p class="rating-num">{{ $movie->imdb_rating }}</p>
                 <i class="fa fa-star" aria-hidden="true"></i>
