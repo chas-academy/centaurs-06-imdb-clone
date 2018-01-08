@@ -14,13 +14,10 @@ use App\Producer;
 
 class SearchController extends Controller
 {
-    public function search($searchKey)
+    public function search(Request $request)
     {
-    
-        $client = new \AlgoliaSearch\Client($_ENV['ALGOLIA_APP_ID'], $_ENV['ALGOLIA_SECRET']);
-
-        $error = ['error' => 'No results found, please try with different keywords.'];
         $query = $request['q'];
+        $client = new \AlgoliaSearch\Client($_ENV['ALGOLIA_APP_ID'], $_ENV['ALGOLIA_SECRET']);
 
         $queries = [
             ['indexName' => 'movie.title', 'query' => $query],
@@ -28,15 +25,29 @@ class SearchController extends Controller
             ['indexName' => 'actor.name', 'query' => $query],
             ['indexName' => 'director.name', 'query' => $query],
             ['indexName' => 'producer.name', 'query' => $query],
-            ['indexName' => 'genre.name', 'query' => $query],
+            ['indexName' => 'genre.name', 'query' => $query]
         ];
         
-        $error = ['error' => 'No results found, please try with different keywords.'];
-        $results = $client->multipleQueries($queries);
-        $movies = array_first($results)[0]['hits'];
-        $object = json_decode (json_encode ($movies), FALSE);
+        $results = $client->multipleQueries($queries, 'indexName');
         
+        $results = array_first($results);
+        $movies = [];
+
+        foreach ($results as $result) {
+            if(!empty($result['hits'])) {
+                $result = json_decode (json_encode ($result['hits']), FALSE);
+                array_push($movies, $result);
+            }
+        }
         
-        return view('pages.index')->with('movies', $object);
+        $movies = array_first($movies);
+        
+        if (empty($movies)) {
+            $movies = Movie::getAllMovies();
+            $message = ['error' => 'No results found, please try with different keywords.'];
+            return view('pages.index')->with('message', $message)->with('movies', $movies);
+        }
+
+        return view('pages.index')->with('movies', $movies);
     }
 }

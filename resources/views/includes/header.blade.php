@@ -10,8 +10,8 @@
         <i class="fa fa-times search-exit-btn" id="search-exit-btn" aria-hidden="true" data-toggle="search search-btn search-exit-btn" data-toggler=".visible"></i>
     </div>
     <div id="search" class="small-12 header-flex-align-sb-c" data-toggler=".visible">
-        <form class="small-12 search fast" data-animate="fade-in fade-out">
-            <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
+        <form class="small-12 search fast" data-animate="fade-in fade-out" method="GET" action="/search">
+            <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more..." name="q">
             <button type="submit"><i class="fa fa-search search-btn" id="search-btn" aria-hidden="true"></i></button>
         </form> 
     </div>

@@ -87,10 +87,8 @@ Route::post('profile', 'UserController@updateAvatar');
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
-Route::get('/search', function (Request $request) {
-    return App\Order::search($request->search)->get();
- });
 
+Route::get('/search', 'Api\SearchController@search');
 
 Auth::routes();
 
