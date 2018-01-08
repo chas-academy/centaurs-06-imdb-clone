@@ -767,7 +767,7 @@ __webpack_require__(9);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__webpack_require__(43);
+__webpack_require__(35);
 
 /***/ }),
 /* 9 */
@@ -41108,20 +41108,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 35 */,
-/* 36 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */
+/* 35 */
 /***/ (function(module, exports) {
 
 $.fn.personList = function (config) {
@@ -41207,6 +41194,12 @@ $.fn.personList = function (config) {
         updateList(myPersons);
     }
 };
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
