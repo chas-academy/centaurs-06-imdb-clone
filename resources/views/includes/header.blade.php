@@ -17,6 +17,13 @@
     </div>
     
     <div class="small-12 header-flex-align-sb-c">
+        <select id="sortByGenreSelect" class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+            <option value="#" selected disabled>Genre</option>
+            @foreach($genres as $genre)
+                <option value="{{ $genre->genre_name }}">
+                    {{ $genre->genre_name }}</option>
+            @endforeach
+        </select>
     <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
     <option value="#" selected disabled>Genre</option>
         <option value="Action">Action</option>
@@ -39,7 +46,6 @@
         <option value="War">War</option>
         <option value="Western">Western</option>
 </select>
-
         <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
             <option value="#" selected disabled>Sort By</option>
             <option value="Top15Movies">Top 15 movies</option>

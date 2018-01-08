@@ -22,6 +22,7 @@ Route::get('/', function ()
     $genreModel = new Genre();
     $movies = $movieModel->getAllMovies();
     $genres = $genreModel->getAllGenres();
+    $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
 
     if(Auth::check()) {
         $userController = new UserController;
@@ -96,5 +97,6 @@ Route::get('/home', function () {
     return view('pages.index');
 });
 
+Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
