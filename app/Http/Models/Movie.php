@@ -5,6 +5,7 @@ namespace App\Http\Models;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use App\Http\Models\Genre;
 
 use DB;
 
@@ -309,6 +310,8 @@ class Movie extends Model
     
     public function getMoviesByGenre($genre)
     {
+        $genresModel = new Genre();
+        $genres = $genresModel->getAllGenres();
         $genreId = DB::table('genres')->where('genre_name', $genre)->value('id');
         $ledgerMovieIds = DB::table('ledger_genres')->where('genre_id', $genreId)->pluck('movie_id');
 

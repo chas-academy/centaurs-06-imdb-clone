@@ -100,3 +100,4 @@ Route::get('/home', function () {
 
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
+Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
