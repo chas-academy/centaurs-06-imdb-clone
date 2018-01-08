@@ -4,6 +4,7 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use App\Http\Models\Genre;
 
 use DB;
 
@@ -272,6 +273,22 @@ class Movie extends Model
         return $genres;
     }
     
+    public function getMoviesByGenre($genre)
+    {
+        $genresModel = new Genre();
+        $genres = $genresModel->getAllGenres();
+        $genreId = DB::table('genres')->where('genre_name', $genre)->value('id');
+        $ledgerMovieIds = DB::table('ledger_genres')->where('genre_id', $genreId)->pluck('movie_id');
+
+        $movies = [];
+        foreach ($ledgerMovieIds as $movieId) {
+            array_push($movies, DB::table('movies')->get()->where('id', $movieId)->first());
+        }
+
+        echo json_encode($movies);
+        exit();
+    }
+
     //Takes actor name as string and check in database if it exists
     public function ifActorExists($actorName) : bool
     {

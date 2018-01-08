@@ -14,10 +14,10 @@
 		<h1>Watchlist</h1>
     </div>
     <div class="small-12 header-flex-align-c-c">
-        <select class="js-example-basic-single js-states form-control" name="states[]" id="id_label_single">
+        <select class="js-example-basic-single js-states form-control genreSorting" name="states[]" id="id_label_single">
             <option value="#" selected disabled>Genre</option>
             @foreach($genres as $genre)
-                <option value="$genre->genre_name">@php echo $genre->genre_name @endphp</option>
+                <option value="{{ $genre->genre_name }}">@php echo $genre->genre_name @endphp</option>
             @endforeach
         </select>
     </div>
@@ -46,4 +46,5 @@
    	</main>
 	@include('includes.footer')
 </div>
+
 @endsection 

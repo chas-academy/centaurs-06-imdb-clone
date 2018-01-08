@@ -69,5 +69,4 @@ class MovieController extends Controller
 
             return $movies;  
         }
-
 }

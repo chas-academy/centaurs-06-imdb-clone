@@ -20,7 +20,6 @@ Route::get('/', function ()
     $genreModel = new Genre();
     $movies = $movieModel->getAllMovies();
     $genres = $genreModel->getAllGenres();
-    
     $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
     return $view;
 });
@@ -77,3 +76,5 @@ Auth::routes();
 Route::get('/home', function () {
     return view('pages.index');
 });
+
+Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
