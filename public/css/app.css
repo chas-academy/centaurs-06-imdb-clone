@@ -11714,6 +11714,22 @@ main .none:nth-child(4n) .poster-size {
   display: none;
 }
 
+#links {
+  padding-right: 1rem;
+  padding-top: 3rem;
+}
+
+#white {
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+#log-out {
+  padding-top: 3rem;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
 .select2 {
   width: 48% !important;
 }
