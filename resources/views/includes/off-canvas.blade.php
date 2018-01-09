@@ -1,7 +1,3 @@
-<?php
-    // dd($user->name);
-?>
-
 <!-- USER MENU/SETTINGS -->
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
@@ -119,28 +115,35 @@
 
                 <div class="small-12 flex-align-fd-c" id="profile-page">
                     <div class"width-100">
-                    <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:80px; height:80px; border-radius:50%;">
+                    <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:60px; height:60px; border-radius:50%;">
                     </div>
                     <h2 class="avatar">Hi {{ $user->name }}!</h2>
-                    <div class"width-100">
+
+                        <div class="cont-profile">
+                            <h2 id="links">Profile</h2>
+                            <a id="white" href="/watchlist">Watchlist</a>
+                        </div>
+
                     
+                    <div class"width-100">
+                    <!--    
                         <div id="right">
-                        <!-- FIX THE FILE BUTTON HERE -->
+                        
                             <div class="upload-btn-wrapper">
                                 <button class="butn">Upload a file</button>
                                 <form enctype="multipart/form-data" action="/profile" method="POST">
                                 <input id="input-file" type="file" name="avatar">
                             </div>
-                            <!-- FIX THE FILE BUTTON HERE -->
+                        
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input class="send-pic" type="submit" class="button">
                         </div>
-                    </form>
+                    </form>                  
                 </div>
-
-                    <div id="mobile-btn-wrap" class="mobile-btn-wrap">
-                            <li class="sign-out">
-                                <a id="style-none" href="{{ route('logout') }}"
+                -->
+                    <div id="sign-out">
+                            <li>
+                                <a id="log-out" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                     Logout
