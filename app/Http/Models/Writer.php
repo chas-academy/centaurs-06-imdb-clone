@@ -8,6 +8,7 @@ use DB;
 
 class Writer extends Model
 {
+
     use Searchable;
 
     public function searchableAs()
@@ -16,4 +17,5 @@ class Writer extends Model
     }
 
     protected $table = 'writers';
+    
 }

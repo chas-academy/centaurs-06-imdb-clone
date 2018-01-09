@@ -31,7 +31,7 @@ class TvShowController extends Controller
 
     public function createTvShowFromApi()
     {
-        $keyword = "Gam of thrones";
+        $keyword = "Freinds";
         $argument = str_replace(' ', '%20', $keyword);
         $searchMethod = 'search/tv?';
         $search = '&language=en-US&query=' . $argument . '&page=1';
