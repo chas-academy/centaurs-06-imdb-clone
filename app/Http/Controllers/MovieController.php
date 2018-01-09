@@ -44,13 +44,13 @@ class MovieController extends Controller
         
         public function createMovieFromApi() 
         {
-            $keyword = "fifty shades of gray";
+            $keyword = "Rogue One";
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
             
             $result = $this->MovieApi($search, $searchMethod);
-            
+
             $movie = new Movie();
             $movie->createMovie($result);
             $this->getMovieStaff($result);

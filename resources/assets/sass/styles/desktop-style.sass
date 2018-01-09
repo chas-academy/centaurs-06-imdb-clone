@@ -14,6 +14,50 @@
 
 .current-movie
     margin-left: 20%
+    display: flex
+    flex-direction: column
+    .movie-flex-align
+        display: flex
+        .movie-info
+            background: rgb(0, 0, 0)  // Fall-back if browsers don't support rgba
+            // background: rgba(0, 0, 0, .5)
+            background: linear-gradient(to top, rgba(0,0,0, 0), rgba(0,0,0, .4) 80%)
+            // -webkit-mask-image: -webkit-gradient(linear, top, 
+            // bottom, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .1)))
+            flex-direction: row
+            height: 48em
+            .poster-section
+                flex-direction: column
+                margin: 20px
+                margin-top: 66px
+                .poster-image
+                    height: auto
+                    min-width: 340px
+                    max-width: 340px
+                    
+        .movie-info-section
+            margin: 50px
+            .movie-description
+                .year-play
+                    justify-content: flex-start
+                    .movie-year
+                        margin-right: 5px
+                    .playtime
+                        margin-left: 5px
+            .movie-crew
+                display: flex
+                flex-direction: row
+                .movie-crew-card
+                    margin-right: auto
+                    flex-basis: auto
+                    ul
+                        list-style-type: none
+                        margin-left: 0px
+                        margin-top: 5px
+
+
+.btn-container
+    display: flex
 
 #mobile-btn-open
     display: none
@@ -102,3 +146,19 @@
 
 #search-exit-btn
     display: none
+
+// Backdrop
+
+.backdrop-image
+    -webkit-filter: blur(10px)
+    -moz-filter: blur(10px)
+    -o-filter: blur(10px)
+    -ms-filter: blur(10px)
+    filter: blur(10px)
+    position: absolute
+    z-index: -10
+    width: 80%
+    height: auto
+    align-items: center
+    top: 0
+    left: 0
