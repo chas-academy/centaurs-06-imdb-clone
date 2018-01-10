@@ -15,4 +15,13 @@ class sortByController extends Controller
        $sortedMovies = $movieModel->getMoviesByGenre($genre);
        return $sortedMovies;
     }
+
+    public function sortBySpec(Request $request)
+    {
+    	$data = $request->all();
+    	$option = implode("", $data);
+    	$movieModel = new Movie();
+    	$sortedMovies = $movieModel->getMoviesBySpecSorting($option);
+    	print_r($option);
+    }
 }

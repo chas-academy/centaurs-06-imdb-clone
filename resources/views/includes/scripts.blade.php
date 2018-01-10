@@ -30,7 +30,6 @@
                     });
                 }               
         }
-
         // Initialize person (actor/producer..) handling
         $(function() {
             $(".js-personlist").each(function(index, el) {
@@ -39,13 +38,56 @@
                     dataField: el.data('field'),
                 });
             });
+        // Special Sorting 
+        $('#sortBySpecSorting').change(function(){
+            let selectedSpecSorting = $('#sortBySpecSorting').val();
+
+            if(selectedSpecSorting === ''){}
+            else
+            {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                    method: 'POST',
+                    url: '/sortbyspec/update',
+                    data: {selectedSpecSorting},
+                    dataType: 'json',
+                    success: function(response)
+                    {  
+                        let movies = response;
+                        console.log(movies);
+                        let moviePoster = $('.movie-poster').remove();
+                        for (let i in movies)
+                        {
+                        let html = 
+                        '<div class="movie-poster">' +
+                            '<div class="movie-rating">' +
+                                '<p class="rating-num">' + movies[i].imdb_rating +'</p>' +
+                                '<i class="fa fa-star" aria-hidden="true"></i>' +
+                            '</div>' +
+                            '<a href="movie/'+ movies[i].id+'" class="none">' +
+                                '<img src="https://image.tmdb.org/t/p/w500/'+ movies[i].poster +'" class="poster-size">' +
+                            '</a>'
+                        '</div>';
+                        let movieSortedPoster = $('.flex-align-sb-c').append(html) 
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                        console.log(JSON.stringify(jqXHR));
+                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                    }
+            });
+            }
+        });
+
+        // Sorting By Genre those two sorting function will be combined into one if it is possible(This is for later).
         $('#sortByGenreSelect').change(function(){
             let selectedGenre = $('#sortByGenreSelect').val();
 
-            if(selectedGenre === '')
-            {
-
-            }
+            if(selectedGenre === ''){}
             else
             {
             $.ajaxSetup({
@@ -62,7 +104,7 @@
                     {  
                         let movies = response
                         let moviePoster = $('.movie-poster').remove();
-                        for(var i in movies)
+                        for(let i in movies)
                         {
                         let html = 
                         '<div class="movie-poster">' +
