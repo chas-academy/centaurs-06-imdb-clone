@@ -38,13 +38,13 @@
                     dataField: el.data('field'),
                 });
             });
-        // Special Sorting 
-        $('#sortBySpecSorting').change(function(){
-            let selectedSpecSorting = $('#sortBySpecSorting').val();
 
-            if(selectedSpecSorting === ''){}
-            else
-            {
+        // Special Sorting
+        $('#sortBySpecSorting, #sortBySpecDesktop').change(function(){
+            
+            let selectedSpecSorting = $('#sortBySpecSorting').val() || $('#sortBySpecDesktop').val();
+
+            if (selectedSpecSorting !== '') {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -58,7 +58,6 @@
                     success: function(response)
                     {  
                         let movies = response;
-                        console.log(movies);
                         let moviePoster = $('.movie-poster').remove();
                         for (let i in movies)
                         {
@@ -84,12 +83,10 @@
         });
 
         // Sorting By Genre those two sorting function will be combined into one if it is possible(This is for later).
-        $('#sortByGenreSelect').change(function(){
-            let selectedGenre = $('#sortByGenreSelect').val();
+        $('#sortByGenreSelect, #sortByGenreDesktop').change(function(){
+            let selectedGenre = $('#sortByGenreSelect').val() || $('#sortByGenreDesktop').val();
 
-            if(selectedGenre === ''){}
-            else
-            {
+            if(selectedGenre !== '') {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
