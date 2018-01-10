@@ -204,5 +204,4 @@
 
 @section('page-scripts')
 
-
 @endsection

@@ -17899,9 +17899,9 @@ if (token) {
 
     // Define as an anonymous module so, through path mapping, it can be
     // referenced as the "underscore" module.
-    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() {
       return _;
-    }.call(exports, __webpack_require__, exports, module),
+    }).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   }
   // Check for `exports` after `define` in case a build optimizer adds it.
@@ -28191,9 +28191,9 @@ jQuery.nodeName = nodeName;
 // https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
 
 if ( true ) {
-	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
 		return jQuery;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+	}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 }
 
@@ -41199,7 +41199,7 @@ $.fn.personList = function (config) {
 /* 36 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: \n<<<<<<< HEAD\n^\n      Invalid CSS after \"<\": expected 1 selector or at-rule, was \"<<<<<<< HEAD {}\"\n      in /Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/resources/assets/sass/styles/error-style.sass (line 1, column 1)\n    at runLoaders (/Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.<anonymous> (/Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/async/dist/async.js:2257:31)\n    at Object.callback (/Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/async/dist/async.js:958:16)\n    at options.error (/Users/lalalaya/Desktop/Chas/centaurs-06-imdb-clone/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ })
 /******/ ]);
