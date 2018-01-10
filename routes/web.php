@@ -97,6 +97,11 @@ Route::get('/home', function () {
     return view('pages.index');
 });
 
+// For Genre Sorting
 Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
+
+// For Special Sorting
+Route::post('/sortbyspec/update', 'sortByController@sortBySpec');
+
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
