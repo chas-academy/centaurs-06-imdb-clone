@@ -96,6 +96,8 @@ class MovieController extends Controller
             
             $movieModel = new Movie();
             $movieModel->removeMovieFromWatchlist($userId, $movieId);
+
+            return redirect('/watchlist');
         }
 
         public function addMovieToWatchlist($movieId)
