@@ -322,8 +322,136 @@ class Movie extends Model
 
         echo json_encode($movies);
         exit();
-      
+
         return $movies;
+    }
+
+    public function getMoviesBySpecSorting($option)
+    {
+
+        // GET THE WORST RATED MOVIES
+        if($option == 'lowImdb')
+        {
+            $dbtests = DB::table('movies')->orderBy('imdb_rating', 'asc')->get();
+            $movies = [];
+            foreach($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+        }
+        // GET MOVIES BY NEWEST FIRST
+        elseif($option == 'releaseNew')
+        {
+            $dbtests = DB::table('movies')->orderBy('releasedate', 'desc')->get();
+            $movies = [];
+            foreach($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }            
+            echo json_encode($movies);
+            exit();
+        }
+        elseif($option == 'releaseOld')
+        {
+            // GET MOVIES BY OLDEST FIRST
+            $dbtests = DB::table('movies')->orderBy('releasedate', 'asc')->get();
+            $movies = [];
+            foreach($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+        }
+        elseif($option == 'top15')
+        {
+            // GET TOP 15 MOVIES
+            $dbtests = DB::table('movies')->orderBy('imdb_rating', 'desc')->limit(15)->get();
+            $movies = [];
+
+            foreach($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+        }
+        elseif($option == 'topAllTime')
+        {
+            // GET TOP ALL TIME MOVIES
+            $dbtests = DB::table('movies')->orderBy('releasedate', 'asc')->orderBy('imdb_rating', 'asc')->get();
+            $movies = [];
+            foreach($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+
+        }
+        elseif($option == 'topChas')
+        {
+            // GET TOP CHAS MOVIES
+            $dbtests = DB::table('movies')->orderBy('chas_rating', 'desc')->get();
+            $movies = [];
+            foreach($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+        }
+        elseif($option == 'topImdb')
+        {
+            // GET TOP MOVIES BY IMDB RATING
+            $dbtests = DB::table('movies')->orderBy('imdb_rating', 'desc')->get();
+            $movies = [];
+            foreach($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+        }
+        elseif($option == 'a-z')
+        {
+            // GET MOVIES A-Z
+            $dbtests = DB::table('movies')->orderBy('title', 'asc')->get();
+            $movies = [];
+            foreach ($dbtests as $dbtest ) 
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+
+        }
+        elseif($option == 'z-a')
+        {
+            // GET MOVIES Z-A
+            $dbtests = DB::table('movies')->orderBy('title', 'desc')->get();
+            $movies = [];
+            foreach ($dbtests as $dbtest ) 
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+        }
+        elseif($option == 'topScore')
+        {
+            // GET MOVIES WITH BEST SCORE
+            $dbtests = DB::table('movies')->orderBy('imdb_rating', 'desc')->get();
+            $movies = [];
+            foreach ($dbtests as $dbtest)
+            {
+                array_push($movies, $dbtest);
+            }
+            echo json_encode($movies);
+            exit();
+        }
     }
 
     //Takes actor name as string and check in database if it exists
