@@ -3,9 +3,13 @@
     @include('includes.header')
 <main class="row">
     @include('includes.menu-btn')
-    <section class="small-12">
+    <!-- <section class="small-12">
         <p style="color: white">{{$message['error'] or ''}}</p>
-    </section>
+    </section> -->
+    <div data-alert class="alert-box success" tabindex="0" aria-live="assertive" role="alertdialog">
+    {{$message['error'] or ''}}
+  <button tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+</div>
     <section class="small-12 flex-align-sb-c">
         @foreach ($movies as $movie)
             <div class="movie-poster">
@@ -197,3 +201,7 @@
 @include('includes.footer')
 </div>
 @endsection 
+
+@section('page-scripts')
+
+@endsection
