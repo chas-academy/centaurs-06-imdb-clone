@@ -15,6 +15,7 @@
 <main class="row current-movie">
     <div class="small-12 large-12 movie-flex-align">
         <div class="movie-info">
+        <div class="movie-content">
             <div class="poster-section">
                 <div class="small-12 flex-align-c-c">
                     <a href="{{ $movie->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
@@ -49,6 +50,7 @@
                         @endif
                     </div>
                 </div>
+
                 <div class="small-12 movie-crew">
                     <div class="movie-crew-card">
                         <b>Directors</b>
@@ -94,7 +96,7 @@
                             <p>No actors found</p>
                             @else
                             @foreach ($actors as $actor)
-                              <li class="person-name">{{ $actor }}</li>
+                            <li class="person-name">{{ $actor }}</li>
                             @endforeach
                             @endif
                         </ul>
@@ -106,11 +108,12 @@
                 </div>
             </div>
         </div>
+            <div class="small-12 btn-container">
+                <button class="read-review" data-toggle="read-reviews">Read reviews</button>
+                <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+            </div> 
+        </div>
     </div>
-    <div class="small-12 btn-container">
-        <button class="read-review" data-toggle="read-reviews">Read reviews</button>
-        <button class="writer-review" data-toggle="write-reviews">Write a review</button>
-    </div> 
     <div class="small-12 review-flex-align">
         <div id="write-reviews" class="write-reviews" data-toggler=".visible">
             <div class="review-rate">
