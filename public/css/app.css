@@ -11127,6 +11127,29 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   font-size: 1.25rem;
 }
 
+#avatar-page {
+  display: none;
+}
+
+#add-avatar {
+  display: none;
+}
+
+#settings {
+  display: none;
+  padding-right: 1rem;
+}
+
+.back-btn {
+  display: none;
+  padding-right: 1rem;
+  padding-top: 5rem;
+}
+
+#email-update {
+  display: none;
+}
+
 .select2 {
   width: 48% !important;
 }

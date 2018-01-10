@@ -114,33 +114,48 @@
             <?php if (Auth::check()): ?>
 
                 <div class="small-12 flex-align-fd-c" id="profile-page">
-                    <div class"width-100">
+                    <div id="avatar" data-toggler=".visible" data-animate="fade-in fade-out" class"width-100">
                     <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:60px; height:60px; border-radius:50%;">
                     </div>
                     <h2 class="avatar">Hi {{ $user->name }}!</h2>
 
                         <div class="cont-profile">
-                            <h2 id="links">Profile</h2>
-                            <a id="white" href="/watchlist">Watchlist</a>
+                            <h2 id="links" data-toggle="avatar-page white avatar settings" data-toggler=".visible" data-animate="fade-in fade-out">Profile</h2>
+                            <a id="white" data-toggler=".visible" data-animate="fade-in fade-out" href="/watchlist">Watchlist</a>
                         </div>
 
                     
                     <div class"width-100">
-                    <!--    
-                        <div id="right">
+
+                        <div id="settings" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <h2 data-toggle="email-update settings links">Change e-mail</h2>
+                            <h2>Change password</h2>
+                            <h2 data-toggle="add-avatar back-btn settings links">Add avatar</h2>
+                            <h2>Delete acount</h2>
+                        </div>
+
+                        <div id="email-update" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <form>
+                            <input type="text" name="new-email" placeholder="Enter new email"></input>
+                            </form>
+                        </div>
                         
-                            <div class="upload-btn-wrapper">
-                                <button class="butn">Upload a file</button>
-                                <form enctype="multipart/form-data" action="/profile" method="POST">
-                                <input id="input-file" type="file" name="avatar">
+                        <div id="add-avatar" aria-hidden="true" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <div id="right">
+                                <div class="upload-btn-wrapper">
+                                    <button class="butn">Upload a file</button>
+                                    <form enctype="multipart/form-data" action="/profile" method="POST">
+                                    <input id="input-file" type="file" name="avatar">
+                                </div>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input class="send-pic" type="submit" class="button">
                             </div>
-                        
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input class="send-pic" type="submit" class="button">
                         </div>
                     </form>                  
                 </div>
-                -->
+
+                <h2 id="back-btn" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings links back-btn">Back</h2>
+                
                     <div id="sign-out">
                             <li>
                                 <a id="log-out" href="{{ route('logout') }}"
