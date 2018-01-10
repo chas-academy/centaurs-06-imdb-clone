@@ -10434,7 +10434,7 @@ main .movie-flex-align .movie-info .movie-rating p {
   margin: 0 0 0 5px;
 }
 
-main .movie-flex-align .movie-info .movie-desciption {
+main .movie-flex-align .movie-info .movie-description {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10446,11 +10446,11 @@ main .movie-flex-align .movie-info .movie-desciption {
   padding: 35px 0px 0px 0px;
 }
 
-main .movie-flex-align .movie-info .movie-desciption h3 {
+main .movie-flex-align .movie-info .movie-description h3 {
   margin: 0;
 }
 
-main .movie-flex-align .movie-info .movie-desciption .year-play {
+main .movie-flex-align .movie-info .movie-description .year-play {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10464,11 +10464,11 @@ main .movie-flex-align .movie-info .movie-desciption .year-play {
           justify-content: space-between;
 }
 
-main .movie-flex-align .movie-info .movie-desciption .year-play p {
+main .movie-flex-align .movie-info .movie-description .year-play p {
   margin: 0;
 }
 
-main .movie-flex-align .movie-info .movie-desciption .movie-genre {
+main .movie-flex-align .movie-info .movie-description .movie-genre {
   width: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10480,7 +10480,7 @@ main .movie-flex-align .movie-info .movie-desciption .movie-genre {
           flex-direction: row;
 }
 
-main .movie-flex-align .movie-info .movie-desciption .movie-genre .genre {
+main .movie-flex-align .movie-info .movie-description .movie-genre .genre {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -10601,11 +10601,11 @@ main .movie-flex-align .movie-info .movie-rating p {
   font-weight: 800;
 }
 
-main .movie-flex-align .movie-desciption h3 {
+main .movie-flex-align .movie-description h3 {
   font-size: 26px;
 }
 
-main .movie-flex-align .movie-desciption .movie-genre .genre {
+main .movie-flex-align .movie-description .movie-genre .genre {
   color: #F1F1F1;
   cursor: pointer;
   font-weight: 800;
@@ -10654,6 +10654,12 @@ main .review-flex-align .read-reviews .review {
 
 main .review-flex-align .read-reviews .review:last-of-type {
   border: none;
+}
+
+.movie-crew-card ul {
+  list-style-type: none;
+  margin-left: 0px;
+  margin-top: 5px;
 }
 
 /****** Star Rating ****/
@@ -11284,6 +11290,142 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .current-movie {
     margin-left: 20%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .current-movie .movie-flex-align {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 0px;
+  }
+
+  .current-movie .movie-flex-align .movie-info {
+    background: black;
+    background: -webkit-gradient(linear, left bottom, left top, from(transparent), color-stop(80%, rgba(0, 0, 0, 0.4)));
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.4) 80%);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 710px;
+  }
+
+  .current-movie .movie-flex-align .movie-info .movie-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-top: -60px;
+  }
+
+  .current-movie .movie-flex-align .movie-info .poster-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 20px;
+    margin-top: 66px;
+  }
+
+  .current-movie .movie-flex-align .movie-info .poster-section .poster-image {
+    height: auto;
+    min-width: 340px;
+    max-width: 340px;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section {
+    margin: 50px;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-description .year-play {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-description .year-play .movie-year {
+    margin-right: 5px;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-description .year-play .playtime {
+    margin-left: 5px;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-crew {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-crew .movie-crew-card {
+    margin-right: auto;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-crew .movie-crew-card ul {
+    list-style-type: none;
+    margin-left: 0px;
+  }
+
+  .btn-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 340px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-left: 20px;
+    padding-top: 0px !important;
+  }
+
+  .btn-container .read-review {
+    width: 340px;
+    min-height: 45px;
+  }
+
+  .btn-container .writer-review {
+    margin-top: 10px;
+    width: 340px;
+    min-height: 45px;
+  }
+
+  .backdrop-image {
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+    position: absolute;
+    z-index: -10;
+    width: 80%;
+    height: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    top: 0;
+    left: 0;
   }
 
   #mobile-btn-open {

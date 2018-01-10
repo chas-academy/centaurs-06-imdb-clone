@@ -12,8 +12,83 @@
 .off-canvas-content
     margin-left: 20%
 
+// Movie-page styling
+
 .current-movie
     margin-left: 20%
+    display: flex
+    flex-direction: column
+    .movie-flex-align
+        display: flex
+        padding-top: 0px
+        .movie-info
+            background: rgb(0, 0, 0)  // Fall-back if browsers don't support rgba
+            background: linear-gradient(to top, rgba(0,0,0, 0), rgba(0,0,0, .4) 80%)
+            flex-direction: column
+            display: flex
+            height: 710px
+            .movie-content
+                display: flex
+                flex-direction: row
+                margin-top: -60px
+            .poster-section
+                flex-direction: column
+                margin: 20px
+                margin-top: 66px
+                .poster-image
+                    height: auto
+                    min-width: 340px
+                    max-width: 340px
+                    
+        .movie-info-section
+            margin: 50px
+            .movie-description
+                .year-play
+                    justify-content: flex-start
+                    .movie-year
+                        margin-right: 5px
+                    .playtime
+                        margin-left: 5px
+            .movie-crew
+                display: flex
+                flex-direction: row
+                flex-wrap: wrap
+                .movie-crew-card
+                    margin-right: auto
+                    flex-basis: auto
+                    ul
+                        list-style-type: none
+                        margin-left: 0px
+
+.btn-container
+    display: flex
+    max-width: 340px
+    flex-direction: column
+    margin-left: 20px
+    padding-top: 0px !important
+    .read-review
+        width: 340px
+        min-height: 45px
+    .writer-review
+        margin-top: 10px
+        width: 340px
+        min-height: 45px
+
+// Backdrop styling
+
+.backdrop-image
+    -webkit-filter: blur(10px) //support different browsers
+    -moz-filter: blur(10px)
+    -o-filter: blur(10px)
+    -ms-filter: blur(10px)
+    filter: blur(10px)
+    position: absolute
+    z-index: -10
+    width: 80%
+    height: auto
+    align-items: center
+    top: 0
+    left: 0
 
 #mobile-btn-open
     display: none

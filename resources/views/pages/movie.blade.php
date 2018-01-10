@@ -9,75 +9,111 @@
         <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
     </form>
 </header>
-
+<div id="mobile-hide">
+<img class="current-movie backdrop-image" src="https://image.tmdb.org/t/p/w1920{{ $movie->backdrop }}">
+</div>
 <main class="row current-movie">
-    <div class="small-12 movie-flex-align">
+    <div class="small-12 large-12 movie-flex-align">
         <div class="movie-info">
-            <div class="small-12 flex-align-c-c">
-                <a href="{{ $movie->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
-            </div>
-
-            <div class="movie-rating">
-                <p class="rating-num">{{ $movie->imdb_rating }}</p>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <img src="https://image.tmdb.org/t/p/w1000{{ $movie->poster }}">
-            <div class="small-12 movie-desciption">
-                <div class="small-12">
-                <h3 class="movie-title">{{ $movie->title }}</h3>
+        <div class="movie-content">
+            <div class="poster-section">
+                <div class="small-12 flex-align-c-c">
+                    <a href="{{ $movie->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
                 </div>
-                <div class="small-12 year-play">
-                    <p class="movie-year">{{ $movie->releasedate }}</p>
-                    <p>|</p>
-                    <p class="playtime">
-                        {{ $movie->playtime }} min
-                    </p>
+
+                <div class="movie-rating">
+                    <p class="rating-num">{{ $movie->imdb_rating }}</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                <div class="small-12 movie-genre">
-                    @foreach ($genres as $genre)
-                        <p class="genre">{{ $genre }}</p>
-                    @endforeach
+                <img class="poster-image" src="https://image.tmdb.org/t/p/w1000{{ $movie->poster }}">
+            </div>
+
+            <div class="movie-info-section">
+                <div class="small-12 movie-description">
+                    <div class="small-12">
+                    <h3 class="movie-title">{{ $movie->title }}</h3>
+                    </div>
+                    <div class="small-12 year-play">
+                        <p class="movie-year">{{ $movie->releasedate }}</p>
+                        <p>|</p>
+                        <p class="playtime">
+                            {{ $movie->playtime }} min
+                        </p>
+                    </div>
+                    <div class="small-12 movie-genre">
+                        @if (empty($genres))
+                        <p>No genres found</p>
+                        @else
+                        @foreach ($genres as $genre)
+                            <p class="genre">{{ $genre }}</p>
+                        @endforeach
+                        @endif
+                    </div>
                 </div>
-            </div>
-            <div class="small-12 movie-crew">
-                <b>Director</b>
-                <p class="director">
-                    @foreach ($directors as $director)
-                        {{ $director }}
-                    @endforeach
-                </p>
 
-                <b>Writers</b>
-                <p class="w-credits">
-                    @foreach ($writers as $writer)
-                        {{ $writer }}
-                    @endforeach
-                </p> 
-
-                <b>Producer</b>
-                <p class="producer">
-                    @foreach ($producers as $producer)
-                        {{ $producer }}
-                    @endforeach
-                </p>
-
-                <b>Cast</b>
-                <p class="actor">
-                    @foreach ($actors as $actor)
-                        {{ $actor }}
-                    @endforeach
-                </p>           
-            </div>
-            <div class="small-12 movie-plot">
-                <b>Storyline :</b>
-                <p class="plot">{{ $movie->plot }}</p>
+                <div class="small-12 movie-crew">
+                    <div class="movie-crew-card">
+                        <b>Directors</b>
+                        <ul class="director">
+                            @if (empty($writers))
+                            <p>No writers found</p>
+                            @else
+                            @foreach ($directors as $director)
+                                <li class="person-name">{{ $director }}</li>
+                            @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="movie-crew-card">
+                        <b>Writers</b>
+                        <ul class="w-credits">
+                            @if (empty($writers))
+                            <p>No writers found</p>
+                            @else
+                            @foreach ($writers as $writer)
+                                <li class="person-name">{{ $writer }}</li>
+                            @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="movie-crew-card">
+                        <b>Producer</b>
+                        <ul class="producer">
+                            
+                            @if (empty($producers))
+                            <p>No producers found</p>
+                            @else
+                            @foreach ($producers as $producer)
+                                <li class="person-name">{{ $producer }}</li>
+                            @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="movie-crew-card">
+                        <b>Cast</b>
+                        <ul class="actor">
+                            @if (empty($actors))
+                            <p>No actors found</p>
+                            @else
+                            @foreach ($actors as $actor)
+                            <li class="person-name">{{ $actor }}</li>
+                            @endforeach
+                            @endif
+                        </ul>
+                    </div>          
+                </div>
+                <div class="small-12 movie-plot">
+                    <b>Storyline :</b>
+                    <p class="plot">{{ $movie->plot }}</p>
+                </div>
             </div>
         </div>
+            <div class="small-12 btn-container">
+                <button class="read-review" data-toggle="read-reviews">Read reviews</button>
+                <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+            </div> 
+        </div>
     </div>
-    <div class="small-12 btn-container">
-        <button class="read-review" data-toggle="read-reviews">Read reviews</button>
-        <button class="writer-review" data-toggle="write-reviews">Write a review</button>
-    </div> 
     <div class="small-12 review-flex-align">
         <div id="write-reviews" class="write-reviews" data-toggler=".visible">
             <div class="review-rate">
