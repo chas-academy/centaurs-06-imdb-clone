@@ -123,10 +123,5 @@
         //        });
         //    });
         //});
-<<<<<<< HEAD
-=======
-
-        // Script for error and status messages
->>>>>>> First commit for errorand status message styling
-        
+       
     </script>

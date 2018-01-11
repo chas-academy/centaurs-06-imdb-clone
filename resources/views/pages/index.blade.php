@@ -35,4 +35,5 @@
 
 @section('page-scripts')
 
+
 @endsection

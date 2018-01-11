@@ -11346,6 +11346,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   height: 100%;
 }
 
+<<<<<<< HEAD
 /* Search error message */
 
 #statusMsg {
@@ -11419,6 +11420,25 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     -webkit-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
   }
+=======
+/*      Error and Status messages       */
+
+.alert-box {
+  color: black;
+  float: center;
+  width: 100%;
+  height: 40px;
+  padding: 20px;
+  text-align: center;
+}
+
+.alert-box.warning {
+  background-color: #f44332;
+}
+
+.alert-box.success {
+  background-color: #f4ca33;
+>>>>>>> First commit for errorand status message styling
 }
 
 @media only screen and (min-width: 1024px) {
@@ -11625,7 +11645,6 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     max-width: 250px  !important;
     font-size: 20px !important;
     max-height: 150px !important;
-    padding: 20px !important;
   }
 
   .row .flex-align-sb-c .movie-poster:nth-child(4n) {
