@@ -93,15 +93,7 @@
                     </div>
                 </form>
             </div>
-            <!-- shows on desktop -->
-            <footer id="mobile-hide" class="row footer-mobile">
-                <div class="small-12 footer">
-                    <button data-toggle="offcanvas-full-members">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                    </button>
-                    <p>Curious about us?</p>    
-                </div>
-            </footer>
+
             <div id="mobile-btn-wrap" class="mobile-btn-wrap">
                 <h2 id="sign-in">Sign In</h2>
                 <h2 id="sign-up">Create your account</h2>
@@ -119,16 +111,16 @@
                     </div>
                     <h2 class="avatar">Hi {{ $user->name }}!</h2>
                         <div class="cont-profile">
-                            <h2 id="links" data-toggle="white avatar settings" data-toggler=".visible" data-animate="fade-in fade-out">Profile</h2>
+                            <h2 id="links" data-toggle="white avatar settings back-settings" data-toggler=".visible" data-animate="fade-in fade-out">Profile</h2>
                             <a id="white" data-toggler=".visible" data-animate="fade-in fade-out" href="/watchlist">Watchlist</a>
                         </div>
                     <div class"width-100">
                         <!-- Profile settings -->
                         <div id="settings" data-toggler=".visible" data-animate="fade-in fade-out">
-                            <h2 data-toggle="email-update settings back-email">Change e-mail</h2>
-                            <h2 data-toggle="password-update settings back-password">Change password</h2>
-                            <h2 data-toggle="add-avatar settings back-avatar">Add avatar</h2>
-                            <h2 data-toggle="delete-account settings back-delete">Delete acount</h2>
+                            <h2 id="chg-mail" data-toggle="email-update settings back-email back-settings">Change e-mail</h2>
+                            <h2 id="chg-pwd" data-toggle="password-update settings back-password back-settings">Change password</h2>
+                            <h2 id="add-av" data-toggle="add-avatar settings back-avatar back-settings">Add avatar</h2>
+                            <h2 id="delete-acc" data-toggle="delete-account settings back-delete back-settings">Delete acount</h2>
                         </div>
                         <!-- Update email -->
                         <div id="email-update" data-toggler=".visible" data-animate="fade-in fade-out">
@@ -166,10 +158,11 @@
                     </form>                  
                 </div>
                 <!-- Back buttons for profile settings -->
-                <h2 id="back-email" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="email-update settings back-email">Back</h2>
-                <h2 id="back-password" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="password-update settings back-password">Back</h2>
-                <h2 id="back-avatar" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings back-avatar">Back</h2>
-                <h2 id="back-delete" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="delete-account settings back-delete">Back</h2>
+                <h2 id="back-email" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="email-update settings back-email back-settings">Back</h2>
+                <h2 id="back-password" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="password-update settings back-password back-settings">Back</h2>
+                <h2 id="back-avatar" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings back-avatar back-settings">Back</h2>
+                <h2 id="back-delete" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="delete-account settings back-delete back-settings">Back</h2>
+                <h2 id="back-settings" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="settings back-settings white">Back</h2>
                     <!-- Sign out button -->
                     <div id="sign-out">
                             <li>
@@ -186,6 +179,16 @@
                     </div>
 
             <?php endif; ?>
+
+            <!-- shows on desktop -->
+            <footer id="mobile-hide" class="row footer-mobile">
+                <div class="small-12 footer">
+                    <button data-toggle="offcanvas-full-members">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </button>
+                    <p>Curious about us?</p>    
+                </div>
+            </footer>
 
             <div id="mobile-btn-back" class="mobile-btn-back">
                 <i class="fa fa-undo" aria-hidden="true"></i>

@@ -11716,6 +11716,7 @@ main .none:nth-child(4n) .poster-size {
 }
 
 #links {
+  font-weight: bold;
   padding-right: 1rem;
   padding-top: 3rem;
 }
@@ -11723,6 +11724,7 @@ main .none:nth-child(4n) .poster-size {
 #white {
   color: #ffffff;
   font-size: 1.25rem;
+  font-weight: bold;
 }
 
 #log-out {
@@ -12235,6 +12237,55 @@ main .none:nth-child(4n) .poster-size {
 
   #search-exit-btn {
     display: none;
+  }
+
+  #links {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  #white {
+    font-weight: bold;
+  }
+
+  #chg-mail {
+    font-size: 1.25rem;
+  }
+
+  #chg-pwd {
+    font-size: 1.25rem;
+  }
+
+  #add-av {
+    font-size: 1.25rem;
+  }
+
+  #delete-acc {
+    font-size: 1.25rem;
+  }
+
+  #back-email {
+    font-size: 1.25rem;
+  }
+
+  #back-password {
+    font-size: 1.25rem;
+  }
+
+  #back-avatar {
+    font-size: 1.25rem;
+  }
+
+  #back-delete {
+    font-size: 1.25rem;
+  }
+
+  #back-settings {
+    font-size: 1.25rem;
+  }
+
+  #delete-text {
+    font-size: 1.25rem;
   }
 }
 
