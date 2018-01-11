@@ -157,8 +157,9 @@
                         <!-- Update email -->
                         <div id="email-update" data-toggler=".visible" data-animate="fade-in fade-out">
                             <form action="/email-update" method="POST">
-                            <input type="text" name="new-email" placeholder="Enter new email"></input>
-                            <button class="email-btn" type="submit">Confirm</button>
+                                {{ csrf_field() }}
+                                <input type="text" name="new-email" placeholder="Enter new email"></input>
+                                <button class="email-btn" type="submit">Confirm</button>
                             </form>
                         </div>
                         <!-- Update password -->

@@ -105,3 +105,5 @@ Route::post('/createmovie', 'MovieController@storeMovie');
 Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
 
 Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
+
+Route::post('/email-update', 'UserController@updateEmail');
