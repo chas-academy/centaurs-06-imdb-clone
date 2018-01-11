@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Redirect;
 use Auth;
 use Image;
 use View;
+use DB;
 
 class UserController extends Controller
 {
@@ -31,6 +33,22 @@ class UserController extends Controller
 
         return array('user' => Auth::user());
 
+    }
+
+    public function deleteAccount($userId)
+    {
+        if (Auth::check()) {
+            if (Auth::user()->id == $userId)
+            {
+                DB::table('users')->where('id', $userId)->delete();
+                
+                return redirect('/')->with('global', 'Your account has been deleted!');
+            }
+            dd("You are not allowed to remove this user");
+        } else {
+            var_dump('You need to be logged in');
+        }
+        
     }
 
 }

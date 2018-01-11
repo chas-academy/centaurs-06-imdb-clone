@@ -83,8 +83,6 @@ Route::get('movie/{movieId}', function ($movieId)
 Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');
 
-
-
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
@@ -105,3 +103,5 @@ Route::post('/sortbyspec/update', 'sortByController@sortBySpec');
 
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
+
+Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
