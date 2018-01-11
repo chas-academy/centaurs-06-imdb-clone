@@ -11791,6 +11791,10 @@ main .none:nth-child(4n) .poster-size {
   padding-right: 1rem;
 }
 
+.email-btn:hover {
+  color: #ffffff;
+}
+
 .select2 {
   width: 48% !important;
 }

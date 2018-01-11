@@ -171,9 +171,7 @@
                         <!-- Delete account -->
                         <div id="delete-account" data-toggler=".visible" data-animate="fade-in fade-out">
                             <h2 id="delete-text">Are you sure?</h2>
-                            <form action="/delete-account" method="POST">
-                            <button class="email-btn" type="submit">Confirm</button>
-                            </form>
+                            <a class="email-btn" href="/delete-account/{{ $user->id }}">Confirm</a>
                         </div>
                         <!-- Add profile picture -->
                         <div id="add-avatar" aria-hidden="true" data-toggler=".visible" data-animate="fade-in fade-out">
