@@ -119,7 +119,7 @@
                         <div id="settings" data-toggler=".visible" data-animate="fade-in fade-out">
                             <h2 id="chg-mail" data-toggle="email-update settings back-email back-settings">Change e-mail</h2>
                             <h2 id="chg-pwd" data-toggle="password-update settings back-password back-settings">Change password</h2>
-                            <h2 id="add-av" data-toggle="add-avatar settings back-avatar back-settings">Add avatar</h2>
+                            <h2 id="add-av" data-toggle="add-avatar settings back-avatar back-settings avatar">Add avatar</h2>
                             <h2 id="delete-acc" data-toggle="delete-account settings back-delete back-settings">Delete acount</h2>
                         </div>
                         <!-- Update email -->
@@ -160,9 +160,9 @@
                 <!-- Back buttons for profile settings -->
                 <h2 id="back-email" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="email-update settings back-email back-settings">Back</h2>
                 <h2 id="back-password" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="password-update settings back-password back-settings">Back</h2>
-                <h2 id="back-avatar" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings back-avatar back-settings">Back</h2>
+                <h2 id="back-avatar" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings back-avatar back-settings avatar">Back</h2>
                 <h2 id="back-delete" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="delete-account settings back-delete back-settings">Back</h2>
-                <h2 id="back-settings" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="settings back-settings white">Back</h2>
+                <h2 id="back-settings" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="settings back-settings white avatar">Back</h2>
                     <!-- Sign out button -->
                     <div id="sign-out">
                             <li>
