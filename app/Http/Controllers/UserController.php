@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Redirect;
 use Auth;
+use App\User;
 use Image;
 use View;
 use DB;
@@ -44,11 +45,27 @@ class UserController extends Controller
                 
                 return redirect('/')->with('global', 'Your account has been deleted!');
             }
-            dd("You are not allowed to remove this user");
+            // TODO: handle message
         } else {
-            var_dump('You need to be logged in');
+            // TODO: handle
         }
         
+    }
+
+    public function updateEmail(Request $request)
+    {
+        // TODO: Make sure the old email is correct before saving the new on (good practice)
+        // Optionally: Force the user to input password to make this change
+        if (Auth::check()) {
+            if (Auth::user()->id == $userId)
+            {
+                $user = User::find(Auth::user()->id);
+                $user->email = $request->input('new-email');
+                $user->save();
+                // TODO: Nice message and redirect, maybe?
+                return redirect('/')->with('global', 'Your account has been deleted!');
+            }
+        }
     }
 
 }
