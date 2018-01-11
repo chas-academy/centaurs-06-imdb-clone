@@ -13,3 +13,4 @@ yarn-error.log
 adminer.php
 .env.example
 .DS_Store
+public/js/app.js
