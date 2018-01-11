@@ -105,3 +105,6 @@ Route::post('/sortbyspec/update', 'sortByController@sortBySpec');
 
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
+Route::get('/updatemovie', 'MovieController@updateMovie');
+Route::post('/updatemovie', 'MovieController@storeMovie');
+
