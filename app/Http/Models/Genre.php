@@ -9,18 +9,23 @@ use DB;
 
 class Genre extends Model
 {
+    use Searchable;
+
+    protected $table = 'genres';
+
     public function getAllGenres()
     { 
         $genres = DB::table('genres')->get();
         return $genres;
     }
 
-    use Searchable;
-
     public function searchableAs()
     {
         return 'genre.name';
-    }
+    } 
 
-    protected $table = 'genres';
+    public function movies()
+    {
+        return $this->belongsToMany('App\Http\Models\Movie');
+    }
 }

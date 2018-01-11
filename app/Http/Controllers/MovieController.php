@@ -16,6 +16,7 @@ use App\Http\Models\LedgerGenre;
 use Resources\views\pages;
 use App\Http\Controllers\UserController;
 use Auth;
+use DB;
 
 class MovieController extends Controller
 {
@@ -148,11 +149,37 @@ class MovieController extends Controller
         }
 
         // Update movie
-        public function updateMovie(Request $request) {
+        public function editMovie(Request $request, $id) {
 
-            $movie = Movie::getMovieById($request->id);
-            var_dump($movie);
-            die();
+            $movie = Movie::find($id);
+            echo $movie->title;
+
+            $actors = Movie::find($id)->actors()->get();
+            foreach ($actors as $actor) {
+
+                echo $actor->name;
+            }
+
+            $directors = Movie::find($id)->directors()->get();
+            foreach ($directors as $director) {
+
+                echo $director->name;
+            }
+
+            $producers = Movie::find($id)->producers()->get();
+            foreach ($producers as $producer) {
+
+                echo $producer->name;
+            }
+
+            $genre = Movie::find($id)->genres()->first();
+                echo $genre->genre_name;
+
+
+            $dbgenres = Genre::all()->toArray();
+            $releaseyears = range(date('Y'), 1910);
+
+            return view('pages.editmovie', ['movie' => $movie, 'dbgenres' => $dbgenres, 'releaseyears' => $releaseyears, 'actors' => $actors, 'directors' => $directors, 'producers' => $producers, 'genre' => $genre]);
         }
 
         // Store movie
