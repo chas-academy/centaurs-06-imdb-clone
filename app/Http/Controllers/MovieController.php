@@ -147,6 +147,14 @@ class MovieController extends Controller
             return $persons = array_merge($persons, $newPersons);
         }
 
+        // Update movie
+        public function updateMovie(Request $request) {
+
+            $movie = Movie::getMovieById($request->id);
+            var_dump($movie);
+            die();
+        }
+
         // Store movie
         public function storeMovie(Request $request)
         {
