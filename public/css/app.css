@@ -12139,6 +12139,14 @@ main .none:nth-child(4n) .poster-size {
     height: 396px;
   }
 
+  .row .flex-align-sb-c .movie-title {
+    position: relative;
+    z-index: 1;
+    bottom: 220px;
+    color: white;
+    max-width: 250px;
+  }
+
   #desk-hide {
     display: none;
   }
