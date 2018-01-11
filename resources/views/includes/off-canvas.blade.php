@@ -61,10 +61,22 @@
         <?php if (!Auth::check()): ?>
             
             <div class="small-12 flex-align-fd-c">
-                <form class="small-12" id="sign-in-f" method="POST" action="{{ route('login') }}">
+                <form data-abide novalidate class="small-12" id="sign-in-f" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
-                    <input type="text" name="email" placeholder="Email">
-                    <input type="password" name="password" placeholder="Password">
+                    <label>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <span class="form-error">
+                    Invalid email.
+                    </label>
+
+                    <label>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <span class="form-error">
+                    Invalid password.
+                    </span>
+                    </label>
+
+
                     <div class="small-12 btn">
                         <button type="submit" class="submit">Sign in</button>
                     </div>
