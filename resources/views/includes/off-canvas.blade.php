@@ -118,28 +118,40 @@
                     <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:60px; height:60px; border-radius:50%;">
                     </div>
                     <h2 class="avatar">Hi {{ $user->name }}!</h2>
-
                         <div class="cont-profile">
-                            <h2 id="links" data-toggle="avatar-page white avatar settings" data-toggler=".visible" data-animate="fade-in fade-out">Profile</h2>
+                            <h2 id="links" data-toggle="white avatar settings" data-toggler=".visible" data-animate="fade-in fade-out">Profile</h2>
                             <a id="white" data-toggler=".visible" data-animate="fade-in fade-out" href="/watchlist">Watchlist</a>
                         </div>
-
-                    
                     <div class"width-100">
-
+                        <!-- Profile settings -->
                         <div id="settings" data-toggler=".visible" data-animate="fade-in fade-out">
-                            <h2 data-toggle="email-update settings links">Change e-mail</h2>
-                            <h2>Change password</h2>
-                            <h2 data-toggle="add-avatar back-btn settings links">Add avatar</h2>
-                            <h2>Delete acount</h2>
+                            <h2 data-toggle="email-update settings back-email">Change e-mail</h2>
+                            <h2 data-toggle="password-update settings back-password">Change password</h2>
+                            <h2 data-toggle="add-avatar settings back-avatar">Add avatar</h2>
+                            <h2 data-toggle="delete-account settings back-delete">Delete acount</h2>
                         </div>
-
+                        <!-- Update email -->
                         <div id="email-update" data-toggler=".visible" data-animate="fade-in fade-out">
-                            <form>
+                            <form action="/email-update" method="POST">
                             <input type="text" name="new-email" placeholder="Enter new email"></input>
+                            <button class="email-btn" type="submit">Confirm</button>
                             </form>
                         </div>
-                        
+                        <!-- Update password -->
+                        <div id="password-update" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <form action="/password-update" method="POST">
+                            <input type="text" name="new-password" placeholder="Enter new password"></input>
+                            <button class="email-btn" type="submit">Confirm</button>
+                            </form>
+                        </div>
+                        <!-- Delete account -->
+                        <div id="delete-account" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <h2 id="delete-text">Are you sure?</h2>
+                            <form action="/delete-account" method="POST">
+                            <button class="email-btn" type="submit">Confirm</button>
+                            </form>
+                        </div>
+                        <!-- Add profile picture -->
                         <div id="add-avatar" aria-hidden="true" data-toggler=".visible" data-animate="fade-in fade-out">
                             <div id="right">
                                 <div class="upload-btn-wrapper">
@@ -153,9 +165,12 @@
                         </div>
                     </form>                  
                 </div>
-
-                <h2 id="back-btn" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings links back-btn">Back</h2>
-                
+                <!-- Back buttons for profile settings -->
+                <h2 id="back-email" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="email-update settings back-email">Back</h2>
+                <h2 id="back-password" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="password-update settings back-password">Back</h2>
+                <h2 id="back-avatar" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings back-avatar">Back</h2>
+                <h2 id="back-delete" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="delete-account settings back-delete">Back</h2>
+                    <!-- Sign out button -->
                     <div id="sign-out">
                             <li>
                                 <a id="log-out" href="{{ route('logout') }}"

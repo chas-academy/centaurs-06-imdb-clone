@@ -11754,6 +11754,24 @@ main .none:nth-child(4n) .poster-size {
   display: none;
 }
 
+#password-update {
+  display: none;
+}
+
+#delete-account {
+  display: none;
+}
+
+#delete-text {
+  padding-right: 1rem;
+  color: #f03e3f;
+}
+
+.email-btn {
+  color: #ffffff;
+  padding-right: 1rem;
+}
+
 .select2 {
   width: 48% !important;
 }
