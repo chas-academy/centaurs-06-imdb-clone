@@ -63,11 +63,26 @@ main
                 .movie-title
                     margin: 5px 0 0 0
                     flex-wrap: wrap
+        .movie-title
+            position: relative
+            z-index: 1
+            color: white
+            font-size: 10px
+            bottom: 80px
+            max-width: 90px
+            max-height: 100px
+            overflow: hidden
+            display: -webkit-box
+            -webkit-line-clamp: 4
+            -webkit-box-orient: vertical
         .movie-poster:nth-child(4n)
             margin: 25px 0px 0px 0px 
             .poster-size
                 width: 100%
-            .movie-title-container
+            .movie-title
+                font-size: 20px
+                bottom: 280px
+                max-width: 320px
                 max-width: 100%
 
 /*          Footer Layout            */
