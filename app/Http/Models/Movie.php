@@ -15,7 +15,7 @@ class Movie extends Model
 
     public function searchableAs()
     {
-        return 'title';
+        return 'movie.title';
     }
 
     

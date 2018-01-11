@@ -184,6 +184,6 @@ class TvShow extends Model
 
     public function searchableAs()
     {
-        return 'title';
+        return 'tvshow.title';
     }
 }

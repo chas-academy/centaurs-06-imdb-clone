@@ -11475,6 +11475,14 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     height: 396px;
   }
 
+  .row .flex-align-sb-c .movie-title {
+    position: relative;
+    z-index: 1;
+    bottom: 220px;
+    color: white;
+    max-width: 250px;
+  }
+
   #desk-hide {
     display: none;
   }
