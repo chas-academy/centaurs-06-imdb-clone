@@ -112,3 +112,6 @@ Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
 Route::post('/email-update/{userId}', 'UserController@updateEmail');
 
 Route::post('/password-update/{userId}', 'UserController@updatePassword');
+Route::get('/updatemovie', 'MovieController@updateMovie');
+Route::post('/updatemovie', 'MovieController@storeMovie');
+
