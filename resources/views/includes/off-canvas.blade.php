@@ -1,7 +1,3 @@
-<?php
-    // dd($user->name);
-?>
-
 <!-- USER MENU/SETTINGS -->
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
@@ -97,15 +93,7 @@
                     </div>
                 </form>
             </div>
-            <!-- shows on desktop -->
-            <footer id="mobile-hide" class="row footer-mobile">
-                <div class="small-12 footer">
-                    <button data-toggle="offcanvas-full-members">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                    </button>
-                    <p>Curious about us?</p>    
-                </div>
-            </footer>
+
             <div id="mobile-btn-wrap" class="mobile-btn-wrap">
                 <h2 id="sign-in">Sign In</h2>
                 <h2 id="sign-up">Create your account</h2>
@@ -118,29 +106,67 @@
             <?php if (Auth::check()): ?>
 
                 <div class="small-12 flex-align-fd-c" id="profile-page">
-                    <div class"width-100">
-                    <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:80px; height:80px; border-radius:50%;">
+                    <div id="avatar" data-toggler=".visible" data-animate="fade-in fade-out" class"width-100">
+                    <img class="avatar" src="/img/avatars/{{ $user->avatar }}" style="width:60px; height:60px; border-radius:50%;">
                     </div>
                     <h2 class="avatar">Hi {{ $user->name }}!</h2>
-                    <div class"width-100">
-                    
-                        <div id="right">
-                        <!-- FIX THE FILE BUTTON HERE -->
-                            <div class="upload-btn-wrapper">
-                                <button class="butn">Upload a file</button>
-                                <form enctype="multipart/form-data" action="/profile" method="POST">
-                                <input id="input-file" type="file" name="avatar">
-                            </div>
-                            <!-- FIX THE FILE BUTTON HERE -->
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input class="send-pic" type="submit" class="button">
+                        <div class="cont-profile">
+                            <h2 id="links" data-toggle="white avatar settings back-settings" data-toggler=".visible" data-animate="fade-in fade-out">Profile</h2>
+                            <a id="white" data-toggler=".visible" data-animate="fade-in fade-out" href="/watchlist">Watchlist</a>
                         </div>
-                    </form>
+                    <div class"width-100">
+                        <!-- Profile settings -->
+                        <div id="settings" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <h2 id="chg-mail" data-toggle="email-update settings back-email back-settings">Change e-mail</h2>
+                            <h2 id="chg-pwd" data-toggle="password-update settings back-password back-settings">Change password</h2>
+                            <h2 id="add-av" data-toggle="add-avatar settings back-avatar back-settings avatar">Add avatar</h2>
+                            <h2 id="delete-acc" data-toggle="delete-account settings back-delete back-settings">Delete acount</h2>
+                        </div>
+                        <!-- Update email -->
+                        <div id="email-update" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <form action="/email-update" method="POST">
+                            <input type="text" name="new-email" placeholder="Enter new email"></input>
+                            <button class="email-btn" type="submit">Confirm</button>
+                            </form>
+                        </div>
+                        <!-- Update password -->
+                        <div id="password-update" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <form action="/password-update" method="POST">
+                            <input type="text" name="new-password" placeholder="Enter new password"></input>
+                            <button class="email-btn" type="submit">Confirm</button>
+                            </form>
+                        </div>
+                        <!-- Delete account -->
+                        <div id="delete-account" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <h2 id="delete-text">Are you sure?</h2>
+                            <form action="/delete-account" method="POST">
+                            <button class="email-btn" type="submit">Confirm</button>
+                            </form>
+                        </div>
+                        <!-- Add profile picture -->
+                        <div id="add-avatar" aria-hidden="true" data-toggler=".visible" data-animate="fade-in fade-out">
+                            <div id="right">
+                                <div class="upload-btn-wrapper">
+                                    <button class="butn">Upload a file</button>
+                                    <form enctype="multipart/form-data" action="/profile" method="POST">
+                                    <input id="input-file" type="file" name="avatar">
+                                </div>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input class="send-pic" type="submit" class="button">
+                            </div>
+                        </div>
+                    </form>                  
                 </div>
-
-                    <div id="mobile-btn-wrap" class="mobile-btn-wrap">
-                            <li class="sign-out">
-                                <a id="style-none" href="{{ route('logout') }}"
+                <!-- Back buttons for profile settings -->
+                <h2 id="back-email" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="email-update settings back-email back-settings">Back</h2>
+                <h2 id="back-password" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="password-update settings back-password back-settings">Back</h2>
+                <h2 id="back-avatar" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="add-avatar settings back-avatar back-settings avatar">Back</h2>
+                <h2 id="back-delete" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="delete-account settings back-delete back-settings">Back</h2>
+                <h2 id="back-settings" class="back-btn" data-toggler=".visible" data-animate="fade-in fade-out" data-toggle="settings back-settings white avatar">Back</h2>
+                    <!-- Sign out button -->
+                    <div id="sign-out">
+                            <li>
+                                <a id="log-out" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                     Logout
@@ -153,6 +179,16 @@
                     </div>
 
             <?php endif; ?>
+
+            <!-- shows on desktop -->
+            <footer id="mobile-hide" class="row footer-mobile">
+                <div class="small-12 footer">
+                    <button data-toggle="offcanvas-full-members">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </button>
+                    <p>Curious about us?</p>    
+                </div>
+            </footer>
 
             <div id="mobile-btn-back" class="mobile-btn-back">
                 <i class="fa fa-undo" aria-hidden="true"></i>

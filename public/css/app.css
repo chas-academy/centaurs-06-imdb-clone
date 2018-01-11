@@ -10945,7 +10945,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding-top: 50px;
+  padding-top: 1.5rem;
 }
 
 #profile-page .avatar {
@@ -10983,6 +10983,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
           align-items: flex-end;
   margin-right: 14px;
   width: 100%;
+  color: gold;
 }
 
 #file-style {
@@ -11108,6 +11109,65 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
 #desk-show {
   display: none;
+}
+
+#links {
+  font-weight: bold;
+  padding-right: 1rem;
+  padding-top: 3rem;
+}
+
+#white {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#log-out {
+  padding-top: 3rem;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+#avatar-page {
+  display: none;
+}
+
+#add-avatar {
+  display: none;
+}
+
+#settings {
+  display: none;
+  padding-right: 1rem;
+}
+
+.back-btn {
+  display: none;
+  padding-right: 1rem;
+  padding-top: 5rem;
+}
+
+#email-update {
+  display: none;
+}
+
+#password-update {
+  display: none;
+}
+
+#delete-account {
+  display: none;
+}
+
+#delete-text {
+  padding-right: 1rem;
+  color: #f03e3f;
+}
+
+.email-btn {
+  color: #ffffff;
+  padding-right: 1rem;
 }
 
 .select2 {
@@ -11573,6 +11633,55 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   #search-exit-btn {
     display: none;
+  }
+
+  #links {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  #white {
+    font-weight: bold;
+  }
+
+  #chg-mail {
+    font-size: 1.25rem;
+  }
+
+  #chg-pwd {
+    font-size: 1.25rem;
+  }
+
+  #add-av {
+    font-size: 1.25rem;
+  }
+
+  #delete-acc {
+    font-size: 1.25rem;
+  }
+
+  #back-email {
+    font-size: 1.25rem;
+  }
+
+  #back-password {
+    font-size: 1.25rem;
+  }
+
+  #back-avatar {
+    font-size: 1.25rem;
+  }
+
+  #back-delete {
+    font-size: 1.25rem;
+  }
+
+  #back-settings {
+    font-size: 1.25rem;
+  }
+
+  #delete-text {
+    font-size: 1.25rem;
   }
 }
 
