@@ -66,13 +66,12 @@ class MovieController extends Controller
 
             return $result;
         }
-        
 
         public function createMovieFromApi($result) 
         {
-                $movie = new Movie();
-                $movie->createMovie($result);
-                $this->getMovieStaff($result);
+            $movie = new Movie();
+            $movie->createMovie($result);
+            $this->getMovieStaff($result);
         }
         
         public function getMovieStaff($argument)
@@ -101,7 +100,6 @@ class MovieController extends Controller
         {
             $movieModel = new Movie();
             $movies = $movieModel->getAllMovies();
-
             return $movies;  
         }
 
