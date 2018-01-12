@@ -14,7 +14,12 @@
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div> 
                 <a href="movie/{{ $movie->id }}" class="none">
+                    @if($movie->poster === null)
+                    <img class="poster-size" src="/img/missingposter/missingposter.png" >
+                    <p class="movie-title">{{$movie->title}}</p>
+                    @else
                     <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie->poster }}" >
+                    @endif
                 </a>
             </div>
         @endforeach            

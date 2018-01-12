@@ -9990,6 +9990,20 @@ main .flex-align-sb-c .movie-poster .movie-title-container .movie-title {
       flex-wrap: wrap;
 }
 
+main .flex-align-sb-c .movie-title {
+  position: relative;
+  z-index: 1;
+  color: white;
+  font-size: 10px;
+  bottom: 80px;
+  max-width: 90px;
+  max-height: 100px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
 main .flex-align-sb-c .movie-poster:nth-child(4n) {
   margin: 25px 0px 0px 0px;
 }
@@ -9998,7 +10012,10 @@ main .flex-align-sb-c .movie-poster:nth-child(4n) .poster-size {
   width: 100%;
 }
 
-main .flex-align-sb-c .movie-poster:nth-child(4n) .movie-title-container {
+main .flex-align-sb-c .movie-poster:nth-child(4n) .movie-title {
+  font-size: 20px;
+  bottom: 280px;
+  max-width: 320px;
   max-width: 100%;
 }
 
@@ -11523,6 +11540,16 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   .row .flex-align-sb-c .movie-poster .poster-size {
     width: 250px;
     height: 396px;
+  }
+
+  .row .flex-align-sb-c .movie-title {
+    position: relative !important;
+    z-index: 1  !important;
+    bottom: 220px  !important;
+    color: white  !important;
+    max-width: 250px  !important;
+    font-size: 20px !important;
+    max-height: 150px !important;
   }
 
   .row .flex-align-sb-c .movie-poster:nth-child(4n) {
