@@ -21,6 +21,17 @@ use DB;
 
 class MovieController extends Controller
 {
+    public function searchMovieFromApi(request $request) 
+        {
+            $user = Auth::user();
+            $keyword = $request['q'];
+            $argument = str_replace(' ', '%20', $keyword);
+            $searchMethod = 'search/movie?';
+            $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
+            $result = $this->MovieApi($search, $searchMethod);
+            
+            return view('pages.api-search')->with('hits', $result)->with('user', $user);
+        }
 
     public function MovieApi($argument, $searchMethod) 
     {
@@ -46,7 +57,7 @@ class MovieController extends Controller
         
         public function createMovieFromApi() 
         {
-            $keyword = "Power of Ten";
+            $keyword = "Transformers";
             $argument = str_replace(' ', '%20', $keyword);
             $searchMethod = 'search/movie?';
             $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';

@@ -124,12 +124,17 @@
             }
         });
         //Initialize person (actor/producer..) handling
-        $(function() {
-           $(".js-personlist").each(function(index, el) {
-               el = $(el);
-               el.personList({
-                   dataField: el.data('field'),
-               });
-           });
+        //$(function() {
+        //    $(".js-personlist").each(function(index, el) {
+        //        el = $(el);
+        //        el.personList({
+        //            dataField: el.data('field'),
+        //        });
+        //    });
+        //});
+        $("div[id=clickable]").click(function() {
+            window.location = $(this).find("a").attr("href"); 
+            return false;
         });
+
     </script>
