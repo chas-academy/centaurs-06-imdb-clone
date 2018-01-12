@@ -98,12 +98,32 @@
                     </div>               
                 </form>
                 <!-- Register new user -->
-                <form class="small-12" id="sign-up-f" method="POST" action="{{ route('register') }}">
+                <form data-abide novalidate class="small-12" id="sign-up-f" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
-                    <input type="text" name="name" placeholder="Name">
-                    <input type="text" name="email" placeholder="Email">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="password" name="password_confirmation" placeholder="Confirm Password">
+                    <label>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <span class="form-error">
+                        Please fill in name.
+                        </span>
+                    <label>
+                    <label>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <span class="form-error">
+                        Invalid email.
+                        </span>
+                    </label> 
+                    <label>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <span class="form-error">
+                        Fill in password.
+                        </span>
+                    </label>
+                    <label>
+                        <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
+                        <span class="form-error">
+                        Please confirm password.
+                        </span>
+                    </label>
                     <div class="small-12 btn">
                         <button type="submit" class="submit">Create Account</button>
                     </div>
