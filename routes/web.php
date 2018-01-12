@@ -23,6 +23,8 @@ Route::get('/', function ()
     $movies = $movieModel->getAllMovies();
     $genres = $genreModel->getAllGenres();
 
+    $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
+
     if(Auth::check()) {
         $userController = new UserController;
         $user = $userController->profile();
@@ -31,6 +33,7 @@ Route::get('/', function ()
     } else {
         $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
     };
+
     return $view;
 });
 
@@ -106,4 +109,6 @@ Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
 
 Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
 
-Route::post('/email-update', 'UserController@updateEmail');
+Route::post('/email-update/{userId}', 'UserController@updateEmail');
+
+Route::post('/password-update/{userId}', 'UserController@updatePassword');

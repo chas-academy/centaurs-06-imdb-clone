@@ -12040,6 +12040,10 @@ main .none:nth-child(4n) .poster-size {
     overflow-y: inherit;
   }
 
+  #offcanvas-full-members {
+    width: 20%;
+  }
+
   .offcanvas-full-screen-inner {
     width: 100%;
   }
