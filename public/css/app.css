@@ -10005,7 +10005,7 @@ main .flex-align-sb-c .movie-title {
 }
 
 main .flex-align-sb-c .movie-poster:nth-child(4n) {
-  margin: 25px 0px 0px 0px;
+  width: 100%;
 }
 
 main .flex-align-sb-c .movie-poster:nth-child(4n) .poster-size {
@@ -11709,6 +11709,10 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   #delete-text {
     font-size: 1.25rem;
+  }
+
+  .movie-poster:nth-child(4n) {
+    width: auto !important;
   }
 }
 
