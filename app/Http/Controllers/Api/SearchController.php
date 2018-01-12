@@ -8,8 +8,8 @@ use App\Http\Models\Movie;
 use App\Http\Models\User;
 use App\Http\Models\Actor;
 use App\Http\Models\Director;
-use App\Http\Models\Episode; 
-use App\Http\Models\Genre; 
+use App\Http\Models\Episode;
+use App\Http\Models\Genre;
 use App\Http\Models\Producer;
 use App\Http\Models\LedgerActor;
 use App\Http\Models\LedgerDirector;
@@ -45,12 +45,11 @@ class SearchController extends Controller
                 "director.movies" => [],
                 "director.tvshows" => [],
                 "producer.movies" => [],
-                "producer.tvshows" => [],   
+                "producer.tvshows" => [],
             );
             
             // To get movie from actorname
             foreach ($searchResults as $result) {
-                
                 if (!empty($result['hits'])) {
                     $type = array_get($result, 'index');
                     $results[$type] = $result['hits'];
@@ -65,20 +64,16 @@ class SearchController extends Controller
                             $actsInMovies = array_flatten(LedgerActor::getMovieByActorId($actorIds));
                             $results['actor.movies'] = ['actors' => $actsInMovies];
                             break;
-                            
-                            
                         case 'director.name':
-                            $directorIds = array_pluck($result['hits'], 'id'); 
-                            $directorInMovies = array_flatten(LedgerDirector::getMovieByDirectorId($directorIds)); 
-                            $results['director.movies'] = ['directors' => $directorInMovies]; 
+                            $directorIds = array_pluck($result['hits'], 'id');
+                            $directorInMovies = array_flatten(LedgerDirector::getMovieByDirectorId($directorIds));
+                            $results['director.movies'] = ['directors' => $directorInMovies];
                             break;
-
                         case 'producer.name':
-                            $producerIds = array_pluck($result['hits'], 'id'); 
-                            $producerInMovies = array_flatten(LedgerProducer::getMovieByProducerId($producerIds)); 
-                            $results['producer.movies'] = ['producers' => $producerInMovies]; 
+                            $producerIds = array_pluck($result['hits'], 'id');
+                            $producerInMovies = array_flatten(LedgerProducer::getMovieByProducerId($producerIds));
+                            $results['producer.movies'] = ['producers' => $producerInMovies];
                             break;
-                        
                         default:
                             break;
                         
@@ -86,16 +81,15 @@ class SearchController extends Controller
                 }
             }
   
-            
             $movies = array_get($results, 'movie.title');
             $tvshows = array_get($results, 'tvshow.title');
             $actorsInMovie = array_get($results, 'actor.movies');
-            $direcorsInMovie = array_get($results, 'director.movies');
+            $directorsInMovie = array_get($results, 'director.movies');
             $producersInMovie = array_get($results, 'producer.movies');
-            $movies = array_merge($movies, $actorsInMovie, $direcorsInMovie, $producersInMovie);
-            
-            
-            
+
+    
+
+            $movies = array_merge($movies, $actorsInMovie, $directorsInMovie, $producersInMovie);
 
             if (empty($movies)) {
                 $movies = Movie::getAllMovies();
