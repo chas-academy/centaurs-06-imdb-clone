@@ -1,0 +1,35 @@
+/* Search error message */
+
+#statusMsg
+    float: center
+    background-color: red
+    width: 100%
+    text-align: center
+    position: relative
+    animation-name: status-msg-animation
+    animation-duration: 5s
+    height: 0em
+    overflow: hidden
+    padding: 0em 
+
+    p
+        margin: 0
+        font-size: 1em
+        line-height: 1em
+
+@keyframes status-msg-animation 
+    0%
+        height: 0em
+        padding: 0em
+    20%
+        height: 3em
+        padding: 1em
+        animation-timing-function: ease-in
+    80%
+        height: 3em
+        padding: 1em
+    100%
+        height: 0em
+        padding: 0em
+        animation-timing-function: ease-out 
+

@@ -3,9 +3,13 @@
     @include('includes.header')
 <main class="row">
     @include('includes.menu-btn')
-    <section class="small-12">
+    
+    @if (isset($message['error']))
+    <section class="small-12" id="statusMsg">
         <p style="color: white">{{$message['error'] or ''}}</p>
-    </section>
+    </section> 
+    @endif
+
     <section class="small-12 flex-align-sb-c">
         @foreach ($movies as $movie)
             <div class="movie-poster">
@@ -28,3 +32,8 @@
 @include('includes.footer')
 </div>
 @endsection 
+
+@section('page-scripts')
+
+
+@endsection

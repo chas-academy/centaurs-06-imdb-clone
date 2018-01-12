@@ -11346,6 +11346,8 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   height: 100%;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 /* Search error message */
 
 #statusMsg {
@@ -11419,6 +11421,89 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     -webkit-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
   }
+=======
+/*      Error and Status messages       */
+=======
+/* Search error message */
+>>>>>>> Animation for not found search error
+
+#statusMsg {
+  float: center;
+  background-color: red;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  -webkit-animation-name: status-msg-animation;
+          animation-name: status-msg-animation;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  height: 0em;
+  overflow: hidden;
+  padding: 0em;
+}
+
+#statusMsg p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1em;
+}
+
+<<<<<<< HEAD
+.alert-box.success {
+  background-color: #f4ca33;
+>>>>>>> First commit for errorand status message styling
+=======
+@-webkit-keyframes status-msg-animation {
+  0% {
+    height: 0em;
+    padding: 0em;
+  }
+
+  20% {
+    height: 3em;
+    padding: 1em;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+
+  80% {
+    height: 3em;
+    padding: 1em;
+  }
+
+  100% {
+    height: 0em;
+    padding: 0em;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+@keyframes status-msg-animation {
+  0% {
+    height: 0em;
+    padding: 0em;
+  }
+
+  20% {
+    height: 3em;
+    padding: 1em;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+
+  80% {
+    height: 3em;
+    padding: 1em;
+  }
+
+  100% {
+    height: 0em;
+    padding: 0em;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+>>>>>>> Animation for not found search error
 }
 
 @media only screen and (min-width: 1024px) {
@@ -11625,7 +11710,6 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     max-width: 250px  !important;
     font-size: 20px !important;
     max-height: 150px !important;
-    padding: 20px !important;
   }
 
   .row .flex-align-sb-c .movie-poster:nth-child(4n) {

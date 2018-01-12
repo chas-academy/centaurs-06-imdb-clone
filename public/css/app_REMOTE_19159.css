@@ -9990,32 +9990,15 @@ main .flex-align-sb-c .movie-poster .movie-title-container .movie-title {
       flex-wrap: wrap;
 }
 
-main .flex-align-sb-c .movie-title {
-  position: relative;
-  z-index: 1;
-  color: white;
-  font-size: 10px;
-  bottom: 80px;
-  max-width: 90px;
-  max-height: 100px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-}
-
 main .flex-align-sb-c .movie-poster:nth-child(4n) {
-  width: 100%;
+  margin: 25px 0px 0px 0px;
 }
 
 main .flex-align-sb-c .movie-poster:nth-child(4n) .poster-size {
   width: 100%;
 }
 
-main .flex-align-sb-c .movie-poster:nth-child(4n) .movie-title {
-  font-size: 20px;
-  bottom: 280px;
-  max-width: 320px;
+main .flex-align-sb-c .movie-poster:nth-child(4n) .movie-title-container {
   max-width: 100%;
 }
 
@@ -11617,17 +11600,6 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     height: 396px;
   }
 
-  .row .flex-align-sb-c .movie-title {
-    position: relative !important;
-    z-index: 1  !important;
-    bottom: 220px  !important;
-    color: white  !important;
-    max-width: 250px  !important;
-    font-size: 20px !important;
-    max-height: 150px !important;
-    padding: 20px !important;
-  }
-
   .row .flex-align-sb-c .movie-poster:nth-child(4n) {
     padding-top: 20px;
     margin: 0px;
@@ -11785,10 +11757,6 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   #delete-text {
     font-size: 1.25rem;
-  }
-
-  .movie-poster:nth-child(4n) {
-    width: auto !important;
   }
 }
 
