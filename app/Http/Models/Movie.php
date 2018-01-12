@@ -20,7 +20,7 @@ class Movie extends Model
     }
 
     
-    public function createMovie($properties) 
+    public function createMovie($properties)
     {
         if(!$this->ifMovieExists($properties['results'][0]['title'])) {
             
