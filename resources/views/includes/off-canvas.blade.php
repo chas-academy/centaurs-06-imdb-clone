@@ -58,7 +58,7 @@
             </header>
             <!-- Sign in -->
         
-        <?php if (!Auth::check()): ?>
+        @if (!Auth::check())
             
             <div class="small-12 flex-align-fd-c">
                 <form data-abide novalidate class="small-12" id="sign-in-f" method="POST" action="{{ route('login') }}">
@@ -111,11 +111,11 @@
                 <h2 id="sign-up">Create your account</h2>
             </div>
 
-        <?php endif; ?>
+        @endif
 
             <!-- Profilepage -->
 
-            <?php if (Auth::check()): ?>
+            @if (Auth::check())
 
                 <div class="small-12 flex-align-fd-c" id="profile-page">
                     <div id="avatar" data-toggler=".visible" data-animate="fade-in fade-out" class"width-100">
@@ -136,7 +136,7 @@
                         </div>
                         <!-- Update email -->
                         <div id="email-update" data-toggler=".visible" data-animate="fade-in fade-out">
-                            <form action="/email-update" method="POST">
+                            <form action="/email-update/{{ $user->id }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="text" name="new-email" placeholder="Enter new email"></input>
                                 <button class="email-btn" type="submit">Confirm</button>
@@ -144,9 +144,11 @@
                         </div>
                         <!-- Update password -->
                         <div id="password-update" data-toggler=".visible" data-animate="fade-in fade-out">
-                            <form action="/password-update" method="POST">
-                            <input type="text" name="new-password" placeholder="Enter new password"></input>
-                            <button class="email-btn" type="submit">Confirm</button>
+                            <form action="/password-update/{{ $user->id }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="password" name="current-password" placeholder="Enter current password" required></input>
+                                <input type="password" name="new-password" placeholder="Enter new password" required></input>
+                                <button class="email-btn" type="submit">Confirm</button>
                             </form>
                         </div>
                         <!-- Delete account -->
@@ -189,7 +191,7 @@
                         </div>
                     </div>
 
-            <?php endif; ?>
+            @endif
 
             <!-- shows on desktop -->
             <footer id="mobile-hide" class="row footer-mobile">
