@@ -12154,6 +12154,7 @@ main .none:nth-child(4n) .poster-size {
     max-width: 250px  !important;
     font-size: 20px !important;
     max-height: 150px !important;
+    padding: 20px !important;
   }
 
   .row .flex-align-sb-c .movie-poster:nth-child(4n) {
