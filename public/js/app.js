@@ -41114,12 +41114,18 @@ module.exports = function spread(callback) {
 $.fn.personList = function (config) {
     var self = this;
     var myPersons = [];
+
     var dataField = config.dataField || 'persons';
 
     var existingPersonChooser = self.find(".js-personlist-existing-person-chooser");
     var existingPersonAdd = self.find(".js-personlist-existing-person-add");
     var newPersonChooser = self.find(".js-personlist-new-person-field");
     var newPersonAdd = self.find(".js-personlist-new-person-add");
+
+    myPersons = self.data('initial');
+    //fallback ifall ingen data
+    //döpa om val till choices
+    updateList();
 
     existingPersonAdd.click(function (e) {
         e.preventDefault();

@@ -1,18 +1,18 @@
-<div class="js-personlist" data-field="{{$personType}}">
-    <h3 style="color: white;">{{$personType}}s</h3>
+<div class="js-personlist" data-field="{{$type}}" data-initial='{!! json_encode($initial) !!}'>
+    <h3 style="color: white;">{{$type}}s</h3>
 
     <div>
-        <lable style="color: white;">EXISTING {{$personType}}</lable>
+        <lable style="color: white;">EXISTING {{$type}}</lable>
         <select class="js-example-basic-single js-personlist-existing-person-chooser" name="state">
-          @foreach ($persons as $person)
-            <option value="{{ $person["id"] }}">{{ $person["name"] }}</option>
+          @foreach ($choices as $choice)
+            <option value="{{ $choice["id"] }}">{{ $choice["name"] }}</option>
           @endforeach
         </select>
         <button class="button secondary js-personlist-existing-person-add">Add</button>
     </div>
 
     <div>
-        <lable style="color: white;">NEW {{$personType}}</lable>
+        <lable style="color: white;">NEW {{$type}}</lable>
         <input type="text" name="humhum" class="js-personlist-new-person-field">
         <button class="button secondary js-personlist-new-person-add">Add</button>
     </div>

@@ -154,32 +154,34 @@ class MovieController extends Controller
             $movie = Movie::find($id);
             echo $movie->title;
 
-            $actors = Movie::find($id)->actors()->get();
-            foreach ($actors as $actor) {
+            $initialActors = Movie::find($id)->actors()->get();
+            foreach ($initialActors as $actor) {
 
                 echo $actor->name;
             }
 
-            $directors = Movie::find($id)->directors()->get();
-            foreach ($directors as $director) {
+            $initialDirectors = Movie::find($id)->directors()->get();
+            foreach ($initialDirectors as $director) {
 
                 echo $director->name;
             }
 
-            $producers = Movie::find($id)->producers()->get();
-            foreach ($producers as $producer) {
+            $initialProducers = Movie::find($id)->producers()->get();
+            foreach ($initialProducers as $producer) {
 
                 echo $producer->name;
             }
 
-            $genre = Movie::find($id)->genres()->first();
-                echo $genre->genre_name;
+            $activeGenre = Movie::find($id)->genres()->first();
+                echo $activeGenre->genre_name;
 
-
-            $dbgenres = Genre::all()->toArray();
+            $actors = Actor::all()->toArray();
+            $directors = Director::all()->toArray();
+            $producers = Producer::all()->toArray();
+            $genres = Genre::all()->toArray();
             $releaseyears = range(date('Y'), 1910);
 
-            return view('pages.editmovie', ['movie' => $movie, 'dbgenres' => $dbgenres, 'releaseyears' => $releaseyears, 'actors' => $actors, 'directors' => $directors, 'producers' => $producers, 'genre' => $genre]);
+            return view('pages.editmovie', ['movie' => $movie, 'genres' => $genres, 'releaseyears' => $releaseyears, 'actors' => $actors, 'directors' => $directors, 'producers' => $producers, 'activeGenre' => $activeGenre, 'initialActors' => $initialActors, 'initialProducers' => $initialProducers, 'initialDirectors' => $initialDirectors]);
         }
 
         // Store movie
