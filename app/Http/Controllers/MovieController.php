@@ -124,28 +124,28 @@ class MovieController extends Controller
         }
 
         //Helperfunktion för hantera alla actors, directors, producers
-        private function storeMovieHelper($person, $model, $request) {
-            $persons = $request[$person] ?? [];
-            $persons = array_map(function ($id) use ($model) {
+        private function storeMovieHelper($choice, $model, $request) {
+            $choices = $request[$choice] ?? [];
+            $choices = array_map(function ($id) use ($model) {
                 return $model::find($id);
-            }, $persons);
+            }, $choices);
 
-            $newPersons = $request[$person.'_new'] ?? [];
-            $newPersons = array_map(function($name) use ($model) {
-                $existingPerson = $model::where('name', $name)->first();
+            $newChoices = $request[$choice.'_new'] ?? [];
+            $newChoices = array_map(function($name) use ($model) {
+                $existingChoice = $model::where('name', $name)->first();
 
-                if($existingPerson) {
-                    return $existingPerson;
+                if($existingChoice) {
+                    return $existingChoice;
                 }
 
-                $person = new $model;
-                $person->name = $name;
-                $person->timestamps = false;
-                $person->save();
-                return $person;
-            }, $newPersons);
+                $choice = new $model;
+                $choice->name = $name;
+                $choice->timestamps = false;
+                $choice->save();
+                return $choice;
+            }, $newChoices);
 
-            return $persons = array_merge($persons, $newPersons);
+            return $choices = array_merge($choices, $newChoices);
         }
 
         // Update movie
@@ -187,7 +187,6 @@ class MovieController extends Controller
         // Store movie
         public function storeMovie(Request $request)
         {
-
             $db_actors = Actor::all();
 
             $exisitingActors = array_map(function($actor) {
@@ -253,5 +252,58 @@ class MovieController extends Controller
             }
 
             return $this->createMovie();
+        }
+
+        public function storeEditedMovie (Request $request, $id) 
+        {
+            //Fixa med val data...
+            $validatedData = $request->validate([
+                'title' => 'required|max:255',
+                'plot' => 'required',
+                'playtimeMins' => 'required|digits_between:1,600',
+                'releaseyear' => 'required',
+            ]);
+
+            $actors = $this->storeMovieHelper('actor', Actor::class, $request);
+            $directors = $this->storeMovieHelper('director', Director::class, $request);
+            $producers = $this->storeMovieHelper('producer', Producer::class, $request);
+
+            $movie = Movie::find($id);
+            $movie->title = $request->title;
+            $movie->plot = $request->plot;
+            $movie->playtime = $request->playtimeMins;
+            $movie->releasedate = ($request->releaseyear.'-01-01');
+
+            //Fixa med poster...
+            $poster = $request->file('poster');
+            if ($poster) {
+                $poster->store('posters');
+                $movie->poster = $poster->hashName();
+            }
+
+            $movie->genres()->detach();
+            $movie->genres()->attach($request->genre);
+
+            $movie->actors()->detach();
+            foreach ($actors as $actor) 
+            {
+                $movie->actors()->attach($actor->id);
+            }
+
+            $movie->directors()->detach();
+            foreach ($directors as $director) 
+            {
+                $movie->directors()->attach($director->id);
+            }
+
+            $movie->producers()->detach();
+            foreach ($producers as $producer) 
+            {
+                $movie->producers()->attach($producer->id);
+            }
+
+            $movie->save();
+
+
         }
 }
