@@ -124,7 +124,7 @@ class MovieController extends Controller
             return view('pages.createmovie', ['actors' => $actors, 'directors' => $directors,'producers' => $producers,'genres' => $genres, 'releaseyears' => $releaseyears]);
         }
 
-        //Helperfunktion för hantera alla actors, directors, producers
+        //Helperfunction for handling actors, directors, producers
         private function storeMovieHelper($choice, $model, $request) {
             $choices = $request[$choice] ?? [];
             $choices = array_map(function ($id) use ($model) {
@@ -179,15 +179,13 @@ class MovieController extends Controller
                 
             }, $db_actors->toArray());
             
-            // Validate the request...
             $validatedData = $request->validate([
                 'title' => 'required|unique:movies|max:255',
                 'plot' => 'required',
-                'playtimeMins' => 'required|digits_between:1,600',
+                'playtimeMins' => 'required|digits_between:1,3',
                 'releaseyear' => 'required',
             ]);
             //To do:
-            //Add validation, digits not working
             //Add autorization
 
             $actors = $this->storeMovieHelper('actor', Actor::class, $request);
@@ -237,13 +235,15 @@ class MovieController extends Controller
 
         public function storeEditedMovie (Request $request, $id) 
         {
-            //Fixa med val data...
             $validatedData = $request->validate([
                 'title' => 'required|max:255',
                 'plot' => 'required',
-                'playtimeMins' => 'required|digits_between:1,600',
+                'playtimeMins' => 'required|digits_between:1,3',
                 'releaseyear' => 'required',
             ]);
+
+            //To do:
+            //Add autorization
 
             $actors = $this->storeMovieHelper('actor', Actor::class, $request);
             $directors = $this->storeMovieHelper('director', Director::class, $request);
