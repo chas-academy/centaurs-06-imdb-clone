@@ -153,28 +153,11 @@ class MovieController extends Controller
         public function editMovie(Request $request, $id) {
 
             $movie = Movie::find($id);
-            echo $movie->title;
 
             $initialActors = Movie::find($id)->actors()->get();
-            foreach ($initialActors as $actor) {
-
-                echo $actor->name;
-            }
-
             $initialDirectors = Movie::find($id)->directors()->get();
-            foreach ($initialDirectors as $director) {
-
-                echo $director->name;
-            }
-
             $initialProducers = Movie::find($id)->producers()->get();
-            foreach ($initialProducers as $producer) {
-
-                echo $producer->name;
-            }
-
             $activeGenre = Movie::find($id)->genres()->first();
-                echo $activeGenre->genre_name;
 
             $actors = Actor::all()->toArray();
             $directors = Director::all()->toArray();
@@ -206,9 +189,6 @@ class MovieController extends Controller
             //To do:
             //Add validation, digits not working
             //Add autorization
-
-
-
 
             $actors = $this->storeMovieHelper('actor', Actor::class, $request);
             $directors = $this->storeMovieHelper('director', Director::class, $request);
