@@ -12,6 +12,7 @@ use App\Http\Models\Director;
 use App\Http\Models\LedgerDirector;
 use App\Http\Models\Genre;
 use App\Http\Models\LedgerGenre;
+use Illuminate\Support\Facades\Storage;
 
 use Resources\views\pages;
 use App\Http\Controllers\UserController;
@@ -274,9 +275,15 @@ class MovieController extends Controller
             $movie->playtime = $request->playtimeMins;
             $movie->releasedate = ($request->releaseyear.'-01-01');
 
-            //Fixa med poster...
             $poster = $request->file('poster');
             if ($poster) {
+
+                $oldPoster = $movie->poster;
+
+                if($oldPoster) {
+                    Storage::delete('/posters/'.$oldPoster);
+                }
+
                 $poster->store('posters');
                 $movie->poster = $poster->hashName();
             }
@@ -303,7 +310,5 @@ class MovieController extends Controller
             }
 
             $movie->save();
-
-
         }
 }
