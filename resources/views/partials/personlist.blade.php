@@ -1,5 +1,5 @@
-<div class="js-personlist" data-field="{{$type}}" data-initial='{!! json_encode($initial) !!}'>
-    <h3 style="color: white;">{{$type}}s</h3>
+<div class="js-personlist" data-field="{{$type}}" data-initial='{!! json_encode($initial ?? []) !!}'>
+    <h3>{{$type}}s</h3>
 
     <div>
         <lable style="color: white;">EXISTING {{$type}}</lable>
