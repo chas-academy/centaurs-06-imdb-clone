@@ -11,8 +11,6 @@ $.fn.personList = function(config) {
     var newPersonAdd = self.find(".js-personlist-new-person-add");
 
     myPersons = self.data('initial');
-    //fallback ifall ingen data
-    //döpa om val till choices
     updateList();
 
     existingPersonAdd.click(function(e) {
