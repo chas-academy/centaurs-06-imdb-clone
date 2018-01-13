@@ -123,9 +123,10 @@
         //        });
         //    });
         //});
-        $("div[id=clickable]").click(function() {
-            window.location = $(this).find("a").attr("href"); 
-            return false;
+
+        // Alert when adding a movie from TMDB to our database
+        $('.confirm').on('click', function () {
+            return confirm('Are you sure you want to add this movie to Centaurs-imdb?');
         });
 
     </script>

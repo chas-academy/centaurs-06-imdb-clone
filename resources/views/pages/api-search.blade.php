@@ -11,16 +11,15 @@
     @endif
 
     <section class="small-12 flex-align-sb-c">
-            {{ $i = -1 }}
+        @if(isset($hits))
             @foreach ($hits['results'] as $key => $movie)
-                {{ $i++ }}
                 <div id="clickable" class="movie-poster">
                     <div class="movie-rating">
                         <p class="rating-num">{{ $movie['vote_average'] }}</p>
                         <i class="fa fa-star" aria-hidden="true"></i>
                     </div>
                     <!-- TO DO: SEND THE SELECTED MOVIE TO MODEL SO THAT THE MOVIE IS ADDED TO THE DATABASE -->
-                    <a href="addmovie/{{$i}}" class="none">
+                    <a href="apimovie/add/{{$movie['id']}}" class="none confirm">
                         @if($movie['poster_path'] === null)
                         <img class="poster-size" src="/img/missingposter/missingposter.png" >
                         <p class="movie-title">{{$movie['title']}}</p>
@@ -31,6 +30,7 @@
 
                 </div>
             @endforeach
+        @endif
         </select>
 </main>
 @include('includes.footer')
