@@ -2,6 +2,7 @@
     background-color: #E8E8E8
     padding: 40px 0
     
+    $admin-color: #FFCF3F
 
     #innerContentContainer
         width: 90%
@@ -14,19 +15,51 @@
             display: flex
 
             .button
-                background-color: #FFCF3F
+                background-color: $admin-color
                 width: 100%
                 font-weight: bold
 
             ::placeholder
-                font-weight: bold
+                font-weight: 400
                 color: black
 
-            .select2-container--default 
-                .select2-selection--multiple 
-                    .select2-selection__choice
-                        background-color: #FFCF3F !important
+            .select2
+                width: 100% !important
+                height: auto
+                font-size: 1rem
+                overflow: hidden
+                
+            .select2-search__field
+                line-height: 0
+                font-size: 1rem
 
+            .select2-container
+                vertical-align: baseline
+
+            .select2-container--default 
+                .select2-selection--multiple
+                    border: 1px solid #cacaca !important
+                    border-radius: 0
+                    
+                    
+                    .select2-selection__choice__remove
+                        color: white
+                        marign-right: 4px
+
+                    .select2-selection__choice
+                        background-color: $admin-color !important
+                        border-radius: 0
+                        border: none
+                        margin: 6px
+                        font-weight: 400
+                        padding: 2px 8px
+
+
+
+
+    
+
+                        
             
 
 
