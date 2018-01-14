@@ -19,7 +19,9 @@
                 </div> 
                 <a href="movie/{{ $movie->id }}" class="none">
                     <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
-                    <p class="movie-title">{{$movie->title}}</p>
+                    @if($movie->poster === null)
+                        <p class="movie-title">{{$movie->title}}</p>
+                    @endif
                 </a>
             </div>
         @endforeach            

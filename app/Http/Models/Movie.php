@@ -516,8 +516,11 @@ class Movie extends Model
         return DB::table('ledger_writers')->where('writer_id', $writerId)->where('movie_id', $movieId)->exists();
     }
 
+    // Helperfunction to assess what type of imgurl should be returned for posters
     public static function getPosterUrl($poster)
     {
+        $imdbUrl = config('app.imdb_url');
+
         if (!$poster) {
             return '/img/missingposter/missingposter.png';
         }
@@ -525,12 +528,10 @@ class Movie extends Model
         $exists = Storage::disk('public')->exists('/posters/'.$poster);
 
         if ($exists) {
-            return asset($poster);
+            return asset('storage/posters/'.$poster);
         }
 
-        else {
-            return 'https://image.tmdb.org/t/p/w1000'.$poster;
-        }
+        return $imdbUrl.$poster;
     }
 
 }
