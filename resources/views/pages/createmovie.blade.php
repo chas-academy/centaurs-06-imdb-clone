@@ -31,8 +31,6 @@
 
         <input type="text" name="plot" placeholder="Movie plot">
 
-        
-
         @include('partials.personlist', ['choices' => $actors, 'type' => 'actor'])
         @include('partials.personlist', ['choices' => $directors, 'type' => 'director'])
         @include('partials.personlist', ['choices' => $producers, 'type' => 'producer'])
