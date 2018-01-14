@@ -11474,9 +11474,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
 #outerContentContainer #innerContentContainer .adminform .select2 {
   width: 100% !important;
-  height: auto;
   font-size: 1rem;
-  overflow: hidden;
 }
 
 #outerContentContainer #innerContentContainer .adminform .select2-search__field {
