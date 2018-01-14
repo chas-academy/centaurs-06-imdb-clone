@@ -12030,6 +12030,56 @@ main .none:nth-child(4n) .poster-size {
   }
 }
 
+#outerContentContainer {
+  background-color: #E8E8E8;
+  padding: 40px 0;
+}
+
+#outerContentContainer #innerContentContainer {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#outerContentContainer #innerContentContainer h1 {
+  margin-bottom: 0.8em;
+}
+
+#outerContentContainer #innerContentContainer .adminform {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#outerContentContainer #innerContentContainer .adminform .button {
+  background-color: #FFCF3F;
+  width: 100%;
+  font-weight: bold;
+}
+
+#outerContentContainer #innerContentContainer .adminform ::-webkit-input-placeholder {
+  font-weight: bold;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform :-ms-input-placeholder {
+  font-weight: bold;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform ::-ms-input-placeholder {
+  font-weight: bold;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform ::placeholder {
+  font-weight: bold;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #FFCF3F !important;
+}
+
 @media only screen and (min-width: 1024px) {
   #offcanvas-full-screen {
     display: -webkit-box;
@@ -12370,6 +12420,14 @@ main .none:nth-child(4n) .poster-size {
 
   .movie-poster:nth-child(4n) {
     width: auto !important;
+  }
+
+  #outerContentContainer {
+    margin-left: 20%;
+  }
+
+  #outerContentContainer #innerContentContainer {
+    width: 80%;
   }
 }
 
