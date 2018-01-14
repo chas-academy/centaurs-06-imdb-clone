@@ -37,7 +37,7 @@
         @include('partials.personlist', ['choices' => $directors, 'type' => 'director'])
         @include('partials.personlist', ['choices' => $producers, 'type' => 'producer'])
 
-        <button class="button" type="submit" value="BOBBY!">Submit</button>
+        <button class="button" type="submit">Submit</button>
     </form>
     
 </body>
