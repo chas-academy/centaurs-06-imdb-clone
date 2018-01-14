@@ -11453,27 +11453,58 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 }
 
 #outerContentContainer #innerContentContainer .adminform ::-webkit-input-placeholder {
-  font-weight: bold;
+  font-weight: 400;
   color: black;
 }
 
 #outerContentContainer #innerContentContainer .adminform :-ms-input-placeholder {
-  font-weight: bold;
+  font-weight: 400;
   color: black;
 }
 
 #outerContentContainer #innerContentContainer .adminform ::-ms-input-placeholder {
-  font-weight: bold;
+  font-weight: 400;
   color: black;
 }
 
 #outerContentContainer #innerContentContainer .adminform ::placeholder {
-  font-weight: bold;
+  font-weight: 400;
   color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2 {
+  width: 100% !important;
+  height: auto;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-search__field {
+  line-height: 0;
+  font-size: 1rem;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container {
+  vertical-align: baseline;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple {
+  border: 1px solid #cacaca !important;
+  border-radius: 0;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
+  marign-right: 4px;
 }
 
 #outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #FFCF3F !important;
+  border-radius: 0;
+  border: none;
+  margin: 6px;
+  font-weight: 400;
+  padding: 2px 8px;
 }
 
 @media only screen and (min-width: 1024px) {
