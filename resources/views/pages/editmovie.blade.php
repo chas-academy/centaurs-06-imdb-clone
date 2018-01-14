@@ -15,6 +15,10 @@
         <?php echo csrf_field(); ?>
         <input type="text" name="title" placeholder="Movie title" value="{{ $movie->title }}">
         <input type="file" name="poster" placeholder="Browse for a poster image">
+        <div>
+            <p>Din gamla filmposter:</p>
+            <img style="width: 50px; height: 50px;" src="{{ asset('storage/posters/'.$movie->poster) }}" />
+        </div>
         <select class="js-example-basic-single" name="genre">
             @foreach ($genres as $genre)
                 <option value="{{ $genre["id"] }}" @if ($genre["id"] === $activeGenre->id) {{ "selected" }} @endif>{{ $genre["genre_name"] }}</option>

@@ -516,12 +516,12 @@ class Movie extends Model
         return $this->belongsToMany('App\Http\Models\Actor', 'ledger_actors', 'movie_id', 'actor_id');
     }
 
-        public function producers()
+    public function producers()
     {
         return $this->belongsToMany('App\Http\Models\Producer', 'ledger_producers', 'movie_id', 'producer_id');
     }
 
-        public function directors()
+    public function directors()
     {
         return $this->belongsToMany('App\Http\Models\Director', 'ledger_directors', 'movie_id', 'director_id');
     }
