@@ -185,7 +185,7 @@ class MovieController extends Controller
             
             $poster = $request->file('poster');
             if ($poster) {
-                $poster->store('posters');
+                $poster->store('/public/posters');
                 $movie->poster = $poster->hashName();
             }
 

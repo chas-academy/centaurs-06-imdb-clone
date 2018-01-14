@@ -6,6 +6,7 @@ use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use App\Http\Models\Genre;
+use Illuminate\Support\Facades\Storage;
 
 use DB;
 
@@ -514,4 +515,22 @@ class Movie extends Model
     {
         return DB::table('ledger_writers')->where('writer_id', $writerId)->where('movie_id', $movieId)->exists();
     }
+
+    public static function getPosterUrl($poster)
+    {
+        if (!$poster) {
+            return '/img/missingposter/missingposter.png';
+        }
+
+        $exists = Storage::disk('public')->exists('/posters/'.$poster);
+
+        if ($exists) {
+            return asset($poster);
+        }
+
+        else {
+            return 'https://image.tmdb.org/t/p/w1000'.$poster;
+        }
+    }
+
 }
