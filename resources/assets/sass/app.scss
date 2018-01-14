@@ -34,7 +34,12 @@
 // Error and Status Messages
 @import "styles/error-style";
 
+// Admin Form Style
+@import "styles/mobile-admin-form-style";
+
 // Style for desktop
 @media only screen and (min-width: 1024px) {
     @import "styles/desktop-style";
+    @import "styles/desktop-admin-form-style";
 }
+
