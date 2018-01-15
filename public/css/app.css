@@ -11452,12 +11452,8 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   font-weight: bold;
 }
 
-#outerContentContainer #innerContentContainer .adminform #add-button {
-  width: 50%;
-}
-
-#outerContentContainer #innerContentContainer .adminform #add-input {
-  width: 20%;
+#outerContentContainer #innerContentContainer .adminform .js-personlist-new-person-field {
+  width: calc(95% - 10px);
 }
 
 #outerContentContainer #innerContentContainer .adminform ::-webkit-input-placeholder {
@@ -11511,6 +11507,28 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   margin: 6px;
   font-weight: 400;
   padding: 2px 8px;
+}
+
+#add-person {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#add-person #person-btn {
+  width: 10%;
+  font-weight: bold;
+  padding-bottom: 17px;
+}
+
+#add-person #person-btn .fa-plus-circle {
+  color: #FFCF3F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media only screen and (min-width: 1024px) {
