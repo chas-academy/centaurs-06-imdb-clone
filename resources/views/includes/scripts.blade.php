@@ -12,6 +12,15 @@
             // Event listener for buttons in settings menu
             $('#sign-in').click(function(){menuSettingsHandler('in');});
             $('#sign-up').click(function(){menuSettingsHandler('up');});
+            $('.producer').select2({
+                placeholder: "Choose an existing producer"
+                });
+                $('.director').select2({
+                placeholder: "Choose an existing director"
+                });
+                $('.actor').select2({
+                placeholder: "Choose an existing actor"
+            });
         });
         // Function for handling the click
         function menuSettingsHandler(v)
@@ -123,6 +132,7 @@
             });
             }
         });
+
         //Initialize person (actor/producer..) handling
         //$(function() {
         //    $(".js-personlist").each(function(index, el) {
