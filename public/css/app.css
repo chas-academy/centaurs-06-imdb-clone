@@ -11452,6 +11452,14 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   font-weight: bold;
 }
 
+#outerContentContainer #innerContentContainer .adminform #add-button {
+  width: 50%;
+}
+
+#outerContentContainer #innerContentContainer .adminform #add-inputfield {
+  width: 20%;
+}
+
 #outerContentContainer #innerContentContainer .adminform ::-webkit-input-placeholder {
   font-weight: 400;
   color: black;
