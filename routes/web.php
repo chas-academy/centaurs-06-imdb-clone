@@ -130,10 +130,7 @@ Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
 Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
 Route::post('/email-update/{userId}', 'UserController@updateEmail');
 Route::post('/password-update/{userId}', 'UserController@updatePassword');
-<<<<<<< HEAD
+
 Route::get('/search-api', 'MovieController@searchMovieFromApi');
-=======
 Route::get('/tv-shows', 'TvShowController@readTvShows');
 Route::get('/tv-show/{tvshowId}', 'TvShowController@list');
-
->>>>>>> added tvshows on frontpage, added tvshows genres, added top 6 episodes from specific tv show, needs minor styling and add to watchlist
