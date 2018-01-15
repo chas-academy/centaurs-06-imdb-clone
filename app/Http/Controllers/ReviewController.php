@@ -12,5 +12,6 @@ class ReviewController extends Controller
     {
         $reviewModel = new Review();
         $reviewModel->createReview($request, $movieId);
+        return redirect()->back();
     }
 }

@@ -140,62 +140,73 @@
             </form>                   
         </div>
         <div id="read-reviews" class="read-reviews" data-toggler=".visible">
-            <div id="review-1" class="small-12 review">
-                <div class="small-12 review-rate">
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
+        @if($reviews->first())
+            @foreach($reviews as $review)
+                <div id="review-1" class="small-12 review">
+                    <div class="small-12 review-rate">
+                        @if($review->review_rating === 0.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 1)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 1.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 2)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 2.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 3)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 3.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 4)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 4.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 5)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @endif
+                    </div>
+                    <h3 class="review-title">{{ $review->title }}</h3>
+                    <div class="small-12 review-description">
+                        <div class="small-12 review-info">
+                            <p class="review-auth"><b>Author:</b> {{ $review->author->name }} </p>
+                            <p class="review-date"><b>Date:</b> {{ $review->updated_at }}</p>
+                        </div>
+                        <div class="small-12">
+                            <p class="review-content">
+                                {{ $review->content }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="review-title">The artist you would never know</h3>
-                <div class="small-12 review-description">
-                    <div class="small-12 review-info">
-                        <p class="review-auth"><b>Author:</b> Adam K</p>
-                        <p class="review-date"><b>Date:</b> 1 December 2017</p>
-                    </div>
-                    <div class="small-12">
-                        <p class="review-content">
-                            Aside from appearances in Paddington or Blue Jasmine, 
-                            I'd never really thought about Sally Hawkins as a leading lady of a 
-                            major production, but sometimes you're proved to be severely wrong 
-                            because her performance here floored me. I was incredibly invested 
-                            in every single moment her character was on-screen and anything 
-                            I didn't like about this movie faded away every time she interacted 
-                            with someone and had to display her emotions through her sign language 
-                            or by just simply tearing up or showing emotion through her eyes. 
-                            I will be remembering this performance as one of the best
-                            of the year by year.
-                        </p>
+                @endforeach
+                @else
+                <div id="review-1" class="small-12 review">
+                    <div class="small-12 review-rate">
+                        <p>No reviews written for this movie yet.</p>
                     </div>
                 </div>
-            </div>
-            <div id="review-1" class="small-12 review">
-                <div class="small-12 review-rate">
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <h3 class="review-title">The artist you would never know</h3>
-                <div class="small-12 review-description">
-                    <div class="small-12 review-info">
-                        <p class="review-auth"><b>Author:</b> Lil Coder</p>
-                        <p class="review-date"><b>Date:</b> 48 December 2069</p>
-                    </div>
-                    <div class="small-12">
-                        <p class="review-content">
-                            Aside from appearances in Paddington or Blue Jasmine, 
-                            I'd never really thought about Sally Hawkins as a leading lady of a 
-                            major production, but sometimes you're proved to be severely wrong 
-                            because her performance here floored me. I was incredibly invested 
-                            in every single moment her character was on-screen and anything 
-                            I didn't like about this movie faded away every time she interacted 
-                            with someone and had to display her emotions through her sign language 
-                            or by just simply tearing up or showing emotion through her eyes. 
-                            I will be remembering this performance as one of the best
-                            of the year by year.
-                        </p>
-                    </div>
+            @endif
                 </div>
             </div>
         </div>

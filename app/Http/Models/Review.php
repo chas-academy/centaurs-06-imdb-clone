@@ -26,4 +26,19 @@ class Review extends Model
             'updated_at' => now()
         ]);
     }
+
+    public function getAllReviews($movieId)
+    {
+        $reviews = DB::table('reviews')->orderBy('updated_at', 'desc')->get()->where('movie_id', $movieId);
+        $authors = [];
+        
+        foreach ($reviews as $key => $review) {
+            $userId = $reviews[$key]->user_id;
+            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $reviews[$key]->author = $author;
+            
+        }
+
+        return $reviews;
+    }
 }
