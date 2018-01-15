@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Models\TvShow;
+use App\Season;
+use App\Episode;
+use DB;
+
+use View;
 
 class TvShowController extends Controller
 {
@@ -79,6 +84,47 @@ class TvShowController extends Controller
         $languageEndString = '&language=en-US';
 
         return $this->TvShowApi($languageEndString, $searchMethod);
+    }
+    public function readTvShows()
+    {
+        $tvShowModel = new TvShow();
+        $tvshows = $tvShowModel->getAllTvShows();
+
+        $view = View::make('pages.tvshows')->with('tvshows', $tvshows);
+
+        return $view;
+
+    }
+    public function list($id)
+    {
+        $tvshow = TvShow::find($id);
+
+        
+        $tvShowModel = new TvShow;
+        $tvShowInfo = $tvShowModel->getTvShowById($tvshow->id);
+        $seasons = $tvShowModel->getTvShowSeasons($tvshow->id);
+        $genre = $tvShowModel->getTvShowGenres($tvshow->id);
+
+        $topEpisodes = DB::table('episodes', 'seasons')
+                            ->leftJoin('seasons', 'episodes.season_id', '=', 'seasons.id')
+                            ->leftJoin('tv_shows', 'tv_shows.id', '=', 'seasons.tv_show_id')
+                            ->where('tv_shows.id', '=', $tvshow->id)
+                            ->orderBy('episodes.imdb_rating', 'desc')
+                            ->select('episodes.*', 'seasons.*')
+                            ->limit(6)
+                            ->get();
+
+        $tvDetails = array(
+            'tvshow' => $tvShowInfo,
+            'seasons' => $seasons,
+            'genres' => $genre,
+            'topepisodes' => $topEpisodes
+        );
+
+        $view = View::make('pages.tvshow')->with($tvDetails);
+        
+        return $view;
+
     }
 }
 

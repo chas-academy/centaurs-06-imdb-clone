@@ -12030,5 +12030,18 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   #outerContentContainer #innerContentContainer {
     width: 80%;
   }
+
+  .tv-shows {
+    margin-left: 20px;
+  }
+
+  #movies-link {
+    color: white;
+  }
+
+  #tvshows-link {
+    padding-left: 12px;
+    color: white;
+  }
 }
 

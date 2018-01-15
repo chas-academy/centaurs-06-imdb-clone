@@ -5,8 +5,13 @@ namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use DB;
+use App\Season;
+use App\Episode;
+use App\Http\Models\Movie;
 
 use Laravel\Scout\Searchable;
+
+
 class TvShow extends Model
 {
     public function createTvSHowFromApi($tvShow)
@@ -24,6 +29,10 @@ class TvShow extends Model
                 'updated_at' => now()
             ]);
         }
+
+        $tvShowId = DB::table('tv_shows')->orderBy('updated_at', 'desc')->pluck('id')->first();
+
+        $this->createTvShowGenres($tvShow['genre_ids'], $tvShowId);
     }
 
     public function createSeasonFromApi($season, $tvShow)
@@ -135,6 +144,19 @@ class TvShow extends Model
         }
     }
 
+    public function createTvShowGenres($genreIds, $tvshowId)
+    {
+        $movieModel = new Movie();
+        $genreIds = $movieModel->getGenres($genreIds);
+        
+        foreach ($genreIds as $genreId) {
+            DB::table('ledger_genres')->insert([
+                'tvshow_id' => $tvshowId,
+                'genre_id' => $genreId->id
+            ]);
+        }
+    }
+
     public function getEpisode($seasonId, $episodeNumber)
     {
         return DB::table('episodes')->where([
@@ -196,5 +218,40 @@ class TvShow extends Model
     public function getTvShowGenreByName($genreName)
     {
         return DB::table('genres')->where('genre_name', $genreName)->first();
+    }
+    public function getAllTvShows()
+    {
+        $tvshows = DB::table('tv_shows')->get();
+        return $tvshows;
+    }
+    public function getTvShowById($tvshowId) 
+    {
+        $tvshows = DB::table('tv_shows')->get()->where('id', $tvshowId);
+
+        return array_first($tvshows);
+    }
+    public function getTvShowSeasons($tvshowId)
+    {
+        $seasons = DB::table('seasons')->get()->where('tv_show_id', $tvshowId);
+
+        return $seasons;
+    }
+    public function seasons()
+    {
+        return $this->hasMany('App\Season');
+    }
+    public function getTvShowGenres($tvshowId)
+    {
+        $genreIds = DB::table('ledger_genres')->get()->where('tvshow_id', $tvshowId);
+
+        $genres = [];
+
+        foreach ($genreIds as $genreId)
+        {
+            array_push($genres, DB::table('genres')->where('id', $genreId->genre_id)->value('genre_name'));
+        }
+
+        return $genres;
+        
     }
 }
