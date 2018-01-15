@@ -20,8 +20,8 @@ class CreateEpisodesTable extends Migration
             $table->string('title');
             $table->text('plot');
             $table->integer('playtime');
-            $table->string('poster');
-            $table->string('backdrop');
+            $table->string('poster')->nullable();
+            $table->string('backdrop')->nullable();
             $table->date('releasedate');
             $table->integer('imdb_rating')->nullable();
             $table->integer('chas_rating')->nullable();

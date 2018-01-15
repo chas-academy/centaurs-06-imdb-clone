@@ -17,8 +17,8 @@ class CreateTvShowsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('plot');
-            $table->string('poster');
-            $table->string('backdrop');
+            $table->string('poster')->nullable();
+            $table->string('backdrop')->nullable();
             $table->date('releasedate');
             $table->date('end_date')->nullable();
             $table->string('imdb_rating')->nullable();

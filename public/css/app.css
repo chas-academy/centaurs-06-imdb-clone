@@ -12627,6 +12627,19 @@ main .none:nth-child(4n) .poster-size {
     height: 20px;
   }
 
+  .tv-shows {
+    margin-left: 20px;
+  }
+
+  #movies-link {
+    color: white;
+  }
+
+  #tvshows-link {
+    padding-left: 12px;
+    color: white;
+  }
+
   #outerContentContainer {
     margin-left: 20%;
   }

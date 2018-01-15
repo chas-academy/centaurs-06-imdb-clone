@@ -1,9 +1,11 @@
 <?php
 use App\Http\Models\Movie;
 use App\Http\Models\Review;
+use App\Http\Models\TvShow;
 use App\Http\Models\Genre;
 use App\Http\Models\User;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TvShowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +104,7 @@ Route::post('profile', 'UserController@updateAvatar');
 Route::get('/apimovie/add/{movieApiId}', 'MovieController@searchMovieFromApiById');
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
+Route::get('/createtvgenres', 'MovieController@getTvShowGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
 
 Route::get('/search', 'Api\SearchController@search');
@@ -128,6 +131,7 @@ Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
 Route::post('/email-update/{userId}', 'UserController@updateEmail');
 
 Route::post('/password-update/{userId}', 'UserController@updatePassword');
+
 Route::get('/updatemovie', 'MovieController@updateMovie');
 Route::post('/updatemovie', 'MovieController@storeMovie');
 
@@ -140,3 +144,7 @@ Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
 
 
 Route::get('/search-api', 'Moviecontroller@searchMovieFromApi');
+
+Route::get('/search-api', 'MovieController@searchMovieFromApi');
+Route::get('/tv-shows', 'TvShowController@readTvShows');
+Route::get('/tv-show/{tvshowId}', 'TvShowController@list');
