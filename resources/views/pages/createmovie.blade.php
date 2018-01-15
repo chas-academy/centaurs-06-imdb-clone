@@ -63,10 +63,10 @@
     </label>
 
     <label>
-        <textarea cols="30" rows="10" placeholder="Movie plot" required></textarea>
-        <span class="form-error">
+        <textarea cols="30" rows="10" placeholder="Movie plot"></textarea>
+        <!-- <span class="form-error">
         Don't forget to write the movie plot.
-        </span>
+        </span> -->
     </label>
 
         @include('partials.personlist', ['persons' => $actors, 'personType' => 'actor'])

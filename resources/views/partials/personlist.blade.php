@@ -1,25 +1,17 @@
 <div class="js-personlist" data-field="{{$personType}}">
-    <!--<h3 style="color: white;">{{$personType}}s</h3> -->
 
-    <div>
-        <!-- <lable style="color: white;">Existing {{$personType}}</lable> -->
-    </div>
    
     <div>
-        <label>
-        <select multiple class="multi-select" id="add-cast" select id="{{$personType}} name="state">
-          @foreach ($persons as $person)
-            <option value="{{ $person["id"] }}">{{ $person["name"] }}</option>
-          @endforeach
-        </select>
-        <!--<button class="button secondary js-personlist-existing-person-add">+</button> -->
-        </label>
+    <select class="js-example-placeholder-multiple js-states form-control js-personlist-existing-person-chooser {{$personType}}" multiple="multiple" name="state">
+         @foreach ($persons as $person)
+           <option value="{{ $person["id"] }}">{{ $person["name"] }}</option>
+         @endforeach
+       </select>
     </div>
 
 
     <div>
-        <!-- <lable style="color: white;">New {{$personType}}</lable> -->
-        <input type="text" name="humhum" id ="add-input" class="js-personlist-new-person-field" placeholder="Add">
+    <input type="text" name="humhum" placeholder="Add a new {{$personType}}" class="js-personlist-new-person-field">
         <button id="add-button" class="button secondary js-personlist-new-person-add">+</button>
     </div>
 
@@ -29,4 +21,3 @@
     </div>
 
 </div>
-
