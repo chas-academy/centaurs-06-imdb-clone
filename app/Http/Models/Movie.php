@@ -514,4 +514,24 @@ class Movie extends Model
     {
         return DB::table('ledger_writers')->where('writer_id', $writerId)->where('movie_id', $movieId)->exists();
     }
+
+    public function actors()
+    {
+        return $this->belongsToMany('App\Http\Models\Actor', 'ledger_actors', 'movie_id', 'actor_id');
+    }
+
+    public function producers()
+    {
+        return $this->belongsToMany('App\Http\Models\Producer', 'ledger_producers', 'movie_id', 'producer_id');
+    }
+
+    public function directors()
+    {
+        return $this->belongsToMany('App\Http\Models\Director', 'ledger_directors', 'movie_id', 'director_id');
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany('App\Http\Models\Genre', 'ledger_genres', 'movie_id', 'genre_id');
+    }
 }

@@ -106,8 +106,9 @@ Route::post('/sortbyspec/update', 'sortByController@sortBySpec');
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
 
+Route::get('/movies/{id}/edit', 'MovieController@editMovie');
+Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
+
 Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
-
 Route::post('/email-update/{userId}', 'UserController@updateEmail');
-
 Route::post('/password-update/{userId}', 'UserController@updatePassword');
