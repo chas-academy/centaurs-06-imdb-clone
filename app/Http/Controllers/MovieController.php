@@ -42,7 +42,7 @@ class MovieController extends Controller
             $query = $searchMethod . $movieApiId . $api_key . '&page=1&include_adult=false';
             $result = $this->MovieApi($query);
             $this->createMovieFromApi($result);
-            return view('pages.api-search')->with('hits', $result)->with('user', $user);
+            return redirect()->back()->with('hits', $result)->with('user', $user);
         }
 
     public function MovieApi($query) 
@@ -68,32 +68,31 @@ class MovieController extends Controller
             return $result;
         }
         
-        public function createMovieFromApi() 
+
+        public function createMovieFromApi($result) 
         {
-            // $keyword = "Transformers";
-            // $argument = str_replace(' ', '%20', $keyword);
-            // $searchMethod = 'search/movie?';
-            // $search = '&language=en-US&query=' . $argument . '&page=1&include_adult=false';
-            // $result = $this->MovieApi($search, $searchMethod);
-            $movie = new Movie();
-            $movie->createMovie($result);
-            $this->getMovieStaff($result);
+                $movie = new Movie();
+                $movie->createMovie($result);
+                $this->getMovieStaff($result);
         }
         
         public function getMovieStaff($argument)
         {
-            $movieId = $argument['results'][0]['id'];
-            $searchMethod = 'movie/' . $movieId . '/credits?';
-            $movieStaff = $this->MovieApi(null, $searchMethod);
+            $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
+            $movieId = $argument['id'];
+            $query = 'movie/' . $movieId . '/credits?' . $api_key;
+            $movieStaff = $this->MovieApi($query);
             $movie = new Movie();
-            $movie->createMovieStaff($movieStaff);    
+            $movie->createMovieStaff($movieStaff);
         }
 
         public function getMovieGenres()
         {
+            $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
             $searchMethod = 'genre/movie/list?';
             $search = '&language=en-US';
-            $movieGenres = $this->MovieApi($search, $searchMethod);
+            $query = $searchMethod . $api_key . $search;
+            $movieGenres = $this->MovieApi($query);
             $movie = new Movie();
             $movie->createMovieGenres($movieGenres);
         }

@@ -22,25 +22,28 @@ class Movie extends Model
     
     public function createMovie($properties)
     {
-        if(!$this->ifMovieExists($properties['results'][0]['title'])) {
+        
+        if(!$this->ifMovieExists($properties['title'])) {
             
             DB::table('movies')->insert([
-                'movie_api_id' => $properties['results'][0]['id'],
-                'title' => $properties['results'][0]['title'],
-                'plot' => $properties['results'][0]['overview'],
-                'playtime' => 55,
-                'poster' => $properties['results'][0]['poster_path'],
-                'backdrop' => $properties['results'][0]['backdrop_path'],
-                'releasedate' => $properties['results'][0]['release_date'],
-                'imdb_rating' => $properties['results'][0]['vote_average'],
+                'movie_api_id' => $properties['id'],
+                'title' => $properties['title'],
+                'plot' => $properties['overview'],
+                'playtime' => $properties['runtime'],
+                'poster' => $properties['poster_path'],
+                'backdrop' => $properties['backdrop_path'],
+                'releasedate' => $properties['release_date'],
+                'imdb_rating' => $properties['vote_average'],
                 'chas_rating' => 5,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-    
-            $movie = $this->getMovieByTitle($properties['results'][0]['title']);
-            $genres = $this->getGenres($properties['results'][0]['genre_ids']);
-    
+            $movie = $this->getMovieByTitle($properties['title']);
+            $genres = [];
+            foreach ($properties['genres'] as $genre) {
+                array_push($genres, $genre['id']);
+            }
+            $genres = $this->getGenres($genres);
             foreach ($genres as $genre) {
                 DB::table('ledger_genres')->insert([
                     'movie_id' => $movie->id,
@@ -51,9 +54,8 @@ class Movie extends Model
     }
 
     public function createMovieStaff($properties)
-    {        
+    {
         $movie = $this->getLatestCreatedMovie();
-
         for ($i=0; $i < 5; $i++) {
             if(isset($properties['cast'][$i])){                                 //if there is less than 5 casts then dont to add to db.             
                 if(!$this->ifActorExists($properties['cast'][$i]['name'])) {    //Checks if actor exists in db
@@ -64,7 +66,7 @@ class Movie extends Model
                 }
     
                 $actor = $this->getActors($properties['cast'][$i]['name']);
-    
+                
                 if(!$this->ifActorMovieLedgerExists($actor->id, $movie->id)){
                     DB::table('ledger_actors')->insert([
                         'actor_id' => $actor->id,
@@ -188,11 +190,10 @@ class Movie extends Model
         return array_first($actorName);
     }
 
-    public function getGenres($genreId)
+    public function getGenres($genreIds)
     {
         $genres = [];
-
-        foreach ($genreId as $id) {
+        foreach ($genreIds as $id) {
             array_push($genres , DB::table('genres')->get()->where('api_genre_id', $id)->first());
         }
             
