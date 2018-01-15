@@ -6,6 +6,7 @@ use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use App\Http\Models\Genre;
+use Illuminate\Support\Facades\Storage;
 
 use DB;
 
@@ -515,6 +516,24 @@ class Movie extends Model
         return DB::table('ledger_writers')->where('writer_id', $writerId)->where('movie_id', $movieId)->exists();
     }
 
+    // Helperfunction to assess what type of imgurl should be returned for posters
+    public static function getPosterUrl($poster)
+    {
+        $imdbUrl = config('app.imdb_url');
+
+        if (!$poster) {
+            return '/img/missingposter/missingposter.png';
+        }
+
+        $exists = Storage::disk('public')->exists('/posters/'.$poster);
+
+        if ($exists) {
+            return asset('storage/posters/'.$poster);
+        }
+
+        return $imdbUrl.$poster;
+    }
+
     public function actors()
     {
         return $this->belongsToMany('App\Http\Models\Actor', 'ledger_actors', 'movie_id', 'actor_id');
@@ -534,4 +553,5 @@ class Movie extends Model
     {
         return $this->belongsToMany('App\Http\Models\Genre', 'ledger_genres', 'movie_id', 'genre_id');
     }
+
 }

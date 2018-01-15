@@ -25,7 +25,7 @@
                     <p class="rating-num">{{ $movie->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                <img class="poster-image" src="https://image.tmdb.org/t/p/w1000{{ $movie->poster }}">
+                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}">
             </div>
 
             <div class="movie-info-section">

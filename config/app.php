@@ -230,4 +230,6 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
     ],
 
+    'imdb_url' => 'https://image.tmdb.org/t/p/w1000'
+
 ];
