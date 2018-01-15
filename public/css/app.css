@@ -11187,6 +11187,10 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   padding-right: 1rem;
 }
 
+.email-btn:hover {
+  color: #ffffff;
+}
+
 .select2 {
   width: 48% !important;
 }
@@ -11430,6 +11434,10 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     -webkit-transform: translateX(0%);
     transform: translateX(0%);
     overflow-y: inherit;
+  }
+
+  #offcanvas-full-members {
+    width: 20%;
   }
 
   .offcanvas-full-screen-inner {
