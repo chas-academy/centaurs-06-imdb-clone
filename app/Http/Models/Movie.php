@@ -197,7 +197,7 @@ class Movie extends Model
             array_push($genres , DB::table('genres')->get()->where('api_genre_id', $id)->first());
         }
             
-        return $genres;
+        return array_first($genres);
     }
 
     public static function getAllMovies() 

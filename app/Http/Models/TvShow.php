@@ -149,12 +149,15 @@ class TvShow extends Model
         $movieModel = new Movie();
         $genreIds = $movieModel->getGenres($genreIds);
         
-        foreach ($genreIds as $genreId) {
-            DB::table('ledger_genres')->insert([
-                'tvshow_id' => $tvshowId,
-                'genre_id' => $genreId->id
-            ]);
+        if (!$this->ifGenreTvShowLedgerExists($genreIds, $tvshowId)) {
+            foreach ($genreIds as $genreId) {
+                DB::table('ledger_genres')->insert([
+                    'tvshow_id' => $tvshowId,
+                    'genre_id' => $genreIds->id
+                ]);
+            }
         }
+
     }
 
     public function getEpisode($seasonId, $episodeNumber)
@@ -211,11 +214,15 @@ class TvShow extends Model
     {
         return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
     }
-    public function tvShowGenreLedgerExists($genreId, $tvShowId): bool
+
+    public function ifGenreTvShowLedgerExists($genreIds, $tvshowId): bool
     {
-        return DB::table('ledger_genres')->where('genre_id', $genreId)->where('tv_show_id', $tvShowId)->exists();
+        return DB::table('ledger_genres')->where('genre_id', $genreIds)->where('tvshow_id', $tvshowId)->exists();
     }
-    public function getTvShowGenreByName($genreName)
+
+    use Searchable;
+
+    public function searchableAs()
     {
         return DB::table('genres')->where('genre_name', $genreName)->first();
     }
