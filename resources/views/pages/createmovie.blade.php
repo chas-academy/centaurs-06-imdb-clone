@@ -88,7 +88,6 @@
         $('.multi-select').select2({
             placeholder: "Choose Genre"
         });
-
     });
 </script>
 @endsection

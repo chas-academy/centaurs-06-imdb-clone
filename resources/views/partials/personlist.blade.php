@@ -2,12 +2,12 @@
     <!--<h3 style="color: white;">{{$personType}}s</h3> -->
 
     <div>
-        <lable style="color: white;">Existing {{$personType}}</lable>
+        <!-- <lable style="color: white;">Existing {{$personType}}</lable> -->
     </div>
    
     <div>
         <label>
-        <select multiple class="multi-select" id="add-cast" name="state">
+        <select multiple class="multi-select" id="add-cast" select id="{{$personType}} name="state">
           @foreach ($persons as $person)
             <option value="{{ $person["id"] }}">{{ $person["name"] }}</option>
           @endforeach
@@ -19,8 +19,8 @@
 
     <div>
         <!-- <lable style="color: white;">New {{$personType}}</lable> -->
-        <input type="text" name="humhum" class="js-personlist-new-person-field" placeholder="Add">
-        <button class="button secondary js-personlist-new-person-add">+</button>
+        <input type="text" name="humhum" id ="add-input" class="js-personlist-new-person-field" placeholder="Add">
+        <button id="add-button" class="button secondary js-personlist-new-person-add">+</button>
     </div>
 
     <div>
