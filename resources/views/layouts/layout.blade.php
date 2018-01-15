@@ -4,9 +4,7 @@
    @include('../includes.head')
 </head>
 	<body>
-    <?php if(Auth::check()) {
-        $user = Auth::user();
-    } ?>
+    
 
     @yield('content')
 

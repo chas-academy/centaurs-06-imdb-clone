@@ -22,7 +22,6 @@ Route::get('/', function ()
     $genreModel = new Genre();
     $movies = $movieModel->getAllMovies();
     $genres = $genreModel->getAllGenres();
-
     $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
 
     if(Auth::check()) {
@@ -33,7 +32,6 @@ Route::get('/', function ()
     } else {
         $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
     };
-
     return $view;
 });
 
@@ -86,7 +84,7 @@ Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');
 
 
-Route::get('/apimovie/add/{movieApiId}', 'MovieController@searchMovieFromApiById');
+
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
@@ -107,11 +105,3 @@ Route::post('/sortbyspec/update', 'sortByController@sortBySpec');
 
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
-
-Route::get('/movies/{id}/edit', 'MovieController@editMovie');
-Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
-
-Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
-Route::post('/email-update/{userId}', 'UserController@updateEmail');
-Route::post('/password-update/{userId}', 'UserController@updatePassword');
-Route::get('/search-api', 'Moviecontroller@searchMovieFromApi');

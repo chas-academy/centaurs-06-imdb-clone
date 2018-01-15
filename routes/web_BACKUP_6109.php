@@ -85,8 +85,6 @@ Route::get('movie/{movieId}', function ($movieId)
 Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');
 
-
-Route::get('/apimovie/add/{movieApiId}', 'MovieController@searchMovieFromApiById');
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');

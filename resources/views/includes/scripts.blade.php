@@ -115,12 +115,18 @@
             }
         });
         //Initialize person (actor/producer..) handling
-        $(function() {
-           $(".js-personlist").each(function(index, el) {
-               el = $(el);
-               el.personList({
-                   dataField: el.data('field'),
-               });
-           });
+        //$(function() {
+        //    $(".js-personlist").each(function(index, el) {
+        //        el = $(el);
+        //        el.personList({
+        //            dataField: el.data('field'),
+        //        });
+        //    });
+        //});
+
+        // Alert when adding a movie from TMDB to our database
+        $('.confirm').on('click', function () {
+            return confirm('Are you sure you want to add this movie to Centaurs-imdb?');
         });
+
     </script>

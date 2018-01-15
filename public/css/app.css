@@ -11154,7 +11154,8 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   display: none;
 }
 
-#settings {
+#settings,
+#admin-settings {
   display: none;
   padding-right: 1rem;
 }
@@ -11755,43 +11756,11 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     font-weight: bold;
   }
 
-  #chg-mail {
-    font-size: 1.25rem;
+  #admin-panel {
+    font-weight: bold;
   }
 
-  #chg-pwd {
-    font-size: 1.25rem;
-  }
-
-  #add-av {
-    font-size: 1.25rem;
-  }
-
-  #delete-acc {
-    font-size: 1.25rem;
-  }
-
-  #back-email {
-    font-size: 1.25rem;
-  }
-
-  #back-password {
-    font-size: 1.25rem;
-  }
-
-  #back-avatar {
-    font-size: 1.25rem;
-  }
-
-  #back-delete {
-    font-size: 1.25rem;
-  }
-
-  #back-settings {
-    font-size: 1.25rem;
-  }
-
-  #delete-text {
+  .link-font-size {
     font-size: 1.25rem;
   }
 
