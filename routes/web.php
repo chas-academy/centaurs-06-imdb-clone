@@ -80,6 +80,8 @@ Route::get('movie/{movieId}', function ($movieId)
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
+
+Route::post('movie/{movieId}/addreview', 'ReviewController@addReview');
 // User Watchlist View
 
 Route::get('profile', 'UserController@profile');

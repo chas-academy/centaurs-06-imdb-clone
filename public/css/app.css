@@ -10651,7 +10651,7 @@ main .review-flex-align .write-reviews .review-rate .rating {
   float: left;
 }
 
-main .review-flex-align .write-reviews .write-review-form .send-review {
+main .review-flex-align .write-reviews .send-review {
   color: white;
   background: red;
   font-weight: 800;
