@@ -119,8 +119,27 @@
         //    $(".js-personlist").each(function(index, el) {
         //        el = $(el);
         //        el.personList({
-        //            dataField: el.data('field'),
         //        });
         //    });
         //});
+
+
+
+        // Admin panel scripts
+        $('.admin-btn').click(function(){
+            $('#profile-page').hide();
+            $('#sign-out').hide();
+            $('.mobile-btn-back').css({'display':'flex'});
+
+            let id = $(this).attr('id').split('manage-');
+
+            $('#manage-'+id[1]+'-panel').toggleClass('hide');
+            $('.mobile-btn-back').attr('id', 'mobile-btn-back-'+id[1]);
+        });
+        $('.mobile-btn-back').click(function(){
+            let id = $(this).attr('id').split("mobile-btn-back-");
+            $('#manage-'+id[1]+'-panel').addClass('hide');
+            $('#profile-page').show();
+            $(this).hide();
+        });
     </script>

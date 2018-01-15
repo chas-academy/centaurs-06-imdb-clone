@@ -113,6 +113,14 @@
                         <div class="cont-profile">
                             <h2 id="links" data-toggle="white avatar settings back-settings" data-toggler=".visible" data-animate="fade-in fade-out">Profile</h2>
                             <a id="white" data-toggler=".visible" data-animate="fade-in fade-out" href="/watchlist">Watchlist</a>
+                            @php
+                                $user = Auth::user()->type;
+
+                                if($user == "admin")
+                                {
+                                    echo '<a id="white" data-toggler="visible" data-animate="fade-in fade-out" href="/adminpanel">Admin Panel</a>'; 
+                                }
+                            @endphp
                         </div>
                     <div class"width-100">
                         <!-- Profile settings -->

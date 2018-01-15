@@ -11134,7 +11134,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   padding-top: 3rem;
 }
 
-#white {
+.white {
   color: #ffffff;
   font-size: 1.25rem;
   font-weight: bold;
@@ -11144,6 +11144,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   padding-top: 3rem;
   color: #ffffff;
   font-size: 1.25rem;
+  text-align: right;
 }
 
 #avatar-page {
@@ -11344,6 +11345,39 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
 .offcanvas-full-screen-inner {
   height: 100%;
+}
+
+#manage-users-panel h2 {
+  margin: 0px;
+  padding: 35px 0px 35px 0px;
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+#manage-users-panel form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0px;
+}
+
+#manage-users-panel form input {
+  width: 75%;
+  margin: 0px;
+}
+
+#manage-users-panel form button {
+  width: 25%;
+  background: #FAD400;
+  color: #333333;
 }
 
 @media only screen and (min-width: 1024px) {

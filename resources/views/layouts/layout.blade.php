@@ -10,7 +10,8 @@
 
     @yield('content')
 
-	@include('../includes.off-canvas')
+	@includeWhen((Request::url() === '/adminpanel'), '../includes.admin-offcanvas');
+	@includeWhen(!(Request::url() === '/adminpanel'), '../includes.off-canvas');
 
     @include('../includes.scripts')
     </body>

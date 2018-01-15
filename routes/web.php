@@ -105,3 +105,17 @@ Route::post('/sortbyspec/update', 'sortByController@sortBySpec');
 
 Route::get('/createmovie', 'MovieController@createMovie');
 Route::post('/createmovie', 'MovieController@storeMovie');
+
+Route::get('/adminpanel', function (){
+    $user = Auth::user()->type;
+
+    if($user == "admin") {
+        $userController = new UserController;
+        $user = $userController->profile();
+
+        $view = View::make('pages.adminpanel')->with('user', $user);
+        return $view;
+    } elseif($user == "standard") {
+        return redirect('/');
+    };
+});
