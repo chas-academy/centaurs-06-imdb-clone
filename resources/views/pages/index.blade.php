@@ -8,6 +8,7 @@
         @include('includes.errors')
     </section>
         @foreach($movies as $key => $movie)
+
             @if ($key === 'movie')
 
                 <section class="small-12 flex-align-sb-c">

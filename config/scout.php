@@ -75,6 +75,8 @@ return [
         'secret' => env('ALGOLIA_SECRET', ''),
     ],
 
+    
+
 
     'mysql' => [
         'mode' => 'NATURAL_LANGUAGE',
