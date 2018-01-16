@@ -196,8 +196,8 @@ class Movie extends Model
         foreach ($genreIds as $id) {
             array_push($genres , DB::table('genres')->get()->where('api_genre_id', $id)->first());
         }
-            
-        return array_first($genres);
+
+        return $genres;
     }
 
     public static function getAllMovies() 
@@ -499,9 +499,9 @@ class Movie extends Model
         return DB::table('ledger_genres')->where('movie_id', $movieId)->where('genre_id', $genreId)->exists();
     }
 
-    public function ifGenreEpisodeLedgerExists($episodeId, $genreId): bool
+    public function ifGenreEpisodeLedgerExists($tvshowId, $genreId): bool
     {
-        return DB::table('ledger_genres')->where('episode_id', $episodeId)->where('genre_id', $genreId)->exists();
+        return DB::table('ledger_genres')->where('tvshow_id', $tvshowId)->where('genre_id', $genreId)->exists();
     }
 
     public function ifProducerExists($producerName): bool

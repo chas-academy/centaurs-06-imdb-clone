@@ -17899,9 +17899,9 @@ if (token) {
 
     // Define as an anonymous module so, through path mapping, it can be
     // referenced as the "underscore" module.
-    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() {
       return _;
-    }.call(exports, __webpack_require__, exports, module),
+    }).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   }
   // Check for `exports` after `define` in case a build optimizer adds it.
@@ -28191,9 +28191,9 @@ jQuery.nodeName = nodeName;
 // https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
 
 if ( true ) {
-	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
 		return jQuery;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+	}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 }
 
@@ -41203,7 +41203,7 @@ $.fn.personList = function (config) {
 /* 36 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: \n    @import \"styles/desktop-style\";\n                                  ^\n      Invalid CSS after '...desktop-style\";': expected \"}\", was \"<<<<<<< HEAD\"\n      in /Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/resources/assets/sass/app.scss (line 42, column 36)\n    at runLoaders (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.<anonymous> (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/async/dist/async.js:2257:31)\n    at Object.callback (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/async/dist/async.js:958:16)\n    at options.error (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ })
 /******/ ]);

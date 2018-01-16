@@ -10,94 +10,89 @@
     </form>
 </header>
 <div id="mobile-hide">
-<img class="current-movie backdrop-image" src="https://image.tmdb.org/t/p/w1920{{ $tvshow->backdrop }}">
+<img class="current-movie backdrop-image" src="https://image.tmdb.org/t/p/w1920{{ $tvDetails['tvshow']->backdrop }}">
 </div>
 <main class="row current-movie">
-    <div class="small-12 large-12 movie-flex-align">
+    <div class="small-12 large-12 movie-flex-align tvshow-cont">
         <div class="movie-info">
         <div class="movie-content">
             <div class="poster-section">
                 <div class="small-12 flex-align-c-c">
-                    <a href="{{ $tvshow->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
+                    <a href="{{ $tvDetails['tvshow']->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
                 </div>
 
                 <div class="movie-rating">
-                    <p class="rating-num">{{ $tvshow->imdb_rating }}</p>
+                    <p class="rating-num">{{ $tvDetails['tvshow']->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($tvshow->poster) }}">
+                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($tvDetails['tvshow']->poster) }}">
             </div>
 
             <div class="movie-info-section">
                 <div class="small-12 movie-description">
                     <div class="small-12">
-                    <h3 class="movie-title">{{ $tvshow->title }}</h3>
+                    <h3 class="movie-title">{{ $tvDetails['tvshow']->title }}</h3>
                     </div>
                     <div class="small-12 year-play">
-                        <p class="movie-year">{{ $tvshow->releasedate }}</p>
+                        <p class="movie-year">{{ $tvDetails['tvshow']->releasedate }}</p>
                         <p>|</p>
                     </div>
-                    <div class="small-12 movie-genre">
-                        @if (empty($genres))
-                        <p>No genres found</p>
-                        @else
-                        @foreach ($genres as $genre)
-                            <p class="genre">{{ $genre }}</p>
-                        @endforeach
-                        @endif
-                    </div>
-                </div>
-
-                <div class="small-12 movie-crew">
-                    <div class="movie-crew-card">
-                        <b>Directors</b>
-                        <ul class="director">
-                            @if (empty($writers))
-                            <p>No writers found</p>
-                            @endif
-                        </ul>
-                    </div>
-                    <div class="movie-crew-card">
-                        <b>Writers</b>
-                        <ul class="w-credits">
-                            @if (empty($writers))
-                            <p>No writers found</p>
+                    <div class="wrap">
+                        <div class="small-12 movie-genre">
+                            @if (empty($tvDetails['genres']))
+                            <p>No genres found</p>
                             @else
-                            @foreach ($writers as $writer)
-                                <li class="person-name">{{ $writer }}</li>
+                            @foreach ($tvDetails['genres'] as $genre)
+                                <p class="genre">{{ $genre }}</p>
                             @endforeach
                             @endif
-                        </ul>
+                        </div>
                     </div>
-                    <div class="movie-crew-card">
-                        <b>Producer</b>
-                        <ul class="producer">
-                            
-                            @if (empty($producers))
-                            <p>No producers found</p>
-                            @else
-                            @foreach ($producers as $producer)
-                                <li class="person-name">{{ $producer }}</li>
-                            @endforeach
-                            @endif
-                        </ul>
+                        <div class="movie-crew-card seasons-card">
+                            <b>Seasons</b>
+                            <ul class="w-credits seasons">
+                                @if (empty($tvDetails['seasons']))
+                                <p>No writers found</p>
+                                @else
+                                @foreach ($tvDetails['seasons'] as $season)
+                                    <li class="person-name season-number">Season {{ $season->season_number }}</li>
+                                @endforeach
+                                @endif
+                            </ul>
+                        </div>         
                     </div>
-                    <div class="movie-crew-card">
-                        <b>Cast</b>
-                        <ul class="actor">
-                            @if (empty($actors))
-                            <p>No actors found</p>
+                    <div class="small-12 tv-plot">
+                        <b>Storyline :</b>
+                        <p class="plot">{{ $tvDetails['tvshow']->plot }}</p>
+                    </div>
+                        @if (empty($tvDetails['topepisodes']))
+                            <p>No episodes found</p>
                             @else
-                            @foreach ($actors as $actor)
-                            <li class="person-name">{{ $actor }}</li>
-                            @endforeach
+                            <div class="slideshow-container">
+                                @foreach ($tvDetails['topepisodes'] as $episode)
+                                    <div class="mySlides fade">
+                                        <div class="numbertext"></div>
+                                            <img src="https://image.tmdb.org/t/p/w1920{{ $episode->poster }}" style="width:100%">
+                                        <div class="text">
+                                        <h4>{{ $episode->title }}</h4>
+                                        <p>{{ $episode->plot }}</h4>
+                                        </div>
+                                    </div>
+                                @endforeach
                             @endif
-                        </ul>
-                    </div>          
-                </div>
-                <div class="small-12 movie-plot">
-                    <b>Storyline :</b>
-                    <p class="plot">{{ $tvshow->plot }}</p>
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        </div>
+                        <br>
+                        <div style="text-align:center">
+                            <span class="dot" onclick="currentSlide(1)"></span> 
+                            <span class="dot" onclick="currentSlide(2)"></span> 
+                            <span class="dot" onclick="currentSlide(3)"></span>
+                            <span class="dot" onclick="currentSlide(4)"></span>
+                            <span class="dot" onclick="currentSlide(5)"></span>
+                            <span class="dot" onclick="currentSlide(6)"></span> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
