@@ -10644,12 +10644,14 @@ main .btn-container .read-review {
   color: white;
   background: red;
   font-weight: 800;
+  background: #E2A534;
 }
 
 main .btn-container .writer-review {
   color: white;
   background: red;
   font-weight: 800;
+  background: #E2A534;
 }
 
 main .review-flex-align .write-reviews .review-rate {
@@ -10663,7 +10665,7 @@ main .review-flex-align .write-reviews .review-rate .rating {
 
 main .review-flex-align .write-reviews .send-review {
   color: white;
-  background: red;
+  background: #E2A534;
   font-weight: 800;
   width: 100%;
   height: 40px;
