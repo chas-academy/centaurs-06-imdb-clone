@@ -87,7 +87,11 @@ Route::get('movie/{movieId}', function ($movieId)
     return $view;
 });
 
+
+// Review
 Route::post('movie/{movieId}/addreview', 'ReviewController@addReview');
+Route::get('delete/review/{reviewId}', 'ReviewController@removeReview');
+
 // User Watchlist View
 
 Route::get('profile', 'UserController@profile');
