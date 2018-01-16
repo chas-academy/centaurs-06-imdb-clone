@@ -11426,6 +11426,111 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   }
 }
 
+#outerContentContainer {
+  background-color: #E8E8E8;
+  padding: 40px 0;
+}
+
+#outerContentContainer #innerContentContainer {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#outerContentContainer #innerContentContainer h1 {
+  margin-bottom: 0.8em;
+}
+
+#outerContentContainer #innerContentContainer .adminform {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#outerContentContainer #innerContentContainer .adminform .button {
+  background-color: #FFCF3F;
+  width: 100%;
+  font-weight: bold;
+}
+
+#outerContentContainer #innerContentContainer .adminform .js-personlist-new-person-field {
+  width: calc(95% - 10px);
+}
+
+#outerContentContainer #innerContentContainer .adminform ::-webkit-input-placeholder {
+  font-weight: 400;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform :-ms-input-placeholder {
+  font-weight: 400;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform ::-ms-input-placeholder {
+  font-weight: 400;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform ::placeholder {
+  font-weight: 400;
+  color: black;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2 {
+  width: 100% !important;
+  font-size: 1rem;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-search__field {
+  line-height: 0;
+  font-size: 1rem;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container {
+  vertical-align: baseline;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple {
+  border: 1px solid #cacaca !important;
+  border-radius: 0;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
+  marign-right: 4px;
+}
+
+#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #FFCF3F !important;
+  border-radius: 0;
+  border: none;
+  margin: 6px;
+  font-weight: 400;
+  padding: 2px 8px;
+}
+
+#add-person {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#add-person #person-btn {
+  width: 10%;
+  font-weight: bold;
+  padding-bottom: 17px;
+}
+
+#add-person #person-btn .fa-plus-circle {
+  color: #FFCF3F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 @media only screen and (min-width: 1024px) {
   #offcanvas-full-screen {
     display: -webkit-box;
@@ -11766,6 +11871,14 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .movie-poster:nth-child(4n) {
     width: auto !important;
+  }
+
+  #outerContentContainer {
+    margin-left: 20%;
+  }
+
+  #outerContentContainer #innerContentContainer {
+    width: 80%;
   }
 }
 
