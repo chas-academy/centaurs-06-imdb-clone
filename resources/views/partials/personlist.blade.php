@@ -1,10 +1,10 @@
 <div class="js-personlist personlist" data-field="{{$type}}" data-initial='{!! json_encode($initial ?? []) !!}'>
     <div>
-    <select class="js-example-placeholder-multiple js-states form-control js-personlist-existing-person-chooser person{{$type}}" multiple="multiple" name="state">
-         @foreach ($choices as $choice)
-           <option value="{{ $choice["id"] }}">{{ $choice["name"] }}</option>
-         @endforeach
-       </select>
+        <select class="js-example-placeholder-multiple js-states form-control js-personlist-existing-person-chooser person{{$type}}" multiple="multiple" name="state">
+            @foreach ($choices as $choice)
+                <option value="{{ $choice["id"] }}">{{ $choice["name"] }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div id="add-person" class="personlist-add-wrapper">
