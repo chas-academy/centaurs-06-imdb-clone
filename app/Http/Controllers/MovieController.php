@@ -156,6 +156,7 @@ class MovieController extends Controller
             $newChoices = array_map(function($name) use ($model) {
                 $existingChoice = $model::where('name', $name)->first();
 
+<<<<<<< HEAD
                 if($existingChoice) {
                     return $existingChoice;
                 }
@@ -170,6 +171,7 @@ class MovieController extends Controller
             return $choices = array_merge($choices, $newChoices);
         }
 
+<<<<<<< HEAD
         // Update movie
         public function editMovie(Request $request, $id) {
 
@@ -312,4 +314,20 @@ class MovieController extends Controller
 
             $movie->save();
         }
+=======
+        public function deleteMovie() //TODO: take movieId
+=======
+        public function deleteMovie($movieId)
+>>>>>>> methods to delete movie with all ledgers
+        {
+            $movieModel = new Movie();
+            $movieDeleted = $movieModel->deleteMovie($movieId);
+            if($movieDeleted == true) {
+                //TODO: Give message that movie was deleted
+            } else {
+                //Movie with that id did not exists in db.
+            }
+        }
+
+>>>>>>> bug fixes for createTvshowfromapi
 }
