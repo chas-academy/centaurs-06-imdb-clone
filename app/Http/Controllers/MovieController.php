@@ -312,7 +312,6 @@ class MovieController extends Controller
 
             $movie->save();
         }
-
         public function deleteMovie($movieId)
         {
             $movieModel = new Movie();
