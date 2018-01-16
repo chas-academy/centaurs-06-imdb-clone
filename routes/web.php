@@ -22,7 +22,8 @@ Route::get('/', function ()
 {
     $movieModel = new Movie();
     $genreModel = new Genre();
-    $movies = $movieModel->getAllMovies();
+    $movies = array_flatten($movieModel->getAllMovies());
+    $movies = ['movie' => $movies];
     $genres = $genreModel->getAllGenres();
 
     $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
