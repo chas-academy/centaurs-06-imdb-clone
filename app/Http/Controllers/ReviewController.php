@@ -14,4 +14,11 @@ class ReviewController extends Controller
         $reviewModel->createReview($request, $movieId);
         return redirect()->back();
     }
+
+    public function removeReview($reviewId) 
+    {
+        $reviewModel = new Review();
+        $reviewModel->removeReview($reviewId);
+        return redirect()->back();
+    }
 }

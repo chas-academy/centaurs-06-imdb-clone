@@ -147,6 +147,7 @@
             @foreach($reviews as $review)
                 <div id="review-1" class="small-12 review">
                     <div class="small-12 review-rate">
+                        <div>
                         @if($review->review_rating === 0.5)
                             <i class="fa fa-star-half" aria-hidden="true"></i>
                         @elseif($review->review_rating === 1)
@@ -188,10 +189,11 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                         @endif
-                    </div>
+                        </div>
                         @if($review->user_id === $user['id'])
-                            <a href="/delete/review/{{ $review->id  }}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
+                            <a href="/delete/review/{{ $review->id  }}"><i class="fa fa-trash delete-review" aria-hidden="true"></i></a>
                         @endif
+                    </div>
                     <h3 class="review-title">{{ $review->title }}</h3>
                     <div class="small-12 review-description">
                         <div class="small-12 review-info">
