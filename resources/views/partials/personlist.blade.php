@@ -1,24 +1,21 @@
-<div class="js-personlist" data-field="{{$type}}" data-initial='{!! json_encode($initial ?? []) !!}'>
-    <h3>{{$type}}s</h3>
+<div class="js-personlist" data-field="{{$personType}}">
 
     <div>
-        <lable style="color: white;">EXISTING {{$type}}</lable>
-        <select class="js-example-basic-single js-personlist-existing-person-chooser" name="state">
-          @foreach ($choices as $choice)
-            <option value="{{ $choice["id"] }}">{{ $choice["name"] }}</option>
-          @endforeach
-        </select>
-        <button class="button secondary js-personlist-existing-person-add">Add</button>
+    <select class="js-example-placeholder-multiple js-states form-control js-personlist-existing-person-chooser {{$personType}}" multiple="multiple" name="state">
+         @foreach ($persons as $person)
+           <option value="{{ $person["id"] }}">{{ $person["name"] }}</option>
+         @endforeach
+       </select>
     </div>
 
-    <div>
-        <lable style="color: white;">NEW {{$type}}</lable>
-        <input type="text" name="humhum" class="js-personlist-new-person-field">
-        <button class="button secondary js-personlist-new-person-add">Add</button>
+    <div id="add-person">
+    <input type="text" name="text" placeholder="Add a new {{$personType}}" class="js-personlist-new-person-field">
+    <button id="person-btn" class="secondary js-personlist-new-person-add"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button>
     </div>
 
     <div>
       <ul class="js-personlist-choices">
       </ul>
     </div>
+
 </div>

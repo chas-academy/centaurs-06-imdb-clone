@@ -13,7 +13,6 @@ use App\Http\Models\LedgerDirector;
 use App\Http\Models\Genre;
 use App\Http\Models\LedgerGenre;
 use Illuminate\Support\Facades\Storage;
-
 use Resources\views\pages;
 use App\Http\Controllers\UserController;
 use Auth;
@@ -309,5 +308,16 @@ class MovieController extends Controller
             }
 
             $movie->save();
+        }
+        
+        public function deleteMovie($movieId)
+        {
+            $movieModel = new Movie();
+            $movieDeleted = $movieModel->deleteMovie($movieId);
+            if($movieDeleted == true) {
+                //TODO: Give message that movie was deleted
+            } else {
+                //Movie with that id did not exists in db.
+            }
         }
 }

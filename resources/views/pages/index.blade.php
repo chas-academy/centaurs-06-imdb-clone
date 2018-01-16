@@ -99,7 +99,6 @@
                 @else
             @endif
         @endforeach
-    
 </main>
 @include('includes.footer')
 </div>
