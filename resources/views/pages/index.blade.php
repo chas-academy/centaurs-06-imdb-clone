@@ -13,8 +13,8 @@
                 <div class="movie-rating">
                     <p class="rating-num">{{ $movie->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <a href="movie/{{ $movie->id }}" class="none">
+                </div> 
+                <a href="/movie/{{ $movie->id }}" class="none">
                     <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
                     @if($movie->poster === null)
                         <p class="movie-title">{{$movie->title}}</p>

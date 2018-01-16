@@ -1,6 +1,8 @@
 <?php
 use App\Http\Models\Movie;
+use App\Http\Models\Review;
 use App\Http\Models\Genre;
+use App\User;
 use App\Http\Controllers\UserController;
 
 /*
@@ -61,12 +63,15 @@ Route::get('movie/{movieId}', function ($movieId)
 {
 
     $movieModel = new Movie();
+    $reviewModel = new Review();
+    $userModel = new User();
     $movie = $movieModel->getMovieById($movieId);
     $actors = $movieModel->getMovieActors($movieId);
     $directors = $movieModel->getMovieDirectors($movieId);
     $producers = $movieModel->getMovieProducers($movieId);
     $writers = $movieModel->getMovieWriters($movieId);
     $genres = $movieModel->getMovieGenres($movieId);
+    $reviews = $reviewModel->getAllReviews($movieId);
 
     $movieDetails = array(
         'movie' => $movie,
@@ -74,12 +79,19 @@ Route::get('movie/{movieId}', function ($movieId)
         'directors' => $directors,
         'producers' => $producers,
         'writers' => $writers,
-        'genres' => $genres
+        'genres' => $genres,
+        'reviews' => $reviews
     );
 
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
+
+
+// Review
+Route::post('movie/{movieId}/addreview', 'ReviewController@addReview');
+Route::get('delete/review/{reviewId}', 'ReviewController@removeReview');
+
 // User Watchlist View
 
 Route::get('profile', 'UserController@profile');
