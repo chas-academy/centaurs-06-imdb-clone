@@ -36,7 +36,7 @@ class TvShowController extends Controller
 
     public function createTvShowFromApi()
     {
-        $keyword = "Band of brothers";
+        $keyword = "Game of thrones";
         $argument = str_replace(' ', '%20', $keyword);
         $searchMethod = 'search/tv?';
         $search = '&language=en-US&query=' . $argument . '&page=1';
@@ -124,5 +124,14 @@ class TvShowController extends Controller
         return $view;
 
     }
+    public function seasonlist($tvshowId, $seasonId)
+    {
+        $tvShowModel = new TvShow;
+    
+        $seasonId = $tvShowModel->getEpisodeBySeason($seasonId, $tvshowId);
+        $episodes = $tvShowModel->getEpisodesFromSpecificSeason($seasonId);
+
+    }
+
 }
 

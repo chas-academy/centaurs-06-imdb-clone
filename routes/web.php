@@ -145,3 +145,5 @@ Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
 Route::get('/search-api', 'MovieController@searchMovieFromApi');
 Route::get('/tv-shows', 'TvShowController@readTvShows');
 Route::get('/tv-show/{tvshowId}', 'TvShowController@list');
+Route::get('/tv-show/{tvshowId}/season{seasonId}', 'TvShowController@seasonlist');
+

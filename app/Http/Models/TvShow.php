@@ -167,6 +167,21 @@ class TvShow extends Model
         ])->first();
     }
 
+    public function getEpisodeBySeason ($seasonId, $tvshowId)
+    {
+        $seasonId = DB::table('seasons')->where('season_number', $seasonId)->where('tv_show_id', $tvshowId)->pluck('id');
+        $seasonId = array_first($seasonId);
+        return $seasonId;
+    }
+
+    public function getEpisodesFromSpecificSeason ($seasonId)
+    {
+        $episodes = DB::table('episodes')->where('season_id', $seasonId)->get();
+
+        return $episodes;
+
+    }
+
     public function getTvShowSeason($seasonNumber, $tvShowId)
     {   
         return DB::table('seasons')->where('season_number', $seasonNumber)->where('tv_show_id', $tvShowId)->first();
