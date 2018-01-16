@@ -40,6 +40,13 @@
 // Style for desktop
 @media only screen and (min-width: 1024px) {
     @import "styles/desktop-style";
+<<<<<<< HEAD
     @import "styles/desktop-admin-form-style";
 }
 
+=======
+}
+
+// Slider for episodes
+@import "styles/slider";
+>>>>>>> fixed genres for tvshows, added slider for top 6 episodes for tvshows

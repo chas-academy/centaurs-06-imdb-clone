@@ -36,7 +36,7 @@ class TvShowController extends Controller
 
     public function createTvShowFromApi()
     {
-        $keyword = "Breaking bad";
+        $keyword = "Band of brothers";
         $argument = str_replace(' ', '%20', $keyword);
         $searchMethod = 'search/tv?';
         $search = '&language=en-US&query=' . $argument . '&page=1';
@@ -98,8 +98,6 @@ class TvShowController extends Controller
     public function list($id)
     {
         $tvshow = TvShow::find($id);
-
-        
         $tvShowModel = new TvShow;
         $tvShowInfo = $tvShowModel->getTvShowById($tvshow->id);
         $seasons = $tvShowModel->getTvShowSeasons($tvshow->id);
@@ -121,7 +119,7 @@ class TvShowController extends Controller
             'topepisodes' => $topEpisodes
         );
 
-        $view = View::make('pages.tvshow')->with($tvDetails);
+        $view = View::make('pages.tvshow')->with('tvDetails', $tvDetails);
         
         return $view;
 
