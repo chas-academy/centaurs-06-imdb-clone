@@ -2,7 +2,7 @@
 use App\Http\Models\Movie;
 use App\Http\Models\Review;
 use App\Http\Models\Genre;
-use App\User;
+use App\Http\Models\User;
 use App\Http\Controllers\UserController;
 
 /*
