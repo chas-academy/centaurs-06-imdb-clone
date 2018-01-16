@@ -41,4 +41,9 @@ class Review extends Model
 
         return $reviews;
     }
+
+    public function removeReview($reviewId) 
+    {
+        DB::table('reviews')->where('id', $reviewId)->delete();
+    }
 }
