@@ -456,6 +456,23 @@ class Movie extends Model
         }
     }
 
+    public function deleteMovie($movieId): bool
+    {
+        if($this->ifMovieExistsId($movieId)) {
+            DB::table('ledger_actors')->where('movie_id', $movieId)->delete();
+            DB::table('ledger_directors')->where('movie_id', $movieId)->delete();
+            DB::table('ledger_genres')->where('movie_id', $movieId)->delete();
+            DB::table('ledger_producers')->where('movie_id', $movieId)->delete();
+            DB::table('ledger_writers')->where('movie_id', $movieId)->delete();
+            //TODO: remove comment when ledger_watch_lists exists in db.
+            //DB::table('ledger_watch_lists')->where('movie_id', $movieId)->delete();
+            DB::table('movies')->where('id', $movieId)->delete();
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     //Takes actor name as string and check in database if it exists
     public function ifActorExists($actorName) : bool
     {
@@ -470,6 +487,10 @@ class Movie extends Model
     public function ifMovieExists($movieTitle): bool
     {
         return DB::table('movies')->where('title', $movieTitle)->exists();
+    }
+    public function ifMovieExistsId($movieId)
+    {
+        return DB::table('movies')->where('id', $movieId)->exists();
     }
 
     public function ifGenreExists($genreName): bool
