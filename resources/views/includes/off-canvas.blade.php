@@ -69,15 +69,11 @@
                     {{ csrf_field() }}
                     <label>
                     <input type="email" name="email" placeholder="Email" required>
-                    <span class="form-error">
-                    Invalid email.
-                    </label>
+                    <span class="form-error">Invalid email.</label>
 
                     <label>
                     <input type="password" name="password" placeholder="Password" required>
-                    <span class="form-error">
-                    Invalid password.
-                    </span>
+                    <span class="form-error">Invalid password.</span>
                     </label>
 
 
@@ -102,28 +98,24 @@
                     {{ csrf_field() }}
                     <label>
                         <input type="text" name="name" placeholder="Name" required>
-                        <span class="form-error">
-                        Please fill in name.
-                        </span>
+                        <span class="form-error">Please fill in name.</span>
                     <label>
+
                     <label>
                         <input type="email" name="email" placeholder="Email" required>
-                        <span class="form-error">
-                        Invalid email.
-                        </span>
+                        <span class="form-error">Invalid email.</span>
                     </label> 
+
                     <label>
                         <input type="password" name="password" placeholder="Password" required>
-                        <span class="form-error">
-                        Fill in password.
-                        </span>
+                        <span class="form-error">Fill in password.</span>
                     </label>
+
                     <label>
                         <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
-                        <span class="form-error">
-                        Please confirm password.
-                        </span>
+                        <span class="form-error">Please confirm password.</span>
                     </label>
+
                     <div class="small-12 btn">
                         <button type="submit" class="submit">Create Account</button>
                     </div>
@@ -157,6 +149,7 @@
                         @endif
                         </div>
                     <div class"width-100">
+
                         <!-- Admin panel -->
                         @if(Auth::user()->type === 'admin')
                         <div id="admin-settings" data-toggler=".visible" data-animate="fade-in fade-out">
@@ -189,17 +182,24 @@
                         </div>
                         <!-- Update email -->
                         <div id="email-update" data-toggler=".visible" data-animate="fade-in fade-out">
-                            <form action="/email-update/{{ $user->id }}" method="POST">
+                            <form data-abide novalidate action="/email-update/{{ $user->id }}" method="POST">
                                 {{ csrf_field() }}
-                                <input type="text" name="new-email" placeholder="Enter new email"></input>
+                                <label>
+                                <input type="email" name="new-email" placeholder="Enter new email" required></input>
+                                <span class="form-error">Must be an email, please try again.</span>
                                 <button class="email-btn" type="submit">Confirm</button>
+                                </label>
                             </form>
                         </div>
                         <!-- Update password -->
                         <div id="password-update" data-toggler=".visible" data-animate="fade-in fade-out">
-                            <form action="/password-update/{{ $user->id }}" method="POST">
+                            <form data-abide novalidate action="/password-update/{{ $user->id }}" method="POST">
                                 {{ csrf_field() }}
-                                <input type="password" name="current-password" placeholder="Enter current password" required></input>
+                                <label>
+                                    <input type="password" name="current-password" placeholder="Enter current password" required></input>
+                                    <span class="form-error">Wrong password, please try again.</span>
+                                </label>
+ 
                                 <input type="password" name="new-password" placeholder="Enter new password" required></input>
                                 <button class="email-btn" type="submit">Confirm</button>
                             </form>
