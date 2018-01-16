@@ -112,7 +112,10 @@
         </div>
             <div class="small-12 btn-container">
                 <button class="read-review" data-toggle="read-reviews">Read reviews</button>
-                <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+
+                @if(Auth::check())
+                    <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+                @endif
             </div> 
         </div>
     </div>
@@ -186,6 +189,9 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                         @endif
                     </div>
+                        @if($review->user_id === $user['id'])
+                            <a href="/delete/review/{{ $review->id  }}"><i class="fa fa-eraser" aria-hidden="true"></i></a>
+                        @endif
                     <h3 class="review-title">{{ $review->title }}</h3>
                     <div class="small-12 review-description">
                         <div class="small-12 review-info">

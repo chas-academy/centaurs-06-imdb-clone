@@ -24,7 +24,11 @@ main
 					display: flex
 					flex-direction: row
 					padding: 5px 0px 35px 0px
-					justify-content: space-between
+					justify-content: flex-start
+					.movie-year
+						margin-right: 5px
+					.playtime
+						margin-left: 5px
 					p
 						margin: 0
 				.movie-genre
@@ -32,11 +36,12 @@ main
 					display: flex
 					text-align: center
 					flex-direction: row
+					flex-wrap: wrap
 					.genre
 						width: fit-content
 						border-radius: 5px
 						background: #F03E3E
-						margin: 0px 15px 35px 0px
+						margin: 0px 15px 15px 0px
 						padding: 5px 15px 5px 15px
 			.movie-plot
 				p
