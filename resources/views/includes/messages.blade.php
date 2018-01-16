@@ -1,3 +1,5 @@
 @if (session()->has('message'))
-    <p style="color: white; font-weight: bold">{!! session()->get('message') !!}</p>
+    <section id="statusMsg">
+    <p>{!! session()->get('message') !!}</p>
+    </section>
 @endif
