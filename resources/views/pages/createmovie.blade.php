@@ -14,16 +14,12 @@
 
             <label>
                 <input type="text" name="title" placeholder="Movie title" required>
-                <span class="form-error">
-                Please fill in movie title.
-                </span>
+                <span class="form-error">Please fill in movie title.</span>
             </label>
 
             <label for="uploadPoster" class="button">Upload poster</label>
                 <input type="file" name="poster" id="uploadPoster" class="show-for-sr" required/>
-                <span class="form-error">
-                Please add movie poster.
-                </span>
+                <span class="form-error">Please add movie poster.</span>
             </label>
 
             <label> 
@@ -32,9 +28,7 @@
                     <option value="{{ $genre["id"] }}">{{ $genre["genre_name"] }}</option>
                 @endforeach
                 </select>
-                <span class="form-error">
-                Don't forget to add genre.
-                </span>
+                <span class="form-error">Don't forget to add genre.</span>
             </label> 
             
                 <!-- <select class="js-example-basic-single" name="releaseyear"> -->
@@ -45,16 +39,12 @@
                     <option value="{{ $releaseyear }}">{{ $releaseyear }}</option>
                 @endforeach
                 </select>
-                <span class="form-error">
-                Add release year. 
-                </span>
+                <span class="form-error">Add release year.</span>
             </label>
 
             <label>
                 <input type="number" name="playtimeMins" placeholder="Playtime minutes" required>
-                <span class="form-error">
-                Add playtime. 
-                </span>
+                <span class="form-error">Add playtime.</span>
             </label>
 
             <label>
