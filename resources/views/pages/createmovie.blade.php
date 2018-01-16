@@ -2,21 +2,13 @@
 @section('content')
 
 <div id="outerContentContainer">
+    @include('includes.messages')
+    @include('includes.errors')
     <div id="innerContentContainer">
 
-        <form data-abide novalidate class="adminform" action="" method="post" enctype="multipart/form-data">
+        <form data-abide novalidate class="adminform" action="" method="post" enctype="multipart/form-data">            
             <div class="small-12 columns">
             <h1>Create movie</h1>
-
-            @if ($errors->any())
-                <div>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
 
             <?php echo csrf_field(); ?>
 
@@ -66,7 +58,7 @@
             </label>
 
             <label>
-                <textarea cols="30" rows="10" placeholder="Movie plot"></textarea>
+                <textarea cols="30" rows="10" name="plot" placeholder="Movie plot"></textarea>
                 <!-- <span class="form-error">
                 Don't forget to write the movie plot.
                 </span> -->

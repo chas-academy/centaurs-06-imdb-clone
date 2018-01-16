@@ -11377,11 +11377,12 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   height: 100%;
 }
 
-/* Search error message */
+/* Search error and status messages */
 
-#statusMsg {
+#statusMsg,
+#statusMsgError {
   float: center;
-  background-color: red;
+  background-color: #FFCF3f;
   width: 100%;
   text-align: center;
   position: relative;
@@ -11392,9 +11393,13 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   height: 0em;
   overflow: hidden;
   padding: 0em;
+  font-size: 1.1em;
+  font-weigth: 600;
+  color: black;
 }
 
-#statusMsg p {
+#statusMsg p,
+#statusMsgError p {
   margin: 0;
   font-size: 1em;
   line-height: 1em;
@@ -11452,14 +11457,63 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   }
 }
 
+#statusMsgError {
+  background: red;
+  height: auto;
+  padding: 1em;
+  -webkit-animation-name: status-error-animation;
+          animation-name: status-error-animation;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+#statusMsgError li {
+  list-style-type: none;
+}
+
+@-webkit-keyframes status-error-animation {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+@keyframes status-error-animation {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
 #outerContentContainer {
   background-color: #E8E8E8;
-  padding: 40px 0;
+}
+
+#outerContentContainer:before {
+  content: "";
+  height: 1px;
+  margin-top: -1px;
+  display: block;
 }
 
 #outerContentContainer #innerContentContainer {
   width: 90%;
   margin: 0 auto;
+  margin-top: 40px;
 }
 
 #outerContentContainer #innerContentContainer h1 {
