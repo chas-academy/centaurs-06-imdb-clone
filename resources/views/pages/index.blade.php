@@ -27,7 +27,7 @@
 
             @elseif ($key === 'titles')
                 <div>
-                    <h5 class="subheadersearch">Search results for Movies</h5>
+                    <h5>Search results for Movies</h5>
                 </div>
                 <section class="small-12 flex-align-sb-c">
                 @foreach($movies['titles'] as $movie)
@@ -45,7 +45,7 @@
 
                 @elseif ($key === 'actors')
                     <div>
-                        <h5 class="subheadersearch">Search results for Actors</h5>
+                        <h5>Search results for Actors</h5>
                     </div>
                     <section class="small-12 flex-align-sb-c">
                     @foreach($movies['actors'] as $movie)
@@ -63,7 +63,7 @@
 
                 @elseif ($key === 'directors')
                     <div>
-                        <h5 class="subheadersearch">Search results for Directors</h5>
+                        <h5>Search results for Directors</h5>
                     </div>
                     <section class="small-12 flex-align-sb-c">
                     @foreach($movies['directors'] as $movie)
@@ -81,7 +81,7 @@
                 
                 @elseif ($key === 'producers')
                     <div>
-                        <h5 class="subheadersearch">Search results for Directors</h5>
+                        <h5>Search results for Directors</h5>
                     </div>
                     <section class="small-12 flex-align-sb-c">
                     @foreach($movies['producers'] as $movie)
