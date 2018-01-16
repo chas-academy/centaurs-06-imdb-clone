@@ -10116,6 +10116,23 @@ footer button i {
   color: #F03E3E;
 }
 
+/*          Algolia Styling         */
+
+.algolia-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.algolia-container .algolia {
+  width: 130px;
+  height: 20px;
+}
+
 /*			Layout mobile about 		*/
 
 .fullscreen-container {
@@ -11915,6 +11932,21 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .movie-poster:nth-child(4n) {
     width: auto !important;
+  }
+
+  .algolia-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin-top: 15px;
+  }
+
+  .algolia-container .algolia {
+    width: 130px;
+    height: 20px;
   }
 
   #outerContentContainer {

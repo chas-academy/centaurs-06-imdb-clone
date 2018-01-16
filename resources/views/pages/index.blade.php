@@ -8,9 +8,7 @@
         @include('includes.errors')
     </section>
         @foreach($movies as $key => $movie)
-
             @if ($key === 'movie')
-
                 <section class="small-12 flex-align-sb-c">
                 @foreach($movies['movie'] as $movie)
                     <div class="movie-poster">
@@ -19,7 +17,10 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </div> 
                         <a href="movie/{{ $movie->id }}" class="none">
-                            <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie->poster }}" >
+                            <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
+                                @if($movie->poster === null)
+                                    <p class="movie-title">{{$movie->title}}</p>
+                                @endif
                         </a>
                     </div>
                 @endforeach
@@ -37,7 +38,10 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </div> 
                         <a href="movie/{{ $movie['id'] }}" class="none">
-                            <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie['poster'] }}" >
+                        <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie['poster']) }}" >
+                            @if($movie['poster'] === null)
+                                <p class="movie-title">{{$movie['title']}}</p>
+                            @endif
                         </a>
                     </div>
                 @endforeach
@@ -55,7 +59,10 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div> 
                             <a href="movie/{{ $movie->id }}" class="none">
-                                <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie->poster }}" >
+                            <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
+                                @if($movie->poster === null)
+                                    <p class="movie-title">{{$movie->title}}</p>
+                                @endif
                             </a>
                         </div>
                     @endforeach
@@ -73,7 +80,10 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div> 
                             <a href="movie/{{ $movie->id }}" class="none">
-                                <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie->poster }}" >
+                            <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
+                                @if($movie->poster === null)
+                                    <p class="movie-title">{{$movie->title}}</p>
+                                @endif
                             </a>
                         </div>
                     @endforeach
@@ -91,7 +101,10 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div> 
                             <a href="movie/{{ $movie->id }}" class="none">
-                                <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie->poster }}" >
+                            <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
+                                @if($movie->poster === null)
+                                    <p class="movie-title">{{$movie->title}}</p>
+                                @endif
                             </a>
                         </div>
                     @endforeach
@@ -99,7 +112,13 @@
                 @else
             @endif
         @endforeach
+        <div class="algolia-container">
+            <a href="https://www.algolia.com/">
+                <img class="algolia" src="{{ asset('img/algolia/search-by-algolia-white.png') }}" >
+            </a>
+        </div>
 </main>
+
 @include('includes.footer')
 </div>
 @endsection 
