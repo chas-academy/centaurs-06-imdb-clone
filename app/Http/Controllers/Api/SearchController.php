@@ -14,6 +14,8 @@ use App\Http\Models\Producer;
 use App\Http\Models\LedgerActor;
 use App\Http\Models\LedgerDirector;
 use App\Http\Models\LedgerProducer;
+use App\Http\Controllers\UserController;
+use Auth;
 
 class SearchController extends Controller
 {
@@ -86,8 +88,6 @@ class SearchController extends Controller
             $actorsInMovie = array_get($results, 'actor.movies');
             $directorsInMovie = array_get($results, 'director.movies');
             $producersInMovie = array_get($results, 'producer.movies');
-
-    
 
             $movies = array_merge($movies, $actorsInMovie, $directorsInMovie, $producersInMovie);
 

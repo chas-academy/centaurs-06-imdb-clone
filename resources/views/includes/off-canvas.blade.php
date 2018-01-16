@@ -1,3 +1,7 @@
+@if(Auth::check())
+<?php $user = Auth::user(); ?>
+@endif
+
 <!-- USER MENU/SETTINGS -->
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
