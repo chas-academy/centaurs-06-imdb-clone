@@ -113,7 +113,9 @@
             @endif
         @endforeach
         <div class="algolia-container">
-            <img class="algolia" src="{{ asset('img/algolia/search-by-algolia-white.png') }}" >
+            <a href="https://www.algolia.com/">
+                <img class="algolia" src="{{ asset('img/algolia/search-by-algolia-white.png') }}" >
+            </a>
         </div>
 </main>
 
