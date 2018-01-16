@@ -3614,10 +3614,6 @@ ol.no-bullet {
   text-align: justify;
 }
 
-#subheadersearch {
-  color: white; 
-}
-
 @media print, screen and (min-width: 40em) {
   .medium-text-left {
     text-align: left;
@@ -3651,9 +3647,6 @@ ol.no-bullet {
 
   .large-text-justify {
     text-align: justify;
-  }
-  #subheadersearch {
-    color: white; 
   }
 }
 
