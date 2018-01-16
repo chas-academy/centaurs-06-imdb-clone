@@ -1,3 +1,7 @@
+@if(Auth::check())
+<?php $user = Auth::user(); ?>
+@endif
+
 <!-- USER MENU/SETTINGS -->
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas="off-canvas-content" data-transition="overlap" data-content-overlay="false">
     <div class="offcanvas-full-screen-inner">
@@ -208,7 +212,7 @@
                         <!-- Add profile picture -->
                         <div id="add-avatar" aria-hidden="true" data-toggler=".visible" data-animate="fade-in fade-out">
                             <div id="right">
-                                <div class="upload-btn-wrapper">
+                                <div class="upload-btn-wrApper">
                                     <button class="butn">Upload a file</button>
                                     <form enctype="multipart/form-data" action="/profile" method="POST">
                                     <input id="input-file" type="file" name="avatar">
