@@ -1,13 +1,9 @@
-@if (session()->has('error'))
+@if (session()->has('errors') && count($errors) > 0)
     <section id="statusMsgError">
-     <p>{{session()->get('error')}}</p>
-     </section>
- @endif
- 
- @if (isset($errors) && count($errors) > 0)
-     <ul>
+    <ul>
         @foreach($errors->all() as $error)
-             <li>{!! $error !!}</li>
-         @endforeach
-     </ul>
- @endif 
+            <li>{!! $error !!}</li>
+        @endforeach
+    </ul>
+    </section>
+@endif

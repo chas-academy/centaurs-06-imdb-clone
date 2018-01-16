@@ -41203,7 +41203,7 @@ $.fn.personList = function (config) {
 /* 36 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: \n    font-size: 1.1em\n                       ^\n      Invalid CSS after \"...-size: 1.1em; }\": expected 1 selector or at-rule, was \"<<<<<<< HEAD {\"\n      in /Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/resources/assets/sass/styles/error-style.sass (line 14, column 25)\n    at runLoaders (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.<anonymous> (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/async/dist/async.js:2257:31)\n    at Object.callback (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/async/dist/async.js:958:16)\n    at options.error (/Users/Andreas/Documents/chas-academy/06-centaurs-imdb-clone/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ })
 /******/ ]);

@@ -12015,8 +12015,13 @@ main .none:nth-child(4n) .poster-size {
   overflow: hidden;
   padding: 0em;
   font-size: 1.1em;
+<<<<<<< HEAD
   font-weigth: 700;
   color: white;
+=======
+  font-weigth: 600;
+  color: black;
+>>>>>>> Fix error and status message styling
 }
 
 #statusMsg p,
@@ -12094,6 +12099,7 @@ main .none:nth-child(4n) .poster-size {
 
 @-webkit-keyframes status-error-animation {
   0% {
+<<<<<<< HEAD
     height: 0em;
     padding: 0em;
   }
@@ -12111,6 +12117,15 @@ main .none:nth-child(4n) .poster-size {
   }
 
   100% {
+=======
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+>>>>>>> Fix error and status message styling
     -webkit-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
   }
@@ -12118,6 +12133,7 @@ main .none:nth-child(4n) .poster-size {
 
 @keyframes status-error-animation {
   0% {
+<<<<<<< HEAD
     height: 0em;
     padding: 0em;
   }
@@ -12135,6 +12151,15 @@ main .none:nth-child(4n) .poster-size {
   }
 
   100% {
+=======
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+>>>>>>> Fix error and status message styling
     -webkit-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
   }
