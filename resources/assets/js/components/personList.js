@@ -10,7 +10,7 @@ $.fn.personList = function(config) {
     var newPersonChooser = self.find(".js-personlist-new-person-field");
     var newPersonAdd = self.find(".js-personlist-new-person-add");
 
-    myPersons = self.data('initial');
+    myPersons = self.data('initial') || [];
     updateList();
 
     existingPersonAdd.click(function(e) {
