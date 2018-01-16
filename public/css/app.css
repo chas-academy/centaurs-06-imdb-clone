@@ -10476,9 +10476,17 @@ main .movie-flex-align .movie-info .movie-description .year-play {
       -ms-flex-direction: row;
           flex-direction: row;
   padding: 5px 0px 35px 0px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+main .movie-flex-align .movie-info .movie-description .year-play .movie-year {
+  margin-right: 5px;
+}
+
+main .movie-flex-align .movie-info .movie-description .year-play .playtime {
+  margin-left: 5px;
 }
 
 main .movie-flex-align .movie-info .movie-description .year-play p {
@@ -10495,6 +10503,8 @@ main .movie-flex-align .movie-info .movie-description .movie-genre {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 main .movie-flex-align .movie-info .movie-description .movie-genre .genre {
@@ -10503,7 +10513,7 @@ main .movie-flex-align .movie-info .movie-description .movie-genre .genre {
   width: fit-content;
   border-radius: 5px;
   background: #F03E3E;
-  margin: 0px 15px 35px 0px;
+  margin: 0px 15px 15px 0px;
   padding: 5px 15px 5px 15px;
 }
 
