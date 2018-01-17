@@ -12,13 +12,13 @@
             // Event listener for buttons in settings menu
             $('#sign-in').click(function(){menuSettingsHandler('in');});
             $('#sign-up').click(function(){menuSettingsHandler('up');});
-            $('.producer').select2({
+            $('.personproducer').select2({
                 placeholder: "Choose an existing producer"
                 });
-                $('.director').select2({
+                $('.persondirector').select2({
                 placeholder: "Choose an existing director"
                 });
-                $('.actor').select2({
+                $('.personactor').select2({
                 placeholder: "Choose an existing actor"
             });
         });

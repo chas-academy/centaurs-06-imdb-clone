@@ -1,7 +1,7 @@
 <div class="js-personlist" data-field="{{$personType}}">
 
     <div>
-    <select class="js-example-placeholder-multiple js-states form-control js-personlist-existing-person-chooser {{$personType}}" multiple="multiple" name="state">
+    <select class="js-example-placeholder-multiple js-states form-control js-personlist-existing-person-chooser person{{$personType}}" multiple="multiple" name="state">
          @foreach ($persons as $person)
            <option value="{{ $person["id"] }}">{{ $person["name"] }}</option>
          @endforeach
