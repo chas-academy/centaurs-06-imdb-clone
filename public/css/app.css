@@ -11394,8 +11394,8 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   overflow: hidden;
   padding: 0em;
   font-size: 1.1em;
-  font-weigth: 600;
-  color: black;
+  font-weigth: 700;
+  color: white;
 }
 
 #statusMsg p,
@@ -11473,13 +11473,23 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
 @-webkit-keyframes status-error-animation {
   0% {
-    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
+    height: 0em;
+    padding: 0em;
+  }
+
+  20% {
+    height: 3em;
+    padding: 1em;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+
+  80% {
+    height: 3em;
+    padding: 1em;
   }
 
   100% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
     -webkit-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
   }
@@ -11487,13 +11497,23 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
 @keyframes status-error-animation {
   0% {
-    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
+    height: 0em;
+    padding: 0em;
+  }
+
+  20% {
+    height: 3em;
+    padding: 1em;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+
+  80% {
+    height: 3em;
+    padding: 1em;
   }
 
   100% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
     -webkit-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
   }
