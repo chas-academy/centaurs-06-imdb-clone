@@ -116,9 +116,21 @@ class MovieController extends Controller
             
             $movieModel = new Movie();
             $movieModel->removeMovieFromWatchlist($userId, $movieId);
+            
+            if ($movieId)
+             {
+            
             $message = 'Movie has been deleted';
 
             return redirect('/watchlist')->with('message', $message);
+            }
+
+            else 
+            {
+                $error = 'Movie could not be deleted from watchlist. Please try again'; 
+            
+            return redirect('/watchlist')->with('error', $error); 
+            }
         }
 
         public function addMovieToWatchlist($movieId)
