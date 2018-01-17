@@ -11808,11 +11808,11 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     color: #865e13;
   }
 
-  .watchlist-btn {
+  .episode-number {
     color: #E2A534;
   }
 
-  .watchlist-btn:hover {
+  .episode-number:hover {
     color: #865e13;
   }
 
