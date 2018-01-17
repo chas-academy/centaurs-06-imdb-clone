@@ -42,7 +42,6 @@
                             55 min
                         </p>
                     </div>
-
                     <div class="small-12 episodes-container">
                         <p>Episodes: </p>
                         <ul class="episode-list">
