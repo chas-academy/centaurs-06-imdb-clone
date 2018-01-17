@@ -1,12 +1,17 @@
 #outerContentContainer
     background-color: #E8E8E8
-    padding: 40px 0
-    
     $admin-color: #FFCF3F
+
+    &:before
+        content: ""
+        height: 1px
+        margin-top: -1px
+        display: block
 
     #innerContentContainer
         width: 90%
         margin: 0 auto
+        margin-top: 40px
 
         h1  
             margin-bottom: 0.8em
@@ -65,9 +70,6 @@
             color: #FFCF3F
             display: flex
             justify-content: center
-
-           
-
 
 
 
