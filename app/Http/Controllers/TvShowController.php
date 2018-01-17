@@ -127,10 +127,29 @@ class TvShowController extends Controller
     public function seasonlist($tvshowId, $seasonId)
     {
         $tvShowModel = new TvShow;
-    
         $seasonId = $tvShowModel->getEpisodeBySeason($seasonId, $tvshowId);
         $episodes = $tvShowModel->getEpisodesFromSpecificSeason($seasonId);
+        $episodeIds = [];
+        foreach ($episodes as $episode) {
+            array_push($episodeIds, $episode->id);
+        }
+        $actorIds = $tvShowModel->getActorsFromEpisode($episodeIds);
+        $actors = $tvShowModel->getActorNamesFromActorId($actorIds);
+        $directorIds = $tvShowModel->getDirectorsFromEpisode($episodeIds);
+        $directors = $tvShowModel->getDirectorNamesFromDirectorId($directorIds);
+        $producerIds = $tvShowModel->getProducersFromEpisode($episodeIds);
+        $producers = $tvShowModel->getProducerNamesFromProducerId($producerIds);
+        $writerIds = $tvShowModel->getWritersFromEpisode($episodeIds);
+        $writers = $tvShowModel->getWriterNamesFromWriterId($writerIds);
 
+        $episodeDetails = array(
+            'episodes' => $episodes,
+            'actors' => $actors,
+            'directors' => $directors,
+            'producers' => $producers,
+            'writers' => $writers
+        );
+        
     }
 
 }

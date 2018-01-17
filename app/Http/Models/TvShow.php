@@ -177,11 +177,153 @@ class TvShow extends Model
     public function getEpisodesFromSpecificSeason ($seasonId)
     {
         $episodes = DB::table('episodes')->where('season_id', $seasonId)->get();
-
         return $episodes;
+    }
+
+    public function getActorsFromEpisode ($episodeIds)
+    {
+        $actors = [];
+
+        foreach ($episodeIds as $episodeId) {  
+            $actors[] = DB::table('ledger_actors')->where('episode_id', $episodeId)->limit(5)->get()->pluck('actor_id');
+        }
+
+        $actorIds = [];
+
+        foreach ($actors as $actor) {
+            $actorIds[] = $actor->all();
+        }
+
+        return $actorIds;
 
     }
 
+    public function getDirectorsFromEpisode($episodeIds)
+    {
+        $directors = [];
+
+        foreach ($episodeIds as $episodeId) {
+            $directors[] = DB::table('ledger_directors')->where('episode_id', $episodeId)->limit(5)->get()->pluck('director_id');
+        }
+
+        $directorIds = [];
+
+        foreach ($directors as $director) {
+            $directorIds[] = $director->all();
+        }
+        
+        return $directorIds;
+
+    }
+
+    public function getProducersFromEpisode($episodeIds)
+    {
+        $producers = [];
+
+        foreach ($episodeIds as $episodeId) {
+            $producers[] = DB::table('ledger_producers')->where('episode_id', $episodeId)->limit(5)->get()->pluck('producer_id');
+        }
+
+        $producerIds = [];
+
+        foreach ($producers as $producer) {
+            $producerIds[] = $producer->all();
+        }
+
+        return $producerIds;
+
+    }
+
+    public function getWritersFromEpisode($episodeIds)
+    {
+        $writers = [];
+
+        foreach ($episodeIds as $episodeId) {
+            $writers[] = DB::table('ledger_writers')->where('episode_id', $episodeId)->limit(5)->get()->pluck('writer_id');
+        }
+
+        $writerIds = [];
+
+        foreach ($writers as $writer) {
+            $writerIds[] = $writer->all();
+        }
+
+        return $writerIds;
+
+    }
+
+    public function getActorNamesFromActorId($actorIds)
+    {
+        
+        $actors = [];
+        
+        foreach ($actorIds as $key => $episodesActorIds) 
+        {
+          foreach ($episodesActorIds as $actorId) 
+          {
+            $episodeName = 'Episode-' . ($key + 1);
+            $actors[$episodeName][] = [
+              "name" => DB::table('actors')->where('id', $actorId)->get()->pluck('name')
+            ];
+          }
+        }
+
+        return $actors;
+
+    }
+
+    public function getDirectorNamesFromDirectorId($directorIds)
+    {
+        $directors = [];
+
+        foreach ($directorIds as $key => $episodesDirectorIds) 
+        {
+            foreach ($episodesDirectorIds as $directorId) {
+                $episodeName = 'Episode-' . ($key + 1);
+                $directors[$episodeName][] = [
+                    'name' => DB::table('directors')->where('id', $directorId)->get()->pluck('name')
+                ];
+            }
+            
+        }
+
+        return $directors;
+
+    }
+
+    public function getProducerNamesFromProducerId($producerIds)
+    {
+        $producers = [];
+
+        foreach ($producerIds as $key => $episodesProducerIds) {
+            foreach ($episodesProducerIds as $producerId) {
+                $episodeName = 'Episode-' . ($key + 1);
+                $producers[$episodeName][] = [
+                    'name' => DB::table('producers')->where('id', $producerId)->get()->pluck('name')
+                ];
+            }
+        }
+
+        return $producers;
+
+    }
+
+    public function getWriterNamesFromWriterId($writerIds)
+    {
+        $writers = [];
+
+        foreach ($writerIds as $key => $episodesWriterIds) {
+            foreach ($episodesWriterIds as $writerId) {
+                $episodeName = 'Episode-' . ($key + 1);
+                $writers[$episodeName][] = [
+                    'name' => DB::table('writers')->where('id', $writerId)->get()->pluck('name')
+                ];
+            }
+        }
+
+        return $writers;
+    }
+    
     public function getTvShowSeason($seasonNumber, $tvShowId)
     {   
         return DB::table('seasons')->where('season_number', $seasonNumber)->where('tv_show_id', $tvShowId)->first();
