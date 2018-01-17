@@ -20,7 +20,7 @@
         <div class="movie-content">
             <div class="poster-section">
                 <div class="small-12 flex-align-c-c">
-                    <a href="/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
+                    <a class="watchlist-btn" href="/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
                 </div>
 
                 <div class="movie-rating">
