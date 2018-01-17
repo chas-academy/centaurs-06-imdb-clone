@@ -138,8 +138,13 @@ class MovieController extends Controller
             $genres = Genre::all()->toArray();
             $releaseyears = range(date('Y'), 1910);
             
-
-            return view('pages.createmovie', ['actors' => $actors, 'directors' => $directors,'producers' => $producers,'genres' => $genres, 'releaseyears' => $releaseyears]);
+            return view('pages.createmovie', [
+                'actors' => $actors, 
+                'directors' => $directors,
+                'producers' => $producers,
+                'genres' => $genres, 
+                'releaseyears' => $releaseyears
+                ]);
         }
 
         //Helperfunction for handling actors, directors, producers
@@ -183,7 +188,18 @@ class MovieController extends Controller
             $genres = Genre::all()->toArray();
             $releaseyears = range(date('Y'), 1910);
 
-            return view('pages.editmovie', ['movie' => $movie, 'genres' => $genres, 'releaseyears' => $releaseyears, 'actors' => $actors, 'directors' => $directors, 'producers' => $producers, 'activeGenre' => $activeGenre, 'initialActors' => $initialActors, 'initialProducers' => $initialProducers, 'initialDirectors' => $initialDirectors]);
+            return view('pages.editmovie', [
+                'movie' => $movie, 
+                'genres' => $genres, 
+                'releaseyears' => $releaseyears, 
+                'actors' => $actors, 
+                'directors' => $directors, 
+                'producers' => $producers, 
+                'activeGenre' => $activeGenre, 
+                'initialActors' => $initialActors, 
+                'initialProducers' => $initialProducers, 
+                'initialDirectors' => $initialDirectors
+                ]);
         }
 
         // Store movie

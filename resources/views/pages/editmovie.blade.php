@@ -8,16 +8,6 @@
 
         <div class="small-12 columns">
         <h1>Edit Movie</h1>
-    
-        @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <form action="" method="post" enctype="multipart/form-data">
             <?php echo csrf_field(); ?>
