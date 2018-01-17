@@ -12,8 +12,8 @@
     overflow: hidden
     padding: 0em
     font-size: 1.1em
-    font-weigth: 600 
-    color: black
+    font-weigth: 700
+    color: white
 
 
     p
@@ -47,10 +47,18 @@
     animation-duration: 1s
     li
         list-style-type: none
+        
 
 @keyframes status-error-animation
     0%
-        transform: scaleY(0)
+        height: 0em
+        padding: 0em
+    20%
+        height: 3em
+        padding: 1em
+        animation-timing-function: ease-in
+    80%
+        height: 3em
+        padding: 1em
     100%
-        transform: scaleY(1)
         animation-timing-function: ease-out
