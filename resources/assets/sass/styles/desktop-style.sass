@@ -73,11 +73,19 @@
         width: 340px
         min-height: 45px
         background: #E2A534 !important
+        &:hover
+            color: #865e13
     .writer-review
         margin-top: 10px
         width: 340px
         min-height: 45px
         background: #E2A534 !important
+        &:hover
+            color: #865e13
+.watchlist-btn
+    color: #E2A534
+    &:hover
+        color: #865e13
 
 // Backdrop styling
 
@@ -219,6 +227,8 @@
 .movie-poster:nth-child(4n)
     width: auto!important
 
+// Algolia logo styling
+
 .algolia-container
     display: flex
     justify-content: flex-end
@@ -252,3 +262,15 @@
 
 .tv-plot
     padding-bottom: 20px
+
+
+// Episode-page styling
+.episodes-container
+    display: flex
+    flex-direction: row
+    .episode-list
+        display: flex
+        flex-direction: row
+        list-style-type: none
+        .episode-number
+            margin-right: 5px

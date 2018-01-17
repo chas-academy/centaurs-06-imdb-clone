@@ -138,6 +138,11 @@
         $('.confirm').on('click', function () {
             return confirm('Are you sure you want to add this movie to Centaurs-imdb?');
         });
+        
+        // Episode navigation
+        function currentEpisode($number) {
+            alert($number);
+        }
 
         // Slider
         var slideIndex = 1;

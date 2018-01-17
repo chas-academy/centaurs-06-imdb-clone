@@ -27,7 +27,7 @@
                     <p class="rating-num">5</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                <img class="poster-image" src="http://via.placeholder.com/350x150">
+                <img class="poster-image" src="http://via.placeholder.com/350x520">
             </div>
 
             <div class="movie-info-section">
@@ -42,14 +42,29 @@
                             55 min
                         </p>
                     </div>
+
+                    <div class="small-12 episodes-container">
+                        <p>Episodes: </p>
+                        <ul class="episode-list">
+                            <a id="currentEpisode1" href="" onClick="currentEpisode(1);"><li class="episode-number">1</li></a>
+                            <a id="currentEpisode2" href="" onClick="currentEpisode(2);"><li class="episode-number">2</li></a>
+                            <a id="currentEpisode3" href="" onClick="currentEpisode(3);"><li class="episode-number">3</li></a>
+                            <a id="currentEpisode4" href="" onClick="currentEpisode(4);"><li class="episode-number">4</li></a>
+                            <a id="currentEpisode5" href="" onClick="currentEpisode(5);"><li class="episode-number">5</li></a>
+                            <a id="currentEpisode6" href="" onClick="currentEpisode(6);"><li class="episode-number">6</li></a>
+                            <a id="currentEpisode7" href="" onClick="currentEpisode(7);"><li class="episode-number">7</li></a>
+                            <a id="currentEpisode8" href="" onClick="currentEpisode(8);"><li class="episode-number">8</li></a>
+                            <a id="currentEpisode9" href="" onClick="currentEpisode(9);"><li class="episode-number">9</li></a>
+                            <a id="currentEpisode10" href="" onClick="currentEpisode(10);"><li class="episode-number">10</li></a>
+                            <a id="currentEpisode11" href="" onClick="currentEpisode(11);"><li class="episode-number">11</li></a>
+                            <a id="currentEpisode12" href="" onClick="currentEpisode(12);"><li class="episode-number">12</li></a>
+                        </ul>
+                    </div>
+
                     <div class="small-12 movie-genre">
-                        @if (empty($genres))
-                        <p>No genres found</p>
-                        @else
-                        @foreach ($genres as $genre)
                             <p class="genre">Action</p>
-                        @endforeach
-                        @endif
+                            <p class="genre">Drama</p>
+                            <p class="genre">Comedy</p>
                     </div>
                 </div>
 
@@ -57,54 +72,29 @@
                     <div class="movie-crew-card">
                         <b>Directors</b>
                         <ul class="director">
-                            @if (empty($writers))
-                            <p>No writers found</p>
-                            @else
-                            @foreach ($directors as $director)
-                                <li class="person-name">Mr. Ett Namn</li>
-                            @endforeach
-                            @endif
+                            <li class="person-name">Mr. Ett Namn</li>
                         </ul>
                     </div>
                     <div class="movie-crew-card">
                         <b>Writers</b>
                         <ul class="w-credits">
-                            @if (empty($writers))
-                            <p>No writers found</p>
-                            @else
-                            @foreach ($writers as $writer)
-                                <li class="person-name">Jag har skrivit</li>
-                            @endforeach
-                            @endif
+                            <li class="person-name">Jag har skrivit</li>
                         </ul>
                     </div>
                     <div class="movie-crew-card">
                         <b>Producer</b>
                         <ul class="producer">
-                            
-                            @if (empty($producers))
-                            <p>No producers found</p>
-                            @else
-                            @foreach ($producers as $producer)
-                                <li class="person-name">Jag har producerat</li>
-                            @endforeach
-                            @endif
+                            <li class="person-name">Jag har producerat</li>
                         </ul>
                     </div>
                     <div class="movie-crew-card">
                         <b>Cast</b>
                         <ul class="actor">
-                            @if (empty($actors))
-                            <p>No actors found</p>
-                            @else
-                            @foreach ($actors as $actor)
                             <li class="person-name">Skådis 1</li>
                             <li class="person-name">Skådis 2</li>
                             <li class="person-name">Skådis 3</li>
                             <li class="person-name">Skådis 4</li>
                             <li class="person-name">Skådis 5</li>
-                            @endforeach
-                            @endif
                         </ul>
                     </div>          
                 </div>

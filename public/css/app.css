@@ -10711,6 +10711,10 @@ main .review-flex-align .read-reviews .review:last-of-type {
   margin-top: 5px;
 }
 
+.watchlist-btn {
+  color: #E2A534;
+}
+
 /****** Star Rating ****/
 
 [type='checkbox'] + label,
@@ -11789,11 +11793,27 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     background: #E2A534 !important;
   }
 
+  .btn-container .read-review:hover {
+    color: #865e13;
+  }
+
   .btn-container .writer-review {
     margin-top: 10px;
     width: 340px;
     min-height: 45px;
     background: #E2A534 !important;
+  }
+
+  .btn-container .writer-review:hover {
+    color: #865e13;
+  }
+
+  .watchlist-btn {
+    color: #E2A534;
+  }
+
+  .watchlist-btn:hover {
+    color: #865e13;
   }
 
   .backdrop-image {
@@ -12072,6 +12092,31 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .tv-plot {
     padding-bottom: 20px;
+  }
+
+  .episodes-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+
+  .episodes-container .episode-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    list-style-type: none;
+  }
+
+  .episodes-container .episode-list .episode-number {
+    margin-right: 5px;
   }
 
   #outerContentContainer {
