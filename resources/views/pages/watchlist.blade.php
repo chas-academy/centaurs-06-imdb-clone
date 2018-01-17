@@ -1,4 +1,5 @@
 @extends('layouts.layout') @section('content')
+@include('includes.messages')
 <div class="off-canvas-content" data-off-canvas-content>
 <header class="row">
     <div class="small-12 header-flex-align-sb-c">
