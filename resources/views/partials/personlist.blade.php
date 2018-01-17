@@ -5,6 +5,7 @@
                 <option value="{{ $choice["id"] }}">{{ $choice["name"] }}</option>
             @endforeach
         </select>
+        <button class="button secondary js-personlist-existing-person-add">Add</button>
     </div>
 
     <div id="add-person" class="personlist-add-wrapper">
