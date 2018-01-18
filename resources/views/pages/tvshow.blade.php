@@ -55,7 +55,7 @@
                                 <p>No writers found</p>
                                 @else
                                 @foreach ($tvDetails['seasons'] as $season)
-                                    <li class="person-name season-number">Season <a href="{{ $tvDetails['tvshow']->id }}/season{{ $season->season_number }}">{{ $season->season_number }}</a></li>
+                                    <li class="person-name season-number">Season <a href="{{ $tvDetails['tvshow']->id }}/season/{{ $season->season_number }}?episode=1">{{ $season->season_number }}</a></li>
                                 @endforeach
                                 @endif
                             </ul>

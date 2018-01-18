@@ -10505,6 +10505,11 @@ main .movie-flex-align .movie-info .movie-description .year-play .movie-year {
 
 main .movie-flex-align .movie-info .movie-description .year-play .playtime {
   margin-left: 5px;
+  margin-left-margin-right: 5px;
+}
+
+main .movie-flex-align .movie-info .movie-description .year-play .season-nr {
+  margin-left: 5px;
 }
 
 main .movie-flex-align .movie-info .movie-description .year-play p {
@@ -10711,8 +10716,14 @@ main .review-flex-align .read-reviews .review:last-of-type {
   margin-top: 5px;
 }
 
-.watchlist-btn {
+.watchlist-btn,
+.episode-number {
   color: #E2A534;
+}
+
+.watchlist-btn:hover,
+.episode-number:hover {
+  color: #865e13;
 }
 
 /****** Star Rating ****/
@@ -11774,6 +11785,11 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .current-movie .movie-flex-align .movie-info-section .movie-description .year-play .playtime {
     margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-description .year-play .season-nr {
+    margin-left: 5px;
   }
 
   .current-movie .movie-flex-align .movie-info-section .movie-crew {
@@ -12129,6 +12145,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    font-size: 20px;
   }
 
   .episodes-container .episode-list {
