@@ -28,34 +28,8 @@
                 font-weight: 400
                 color: black
 
-            .select2
-                width: 100% !important
-                font-size: 1rem
-                
-            .select2-search__field
-                line-height: 0
-                font-size: 1rem
-
-            .select2-container
-                vertical-align: baseline
-
-            .select2-container--default 
-                .select2-selection--multiple
-                    border: 1px solid #cacaca !important
-                    border-radius: 0
-                    
-                    
-                    .select2-selection__choice__remove
-                        color: white
-                        marign-right: 4px
-
-                    .select2-selection__choice
-                        background-color: #FFCF3F !important
-                        border-radius: 0
-                        border: none
-                        margin: 6px
-                        font-weight: 400
-                        padding: 2px 8px
+.foundation-bottom-margin
+    margin-bottom: 16px
 
 /*
 #add-person
@@ -70,22 +44,51 @@
             justify-content: center
 */
 
+.foundation-bottom-margin-half
+    margin-bottom: 8px
 
+.select2-container--full-width,
+.select2-container--with-add-button
+    width: 100% !important
 
+.select2-container--with-add-button
+    margin-right: 10px
 
-.personlist-add-wrapper
-    display: flex
+.select2-container--large
+    .select2-selection__rendered
+        line-height: 38px !important
+
+    .select2-selection
+        height: 38px !important
+
+    .select2-selection__arrow
+        height: 36px !important
+
+    .select2-selection--single .select2-selection__arrow b
+        border-color: #888 transparent transparent transparent !important
+        margin-left: -7px
+
+    .select2-selection
+        border: 1px solid #cacaca !important;
+        border-radius: 0
 
 .personlist-new-person-field
+    margin-right: 10px
+    margin-bottom: 0
+
+.personlist-existing-person-wrapper,
+.personlist-add-wrapper
+    display: flex
+    justify-content: space-between
+
+.personlist-old-person-field
     width: calc(95% - 10px)
 
 .personlist-add-button
-    width: 10%
     font-weight: bold
-    padding-bottom: 17px
 
 .personlist-add-icon
-    color: #FFCF3F
+    color: #FFCF3F !important
     display: flex
     justify-content: center
 
@@ -108,3 +111,4 @@
     margin-left: 7px
     margin-right: 7px
     display: inline-block
+

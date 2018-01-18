@@ -12,11 +12,6 @@
             // Event listener for buttons in settings menu
             $('#sign-in').click(function(){menuSettingsHandler('in');});
             $('#sign-up').click(function(){menuSettingsHandler('up');});
-
-            $('.personproducer').select2({placeholder: "Choose an existing producer"});
-            $('.persondirector').select2({placeholder: "Choose an existing director"});
-            $('.personactor').select2({placeholder: "Choose an existing actor"});
-
         });
         // Function for handling the click
         function menuSettingsHandler(v)
