@@ -12,9 +12,11 @@ use App\Http\Models\Director;
 use App\Http\Models\LedgerDirector;
 use App\Http\Models\Genre;
 use App\Http\Models\LedgerGenre;
+use App\Http\Models\LedgerWatchList;
 use Illuminate\Support\Facades\Storage;
 use Resources\views\pages;
 use App\Http\Controllers\UserController;
+
 use Auth;
 use DB;
 
@@ -129,16 +131,16 @@ class MovieController extends Controller
             if ($movieId)
              {
             
-            $message = 'Movie has been deleted';
+            $message = 'Movie has been removed from watchlist';
 
             return redirect('/watchlist')->with('message', $message);
             }
 
             else 
             {
-                $error = 'Movie could not be deleted from watchlist. Please try again'; 
             
-            return redirect('/watchlist')->with('error', $error); 
+            return redirect('/watchlist')->with('error', 'Movie could not be deleted from watchlist. Please try again');
+                
             }
         }
 
@@ -147,9 +149,21 @@ class MovieController extends Controller
             $userId = Auth::user()->id;
 
             $movieModel = new Movie();
-            $movieModel->addMovieToWatchlist($userId, $movieId);
+            $ledgerWatchlistModel = new LedgerWatchList();
 
-            return redirect('movie/'. $movieId);
+            $movieExistsInWatchlist = $ledgerWatchlistModel->ifMovieExistsInWatchlist($movieId, $userId);
+
+            
+            if (!$movieExistsInWatchlist) {
+                $movieModel->addMovieToWatchlist($userId, $movieId);
+                $message = 'Movie has been added to watchlist';
+
+                return redirect('movie/'. $movieId)->with('message', $message);
+            }
+            else {
+
+                return redirect('movie/' . $movieId)->with('error', 'Movie already in watchlist' ); 
+            }
         }
 
 
