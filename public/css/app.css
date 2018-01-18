@@ -11453,28 +11453,26 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
 #statusMsg,
 #statusMsgError {
-  float: center;
-  background-color: #FFCF3f;
+  height: 0em;
   width: 100%;
+  padding: 0em;
+  color: black;
+  float: center;
+  font-size: 0.8em;
+  font-weight: 500;
+  overflow: hidden;
   text-align: center;
   position: relative;
-  -webkit-animation-name: status-msg-animation;
-          animation-name: status-msg-animation;
   -webkit-animation-duration: 5s;
           animation-duration: 5s;
-  height: 0em;
-  overflow: hidden;
-  padding: 0em;
-  font-size: 1.1em;
-  font-weigth: 700;
-  color: white;
+  background-color: #FFCF3f;
+  -webkit-animation-name: status-msg-animation;
+          animation-name: status-msg-animation;
 }
 
 #statusMsg p,
 #statusMsgError p {
   margin: 0;
-  font-size: 1em;
-  line-height: 1em;
 }
 
 @-webkit-keyframes status-msg-animation {
@@ -11531,64 +11529,6 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
 #statusMsgError {
   background: red;
-  height: auto;
-  padding: 1em;
-  -webkit-animation-name: status-error-animation;
-          animation-name: status-error-animation;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-}
-
-#statusMsgError li {
-  list-style-type: none;
-}
-
-@-webkit-keyframes status-error-animation {
-  0% {
-    height: 0em;
-    padding: 0em;
-  }
-
-  20% {
-    height: 3em;
-    padding: 1em;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-
-  80% {
-    height: 3em;
-    padding: 1em;
-  }
-
-  100% {
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-}
-
-@keyframes status-error-animation {
-  0% {
-    height: 0em;
-    padding: 0em;
-  }
-
-  20% {
-    height: 3em;
-    padding: 1em;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-
-  80% {
-    height: 3em;
-    padding: 1em;
-  }
-
-  100% {
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
 }
 
 #outerContentContainer {

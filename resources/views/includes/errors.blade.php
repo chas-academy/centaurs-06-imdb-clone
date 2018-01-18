@@ -5,9 +5,7 @@
  @endif
  
  @if (isset($errors) && count($errors) > 0)
-     <ul>
         @foreach($errors->all() as $error)
-             <li id="statusMsgError">{!! $error !!}</li>
+             <p id="statusMsgError">{!! $error !!}</p>
          @endforeach
-     </ul>
  @endif 
