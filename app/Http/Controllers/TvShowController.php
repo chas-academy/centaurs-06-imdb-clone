@@ -149,6 +149,10 @@ class TvShowController extends Controller
             'producers' => $producers,
             'writers' => $writers
         );
+
+        $view = View::make('pages.episodes')->with('episodeDetails', $episodeDetails);
+        
+        return $view;
         
     }
 
