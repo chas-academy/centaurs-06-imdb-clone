@@ -1,4 +1,6 @@
 @extends('layouts.layout') @section('content')
+@include('includes.errors')
+@include('includes.messages')
 <?php $user = Auth::user(); ?>
 
 <header id="desk-hide" class="row">
