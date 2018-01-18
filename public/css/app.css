@@ -12685,6 +12685,14 @@ main .none:nth-child(4n) .poster-size {
   .tv-plot {
     padding-bottom: 20px;
   }
+
+  #outerContentContainer {
+    margin-left: 20%;
+  }
+
+  #outerContentContainer #innerContentContainer {
+    width: 80%;
+  }
 }
 
 /* Slideshow container */
