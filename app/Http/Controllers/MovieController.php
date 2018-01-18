@@ -99,9 +99,11 @@ class MovieController extends Controller
 
         public function getTvShowGenres()
         {
+            $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
             $searchMethod = 'genre/tv/list?';
             $search = '&language=en-US';
-            $movieGenres = $this->MovieApi($search, $searchMethod);
+            $query = $searchMethod . $api_key . $search;
+            $movieGenres = $this->MovieApi($query);
             $movie = new Movie();
             $movie->createMovieGenres($movieGenres);
         }

@@ -288,13 +288,32 @@ class Movie extends Model
     {
         $watchlistMovies = DB::table('ledger_watch_lists')->where('user_id', $userId)->pluck('movie_id');
 
-        $movies = [];
+        $moviesWatch = [];
 
         foreach ($watchlistMovies as $watchlistMovie) {
-            array_push($movies, DB::table('movies')->get()->where('id', $watchlistMovie)->first());
+            array_push($moviesWatch, DB::table('movies')->get()->where('id', $watchlistMovie)->first());
         }
-        
+
+        $movies = array_filter($moviesWatch);
+
         return $movies;
+        
+    }
+
+    public function getAllTvShowsFromWatchlist($userId)
+    {
+        $watchlistTvshows = DB::table('ledger_watch_lists')->where('user_id', $userId)->pluck('tvshow_id');
+
+        $tvshowsWatch = [];
+
+        foreach ($watchlistTvshows as $watchlistTvshow) {
+            array_push($tvshowsWatch, DB::table('tv_shows')->get()->where('id', $watchlistTvshow)->first());
+        }
+
+        $tvshows = array_filter($tvshowsWatch);
+
+        return $tvshows;
+
     }
 
     public function removeMovieFromWatchlist($userId, $movieId)
