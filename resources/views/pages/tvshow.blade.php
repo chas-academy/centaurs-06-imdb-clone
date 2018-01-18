@@ -18,7 +18,7 @@
         <div class="movie-content">
             <div class="poster-section">
                 <div class="small-12 flex-align-c-c">
-                    <a href="{{ $tvDetails['tvshow']->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
+                    <a class="watchlist-btn" href="{{ $tvDetails['tvshow']->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
                 </div>
 
                 <div class="movie-rating">
@@ -48,14 +48,14 @@
                             @endif
                         </div>
                     </div>
-                        <div class="movie-crew-card seasons-card">
-                            <b>Seasons</b>
-                            <ul class="w-credits seasons">
+                        <div class="small-12 episodes-container">
+                            <b>Seasons: </b>
+                            <ul class="episode-list">
                                 @if (empty($tvDetails['seasons']))
-                                <p>No writers found</p>
+                                <p>No seasons found</p>
                                 @else
                                 @foreach ($tvDetails['seasons'] as $season)
-                                    <li class="person-name season-number">Season <a href="{{ $tvDetails['tvshow']->id }}/season/{{ $season->season_number }}?episode=1">{{ $season->season_number }}</a></li>
+                                <a href="{{ $tvDetails['tvshow']->id }}/season/{{ $season->season_number }}?episode=1&amp;season={{ $season->season_number }}"><li class="episode-number">{{ $season->season_number }}</li></a>
                                 @endforeach
                                 @endif
                             </ul>
