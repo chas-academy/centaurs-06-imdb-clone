@@ -40,7 +40,7 @@ class TvShow extends Model
         if(!$this->IfSeasonExists($tvShow->id, $season['season_number'])){
             DB::table('seasons')->insert([
                 'season_number' => $season['season_number'],
-                'tv_show_id' => $tvShow->id
+                'tvshow_id' => $tvShow->id
             ]);
         }
     }
@@ -167,9 +167,14 @@ class TvShow extends Model
         ])->first();
     }
 
+    public function getTvShowGenreByName($genreName)
+    {
+        return DB::table('genres')->where('genre_name', $genreName)->first();
+    }
+
     public function getEpisodeBySeason ($seasonId, $tvshowId)
     {
-        $seasonId = DB::table('seasons')->where('season_number', $seasonId)->where('tv_show_id', $tvshowId)->pluck('id');
+        $seasonId = DB::table('seasons')->where('season_number', $seasonId)->where('tvshow_id', $tvshowId)->pluck('id');
         $seasonId = array_first($seasonId);
         return $seasonId;
     }
@@ -177,7 +182,21 @@ class TvShow extends Model
     public function getEpisodesFromSpecificSeason ($seasonId)
     {
         $episodes = DB::table('episodes')->where('season_id', $seasonId)->get();
-        return $episodes;
+        // dd($episodes);
+       $episodeNumbers = [];
+        foreach ($episodes as $key => $episode) {
+            // $keys = ['Episode-' . ($key + 1)];
+            // $episodeNumbers = array_fill_keys($keys, $episode);
+            // $episodeNumbers[] = $episodeNumbers;
+            $episodeName = 'Episode-' . ($key + 1);
+            $episodeNumbers[$episodeName] = $episode;
+        }
+        // dd($episodeNumbers);
+        // for($i = 0; $i < count($episodes); $i++){
+        //      $episodes[$i] = ['Episode-' . ($number + 1) => $episodes[$i]];
+        // }
+        // dd($episodes);
+        return $episodeNumbers;
     }
 
     public function getActorsFromEpisode ($episodeIds)
@@ -326,7 +345,7 @@ class TvShow extends Model
     
     public function getTvShowSeason($seasonNumber, $tvShowId)
     {   
-        return DB::table('seasons')->where('season_number', $seasonNumber)->where('tv_show_id', $tvShowId)->first();
+        return DB::table('seasons')->where('season_number', $seasonNumber)->where('tvshow_id', $tvShowId)->first();
     }
 
     public function getTvShowByName($tvShowName)
@@ -348,7 +367,7 @@ class TvShow extends Model
     
     public function IfSeasonExists($tvShowId, $seasonNumber): bool
     {
-        return DB::table('seasons')->where('tv_show_id', $tvShowId)->where('season_number', $seasonNumber)->exists();
+        return DB::table('seasons')->where('tvshow_id', $tvShowId)->where('season_number', $seasonNumber)->exists();
     }
 
     public function ifWriterEpisodeLedgerExists($writerId, $episodeId): bool
@@ -371,6 +390,11 @@ class TvShow extends Model
         return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
     }
 
+    public function tvShowGenreLedgerExists($genreId, $tvShowId): bool
+    {
+        return DB::table('ledger_genres')->where('genre_id', $genreId)->where('tvshow_id', $tvShowId)->exists();
+    }
+
     use Searchable;
 
     public function searchableAs()
@@ -390,7 +414,7 @@ class TvShow extends Model
     }
     public function getTvShowSeasons($tvshowId)
     {
-        $seasons = DB::table('seasons')->get()->where('tv_show_id', $tvshowId);
+        $seasons = DB::table('seasons')->get()->where('tvshow_id', $tvshowId);
 
         return $seasons;
     }

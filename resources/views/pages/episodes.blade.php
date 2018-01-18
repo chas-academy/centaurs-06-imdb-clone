@@ -1,5 +1,11 @@
 @extends('layouts.layout') @section('content')
-<?php $user = Auth::user(); ?>
+<?php $user = Auth::user();
+$i = $_GET['episode'];
+
+$currentEpisode = 'Episode-' . $i;
+// dd($episodeDetails)
+?>
+
 
 <header id="desk-hide" class="row">
     <div id="desk-hide" class="small-12 header-flex-align-sb-c">
@@ -12,7 +18,7 @@
     </form>
 </header>
 <div id="mobile-hide">
-<img class="current-movie backdrop-image" src="">
+<img class="current-movie backdrop-image" src="https://image.tmdb.org/t/p/w1920{{ $episodeDetails['episodes'][$currentEpisode]->backdrop }}">
 </div>
 <main class="row current-movie">
     <div class="small-12 large-12 movie-flex-align">
@@ -24,46 +30,47 @@
                 </div>
 
                 <div class="movie-rating">
-                    <p class="rating-num">5</p>
+                    <p class="rating-num">{{ $episodeDetails['episodes'][$currentEpisode]->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                <img class="poster-image" src="http://via.placeholder.com/350x520">
+                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($episodeDetails['episodes'][$currentEpisode]->poster) }}">
             </div>
 
             <div class="movie-info-section">
                 <div class="small-12 movie-description">
                     <div class="small-12">
-                    <h3 class="movie-title">Episode test</h3>
+                    <h3 class="movie-title">{{ $episodeDetails['episodes'][$currentEpisode]->title }}</h3>
                     </div>
                     <div class="small-12 year-play">
-                        <p class="movie-year">1993-09-02</p>
+                        <p class="movie-year">{{ $episodeDetails['episodes'][$currentEpisode]->releasedate }}</p>
                         <p>|</p>
-                        <p class="playtime">
-                            55 min
-                        </p>
+                        <p class="playtime">{{ $episodeDetails['episodes'][$currentEpisode]->playtime }} min</p>
+                        <p>|</p>
+                        <p class="season-nr">Season: {{ $episodeDetails['episodes'][$currentEpisode]->season_id }}</p>
                     </div>
                     <div class="small-12 episodes-container">
-                        <p>Episodes: </p>
+                        <b>Seasons: </b>
                         <ul class="episode-list">
-                            <a id="currentEpisode1" href="" onClick="currentEpisode(1);"><li class="episode-number">1</li></a>
-                            <a id="currentEpisode2" href="" onClick="currentEpisode(2);"><li class="episode-number">2</li></a>
-                            <a id="currentEpisode3" href="" onClick="currentEpisode(3);"><li class="episode-number">3</li></a>
-                            <a id="currentEpisode4" href="" onClick="currentEpisode(4);"><li class="episode-number">4</li></a>
-                            <a id="currentEpisode5" href="" onClick="currentEpisode(5);"><li class="episode-number">5</li></a>
-                            <a id="currentEpisode6" href="" onClick="currentEpisode(6);"><li class="episode-number">6</li></a>
-                            <a id="currentEpisode7" href="" onClick="currentEpisode(7);"><li class="episode-number">7</li></a>
-                            <a id="currentEpisode8" href="" onClick="currentEpisode(8);"><li class="episode-number">8</li></a>
-                            <a id="currentEpisode9" href="" onClick="currentEpisode(9);"><li class="episode-number">9</li></a>
-                            <a id="currentEpisode10" href="" onClick="currentEpisode(10);"><li class="episode-number">10</li></a>
-                            <a id="currentEpisode11" href="" onClick="currentEpisode(11);"><li class="episode-number">11</li></a>
-                            <a id="currentEpisode12" href="" onClick="currentEpisode(12);"><li class="episode-number">12</li></a>
+                            @if (empty($episodeDetails['seasons']))
+                            <p>No seasons found</p>
+                            @else
+                            @foreach ($episodeDetails['seasons'] as $season)
+                            <a href="/tv-show/{{ $season->tvshow_id }}/season/{{ $season->season_number }}?episode=1"><li class="episode-number">{{ $season->season_number }}</li></a>
+                            @endforeach
+                            @endif
                         </ul>
-                    </div>
-
-                    <div class="small-12 movie-genre">
-                            <p class="genre">Action</p>
-                            <p class="genre">Drama</p>
-                            <p class="genre">Comedy</p>
+                    </div>         
+                    <div class="small-12 episodes-container">
+                        <b>Episodes: </b>
+                        <ul class="episode-list">
+                            @if (empty($episodeDetails['episodes'][$currentEpisode]))
+                                <p>No episodes found</p>
+                            @else
+                            @foreach($episodeDetails['episodes'] as $episode)
+                                <a id="currentEpisode1" href="?episode={{  $episode->episode_nr  }}"><li class="episode-number">{{ $episode->episode_nr }}</li></a>
+                            @endforeach
+                            @endif
+                        </ul>
                     </div>
                 </div>
 
@@ -71,35 +78,55 @@
                     <div class="movie-crew-card">
                         <b>Directors</b>
                         <ul class="director">
-                            <li class="person-name">Mr. Ett Namn</li>
+                        @if (empty($episodeDetails['directors'][$currentEpisode]))
+                            <p>No directors found</p>
+                        @else
+                        @foreach ($episodeDetails['directors'][$currentEpisode] as $directors)
+                            <li class="person-name">{{ $directors['name'][0] }}</li>
+                        @endforeach
+                        @endif
                         </ul>
                     </div>
                     <div class="movie-crew-card">
                         <b>Writers</b>
                         <ul class="w-credits">
-                            <li class="person-name">Jag har skrivit</li>
+                        @if (empty($episodeDetails['writers'][$currentEpisode]))
+                            <p>No writers found</p>
+                        @else
+                        @foreach ($episodeDetails['writers'][$currentEpisode] as $writers)
+                            <li class="person-name">{{ $writers['name'][0] }}</li>
+                        @endforeach
+                        @endif
                         </ul>
                     </div>
                     <div class="movie-crew-card">
                         <b>Producer</b>
                         <ul class="producer">
-                            <li class="person-name">Jag har producerat</li>
+                            @if (empty($episodeDetails['producers'][$currentEpisode]))
+                                <p>No producers found</p>
+                            @else
+                            @foreach ($episodeDetails['producers'][$currentEpisode] as $producers)
+                                <li class="person-name">{{ $producers['name'][0] }}</li>
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                     <div class="movie-crew-card">
                         <b>Cast</b>
                         <ul class="actor">
-                            <li class="person-name">Skådis 1</li>
-                            <li class="person-name">Skådis 2</li>
-                            <li class="person-name">Skådis 3</li>
-                            <li class="person-name">Skådis 4</li>
-                            <li class="person-name">Skådis 5</li>
+                        @if (empty($episodeDetails['actors'][$currentEpisode]))
+                            <p>No actors found</p>
+                        @else
+                        @foreach ($episodeDetails['actors'][$currentEpisode] as $actors)
+                            <li class="person-name">{{ $actors['name'][0] }}</li>
+                        @endforeach
+                        @endif
                         </ul>
                     </div>          
                 </div>
                 <div class="small-12 movie-plot">
                     <b>Storyline :</b>
-                    <p class="plot">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima dicta voluptates, ipsum explicabo ex eum dolore expedita eius deserunt quidem similique cupiditate facilis repudiandae commodi enim, corrupti neque labore veniam?</p>
+                    <p class="plot">{{ $episodeDetails['episodes'][$currentEpisode]->plot }}</p>
                 </div>
             </div>
         </div>
