@@ -156,5 +156,13 @@ class TvShowController extends Controller
         
     }
 
+    public function createTvShow()
+    {
+
+        $view = View::make('pages.createTVshow');
+
+        return $view;
+    }
+
 }
 

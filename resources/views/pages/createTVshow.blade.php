@@ -8,9 +8,7 @@
 
         <form data-abide novalidate class="adminform" action="" method="post" enctype="multipart/form-data">            
             <div class="small-12 columns">
-            <h1>Create movie</h1>
-
-              <?php echo csrf_field(); ?> 
+            <h1>Add TV show</h1>
 
             <label>
                 <input type="text" name="title" placeholder="TV show title" required>
@@ -24,40 +22,42 @@
 
             <label> 
                 <select multiple class="multi-select" name="genre" required>
-                @foreach ($genres as $genre)
-                    <option value="{{ $genre["id"] }}">{{ $genre["genre_name"] }}</option>
-                @endforeach
+  
                 </select>
                 <span class="form-error">Don't forget to add genre.</span>
             </label> 
             
             <label>
                 <select class="release-year" name="releaseyear" required>
-                @foreach ($releaseyears as $releaseyear)
-                    <option value="{{ $releaseyear }}">{{ $releaseyear }}</option>
-                @endforeach
-                </select>
+          
                 <span class="form-error">Add release year.</span>
             </label>
 
             <label>
-                <input type="number" name="playtimeMins" placeholder="Playtime minutes" required>
-                <span class="form-error">Add playtime.</span>
+                <select class="tvshow-seasons" name="tvshow-seasons" required>
+           
+                </select>
             </label>
+
+            <label>
+                <select class="tvshow-seasons" name="tvshow-seasons" required>
+            
+                </select>
+            </label>
+
+
  
             <label>
-                <textarea cols="30" rows="10" name="plot" placeholder="Movie plot"></textarea>
+                <textarea cols="30" rows="10" name="plot" placeholder="Add TV show plot"></textarea>
                 <span class="form-error">
                 Don't forget to write the TV show plot.
                 </span>
 
             </label>
 
-                @include('partials.personlist', ['persons' => $actors, 'personType' => 'actor'])
-                @include('partials.personlist', ['persons' => $directors, 'personType' => 'director'])
-                @include('partials.personlist', ['persons' => $producers, 'personType' => 'producer'])
+
                 
-                <button class="button" type="submit" value="submit">Create TV</button>
+                <button class="button" type="submit" value="submit">Create TV show</button>
             
             </div>
         </form>
