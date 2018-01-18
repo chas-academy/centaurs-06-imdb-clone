@@ -12023,14 +12023,6 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     height: 20px;
   }
 
-  #outerContentContainer {
-    margin-left: 20%;
-  }
-
-  #outerContentContainer #innerContentContainer {
-    width: 80%;
-  }
-
   .tv-shows {
     margin-left: 20px;
   }
@@ -12080,6 +12072,14 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .tv-plot {
     padding-bottom: 20px;
+  }
+
+  #outerContentContainer {
+    margin-left: 20%;
+  }
+
+  #outerContentContainer #innerContentContainer {
+    width: 80%;
   }
 }
 
