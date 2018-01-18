@@ -1,7 +1,7 @@
 @extends('layouts.layout') @section('content')
 <?php $user = Auth::user();
 $i = $_GET['episode'];
-
+$j = $_GET['season'];
 $currentEpisode = 'Episode-' . $i;
 // dd($episodeDetails)
 ?>
@@ -46,7 +46,7 @@ $currentEpisode = 'Episode-' . $i;
                         <p>|</p>
                         <p class="playtime">{{ $episodeDetails['episodes'][$currentEpisode]->playtime }} min</p>
                         <p>|</p>
-                        <p class="season-nr">Season: {{ $episodeDetails['episodes'][$currentEpisode]->season_id }}</p>
+                        <p class="season-nr">Season: {{ $j }}</p>
                     </div>
                     <div class="small-12 episodes-container">
                         <b>Seasons: </b>
@@ -55,7 +55,7 @@ $currentEpisode = 'Episode-' . $i;
                             <p>No seasons found</p>
                             @else
                             @foreach ($episodeDetails['seasons'] as $season)
-                            <a href="/tv-show/{{ $season->tvshow_id }}/season/{{ $season->season_number }}?episode=1"><li class="episode-number">{{ $season->season_number }}</li></a>
+                            <a href="/tv-show/{{ $season->tvshow_id }}/season/{{ $season->season_number }}?episode=1&amp;season={{$season->season_number}}"><li class="episode-number">{{ $season->season_number }}</li></a>
                             @endforeach
                             @endif
                         </ul>
@@ -67,7 +67,7 @@ $currentEpisode = 'Episode-' . $i;
                                 <p>No episodes found</p>
                             @else
                             @foreach($episodeDetails['episodes'] as $episode)
-                                <a id="currentEpisode1" href="?episode={{  $episode->episode_nr  }}"><li class="episode-number">{{ $episode->episode_nr }}</li></a>
+                                <a id="currentEpisode1" href="?episode={{  $episode->episode_nr  }}&amp;season={{$j}}"><li class="episode-number">{{ $episode->episode_nr }}</li></a>
                             @endforeach
                             @endif
                         </ul>
