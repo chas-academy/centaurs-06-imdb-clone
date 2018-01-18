@@ -5,8 +5,13 @@ namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use DB;
+use App\Season;
+use App\Episode;
+use App\Http\Models\Movie;
 
 use Laravel\Scout\Searchable;
+
+
 class TvShow extends Model
 {
     public function createTvSHowFromApi($tvShow)
@@ -24,6 +29,10 @@ class TvShow extends Model
                 'updated_at' => now()
             ]);
         }
+
+        $tvShowId = DB::table('tv_shows')->orderBy('updated_at', 'desc')->pluck('id')->first();
+
+        $this->createTvShowGenres($tvShow['genre_ids'], $tvShowId);
     }
 
     public function createSeasonFromApi($season, $tvShow)
@@ -135,6 +144,21 @@ class TvShow extends Model
         }
     }
 
+    public function createTvShowGenres($genreIds, $tvshowId)
+    {
+        $movieModel = new Movie();
+
+        if (!$movieModel->ifGenreEpisodeLedgerExists($tvshowId, $genreIds)) {
+            $genreIds = $movieModel->getGenres($genreIds);
+            foreach ($genreIds as $genreId) {
+                DB::table('ledger_genres')->insert([
+                    'tvshow_id' => $tvshowId,
+                    'genre_id' => $genreId->id
+                ]);
+            }
+        }
+    }
+
     public function getEpisode($seasonId, $episodeNumber)
     {
         return DB::table('episodes')->where([
@@ -143,6 +167,163 @@ class TvShow extends Model
         ])->first();
     }
 
+    public function getEpisodeBySeason ($seasonId, $tvshowId)
+    {
+        $seasonId = DB::table('seasons')->where('season_number', $seasonId)->where('tv_show_id', $tvshowId)->pluck('id');
+        $seasonId = array_first($seasonId);
+        return $seasonId;
+    }
+
+    public function getEpisodesFromSpecificSeason ($seasonId)
+    {
+        $episodes = DB::table('episodes')->where('season_id', $seasonId)->get();
+        return $episodes;
+    }
+
+    public function getActorsFromEpisode ($episodeIds)
+    {
+        $actors = [];
+
+        foreach ($episodeIds as $episodeId) {  
+            $actors[] = DB::table('ledger_actors')->where('episode_id', $episodeId)->limit(5)->get()->pluck('actor_id');
+        }
+
+        $actorIds = [];
+
+        foreach ($actors as $actor) {
+            $actorIds[] = $actor->all();
+        }
+
+        return $actorIds;
+
+    }
+
+    public function getDirectorsFromEpisode($episodeIds)
+    {
+        $directors = [];
+
+        foreach ($episodeIds as $episodeId) {
+            $directors[] = DB::table('ledger_directors')->where('episode_id', $episodeId)->limit(5)->get()->pluck('director_id');
+        }
+
+        $directorIds = [];
+
+        foreach ($directors as $director) {
+            $directorIds[] = $director->all();
+        }
+        
+        return $directorIds;
+
+    }
+
+    public function getProducersFromEpisode($episodeIds)
+    {
+        $producers = [];
+
+        foreach ($episodeIds as $episodeId) {
+            $producers[] = DB::table('ledger_producers')->where('episode_id', $episodeId)->limit(5)->get()->pluck('producer_id');
+        }
+
+        $producerIds = [];
+
+        foreach ($producers as $producer) {
+            $producerIds[] = $producer->all();
+        }
+
+        return $producerIds;
+
+    }
+
+    public function getWritersFromEpisode($episodeIds)
+    {
+        $writers = [];
+
+        foreach ($episodeIds as $episodeId) {
+            $writers[] = DB::table('ledger_writers')->where('episode_id', $episodeId)->limit(5)->get()->pluck('writer_id');
+        }
+
+        $writerIds = [];
+
+        foreach ($writers as $writer) {
+            $writerIds[] = $writer->all();
+        }
+
+        return $writerIds;
+
+    }
+
+    public function getActorNamesFromActorId($actorIds)
+    {
+        
+        $actors = [];
+        
+        foreach ($actorIds as $key => $episodesActorIds) 
+        {
+          foreach ($episodesActorIds as $actorId) 
+          {
+            $episodeName = 'Episode-' . ($key + 1);
+            $actors[$episodeName][] = [
+              "name" => DB::table('actors')->where('id', $actorId)->get()->pluck('name')
+            ];
+          }
+        }
+
+        return $actors;
+
+    }
+
+    public function getDirectorNamesFromDirectorId($directorIds)
+    {
+        $directors = [];
+
+        foreach ($directorIds as $key => $episodesDirectorIds) 
+        {
+            foreach ($episodesDirectorIds as $directorId) {
+                $episodeName = 'Episode-' . ($key + 1);
+                $directors[$episodeName][] = [
+                    'name' => DB::table('directors')->where('id', $directorId)->get()->pluck('name')
+                ];
+            }
+            
+        }
+
+        return $directors;
+
+    }
+
+    public function getProducerNamesFromProducerId($producerIds)
+    {
+        $producers = [];
+
+        foreach ($producerIds as $key => $episodesProducerIds) {
+            foreach ($episodesProducerIds as $producerId) {
+                $episodeName = 'Episode-' . ($key + 1);
+                $producers[$episodeName][] = [
+                    'name' => DB::table('producers')->where('id', $producerId)->get()->pluck('name')
+                ];
+            }
+        }
+
+        return $producers;
+
+    }
+
+    public function getWriterNamesFromWriterId($writerIds)
+    {
+        $writers = [];
+
+        foreach ($writerIds as $key => $episodesWriterIds) {
+            foreach ($episodesWriterIds as $writerId) {
+                $episodeName = 'Episode-' . ($key + 1);
+                $writers[$episodeName][] = [
+                    'name' => DB::table('writers')->where('id', $writerId)->get()->pluck('name')
+                ];
+            }
+        }
+
+        return $writers;
+    }
+    
     public function getTvShowSeason($seasonNumber, $tvShowId)
     {   
         return DB::table('seasons')->where('season_number', $seasonNumber)->where('tv_show_id', $tvShowId)->first();
@@ -189,12 +370,46 @@ class TvShow extends Model
     {
         return DB::table('ledger_actors')->where('actor_id', $actorId)->where('episode_id', $episodeId)->exists();
     }
-    public function tvShowGenreLedgerExists($genreId, $tvShowId): bool
-    {
-        return DB::table('ledger_genres')->where('genre_id', $genreId)->where('tv_show_id', $tvShowId)->exists();
-    }
-    public function getTvShowGenreByName($genreName)
+
+    use Searchable;
+
+    public function searchableAs()
     {
         return DB::table('genres')->where('genre_name', $genreName)->first();
+    }
+    public function getAllTvShows()
+    {
+        $tvshows = DB::table('tv_shows')->get();
+        return $tvshows;
+    }
+    public function getTvShowById($tvshowId) 
+    {
+        $tvshows = DB::table('tv_shows')->get()->where('id', $tvshowId);
+
+        return array_first($tvshows);
+    }
+    public function getTvShowSeasons($tvshowId)
+    {
+        $seasons = DB::table('seasons')->get()->where('tv_show_id', $tvshowId);
+
+        return $seasons;
+    }
+    public function seasons()
+    {
+        return $this->hasMany('App\Season');
+    }
+    public function getTvShowGenres($tvshowId)
+    {
+        $genreIds = DB::table('ledger_genres')->get()->where('tvshow_id', $tvshowId);
+
+        $genres = [];
+
+        foreach ($genreIds as $genreId)
+        {
+            array_push($genres, DB::table('genres')->where('id', $genreId->genre_id)->value('genre_name'));
+        }
+
+        return $genres;
+        
     }
 }

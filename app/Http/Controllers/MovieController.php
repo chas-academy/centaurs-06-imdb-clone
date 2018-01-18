@@ -95,6 +95,15 @@ class MovieController extends Controller
             $movie->createMovieGenres($movieGenres);
         }
 
+        public function getTvShowGenres()
+        {
+            $searchMethod = 'genre/tv/list?';
+            $search = '&language=en-US';
+            $movieGenres = $this->MovieApi($search, $searchMethod);
+            $movie = new Movie();
+            $movie->createMovieGenres($movieGenres);
+        }
+
 
         public function getAllMovies()
         {
