@@ -7,6 +7,7 @@ use App\Http\Models\TvShow;
 use App\Season;
 use App\Episode;
 use DB;
+use Auth;
 
 use View;
 
@@ -36,7 +37,7 @@ class TvShowController extends Controller
 
     public function createTvShowFromApi()
     {
-        $keyword = "Game of thrones";
+        $keyword = "Stranger things";
         $argument = str_replace(' ', '%20', $keyword);
         $searchMethod = 'search/tv?';
         $search = '&language=en-US&query=' . $argument . '&page=1';
@@ -105,7 +106,7 @@ class TvShowController extends Controller
 
         $topEpisodes = DB::table('episodes', 'seasons')
                             ->leftJoin('seasons', 'episodes.season_id', '=', 'seasons.id')
-                            ->leftJoin('tv_shows', 'tv_shows.id', '=', 'seasons.tv_show_id')
+                            ->leftJoin('tv_shows', 'tv_shows.id', '=', 'seasons.tvshow_id')
                             ->where('tv_shows.id', '=', $tvshow->id)
                             ->orderBy('episodes.imdb_rating', 'desc')
                             ->select('episodes.*', 'seasons.*')
@@ -154,6 +155,17 @@ class TvShowController extends Controller
         
         return $view;
         
+    }
+
+    public function addTvshowToWatchlist($tvshowId)
+    {
+        $userId = Auth::user()->id;
+
+        $tvShowModel = new TvShow();
+        $tvShowModel->addTvshowToWatchlist($userId, $tvshowId);
+
+        return redirect('tv-show/'. $tvshowId);
+
     }
 
 }

@@ -5,6 +5,14 @@
         @include('includes.errors')
 <main class="row">
     @include('includes.menu-btn')
+        <section class="small-12">
+            @include('includes.messages')
+            @include('includes.errors')
+        </section>
+        <div class="small-12 tv-shows">
+            <a id="movies-link" href="/">Movies</a>
+            <a id="tvshows-link" href="/tv-shows">Tv-Shows</a>
+        </div>
         @foreach($movies as $key => $movie)
             @if ($key === 'movie')
                 <section class="small-12 flex-align-sb-c">

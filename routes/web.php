@@ -52,15 +52,17 @@ Route::get('/watchlist', function ()
     $movieModel = new Movie();
     $genreModel = new Genre();
     $movies = $movieModel->getAllMoviesFromWatchlist($user);
+    $tvshows = $movieModel->getAllTvShowsFromWatchlist($user);
     $genres = $genreModel->getAllGenres();
 
-    $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres);
+    $view = View::make('pages.watchlist')->with('movies', $movies)->with('genres', $genres)->with('tvshows', $tvshows);
     return $view;
 });
 
-Route::get('/watchlist/delete/{movieId}', 'MovieController@removeMovieFromWatchlist');
-
+Route::get('/watchlist/delete/{movieId}', 'MovieController@removeMovieFromWatchlist'); // need to remake.
 Route::get('/movie/{movieId}/addwatchlist', 'MovieController@addMovieToWatchlist');
+
+Route::get('/tv-show/{tvshowId}/addwatchlist', 'TvShowController@addTvshowToWatchlist');
 
 Route::get('movie/{movieId}', function ($movieId)
 {

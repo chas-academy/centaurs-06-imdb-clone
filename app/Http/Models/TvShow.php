@@ -67,7 +67,7 @@ class TvShow extends Model
             if(!$this->tvShowGenreLedgerExists($tvShowgenre->id, $tvShowId)) {
                 DB::table('ledger_genres')->insert([
                     'genre_id'=> $tvShowgenre->id,
-                    'tv_show_id' => $tvShowId
+                    'tvshow_id' => $tvShowId
                 ]);
             }
         }
@@ -412,4 +412,13 @@ class TvShow extends Model
         return $genres;
         
     }
+
+    public function addTvshowToWatchlist($userId, $tvshowId)
+    {
+        DB::table('ledger_watch_lists')->insert([
+            'user_id' => $userId,
+            'tvshow_id' => $tvshowId
+        ]);
+    }
+
 }

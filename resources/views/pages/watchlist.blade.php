@@ -29,7 +29,6 @@
 	<main class="row">
     	@include('includes.menu-btn')
 	    @foreach($movies as $movie)
-	
 	    	<div class="small-12 watchlist-movie">
 	            <div class="small-12 flex-align-c-c">
 	                <a href="movie/{{ $movie->id }}" class="none">
@@ -45,6 +44,25 @@
 	            </div>
 	            <div class="small-12 flex-align-c-c">
 	            	<a href="/watchlist/delete/{{ $movie->id }}"><i class="fa fa-close"></i></a>
+	            </div>
+	    	</div>
+	    @endforeach
+		@foreach($tvshows as $tvshow)
+	    	<div class="small-12 watchlist-movie">
+	            <div class="small-12 flex-align-c-c">
+	                <a href="tv-show/{{ $tvshow->id }}" class="none">
+	                    <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $tvshow->poster }}" >
+	                </a>
+	            </div>
+	            <div class="small-12 flex-align-c-c">
+			        <i class="fa fa-star" aria-hidden="true"></i>
+			        <p class="rating-num">{{ $tvshow->imdb_rating }}</p>
+	            </div> 
+	            <div class="small-12 flex-align-c-c">
+	            	<p class="title">{{ $tvshow->title }}</p>
+	            </div>
+	            <div class="small-12 flex-align-c-c">
+	            	<a href="/watchlist/delete/{{ $tvshow->id }}"><i class="fa fa-close"></i></a>
 	            </div>
 	    	</div>
 	    @endforeach
