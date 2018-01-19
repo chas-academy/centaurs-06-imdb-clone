@@ -21,10 +21,11 @@
         <div class="movie-info">
         <div class="movie-content">
             <div class="poster-section">
+                @if(Auth::check())
                 <div class="small-12 flex-align-c-c">
                     <a class="watchlist-btn" href="{{ $movie->id }}/addwatchlist"><i class="fa fa-list"></i> Add to watchlist</a>
                 </div>
-
+                @endif
                 <div class="movie-rating">
                     <p class="rating-num">{{ $movie->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>

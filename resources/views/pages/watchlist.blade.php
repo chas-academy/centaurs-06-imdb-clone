@@ -32,8 +32,8 @@
 	    	<div class="small-12 watchlist-movie">
 	            <div class="small-12 flex-align-c-c">
 	                <a href="movie/{{ $movie->id }}" class="none">
-	                    <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie->poster }}" >
-	                </a>
+						<img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
+					</a>		
 	            </div>
 	            <div class="small-12 flex-align-c-c">
 			        <i class="fa fa-star" aria-hidden="true"></i>
