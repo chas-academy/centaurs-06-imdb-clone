@@ -301,15 +301,15 @@
     <div class="small-12 about-container" id="victor">
         <div class="small-12 head">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2>Victor Ciavarella</h2>
+            <h2 class="personal-info">Victor Ciavarella</h2>
             <p>Web Developer</p>
         </div>
         <div class="small-12 info">
-            <h2>Favorite Movie</h2>
+            <h2 "personal-info">Favorite Movie</h2>
             <p>Godfather</p>
-            <h2>Favorite Quote</h2>
+            <h2 "personal-info">Favorite Quote</h2>
             <p>First make it work, then make it pretty</p>
-            <h2>Favorite Short Command</h2>
+            <h2 "personal-info">Favorite Short Command</h2>
             <p>CMD + Z</p>
         </div>
         <div class="small-12 git">
@@ -322,15 +322,15 @@
     <div class="small-12 about-container" id="andreas">
         <div class="small-12 head">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2>Andreas Sjölund</h2>
+            <h2 "personal-info">Andreas Sjölund</h2>
             <p>Web Developer</p>
         </div>
         <div class="small-12 info">
-            <h2>Favorite Movie</h2>
+            <h2 "personal-info">Favorite Movie</h2>
             <p>Pulp Fiction</p>
-            <h2>Favorite Quote</h2>
+            <h2 "personal-info">Favorite Quote</h2>
             <p>"No man, they got the metric system. They wouldn't know what the fuck a Quarter Pounder is"</p>
-            <h2>Favorite Short Command</h2>
+            <h2 "personal-info">Favorite Short Command</h2>
             <p>CMD + A DEL</p>
         </div>
         <div class="small-12 git">
@@ -343,15 +343,15 @@
     <div class="small-12 about-container" id="patryk">
         <div class="small-12 head">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2>Patryk Rybaczek</h2>
+            <h2 "personal-info">Patryk Rybaczek</h2>
             <p>Web Developer</p>
         </div>
         <div class="small-12 info">
-            <h2>Favorite Movie</h2>
+            <h2 "personal-info">Favorite Movie</h2>
             <p>Menace II Society</p>
-            <h2>Favorite Quote</h2>
+            <h2 "personal-info">Favorite Quote</h2>
             <p>"I don't care, let's use jQuery"</p>
-            <h2>Favorite Short Command</h2>
+            <h2 "personal-info">Favorite Short Command</h2>
             <p>ALT + TAB</p>
         </div>
         <div class="small-12 git">
@@ -364,15 +364,15 @@
     <div class="small-12 about-container" id="ida">
         <div class="small-12 head">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2>Ida Englund</h2>
+            <h2 "personal-info">Ida Englund</h2>
             <p>Web Developer</p>
         </div>
         <div class="small-12 info">
-            <h2>Favorite Movie</h2>
+            <h2 "personal-info">Favorite Movie</h2>
             <p>Remember the titans</p>
-            <h2>Favorite Quote</h2>
+            <h2 "personal-info">Favorite Quote</h2>
             <p>"The question is not, can they reason?, nor can they talk? but, can they suffer?"</p>
-            <h2>Favorite Short Command</h2>
+            <h2 "personal-info">Favorite Short Command</h2>
             <p>CMD + Z</p>
         </div>
         <div class="small-12 git">
@@ -385,15 +385,15 @@
     <div class="small-12 about-container" id="laya">
         <div class="small-12 head">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2>Laya Sadegh</h2>
+            <h2 "personal-info">Laya Sadegh</h2>
             <p>Web Developer</p>
         </div>
         <div class="small-12 info">
-            <h2>Favorite Movie</h2>
+            <h2 "personal-info">Favorite Movie</h2>
             <p>Le fabuleux destin d’Amélie Poulain</p>
-            <h2>Favorite Quote</h2>
+            <h2 "personal-info">Favorite Quote</h2>
             <p>"Insanity: doing the same thing over and over again and expecting different results."</p>
-            <h2>Favorite Short Command</h2>
+            <h2 "personal-info">Favorite Short Command</h2>
             <p>CMD + Z</p>
         </div>
         <div class="small-12 git">
@@ -406,15 +406,15 @@
     <div class="small-12 about-container" id="pontus">
         <div class="small-12 head">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2>Pontus Sarland</h2>
+            <h2 "personal-info">Pontus Sarland</h2>
             <p>Web Developer</p>
         </div>
         <div class="small-12 info">
-            <h2>Favorite Movie</h2>
+            <h2 "personal-info">Favorite Movie</h2>
             <p>Inception</p>
-            <h2>Favorite Quote</h2>
+            <h2 "personal-info">Favorite Quote</h2>
             <p>"Don't you want to take a leap of faith? Or become an old man, filled with regret, waiting to die alone!"</p>
-            <h2>Favorite Short Command</h2>
+            <h2 "personal-info">Favorite Short Command</h2>
             <p>CTRL + V</p>
         </div>
         <div class="small-12 git">
@@ -427,15 +427,15 @@
     <div class="small-12 about-container" id="eleonor">
         <div class="small-12 head">
             <i class="fa fa-user-circle-o personal" aria-hidden="true"></i>
-            <h2>Eleonor Bergqvist</h2>
+            <h2 "personal-info">Eleonor Bergqvist</h2>
             <p>Web Developer</p>
         </div>
         <div class="small-12 info">
-            <h2>Favorite Movie</h2>
+            <h2 "personal-info">Favorite Movie</h2>
             <p>Forrest Gump</p>
-            <h2>Favorite Quote</h2>
+            <h2 "personal-info">Favorite Quote</h2>
             <p>"Life isn't about finding yourself. Life is about creating yourself"</p>
-            <h2>Favorite Short Command</h2>
+            <h2 "personal-info">Favorite Short Command</h2>
             <p>CMD + S</p>
         </div>
         <div class="small-12 git">
