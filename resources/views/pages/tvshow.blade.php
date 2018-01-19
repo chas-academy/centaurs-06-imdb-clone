@@ -173,7 +173,7 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                         @endif
                         </div>
-                        @if($tvDetails['reviews'][0]->user_id == $user['id'])
+                        @if($review->user_id == $user['id'])
                             <a href="/delete/review/tv-show/{{ $review->id  }}"><i class="fa fa-trash delete-review" aria-hidden="true"></i></a>
                         @endif
                     </div>
