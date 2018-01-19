@@ -361,21 +361,17 @@ class MovieController extends Controller
             $movieModel = new Movie();
             $movieDeleted = $movieModel->deleteMovie($movieId);
             if($movieDeleted == true) {
-                //TODO: Give message that movie was deleted
+                
+                $message = 'Movie has been deleted';
+
+                return redirect('/')->with('message', $message);
+;
             } else {
+
                 //Movie with that id did not exists in db.
+                
+                return redirect('movie/'. $movieId)->with('error', 'Movie has not been deleted');
+
             }
         }
-}
-
-
-if (!$movieExistsInWatchlist) {
-    $movieModel->addMovieToWatchlist($userId, $movieId);
-    $message = 'Movie has been added to watchlist';
-
-    return redirect('movie/'. $movieId)->with('message', $message);
-}
-else {
-
-    return redirect('movie/' . $movieId)->with('error', 'Movie already in watchlist' ); 
 }
