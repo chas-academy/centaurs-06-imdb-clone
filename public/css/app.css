@@ -12205,6 +12205,15 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     margin-right: 5px;
   }
 
+  .about-container {
+    font-size: 1rem;
+  }
+
+  .about-container .personal-info,
+  .about-container h2 {
+    font-size: 1rem;
+  }
+
   #outerContentContainer {
     margin-left: 20%;
   }
