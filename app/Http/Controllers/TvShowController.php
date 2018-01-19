@@ -216,5 +216,43 @@ class TvShowController extends Controller
 
     }
 
+    public function removeTvshow($tvshowId)
+    {
+
+
+
+        $tvShowModel = new TvShow;
+
+        $tvShowModel->deleteTvShow($tvshowId);
+
+        // $seasons = $tvShowModel->getTvShowSeasons($tvshowId);  
+        // $removeSeasons = [];
+        // foreach ($seasons as $season) {
+        //     array_push($removeSeasons, $season->id);
+        // }
+        // $episodes = [];
+        // foreach ($removeSeasons as $removeSeason) {
+        //     array_push($episodes, $tvShowModel->getEpisodesFromSpecificSeason($removeSeason));
+        // }
+        // $episodeIds = [];
+        // foreach ($episodes as $episode) {
+        //     for ($i=1; $i < count($episode); $i++) { 
+        //         $id = $episode['Episode-' . $i]->id;
+        //         array_push($episodeIds, $id);
+        //     }
+        // }
+
+        // foreach ($removeSeasons as $removeSeason) {
+        //     $tvShowModel->deleteEpisodesLedgers($episodeIds);
+        //     $tvShowModel->deleteEpisodes($episodeIds);
+        //     $tvShowModel->deleteSeasons($removeSeasons);
+        // }
+        
+        // $tvShowModel->deleteTvShow($tvshowId);
+
+        return redirect('/');
+
+    }
+
 }
 

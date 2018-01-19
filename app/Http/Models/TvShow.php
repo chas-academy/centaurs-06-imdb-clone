@@ -195,20 +195,13 @@ class TvShow extends Model
     public function getEpisodesFromSpecificSeason ($seasonId)
     {
         $episodes = DB::table('episodes')->where('season_id', $seasonId)->get();
-        // dd($episodes);
-       $episodeNumbers = [];
+        
+        $episodeNumbers = [];
         foreach ($episodes as $key => $episode) {
-            // $keys = ['Episode-' . ($key + 1)];
-            // $episodeNumbers = array_fill_keys($keys, $episode);
-            // $episodeNumbers[] = $episodeNumbers;
             $episodeName = 'Episode-' . ($key + 1);
             $episodeNumbers[$episodeName] = $episode;
         }
-        // dd($episodeNumbers);
-        // for($i = 0; $i < count($episodes); $i++){
-        //      $episodes[$i] = ['Episode-' . ($number + 1) => $episodes[$i]];
-        // }
-        // dd($episodes);
+        
         return $episodeNumbers;
     }
 
@@ -218,6 +211,24 @@ class TvShow extends Model
 
         foreach ($episodeIds as $episodeId) {  
             $actors[] = DB::table('ledger_actors')->where('episode_id', $episodeId)->limit(5)->get()->pluck('actor_id');
+        }
+
+        $actorIds = [];
+
+        foreach ($actors as $actor) {
+            $actorIds[] = $actor->all();
+        }
+
+        return $actorIds;
+
+    }
+
+    public function getAllActorsFromEpisode ($episodeIds)
+    {
+        $actors = [];
+
+        foreach ($episodeIds as $episodeId) {  
+            $actors[] = DB::table('ledger_actors')->where('episode_id', $episodeId)->get()->pluck('actor_id');
         }
 
         $actorIds = [];
@@ -461,6 +472,40 @@ class TvShow extends Model
     public function removeTvshowFromWatchlist($userId, $tvshowId)
     {
         DB::table('ledger_watch_lists')->where('user_id', $userId)->where('tvshow_id', $tvshowId)->delete();
+    }
+
+    public function deleteEpisodesLedgers($episodeIds)
+    {
+        foreach ($episodeIds as $episodeId) {
+            DB::table('ledger_actors')->where('episode_id', $episodeId)->delete();
+            DB::table('ledger_directors')->where('episode_id', $episodeId)->delete();
+            DB::table('ledger_producers')->where('episode_id', $episodeId)->delete();
+            DB::table('ledger_writers')->where('episode_id', $episodeId)->delete();
+        }
+    }
+
+    public function deleteSeasons($removeSeasons)
+    {
+        foreach ($removeSeasons as $removeSeason) {
+            DB::table('seasons')->where('id', $removeSeason)->delete();
+        }
+
+    }
+
+    public function deleteTvShow($tvshowId)
+    {
+        DB::table('ledger_genres')->where('tvshow_id', $tvshowId)->delete();
+        DB::table('ledger_watch_lists')->where('tvshow_id', $tvshowId)->delete();
+        DB::table('seasons')->where('tvshow_id', $tvshowId)->delete();
+        DB::table('tv_shows')->where('id', $tvshowId)->delete();
+
+    }
+
+    public function deleteEpisodes($episodeIds)
+    {
+        foreach ($episodeIds as $episodeId) {
+            DB::table('episodes')->where('id', $episodeId)->delete();
+        }
     }
 
 }

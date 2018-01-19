@@ -143,6 +143,7 @@ Route::get('/search-tv-api', 'TvShowController@searchTvshowFromApi');
 Route::get('/tv-shows', 'TvShowController@readTvShows');
 Route::get('/tv-show/{tvshowId}', 'TvShowController@list');
 Route::get('/tv-show/{tvshowId}/season/{seasonId}', 'TvShowController@seasonlist');
+Route::get('/tv-show/{tvshowId}/delete', 'TvShowController@removeTvshow');
 
 Route::get('/episodes', function() {
     return view('pages.episodes');
@@ -150,4 +151,3 @@ Route::get('/episodes', function() {
 
 
 Route::get('/admin/managereviews', 'ReviewController@getReviewsOnHold'); // Don't know if the path is right but this prints out the reviews that are on hold.
-
