@@ -10099,6 +10099,17 @@ main .flex-align-sb-c .movie-poster .movie-title-container .movie-title {
   font-weight: 600;
 }
 
+.delete-btn-cont {
+  position: relative;
+}
+
+.delete-btn-cont .delete-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.5rem !important;
+}
+
 /*          Footer Section Styling         */
 
 footer {
@@ -10552,6 +10563,10 @@ main .btn-container {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 main .btn-container button {
@@ -12463,9 +12478,10 @@ main .none:nth-child(4n) .poster-size {
     color: #865e13;
   }
 
-  #back-tvshow {
+  #delete-movie-btn {
     text-align: center;
     padding-top: 10px;
+    background: red !important;
   }
 
   .backdrop-image {
@@ -12752,6 +12768,17 @@ main .none:nth-child(4n) .poster-size {
 
   .tv-plot {
     padding-bottom: 20px;
+  }
+
+  .delete-btn-cont {
+    position: relative;
+  }
+
+  .delete-btn-cont .delete-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem !important;
   }
 
   .episodes-container {
