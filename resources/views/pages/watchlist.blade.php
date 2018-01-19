@@ -33,9 +33,6 @@
 	            <div class="small-12 flex-align-c-c">
 	                <a href="movie/{{ $movie->id }}" class="none">
 						<img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
-						@if($movie->poster === null)
-							<p class="movie-title">{{$movie->title}}</p>
-						@endif
 					</a>		
 	            </div>
 	            <div class="small-12 flex-align-c-c">
