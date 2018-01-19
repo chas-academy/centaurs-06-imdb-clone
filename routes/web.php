@@ -92,7 +92,8 @@ Route::get('movie/{movieId}', function ($movieId)
     $view = View::make('pages.movie')->with($movieDetails);
     return $view;
 });
-
+// Delete movie from database
+Route::get('movie/{movieId}/delete', 'MovieController@deleteMovie');
 
 // Review
 Route::post('movie/{movieId}/addreview', 'ReviewController@addReview');
