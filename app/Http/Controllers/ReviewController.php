@@ -15,10 +15,27 @@ class ReviewController extends Controller
         return redirect()->back();
     }
 
+    public function addTvReview(Request $request, $tvshowId)
+    {
+        $reviewModel = new Review();
+        $reviewModel->createTvReview($request, $tvshowId);
+        return redirect()->back();
+    }
+
     public function removeReview($reviewId) 
     {
         $reviewModel = new Review();
         $reviewModel->removeReview($reviewId);
         return redirect()->back();
     }
+
+    public function getReviewsOnHold()
+    {
+        $reviewModel = new Review();
+        $reviewModel->getAllReviewsOnHold();
+        return redirect()->back();
+
+    }
+
+
 }

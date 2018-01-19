@@ -97,7 +97,9 @@ Route::get('movie/{movieId}/delete', 'MovieController@deleteMovie');
 
 // Review
 Route::post('movie/{movieId}/addreview', 'ReviewController@addReview');
-Route::get('delete/review/{reviewId}', 'ReviewController@removeReview');
+Route::get('delete/review/movie/{reviewId}', 'ReviewController@removeReview');
+Route::post('tv-show/{tvshowId}/addreview', 'ReviewController@addTvReview');
+Route::get('delete/review/tv-show/{reviewId}', 'ReviewController@removeReview');
 
 // User Watchlist View
 
@@ -145,3 +147,7 @@ Route::get('/tv-show/{tvshowId}/season/{seasonId}', 'TvShowController@seasonlist
 Route::get('/episodes', function() {
     return view('pages.episodes');
 });
+
+
+Route::get('/admin/managereviews', 'ReviewController@getReviewsOnHold'); // Don't know if the path is right but this prints out the reviews that are on hold.
+
