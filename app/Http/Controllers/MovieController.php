@@ -289,7 +289,10 @@ class MovieController extends Controller
                 $ledgerProducer->save(); 
             }
 
+            $request->session()->flash('message', 'The movie was been saved');
+
             return $this->createMovie();
+
         }
 
         public function storeEditedMovie (Request $request, $id) 
@@ -300,6 +303,7 @@ class MovieController extends Controller
                 'playtimeMins' => 'required|digits_between:1,3',
                 'releaseyear' => 'required',
             ]);
+
 
             //To do:
             //Add autorization
@@ -349,6 +353,8 @@ class MovieController extends Controller
             }
 
             $movie->save();
+
+            
         }
         
         public function deleteMovie($movieId)
@@ -361,4 +367,16 @@ class MovieController extends Controller
                 //Movie with that id did not exists in db.
             }
         }
+}
+
+
+if (!$movieExistsInWatchlist) {
+    $movieModel->addMovieToWatchlist($userId, $movieId);
+    $message = 'Movie has been added to watchlist';
+
+    return redirect('movie/'. $movieId)->with('message', $message);
+}
+else {
+
+    return redirect('movie/' . $movieId)->with('error', 'Movie already in watchlist' ); 
 }
