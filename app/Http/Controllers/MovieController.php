@@ -42,8 +42,20 @@ class MovieController extends Controller
             $searchMethod = 'movie/';
             $query = $searchMethod . $movieApiId . $api_key . '&page=1&include_adult=false';
             $result = $this->MovieApi($query);
-            $this->createMovieFromApi($result);
-            return redirect()->back()->with('hits', $result)->with('user', $user);
+            
+            $movieModel = new Movie();
+            if ($movieModel->ifMovieExists($result['title'])){
+                $error = 'Movie already exists centaurs-imdb'; 
+            
+                return redirect()->back()->with('hits', $result)->with('user', $user)->with('error', $error);
+            }
+
+            else {
+                $this->createMovieFromApi($result);
+                $message = 'Movie has been added to centaurs-imdb';
+
+                return redirect()->back()->with('hits', $result)->with('user', $user)->with('message', $message);
+            }
         }
 
     public function MovieApi($query) 
