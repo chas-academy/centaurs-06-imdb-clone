@@ -8,8 +8,8 @@ use App\Season;
 use App\Episode;
 use DB;
 use Auth;
-
 use View;
+use App\Http\Models\Review;
 
 class TvShowController extends Controller
 {
@@ -70,7 +70,7 @@ class TvShowController extends Controller
                 $tvShowModel->createSeasonFromApi($season, $tvShow);
                 
                 for ($i=1; $i <= $season['episode_count']; $i++) { 
-                    // HERE
+                    
                     $episodeInfo = $this->getEpisodeInfoFromApi($result['id'], $season['season_number'], $i);
                     $episodeCredits = $this->getEpisodeActorsFromApi($result['id'], $season['season_number'], $i);
 
@@ -118,9 +118,11 @@ class TvShowController extends Controller
     {
         $tvshow = TvShow::find($id);
         $tvShowModel = new TvShow;
+        $reviewModel = new Review();
         $tvShowInfo = $tvShowModel->getTvShowById($tvshow->id);
         $seasons = $tvShowModel->getTvShowSeasons($tvshow->id);
         $genre = $tvShowModel->getTvShowGenres($tvshow->id);
+        $reviews = $reviewModel->getAllTvReviews($tvshow->id);
 
         $topEpisodes = DB::table('episodes', 'seasons')
                             ->leftJoin('seasons', 'episodes.season_id', '=', 'seasons.id')
@@ -135,7 +137,8 @@ class TvShowController extends Controller
             'tvshow' => $tvShowInfo,
             'seasons' => $seasons,
             'genres' => $genre,
-            'topepisodes' => $topEpisodes
+            'topepisodes' => $topEpisodes,
+            'reviews' => $reviews
         );
 
         $view = View::make('pages.tvshow')->with('tvDetails', $tvDetails);
