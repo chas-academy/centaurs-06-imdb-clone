@@ -10505,6 +10505,11 @@ main .movie-flex-align .movie-info .movie-description .year-play .movie-year {
 
 main .movie-flex-align .movie-info .movie-description .year-play .playtime {
   margin-left: 5px;
+  margin-left-margin-right: 5px;
+}
+
+main .movie-flex-align .movie-info .movie-description .year-play .season-nr {
+  margin-left: 5px;
 }
 
 main .movie-flex-align .movie-info .movie-description .year-play p {
@@ -10711,6 +10716,16 @@ main .review-flex-align .read-reviews .review:last-of-type {
   margin-top: 5px;
 }
 
+.watchlist-btn,
+.episode-number {
+  color: #E2A534;
+}
+
+.watchlist-btn:hover,
+.episode-number:hover {
+  color: #865e13;
+}
+
 /****** Star Rating ****/
 
 [type='checkbox'] + label,
@@ -10782,6 +10797,31 @@ label {
 .delete-review {
   color: #F03E3E;
   font-size: 2rem !important;
+}
+
+.episodes-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.episodes-container .episode-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style-type: none;
+}
+
+.episodes-container .episode-list .episode-number {
+  margin-right: 5px;
 }
 
 /*			User Watchlist Layout 			*/
@@ -11745,6 +11785,11 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .current-movie .movie-flex-align .movie-info-section .movie-description .year-play .playtime {
     margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .current-movie .movie-flex-align .movie-info-section .movie-description .year-play .season-nr {
+    margin-left: 5px;
   }
 
   .current-movie .movie-flex-align .movie-info-section .movie-crew {
@@ -11789,11 +11834,34 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     background: #E2A534 !important;
   }
 
+  .btn-container .read-review:hover {
+    color: #865e13;
+  }
+
   .btn-container .writer-review {
     margin-top: 10px;
     width: 340px;
     min-height: 45px;
     background: #E2A534 !important;
+  }
+
+  .btn-container .writer-review:hover {
+    color: #865e13;
+  }
+
+  .watchlist-btn,
+  .episode-number {
+    color: #E2A534;
+  }
+
+  .watchlist-btn:hover,
+  .episode-number:hover {
+    color: #865e13;
+  }
+
+  #back-tvshow {
+    text-align: center;
+    padding-top: 10px;
   }
 
   .backdrop-image {
@@ -12074,6 +12142,32 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     padding-bottom: 20px;
   }
 
+  .episodes-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    font-size: 20px;
+  }
+
+  .episodes-container .episode-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    list-style-type: none;
+  }
+
+  .episodes-container .episode-list .episode-number {
+    margin-right: 5px;
+  }
+
   #outerContentContainer {
     margin-left: 20%;
   }
@@ -12157,8 +12251,15 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   padding: 8px 12px;
   position: absolute;
   bottom: 40px;
-  width: 96.8%;
+  left: 16px;
+  right: 16px;
+  width: auto;
+  height: 150px;
   text-align: center;
+}
+
+.text p {
+  font-size: 12px;
 }
 
 /* Number text (1/6 etc) */

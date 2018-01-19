@@ -37,7 +37,7 @@ class TvShowController extends Controller
 
     public function createTvShowFromApi()
     {
-        $keyword = "Stranger things";
+        $keyword = "stranger things";
         $argument = str_replace(' ', '%20', $keyword);
         $searchMethod = 'search/tv?';
         $search = '&language=en-US&query=' . $argument . '&page=1';
@@ -131,9 +131,12 @@ class TvShowController extends Controller
         $seasonId = $tvShowModel->getEpisodeBySeason($seasonId, $tvshowId);
         $episodes = $tvShowModel->getEpisodesFromSpecificSeason($seasonId);
         $episodeIds = [];
+        
+        
         foreach ($episodes as $episode) {
             array_push($episodeIds, $episode->id);
         }
+
         $actorIds = $tvShowModel->getActorsFromEpisode($episodeIds);
         $actors = $tvShowModel->getActorNamesFromActorId($actorIds);
         $directorIds = $tvShowModel->getDirectorsFromEpisode($episodeIds);
@@ -142,13 +145,15 @@ class TvShowController extends Controller
         $producers = $tvShowModel->getProducerNamesFromProducerId($producerIds);
         $writerIds = $tvShowModel->getWritersFromEpisode($episodeIds);
         $writers = $tvShowModel->getWriterNamesFromWriterId($writerIds);
-
+        $seasons = $tvShowModel->getTvShowSeasons($tvshowId);
+        
         $episodeDetails = array(
             'episodes' => $episodes,
             'actors' => $actors,
             'directors' => $directors,
             'producers' => $producers,
-            'writers' => $writers
+            'writers' => $writers,
+            'seasons' => $seasons
         );
 
         $view = View::make('pages.episodes')->with('episodeDetails', $episodeDetails);

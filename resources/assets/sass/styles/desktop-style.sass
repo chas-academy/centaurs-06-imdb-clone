@@ -52,6 +52,9 @@
                         margin-right: 5px
                     .playtime
                         margin-left: 5px
+                        margin-right: 5px
+                    .season-nr
+                        margin-left: 5px
             .movie-crew
                 display: flex
                 flex-direction: row
@@ -73,12 +76,23 @@
         width: 340px
         min-height: 45px
         background: #E2A534 !important
+        &:hover
+            color: #865e13
     .writer-review
         margin-top: 10px
         width: 340px
         min-height: 45px
         background: #E2A534 !important
+        &:hover
+            color: #865e13
+.watchlist-btn, .episode-number
+    color: #E2A534
+    &:hover
+        color: #865e13
 
+#back-tvshow
+    text-align: center
+    padding-top: 10px
 // Backdrop styling
 
 .backdrop-image
@@ -219,6 +233,8 @@
 .movie-poster:nth-child(4n)
     width: auto!important
 
+// Algolia logo styling
+
 .algolia-container
     display: flex
     justify-content: flex-end
@@ -252,3 +268,16 @@
 
 .tv-plot
     padding-bottom: 20px
+
+
+// Episode-page styling
+.episodes-container
+    display: flex
+    flex-direction: row
+    font-size: 20px
+    .episode-list
+        display: flex
+        flex-direction: row
+        list-style-type: none
+        .episode-number
+            margin-right: 5px

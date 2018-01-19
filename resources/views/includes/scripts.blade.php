@@ -138,7 +138,7 @@
         $('.confirm').on('click', function () {
             return confirm('Are you sure you want to add this movie to Centaurs-imdb?');
         });
-
+        
         // Slider
         var slideIndex = 1;
         showSlides(slideIndex);
