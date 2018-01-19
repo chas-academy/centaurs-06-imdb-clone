@@ -99,9 +99,11 @@ class MovieController extends Controller
 
         public function getTvShowGenres()
         {
+            $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
             $searchMethod = 'genre/tv/list?';
             $search = '&language=en-US';
-            $movieGenres = $this->MovieApi($search, $searchMethod);
+            $query = $searchMethod . $api_key . $search;
+            $movieGenres = $this->MovieApi($query);
             $movie = new Movie();
             $movie->createMovieGenres($movieGenres);
         }
@@ -129,7 +131,7 @@ class MovieController extends Controller
             $movieModel->removeMovieFromWatchlist($userId, $movieId);
             
             if ($movieId)
-             {
+            {
             
             $message = 'Movie has been removed from watchlist';
 
@@ -138,6 +140,7 @@ class MovieController extends Controller
 
             else 
             {
+                $error = 'Movie could not be deleted from watchlist, please try again'; 
             
             return redirect('/watchlist')->with('error', 'Movie could not be deleted from watchlist. Please try again');
                 

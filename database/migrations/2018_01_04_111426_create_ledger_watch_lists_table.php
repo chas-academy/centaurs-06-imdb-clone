@@ -16,13 +16,13 @@ class CreateLedgerWatchListsTable extends Migration
         Schema::create('ledger_watch_lists', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('movie_id')->unsigned()->nullable();
-            $table->integer('episode_id')->unsigned()->nullable();
+            $table->integer('tvshow_id')->unsigned()->nullable();
         });
         
         Schema::table('ledger_watch_lists', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('movie_id')->references('id')->on('movies');
-            $table->foreign('episode_id')->references('id')->on('episodes');
+            $table->foreign('tvshow_id')->references('id')->on('tv_shows');
         });
     }
 
