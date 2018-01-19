@@ -28,4 +28,14 @@ class ReviewController extends Controller
         $reviewModel->removeReview($reviewId);
         return redirect()->back();
     }
+
+    public function getReviewsOnHold()
+    {
+        $reviewModel = new Review();
+        $reviewModel->getAllReviewsOnHold();
+        return redirect()->back();
+
+    }
+
+
 }
