@@ -48,7 +48,7 @@ class Review extends Model
 
     public function getAllReviews($movieId)
     {
-        $reviews = DB::table('reviews')->orderBy('updated_at', 'desc')->get()->where('movie_id', $movieId);
+        $reviews = DB::table('reviews')->orderBy('updated_at', 'desc')->get()->where('movie_id', $movieId)->where('type', 'approved');
         $authors = [];
         
         foreach ($reviews as $key => $review) {
