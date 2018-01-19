@@ -11859,6 +11859,11 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     color: #865e13;
   }
 
+  #back-tvshow {
+    text-align: center;
+    padding-top: 10px;
+  }
+
   .backdrop-image {
     -webkit-filter: blur(10px);
     -moz-filter: blur(10px);
