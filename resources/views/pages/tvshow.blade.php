@@ -26,6 +26,17 @@
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
                 <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($tvDetails['tvshow']->poster) }}">
+
+                <div id="btns-tvshow" class="small-12 btn-container">
+                    <button class="read-review" data-toggle="read-reviews">Read reviews</button>
+                    
+                    @if(Auth::check())
+                    <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+                        @if(Auth::user()->type === 'admin')
+                            <a id="delete-movie-btn" class="writer-review" href="/tv-show/{{ $tvDetails['tvshow']->id }}/delete">Delete this movie</a>
+                        @endif
+                    @endif
+                </div> 
             </div>
 
             <div class="movie-info-section">
@@ -84,24 +95,20 @@
                             <a class="next" onclick="plusSlides(1)">&#10095;</a>
                         </div>
                         <br>
-                        <div style="text-align:center">
+                        <!-- <div style="text-align:center">
                             <span class="dot" onclick="currentSlide(1)"></span> 
                             <span class="dot" onclick="currentSlide(2)"></span> 
                             <span class="dot" onclick="currentSlide(3)"></span>
                             <span class="dot" onclick="currentSlide(4)"></span>
                             <span class="dot" onclick="currentSlide(5)"></span>
                             <span class="dot" onclick="currentSlide(6)"></span> 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-        </div>
-            <div class="small-12 btn-container">
-                <button class="read-review" data-toggle="read-reviews">Read reviews</button>
-                <button class="writer-review" data-toggle="write-reviews">Write a review</button>
-            </div> 
-        </div>
+        </div>    
     </div>
+</div>
     <div class="small-12 review-flex-align">
         <div id="write-reviews" class="write-reviews" data-toggler=".visible">
             <div class="review-rate">

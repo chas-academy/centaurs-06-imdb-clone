@@ -147,6 +147,11 @@
         $('.confirm').on('click', function () {
             return confirm('Are you sure you want to add this movie to Centaurs-imdb?');
         });
+        // Alert when adding a tvshow from TMDB to our database
+        $('.confirm-tv').on('click', function () {
+            return confirm('Are you sure you want to add this tvshow to Centaurs-imdb?\n\nWhen adding tvshows with many episodes/seasons the process can take a long time! \n\n Go and take a nice cup of coffe while you wait :)');
+        });
+        
         
         // Slider
         var slideIndex = 1;

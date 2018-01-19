@@ -12305,7 +12305,9 @@ main .none:nth-child(4n) .poster-size {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 710px;
+    height: auto;
+    min-width: 100%;
+    padding-top: 40px;
   }
 
   .current-movie .movie-flex-align .movie-info .movie-content {
@@ -12336,6 +12338,7 @@ main .none:nth-child(4n) .poster-size {
 
   .current-movie .movie-flex-align .movie-info-section {
     margin: 50px;
+    width: 1000px;
   }
 
   .current-movie .movie-flex-align .movie-info-section .movie-description .year-play {
@@ -12373,6 +12376,7 @@ main .none:nth-child(4n) .poster-size {
     margin-right: auto;
     -ms-flex-preferred-size: auto;
         flex-basis: auto;
+    padding: 5px;
   }
 
   .current-movie .movie-flex-align .movie-info-section .movie-crew .movie-crew-card ul {
@@ -12389,6 +12393,7 @@ main .none:nth-child(4n) .poster-size {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    margin-top: 20px;
     margin-left: 20px;
     padding-top: 0px !important;
   }
@@ -12428,6 +12433,11 @@ main .none:nth-child(4n) .poster-size {
     text-align: center;
     padding-top: 10px;
     background: red !important;
+  }
+
+  #btns-tvshow {
+    margin-top: 10px;
+    margin-left: 0px;
   }
 
   .backdrop-image {
