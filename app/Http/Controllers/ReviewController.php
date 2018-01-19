@@ -32,10 +32,18 @@ class ReviewController extends Controller
     public function getReviewsOnHold()
     {
         $reviewModel = new Review();
-        $reviewModel->getAllReviewsOnHold();
-        return redirect()->back();
+        $reviews = $reviewModel->getAllReviewsOnHold();
+        $view = view('pages.manage-reviews')->with('reviews', $reviews);
+
+        return $view;
 
     }
 
+    public function approveReview($reviewId)
+    {
+        $reviewModel = new Review();
+        $reviewModel->approveReview($reviewId);
 
+        return redirect()->back();
+    }
 }
