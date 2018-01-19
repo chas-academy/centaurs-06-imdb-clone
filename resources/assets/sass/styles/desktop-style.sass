@@ -25,11 +25,14 @@
         display: flex
         padding-top: 0px
         .movie-info
-            background: rgb(0, 0, 0)  // Fall-back if browsers don't support rgba
+            background: rgb(0, 0, 0)  // Fall-back if browsers doesn't support rgba
             background: linear-gradient(to top, rgba(0,0,0, 0), rgba(0,0,0, .4) 80%)
             flex-direction: column
             display: flex
-            height: 710px
+            // height: 710px
+            height: auto
+            min-width: 100%
+            padding-top: 40px
             .movie-content
                 display: flex
                 flex-direction: row
@@ -45,6 +48,7 @@
                     
         .movie-info-section
             margin: 50px
+            width: 1000px
             .movie-description
                 .year-play
                     justify-content: flex-start
@@ -62,6 +66,7 @@
                 .movie-crew-card
                     margin-right: auto
                     flex-basis: auto
+                    padding: 5px
                     ul
                         list-style-type: none
                         margin-left: 0px
@@ -70,6 +75,7 @@
     display: flex
     max-width: 340px
     flex-direction: column
+    margin-top: 20px
     margin-left: 20px
     padding-top: 0px !important
     .read-review
@@ -94,6 +100,10 @@
     text-align: center
     padding-top: 10px
     background: red !important
+
+#btns-tvshow
+    margin-top: 10px
+    margin-left: 0px
 
 // Backdrop styling
 

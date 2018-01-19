@@ -14,7 +14,7 @@ use Laravel\Scout\Searchable;
 
 class TvShow extends Model
 {
-    public function createTvSHowFromApi($tvShow)
+    public function createTvShowFromApi($tvShow)
     {
         if(!$this->ifTvShowExists($tvShow['name'])){
             DB::table('tv_shows')->insert([
@@ -32,7 +32,7 @@ class TvShow extends Model
 
         $tvShowId = DB::table('tv_shows')->orderBy('updated_at', 'desc')->pluck('id')->first();
 
-        $this->createTvShowGenres($tvShow['genre_ids'], $tvShowId);
+        $this->createTvShowGenres($tvShow['genres'], $tvShowId);
     }
 
     public function createSeasonFromApi($season, $tvShow)
@@ -76,69 +76,78 @@ class TvShow extends Model
     public function createEpisodeStaffFromApi($episodeCredits, $tvShowId, $episodeInfo)
     {
         $movieModel = new Movie();
-        foreach ($episodeCredits['cast'] as $cast) {
-            if(!$movieModel->ifActorExists($cast['name'])) {
-                DB::table('actors')->insert([
-                    'name' => $cast['name']
-                    ]);
+        
+        if(!empty($episodeCredits['cast'])) {
+            foreach ($episodeCredits['cast'] as $cast) {
+                if(!$movieModel->ifActorExists($cast['name'])) {
+                    DB::table('actors')->insert([
+                        'name' => $cast['name']
+                        ]);
+                }
+        
+                $actor = $movieModel->getActors($cast['name']);
+                $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
+                $episode = $this->getEpisode($season->id, $episodeInfo['episode_number']);
+                if(!$this->ifActorEpisodeLedgerExists($actor->id, $episode->id)){
+                    DB::table('ledger_actors')->insert([
+                        'actor_id' => $actor->id,
+                        'episode_id' => $episode->id
+                        ]);
+                }
             }
-            $actor = $movieModel->getActors($cast['name']);
-            $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
-            $episode = $this->getEpisode($season->id, $episodeInfo['episode_number']);
+        }
+
+        if(!empty($episodeCredits['crew'])) {
             
-            if(!$this->ifActorEpisodeLedgerExists($actor->id, $episode->id)){
-                DB::table('ledger_actors')->insert([
-                    'actor_id' => $actor->id,
-                    'episode_id' => $episode->id
-                    ]);
-            }
-        } 
-        foreach ($episodeCredits['crew'] as $crew) {
-            if($crew['job'] === 'Director') {
-                if(!$movieModel->ifDirectorExists($crew['name'])) {
-                    DB::table('directors')->insert([
-                        'name' => $crew['name']
-                    ]);
+            foreach ($episodeCredits['crew'] as $crew) {
+                if($crew['job'] === 'Director') {
+                    if(!$movieModel->ifDirectorExists($crew['name'])) {
+                        DB::table('directors')->insert([
+                            'name' => $crew['name']
+                        ]);
+                    }
+
+                    $director = $movieModel->getDirectors($crew['name']);
+
+                    if(!$this->ifEpisodeDirectorLedgerExists($director->id, $episode->id)) {
+                        DB::table('ledger_directors')->insert([
+                            'director_id' => $director->id,
+                            'episode_id' => $episode->id
+                        ]);
+                    }
                 }
 
-                $director = $movieModel->getDirectors($crew['name']);
+                if($crew['job'] === 'Producer') {
+                    if(!$movieModel->ifProducerExists($crew['name'])) {
+                        DB::table('producers')->insert([
+                            'name' => $crew['name']
+                        ]);
+                    }
 
-                if(!$this->ifEpisodeDirectorLedgerExists($director->id, $episode->id)) {
-                    DB::table('ledger_directors')->insert([
-                        'director_id' => $director->id,
-                        'episode_id' => $episode->id
-                    ]);
+                    $producer = $movieModel->getProducers($crew['name']);
+                    if(!$this->ifEpisodeProducerLedgerExists($producer->id, $episode->id)) {
+                        DB::table('ledger_producers')->insert([
+                            'producer_id' => $producer->id,
+                            'episode_id' => $episode->id
+                        ]);
+                    }
                 }
-            }
-            if($crew['job'] === 'Producer') {
-                if(!$movieModel->ifProducerExists($crew['name'])) {
-                    DB::table('producers')->insert([
-                        'name' => $crew['name']
-                    ]);
-                }
+                
+                if($crew['job'] === 'Writer') {
+                    if(!$movieModel->ifWriterExists($crew['name'])){
+                        DB::table('writers')->insert([
+                            'name' => $crew['name']
+                        ]);
+                    }
 
-                $producer = $movieModel->getProducers($crew['name']);
-                if(!$this->ifEpisodeProducerLedgerExists($producer->id, $episode->id)) {
-                    DB::table('ledger_producers')->insert([
-                        'producer_id' => $producer->id,
-                        'episode_id' => $episode->id
-                    ]);
-                }
-            }
-            if($crew['job'] === 'Writer') {
-                if(!$movieModel->ifWriterExists($crew['name'])){
-                    DB::table('writers')->insert([
-                        'name' => $crew['name']
-                    ]);
-                }
+                    $writer = $movieModel->getWriters($crew['name']);
 
-                $writer = $movieModel->getWriters($crew['name']);
-
-                if(!$this->ifWriterEpisodeLedgerExists($writer->id, $episode->id)) {
-                    DB::table('ledger_writers')->insert([
-                        'writer_id' => $writer->id,
-                        'episode_id' => $episode->id
-                    ]);
+                    if(!$this->ifWriterEpisodeLedgerExists($writer->id, $episode->id)) {
+                        DB::table('ledger_writers')->insert([
+                            'writer_id' => $writer->id,
+                            'episode_id' => $episode->id
+                        ]);
+                    }
                 }
             }
         }
@@ -147,9 +156,13 @@ class TvShow extends Model
     public function createTvShowGenres($genreIds, $tvshowId)
     {
         $movieModel = new Movie();
-
         if (!$movieModel->ifGenreEpisodeLedgerExists($tvshowId, $genreIds)) {
-            $genreIds = $movieModel->getGenres($genreIds);
+            $genres = [];
+            foreach ($genreIds as $genre) {
+                array_push($genres, $genre['id']);
+            }
+            $genreIds = $movieModel->getGenres($genres);
+
             foreach ($genreIds as $genreId) {
                 DB::table('ledger_genres')->insert([
                     'tvshow_id' => $tvshowId,

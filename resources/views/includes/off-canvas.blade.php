@@ -155,7 +155,7 @@
                         <div id="admin-settings" data-toggler=".visible" data-animate="fade-in fade-out">
                             <h2 id="mng-user" class="link-font-size" data-toggle="admin-settings back-settings">Manage users</h2>
                             <h2 id="mng-mov" class="link-font-size" data-toggle="admin-settings back-a-movies back-a-settings section-mng-mov">Manage movies</h2>
-                            <h2 id="mng-tv" class="link-font-size" data-toggle="admin-settings back-settings">Manage TV shows</h2>
+                            <h2 id="mng-tv" class="link-font-size" data-toggle="admin-settings back-settings api-tv-search-field">Manage TV shows</h2>
                             <h2 id="mng-rvws" class="link-font-size" data-toggle="admin-settings back-settings">Manage reviews</h2>
                         </div>
                         <!-- Admin panel : manage movies -->
@@ -171,7 +171,14 @@
                             <input type="text" class="search-input" placeholder="Search movie from API..." name="q">
                             <button type="submit"><i class="fa fa-search search-btn" id="search-btn-desktop" aria-hidden="true"></i></button>
                         </form>
-                    </div>
+                        </div>
+                        <!-- Search for tvshow in API -->
+                        <div id="api-tv-search-field" class="hidden small-12 header-flex-align-sb-c" data-toggler=".visible" data-animate="fade-in fade-out">
+                        <form class="small-12 search fast" data-animate="fade-in fade-out" method="GET" action="/search-tv-api">
+                            <input type="text" class="search-input" placeholder="Search tvshow from API..." name="q">
+                            <button type="submit"><i class="fa fa-search search-btn" id="search-btn-desktop" aria-hidden="true"></i></button>
+                        </form>
+                        </div>
                         @endif                
                         <!-- Profile settings -->
                         <div id="settings" data-toggler=".visible" data-animate="fade-in fade-out">
