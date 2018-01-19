@@ -1,7 +1,7 @@
 @extends('layouts.layout') @section('content')
+<div class="off-canvas-content" data-off-canvas-content>
 @include('includes.messages')
 @include('includes.errors')
-<div class="off-canvas-content" data-off-canvas-content>
 <header class="row">
     <div class="small-12 header-flex-align-sb-c">
         <a href="{{ URL::to('/') }}"><img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo"></a>

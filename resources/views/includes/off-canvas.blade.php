@@ -69,20 +69,20 @@
                     {{ csrf_field() }}
                     <label>
                     <input type="email" name="email" placeholder="Email" required>
-                    <span class="form-error">Invalid email.</label>
+                    <span class="form-error">Invalid email.</span>
+                    </label>
 
                     <label>
                     <input type="password" name="password" placeholder="Password" required>
                     <span class="form-error">Invalid password.</span>
                     </label>
 
-
                     <div class="small-12 btn">
                         <button type="submit" class="submit">Sign in</button>
                     </div>
                     <!-- Forgot password -->
                     <div class="col-md-8 col-md-offset-4">
-                        <p id="forgot-pwd" data-toggle="password-form">Forgot Your Password?</p>
+                        <p id="forgot-pwd" data-toggle="password-form">Forgot your password?</p>
                     </div>
                 </form>
                 <!-- Reset password link by email -->
@@ -90,7 +90,7 @@
                     {{ csrf_field() }}    
                     <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
                     <div class="small-12 btn reset-pwd-btn">
-                        <button type="submit" class="reset-pwd">Send Password Reset Link</button>        
+                        <button type="submit" class="reset-pwd">Send password reset link</button>        
                     </div>               
                 </form>
                 <!-- Register new user -->
@@ -99,7 +99,7 @@
                     <label>
                         <input type="text" name="name" placeholder="Name" required>
                         <span class="form-error">Please fill in name.</span>
-                    <label>
+                    </label>
 
                     <label>
                         <input type="email" name="email" placeholder="Email" required>
@@ -108,7 +108,7 @@
 
                     <label>
                         <input type="password" name="password" placeholder="Password" required>
-                        <span class="form-error">Fill in password.</span>
+                        <span class="form-error">Fill in password, must be atleast 6 characters long.</span>
                     </label>
 
                     <label>

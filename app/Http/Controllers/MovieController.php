@@ -289,7 +289,10 @@ class MovieController extends Controller
                 $ledgerProducer->save(); 
             }
 
+            $request->session()->flash('message', 'The movie was been saved');
+
             return $this->createMovie();
+
         }
 
         public function storeEditedMovie (Request $request, $id) 
@@ -300,6 +303,7 @@ class MovieController extends Controller
                 'playtimeMins' => 'required|digits_between:1,3',
                 'releaseyear' => 'required',
             ]);
+
 
             //To do:
             //Add autorization
@@ -349,6 +353,8 @@ class MovieController extends Controller
             }
 
             $movie->save();
+
+            
         }
         
         public function deleteMovie($movieId)
@@ -356,9 +362,17 @@ class MovieController extends Controller
             $movieModel = new Movie();
             $movieDeleted = $movieModel->deleteMovie($movieId);
             if($movieDeleted == true) {
-                //TODO: Give message that movie was deleted
+                
+                $message = 'Movie has been deleted';
+
+                return redirect('/')->with('message', $message);
+;
             } else {
+
                 //Movie with that id did not exists in db.
+                
+                return redirect('movie/'. $movieId)->with('error', 'Movie has not been deleted');
+
             }
         }
 }
