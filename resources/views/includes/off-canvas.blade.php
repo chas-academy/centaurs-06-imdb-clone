@@ -156,7 +156,7 @@
                             <h2 id="mng-user" class="link-font-size" data-toggle="admin-settings back-settings">Manage users</h2>
                             <h2 id="mng-mov" class="link-font-size" data-toggle="admin-settings back-a-movies back-a-settings section-mng-mov">Manage movies</h2>
                             <h2 id="mng-tv" class="link-font-size" data-toggle="admin-settings back-settings api-tv-search-field">Manage TV shows</h2>
-                            <h2 id="mng-rvws" class="link-font-size" data-toggle="admin-settings back-settings">Manage reviews</h2>
+                            <a id="mng-rvws" class="link-font-size" href="/admin/managereviews">Manage reviews</a>
                         </div>
                         <!-- Admin panel : manage movies -->
                         <div id="section-mng-mov" class="hidden" data-toggler=".visible" data-animate="fade-in fade-out">

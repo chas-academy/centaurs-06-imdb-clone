@@ -79,7 +79,6 @@ class Review extends Model
     public function getAllReviewsOnHold()
     {
         $reviews = DB::table('reviews')->orderBy('updated_at')->latest()->get()->where('type', 'hold');
-
         foreach ($reviews as $key => $review) {
             $userId = $reviews[$key]->user_id;
             $author = array_first(DB::table('users')->get()->where('id', $userId));  
@@ -94,5 +93,10 @@ class Review extends Model
     public function removeReview($reviewId) 
     {
         DB::table('reviews')->where('id', $reviewId)->delete();
+    }
+
+    public function approveReview($reviewId)
+    {
+        DB::table('reviews')->where('id', $reviewId)->update(['type' => 'approved']);
     }
 }
