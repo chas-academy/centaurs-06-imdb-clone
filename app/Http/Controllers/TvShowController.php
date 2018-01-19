@@ -168,5 +168,27 @@ class TvShowController extends Controller
 
     }
 
+    public function removeTvshowFromWatchlist($tvshowId)
+    {
+
+        $userId = Auth::user()->id;
+        $tvShowModel = new TvShow();
+        $tvShowModel->removeTvshowFromWatchlist($userId, $tvshowId);
+
+        if ($tvshowId)
+        {
+            $message = 'Tvshow has been deleted';
+
+            return redirect('/watchlist')->with('message', $message);
+        }
+
+        else {
+            $error = 'Tvshow could not be deleted from watchlist, please try again';
+
+            return redirect('/watchlist')->with('error', $error); 
+        }
+
+    }
+
 }
 

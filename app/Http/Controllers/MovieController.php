@@ -131,7 +131,7 @@ class MovieController extends Controller
             $movieModel->removeMovieFromWatchlist($userId, $movieId);
             
             if ($movieId)
-             {
+            {
             
             $message = 'Movie has been removed from watchlist';
 
@@ -140,6 +140,7 @@ class MovieController extends Controller
 
             else 
             {
+                $error = 'Movie could not be deleted from watchlist, please try again'; 
             
             return redirect('/watchlist')->with('error', 'Movie could not be deleted from watchlist. Please try again');
                 

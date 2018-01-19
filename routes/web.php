@@ -59,10 +59,11 @@ Route::get('/watchlist', function ()
     return $view;
 });
 
-Route::get('/watchlist/delete/{movieId}', 'MovieController@removeMovieFromWatchlist'); // need to remake.
+Route::get('/watchlist/delete/movie/{movieId}', 'MovieController@removeMovieFromWatchlist');
 Route::get('/movie/{movieId}/addwatchlist', 'MovieController@addMovieToWatchlist');
 
 Route::get('/tv-show/{tvshowId}/addwatchlist', 'TvShowController@addTvshowToWatchlist');
+Route::get('/watchlist/delete/tvshow/{tvshowId}', 'TvShowController@removeTvshowFromWatchlist');
 
 Route::get('movie/{movieId}', function ($movieId)
 {

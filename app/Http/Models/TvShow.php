@@ -421,4 +421,9 @@ class TvShow extends Model
         ]);
     }
 
+    public function removeTvshowFromWatchlist($userId, $tvshowId)
+    {
+        DB::table('ledger_watch_lists')->where('user_id', $userId)->where('tvshow_id', $tvshowId)->delete();
+    }
+
 }
