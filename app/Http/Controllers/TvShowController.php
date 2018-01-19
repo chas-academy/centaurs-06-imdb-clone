@@ -13,13 +13,36 @@ use View;
 
 class TvShowController extends Controller
 {
-    public function TvShowApi($argument, $searchMethod)
+    public function searchTvshowFromApi(request $request) 
+    {
+        $user = Auth::user();
+        $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
+        $keyword = $request['q'];
+        $argument = str_replace(' ', '%20', $keyword);
+        $searchMethod = 'search/tv?';
+        $query = $searchMethod . '&language=en-US&query=' . $argument . '&page=1&include_adult=false&' . $api_key;
+        $result = $this->TvShowApi($query);
+        return view('pages.api-tv-search')->with('hits', $result)->with('user', $user);
+    }
+
+    public function searchTvshowFromApiById($tvshowApiId) 
+    {
+        $user = Auth::user();
+        $api_key = '?api_key=6975fbab174d0a26501b5ba81f0e0b3c';
+        $searchMethod = 'tv/';
+        $query = $searchMethod . $tvshowApiId . $api_key . '&page=1&include_adult=false';
+        $result = $this->TvShowApi($query);
+        $this->createTvShowFromApi($result);
+        return redirect()->back()->with('hits', $result)->with('user', $user);
+    }
+
+    public function TvShowApi($query)
     {
         $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
         
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.themoviedb.org/3/". $searchMethod . $api_key . $argument,
+            CURLOPT_URL => "https://api.themoviedb.org/3/". $query,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -35,28 +58,22 @@ class TvShowController extends Controller
             return $result; 
     }
 
-    public function createTvShowFromApi()
+    public function createTvShowFromApi($result)
     {
-        $keyword = "stranger things";
-        $argument = str_replace(' ', '%20', $keyword);
-        $searchMethod = 'search/tv?';
-        $search = '&language=en-US&query=' . $argument . '&page=1';
-
-        $result = $this->TvShowApi($search, $searchMethod);
-        
         $tvShowModel = new TvShow();
-        $tvShowModel->createTvSHowFromApi($result['results'][0]);
+        $tvShowModel->createTvShowFromApi($result);
 
-        $seasons = $this->getTvShowSeasons($result['results'][0]);
+        $seasons = $this->getTvShowSeasons($result);
         $tvShow = $tvShowModel->getTvShowByName($seasons['name']);
-
         foreach ($seasons['seasons'] as $k => $season) {
             if($k <> 0) { 
                 $tvShowModel->createSeasonFromApi($season, $tvShow);
                 
                 for ($i=1; $i <= $season['episode_count']; $i++) { 
-                    $episodeInfo = $this->getEpisodeInfoFromApi([$seasons][0]['id'], $season['season_number'], $i);
-                    $episodeCredits = $this->getEpisodeActorsFromApi([$seasons][0]['id'], $season['season_number'], $i);
+                    // HERE
+                    $episodeInfo = $this->getEpisodeInfoFromApi($result['id'], $season['season_number'], $i);
+                    $episodeCredits = $this->getEpisodeActorsFromApi($result['id'], $season['season_number'], $i);
+
                     $tvShowModel->createEpisodeFromApi($episodeInfo, $tvShow->id, $seasons);
                     $tvShowModel->createEpisodeStaffFromApi($episodeCredits, $tvShow->id, $episodeInfo);
                 } 
@@ -66,25 +83,26 @@ class TvShowController extends Controller
 
     public function getEpisodeActorsFromApi($tvShowId, $seasonNr, $episodeNr)
     {
-        $searchMethod = 'tv/' . $tvShowId . '/' . 'season/' . $seasonNr . '/' . 'episode/' . $episodeNr . '/credits?';
-        $languageEndString = '&language=en-US';
+        $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
+        $query = 'tv/' . $tvShowId . '/' . 'season/' . $seasonNr . '/' . 'episode/' . $episodeNr . '/credits?' . $api_key . '&language=en-US';
+        
 
-        return $this->tvShowApi($languageEndString, $searchMethod);
+        return $this->tvShowApi($query);
     }
 
     public function getEpisodeInfoFromApi($tvShowId, $seasonNr, $episodeNr)
     {
-        $searchMethod = 'tv/' . $tvShowId . '/' . 'season/' . $seasonNr . '/' . 'episode/' . $episodeNr . '?';
-        $languageEndString = '&language=en-US';
+        $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
+        $query = 'tv/' . $tvShowId . '/' . 'season/' . $seasonNr . '/' . 'episode/' . $episodeNr . '?' . $api_key . '&language=en-US';
 
-        return $this->tvShowApi($languageEndString, $searchMethod);
+        return $this->tvShowApi($query);
     }
     public function getTvShowSeasons($tvShow)
     {
-        $searchMethod = 'tv/' . $tvShow['id'] . '?';
-        $languageEndString = '&language=en-US';
-
-        return $this->TvShowApi($languageEndString, $searchMethod);
+        $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
+        $query = 'tv/' . $tvShow['id'] . '?&language=en-US&' . $api_key;
+ 
+        return $this->TvShowApi($query);
     }
     public function readTvShows()
     {

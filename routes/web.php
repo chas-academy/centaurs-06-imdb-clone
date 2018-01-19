@@ -106,6 +106,7 @@ Route::post('profile', 'UserController@updateAvatar');
 
 
 Route::get('/apimovie/add/{movieApiId}', 'MovieController@searchMovieFromApiById');
+Route::get('/apitvshow/add/{tvshowApiId}', 'TvShowController@searchTvshowFromApiById');
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/createtvgenres', 'MovieController@getTvShowGenres');
@@ -136,6 +137,7 @@ Route::post('/email-update/{userId}', 'UserController@updateEmail');
 Route::post('/password-update/{userId}', 'UserController@updatePassword');
 
 Route::get('/search-api', 'MovieController@searchMovieFromApi');
+Route::get('/search-tv-api', 'TvShowController@searchTvshowFromApi');
 Route::get('/tv-shows', 'TvShowController@readTvShows');
 Route::get('/tv-show/{tvshowId}', 'TvShowController@list');
 Route::get('/tv-show/{tvshowId}/season/{seasonId}', 'TvShowController@seasonlist');
