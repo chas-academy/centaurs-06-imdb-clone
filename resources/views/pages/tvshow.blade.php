@@ -1,4 +1,5 @@
 @extends('layouts.layout') @section('content')
+<?php $user = Auth::user(); ?>
 <header id="desk-hide" class="row">
     <div id="desk-hide" class="small-12 header-flex-align-sb-c">
         <a href="{{ URL::to('/') }}"><img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo"></a>
@@ -26,6 +27,17 @@
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
                 <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($tvDetails['tvshow']->poster) }}">
+
+                <div id="btns-tvshow" class="small-12 btn-container">
+                    <button class="read-review" data-toggle="read-reviews">Read reviews</button>
+                    
+                    @if(Auth::check())
+                    <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+                        @if(Auth::user()->type === 'admin')
+                            <a id="delete-movie-btn" class="writer-review" href="/tv-show/{{ $tvDetails['tvshow']->id }}/delete">Delete this movie</a>
+                        @endif
+                    @endif
+                </div> 
             </div>
 
             <div class="movie-info-section">
@@ -84,103 +96,108 @@
                             <a class="next" onclick="plusSlides(1)">&#10095;</a>
                         </div>
                         <br>
-                        <div style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1)"></span> 
-                            <span class="dot" onclick="currentSlide(2)"></span> 
-                            <span class="dot" onclick="currentSlide(3)"></span>
-                            <span class="dot" onclick="currentSlide(4)"></span>
-                            <span class="dot" onclick="currentSlide(5)"></span>
-                            <span class="dot" onclick="currentSlide(6)"></span> 
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-            <div class="small-12 btn-container">
-                <button class="read-review" data-toggle="read-reviews">Read reviews</button>
-                <button class="writer-review" data-toggle="write-reviews">Write a review</button>
-            </div> 
-        </div>
+        </div>    
     </div>
+</div>
     <div class="small-12 review-flex-align">
         <div id="write-reviews" class="write-reviews" data-toggler=".visible">
             <div class="review-rate">
-                <fieldset class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                </fieldset>
+                <form class="write-review-form" action="{{ $tvDetails['tvshow']->id }}/addreview" method="POST">
+                    {{ csrf_field() }}
+                    <fieldset class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                        <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                    </fieldset>
             </div>
-            <form class="write-review-form">
-                <input type="text" placeholder="Title">
-                <textarea name="" id="" cols="30" rows="20" placeholder="Content of review"></textarea>
-                <button class="send-review">Add review</button>
-            </form>                     
+                <input type="text" placeholder="Title" name="title">
+                <textarea name="content" id="" cols="30" rows="20" placeholder="Content of review"></textarea>
+                <button class="send-review" type="submit" name=''>Add review</button>
+            </form>                   
         </div>
         <div id="read-reviews" class="read-reviews" data-toggler=".visible">
-            <div id="review-1" class="small-12 review">
-                <div class="small-12 review-rate">
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
+        @if($tvDetails['reviews']->first())
+            @foreach($tvDetails['reviews'] as $review)
+                <div id="review-1" class="small-12 review">
+                    <div class="small-12 review-rate">
+                        <div>
+                        @if($review->review_rating === 0.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 1)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 1.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 2)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 2.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 3)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 3.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 4)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 4.5)
+                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @elseif($review->review_rating === 5)
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        @endif
+                        </div>
+                        @if($review->user_id == $user['id'])
+                            <a href="/delete/review/tv-show/{{ $review->id  }}"><i class="fa fa-trash delete-review" aria-hidden="true"></i></a>
+                        @endif
+                    </div>
+                    <h3 class="review-title">{{ $review->title }}</h3>
+                    <div class="small-12 review-description">
+                        <div class="small-12 review-info">
+                            <p class="review-auth"><b>Author:</b> {{ $review->author->name }} </p>
+                            <p class="review-date"><b>Date:</b> {{ $review->updated_at }}</p>
+                        </div>
+                        <div class="small-12">
+                            <p class="review-content">
+                                {{ $review->content }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="review-title">The artist you would never know</h3>
-                <div class="small-12 review-description">
-                    <div class="small-12 review-info">
-                        <p class="review-auth"><b>Author:</b> Adam K</p>
-                        <p class="review-date"><b>Date:</b> 1 December 2017</p>
-                    </div>
-                    <div class="small-12">
-                        <p class="review-content">
-                            Aside from appearances in Paddington or Blue Jasmine, 
-                            I'd never really thought about Sally Hawkins as a leading lady of a 
-                            major production, but sometimes you're proved to be severely wrong 
-                            because her performance here floored me. I was incredibly invested 
-                            in every single moment her character was on-screen and anything 
-                            I didn't like about this movie faded away every time she interacted 
-                            with someone and had to display her emotions through her sign language 
-                            or by just simply tearing up or showing emotion through her eyes. 
-                            I will be remembering this performance as one of the best
-                            of the year by year.
-                        </p>
+                @endforeach
+                @else
+                <div id="review-1" class="small-12 review">
+                    <div class="small-12 review-rate">
+                        <p>No reviews written for this movie yet.</p>
                     </div>
                 </div>
-            </div>
-            <div id="review-1" class="small-12 review">
-                <div class="small-12 review-rate">
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <h3 class="review-title">The artist you would never know</h3>
-                <div class="small-12 review-description">
-                    <div class="small-12 review-info">
-                        <p class="review-auth"><b>Author:</b> Lil Coder</p>
-                        <p class="review-date"><b>Date:</b> 48 December 2069</p>
-                    </div>
-                    <div class="small-12">
-                        <p class="review-content">
-                            Aside from appearances in Paddington or Blue Jasmine, 
-                            I'd never really thought about Sally Hawkins as a leading lady of a 
-                            major production, but sometimes you're proved to be severely wrong 
-                            because her performance here floored me. I was incredibly invested 
-                            in every single moment her character was on-screen and anything 
-                            I didn't like about this movie faded away every time she interacted 
-                            with someone and had to display her emotions through her sign language 
-                            or by just simply tearing up or showing emotion through her eyes. 
-                            I will be remembering this performance as one of the best
-                            of the year by year.
-                        </p>
-                    </div>
+            @endif
                 </div>
             </div>
         </div>

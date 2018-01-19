@@ -97,7 +97,10 @@ Route::get('movie/{movieId}/delete', 'MovieController@deleteMovie');
 
 // Review
 Route::post('movie/{movieId}/addreview', 'ReviewController@addReview');
-Route::get('delete/review/{reviewId}', 'ReviewController@removeReview');
+Route::get('delete/review/movie/{reviewId}', 'ReviewController@removeReview');
+Route::post('tv-show/{tvshowId}/addreview', 'ReviewController@addTvReview');
+Route::get('delete/review/tv-show/{reviewId}', 'ReviewController@removeReview');
+Route::get('approve/review/{reviewId}', 'ReviewController@approveReview');
 
 // User Watchlist View
 
@@ -106,6 +109,7 @@ Route::post('profile', 'UserController@updateAvatar');
 
 
 Route::get('/apimovie/add/{movieApiId}', 'MovieController@searchMovieFromApiById');
+Route::get('/apitvshow/add/{tvshowApiId}', 'TvShowController@searchTvshowFromApiById');
 Route::get('/movietest', 'MovieController@createMovieFromApi');
 Route::get('/creategenres', 'MovieController@getMovieGenres');
 Route::get('/createtvgenres', 'MovieController@getTvShowGenres');
@@ -136,6 +140,7 @@ Route::post('/email-update/{userId}', 'UserController@updateEmail');
 Route::post('/password-update/{userId}', 'UserController@updatePassword');
 
 Route::get('/search-api', 'MovieController@searchMovieFromApi');
+Route::get('/search-tv-api', 'TvShowController@searchTvshowFromApi');
 Route::get('/tv-shows', 'TvShowController@readTvShows');
 Route::get('/tv-show/{tvshowId}', 'TvShowController@list');
 Route::get('/tv-show/{tvshowId}/season/{seasonId}', 'TvShowController@seasonlist');
@@ -143,3 +148,6 @@ Route::get('/tv-show/{tvshowId}/season/{seasonId}', 'TvShowController@seasonlist
 Route::get('/episodes', function() {
     return view('pages.episodes');
 });
+
+Route::get('/admin/managereviews', 'ReviewController@getReviewsOnHold'); // Don't know if the path is right but this prints out the reviews that are on hold.
+

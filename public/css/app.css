@@ -11702,7 +11702,9 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 710px;
+    height: auto;
+    min-width: 100%;
+    padding-top: 40px;
   }
 
   .current-movie .movie-flex-align .movie-info .movie-content {
@@ -11733,6 +11735,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
 
   .current-movie .movie-flex-align .movie-info-section {
     margin: 50px;
+    width: 1000px;
   }
 
   .current-movie .movie-flex-align .movie-info-section .movie-description .year-play {
@@ -11770,6 +11773,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     margin-right: auto;
     -ms-flex-preferred-size: auto;
         flex-basis: auto;
+    padding: 5px;
   }
 
   .current-movie .movie-flex-align .movie-info-section .movie-crew .movie-crew-card ul {
@@ -11786,6 +11790,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    margin-top: 20px;
     margin-left: 20px;
     margin-top: 15%;
     padding-top: 20px !important;
@@ -11827,6 +11832,7 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     padding-top: 10px;
     background: red !important;
   }
+
 
   #delete-movie-btn:hover {
     color: black !important;
@@ -12147,12 +12153,36 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     margin-right: 5px;
   }
 
+  .about-container {
+    font-size: 1rem;
+  }
+
+  .about-container .personal-info,
+  .about-container h2 {
+    font-size: 1rem;
+  }
+
   #outerContentContainer {
     margin-left: 20%;
   }
 
   #outerContentContainer #innerContentContainer {
     width: 80%;
+  }
+
+  #approve-review-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .approve-review {
+    color: green;
+    font-size: 2rem !important;
   }
 }
 
