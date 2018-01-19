@@ -97,7 +97,9 @@ Route::get('movie/{movieId}/delete', 'MovieController@deleteMovie');
 
 // Review
 Route::post('movie/{movieId}/addreview', 'ReviewController@addReview');
-Route::get('delete/review/{reviewId}', 'ReviewController@removeReview');
+Route::get('delete/review/movie/{reviewId}', 'ReviewController@removeReview');
+Route::post('tv-show/{tvshowId}/addreview', 'ReviewController@addTvReview');
+Route::get('delete/review/tv-show/{reviewId}', 'ReviewController@removeReview');
 
 // User Watchlist View
 

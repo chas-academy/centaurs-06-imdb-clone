@@ -198,7 +198,7 @@
                         @endif
                         </div>
                         @if($review->user_id === $user['id'])
-                            <a href="/delete/review/{{ $review->id  }}"><i class="fa fa-trash delete-review" aria-hidden="true"></i></a>
+                            <a href="/delete/review/movie/{{ $review->id  }}"><i class="fa fa-trash delete-review" aria-hidden="true"></i></a>
                         @endif
                     </div>
                     <h3 class="review-title">{{ $review->title }}</h3>
