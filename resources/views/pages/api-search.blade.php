@@ -1,15 +1,10 @@
 @extends('layouts.layout') @section('content')
 <div class="off-canvas-content" data-off-canvas-content>
     @include('includes.header')
+    @include('includes.messages')
+    @include('includes.errors')
 <main class="row">
     @include('includes.menu-btn')
-    @if (isset($message['error']))
-    <?php dd($message) ?>
-    <section class="small-12" id="statusMsg">
-        <p style="color: white">{{$message['error'] or ''}}</p>
-    </section> 
-    @endif
-
     <section class="small-12 flex-align-sb-c">
         @if(isset($hits))
             @foreach ($hits['results'] as $key => $movie)
