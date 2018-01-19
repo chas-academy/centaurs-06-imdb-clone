@@ -76,6 +76,21 @@ class Review extends Model
         return $reviews;
     }
 
+    public function getAllReviewsOnHold()
+    {
+        $reviews = DB::table('reviews')->orderBy('updated_at')->latest()->get()->where('type', 'hold');
+
+        foreach ($reviews as $key => $review) {
+            $userId = $reviews[$key]->user_id;
+            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $reviews[$key]->author = $author;
+            
+        }
+
+       return $reviews;
+
+    }
+
     public function removeReview($reviewId) 
     {
         DB::table('reviews')->where('id', $reviewId)->delete();
