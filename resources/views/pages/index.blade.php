@@ -18,10 +18,18 @@
                 <section class="small-12 flex-align-sb-c">
                 @foreach($movies['movie'] as $movie)
                     <div class="movie-poster">
+                    @if(Auth::user()->type === 'admin')
+                        <div class="movie-rating delete-btn-cont">
+                            <p class="rating-num">{{ $movie->imdb_rating }}</p>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <a href="/movie/{{ $movie->id }}/delete"><i class="fa fa-trash delete-review delete-btn" aria-hidden="true"></i></a>
+                        </div> 
+                    @else
                         <div class="movie-rating">
                             <p class="rating-num">{{ $movie->imdb_rating }}</p>
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </div> 
+                    @endif
                         <a href="movie/{{ $movie->id }}" class="none">
                             <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
                                 @if($movie->poster === null)
