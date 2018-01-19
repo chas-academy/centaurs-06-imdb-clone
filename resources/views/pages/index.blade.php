@@ -2,12 +2,10 @@
 <div class="off-canvas-content" data-off-canvas-content>
     @include('includes.header')
     @include('includes.messages')
-        @include('includes.errors')
+    @include('includes.errors')
 <main class="row">
     @include('includes.menu-btn')
         <section class="small-12">
-            @include('includes.messages')
-            @include('includes.errors')
         </section>
         <div class="small-12 tv-shows">
             <a id="movies-link" href="/">Movies</a>
