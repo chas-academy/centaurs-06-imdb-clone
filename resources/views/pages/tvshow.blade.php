@@ -1,4 +1,5 @@
 @extends('layouts.layout') @section('content')
+<?php $user = Auth::user(); ?>
 <header id="desk-hide" class="row">
     <div id="desk-hide" class="small-12 header-flex-align-sb-c">
         <a href="{{ URL::to('/') }}"><img src="{{ asset('img/Logo.svg') }}" alt="IMDb Logo" class="logo"></a>
@@ -172,7 +173,7 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                         @endif
                         </div>
-                        @if($tvDetails['reviews'][0]->user_id) === $user['id'])
+                        @if($tvDetails['reviews'][0]->user_id == $user['id'])
                             <a href="/delete/review/tv-show/{{ $review->id  }}"><i class="fa fa-trash delete-review" aria-hidden="true"></i></a>
                         @endif
                     </div>

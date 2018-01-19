@@ -63,7 +63,7 @@ class Review extends Model
 
     public function getAllTvReviews($tvshowId)
     {
-        $reviews = DB::table('reviews')->orderBy('updated_at', 'desc')->get()->where('tvshow_id', $tvshowId);
+        $reviews = DB::table('reviews')->orderBy('updated_at', 'desc')->get()->where('tvshow_id', $tvshowId)->where('type', 'approved');
         $authors = [];
         
         foreach ($reviews as $key => $review) {
