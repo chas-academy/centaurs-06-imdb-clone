@@ -1,0 +1,162 @@
+/*          Header Layout            */
+header
+    padding: 35px 25px 10px 25px
+    #search
+        display: none
+        &.visible
+            display: flex
+    .header-flex-align-sb-c
+        display: flex
+        align-items: center
+        padding: 0 0 25px 0
+        justify-content: space-between
+        .search
+            display: flex
+            justify-content: space-between
+        .search-btn
+            /*      Motion ui class for toggle      */
+            &.hidden
+                display: none
+        .search-exit-btn
+            /*      Motion ui class for toggle      */
+            &.visible
+                display: inline-block
+        .search-input
+            margin: 0
+            width: 90%
+            text-align: center
+            padding: 0px 15px 0px 15px 
+        select
+            width: 48%
+            visibility: hidden
+        .logo
+            width: 90px
+
+#mobile-hide
+    display: none
+/*          Main Layout            */
+main
+    padding: 0px 25px 35px 25px
+    section
+        padding: 25px 0px 25px 0px 
+    .flex-align-sb-c
+        display: flex
+        flex-wrap: wrap
+        align-items: flex-start
+        justify-content: space-between
+        .movie-poster
+            text-align: center
+            margin: 10px 0px 10px 0px
+            .movie-rating
+                display: flex
+                margin: 0 0 5px 0
+                align-items: center
+                flex-direction: row-reverse
+                .rating-num
+                    margin: 0 0 0 5px
+            .poster-size
+                width: 95px
+            .movie-title-container
+                display: flex
+                max-width: 90px
+                justify-content: center
+                .movie-title
+                    margin: 5px 0 0 0
+                    flex-wrap: wrap
+        .movie-title
+            position: relative
+            z-index: 1
+            color: white
+            font-size: 10px
+            bottom: 80px
+            max-width: 90px
+            max-height: 100px
+            overflow: hidden
+            display: -webkit-box
+            -webkit-line-clamp: 4
+            -webkit-box-orient: vertical
+        .movie-poster:nth-child(4n)
+            width: 100%
+            .poster-size
+                width: 100%
+            .movie-title
+                font-size: 20px
+                bottom: 280px
+                max-width: 320px
+                max-width: 100%
+
+/*          Footer Layout            */
+footer
+    padding: 25px 0px 25px 0px
+    .footer
+        display: flex
+        align-items: center
+        flex-direction: column
+        justify-content: center
+        p
+            margin: 0
+        i
+            padding: 7.5px
+
+
+/*          Header Styling             */
+header
+    border-bottom: 1px solid #333333
+    .header-flex-align-sb-c
+        .search-btn
+            color: #FAFAFA
+            font-size: 20px
+        .search-exit-btn
+            display: none
+            color: #FAFAFA
+            font-size: 20px
+        .search-input
+            font-weight: 600
+            font-size: 14px
+            border-radius: 5px
+            border: 1px solid #333333
+
+/*          Main Section Styling         */
+main
+    .flex-align-sb-c
+        border-bottom: 1px solid #333333
+        .movie-poster
+            .movie-rating
+                color: #F1F1F1
+                .fa-star
+                    color: #FAD400
+                .rating-num
+                    font-size: 16px
+                    font-weight: 800
+            .movie-title-container
+                .movie-title
+                    color: #F1F1F1
+                    font-size: 14px
+                    font-weight: 600
+.delete-btn-cont
+    position: relative
+    .delete-btn
+        position: absolute
+        left: 0
+        top: 0
+        font-size: 1.5rem !important
+
+/*          Footer Section Styling         */
+footer
+    color: #F1F1F1
+    background: #F03E3E
+    button 
+        font-size: 28px
+        border-radius: 50%
+        background: #F1F1F1
+        i
+            color: #F03E3E
+
+/*          Algolia Styling         */
+.algolia-container
+    display: flex
+    justify-content: flex-end
+    margin-top: 15px
+    .algolia
+        width: 130px
+        height: 20px

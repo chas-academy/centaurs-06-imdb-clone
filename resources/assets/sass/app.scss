@@ -1,9 +1,47 @@
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
-@import "settings";
+@import "etc/settings";
 
 // Bootstrap
-@import "foundation";
+@import "etc/foundation";
+
+// Main styling
+@import "etc/main";
+
+// Mobile style
+@import "styles/mobile";
+
+// Mobile style about offcanvas aka footer
+@import "styles/mobile-about";
+
+// Mobile menu style
+@import "styles/mobile-menu";
+
+// Mobile movie view style
+@import "styles/mobile-movie-view";
+
+// Mobile watch list style
+@import "styles/mobile-watchlist";
+
+// OLD MOBILE STYLE
+@import "styles/mobile-style";
+
+// Custom style for select2
+@import "fixes/select2";
+
+// Fixes for Foundations offcanvas full screen menu
+@import "fixes/offcanvas-full-screen";
+
+// Error and Status Messages
+@import "styles/error-style";
+
+// Admin Form Style
+@import "styles/mobile-admin-form-style";
+
+// Style for desktop
+@media only screen and (min-width: 1024px) {
+    @import "styles/desktop-style";
+    @import "styles/desktop-admin-form-style";
+}
+
+// Slider for episodes
+@import "styles/slider";

@@ -1,0 +1,44 @@
+/* Search error and status messages */
+
+#statusMsg
+    height: 0em
+    width: 100%
+    padding: 0em
+    color: black
+    float: center
+    font-size: 0.8em
+    font-weight: 500
+    overflow: hidden
+    text-align: center
+    position: relative
+    animation-duration: 5s
+    background-color: #FFCF3f
+    animation-name: status-msg-animation
+    
+    p
+        margin: 0
+        
+@keyframes status-msg-animation 
+    0%
+        height: 0em
+        padding: 0em
+    20%
+        height: 3em
+        padding: 1em
+        animation-timing-function: ease-in
+    80%
+        height: 3em
+        padding: 1em
+    100%
+        height: 0em
+        padding: 0em
+        animation-timing-function: ease-out
+
+#statusMsgError
+    @extend #statusMsg
+    background: red
+
+
+    
+    
+

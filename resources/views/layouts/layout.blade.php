@@ -3,10 +3,15 @@
 <head>
    @include('../includes.head')
 </head>
-<body>
+	<body>
+    
 
     @yield('content')
 
+	@include('../includes.off-canvas')
+
     @include('../includes.scripts')
+    
+    @yield('page-scripts')
     </body>
 </html>
