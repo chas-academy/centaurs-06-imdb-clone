@@ -1,8 +1,22 @@
+# Centaurs-imdb clone
+
+**www.centaurs-imdb.me**
+
+## Creators
+
+Andreas Sjölund - <a href="https://github.com/Andreas-sjolund-chas">Github</a>
+Laya Sadegh - <a href="https://github.com/lalaya">Github</a>
+Ida Englund - <a href="https://github.com/idaenglund">Github</a>
+Eleonor Bergqvist - <a href="https://github.com/eleonorbergqvist">Github</a>
+Pontus Sarland - <a href="https://github.com/PontusSarland88">Github</a>
+Patryk Rybaczek - <a href="https://github.com/patryk7rybaczek">Github</a>
+Victor Ciavarella - <a href="https://github.com/Ciavarella">Github</a>
+
 ## Setup environment
 
 klona repot
 
------ I TERMINALEN -----
+----- **I TERMINALEN** -----
 
 composer install
 
@@ -12,7 +26,7 @@ npm install
 
 npm run dev
 
------ I ROTEN UTAV PROJEKTET -----
+----- **I ROTEN UTAV PROJEKTET** -----
 
 radera routes/views/welcome.blade.php
 
@@ -20,11 +34,12 @@ duplicera .env.example
 
 döp om den kopierade till .env
 
------ I TERMINALEN -----
+----- **I TERMINALEN** -----
 
 php artisan key:generate
 
 php artisan serve
+
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
