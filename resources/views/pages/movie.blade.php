@@ -115,11 +115,13 @@
             </div>
         </div>
             <div class="small-12 btn-container">
+            <a href="#read-reviews">
                 <button class="read-review" data-toggle="read-reviews">Read reviews</button>
-
+            </a>
                 @if(Auth::check())
+                <a href="#write-reviews">
                     <button class="writer-review" data-toggle="write-reviews">Write a review</button>
-                
+                </a>
                 @if(Auth::user()->type === 'admin')
                     <a id="delete-movie-btn" class="writer-review" href="/movie/{{ $movie->id }}/delete">Delete this movie</a>
                 @endif

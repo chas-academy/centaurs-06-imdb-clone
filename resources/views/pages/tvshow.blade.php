@@ -29,10 +29,13 @@
                 <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($tvDetails['tvshow']->poster) }}">
 
                 <div id="btns-tvshow" class="small-12 btn-container">
-                    <button class="read-review" data-toggle="read-reviews">Read reviews</button>
-                    
+                    <a href="#read-reviews">
+                        <button class="read-review" data-toggle="read-reviews">Read reviews</button>
+                    </a>
                     @if(Auth::check())
-                    <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+                        <a href="#write-reviews">
+                            <button class="writer-review" data-toggle="write-reviews">Write a review</button>
+                        </a>
                     @endif
                 </div> 
             </div>
