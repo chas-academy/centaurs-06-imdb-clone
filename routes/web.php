@@ -40,11 +40,11 @@ Route::get('/', function ()
     };
 
     return $view;
-});
+})->name('index');
 
 Route::get('/login', function () {
     return view('pages.login');
-});
+})->name('login');
 
 Route::get('/watchlist', function () 
 {
@@ -129,11 +129,20 @@ Route::post('/sortbygenre/updatemovies', 'sortByController@sortByGenre');
 // For Special Sorting
 Route::post('/sortbyspec/update', 'sortByController@sortBySpec');
 
-Route::get('/createmovie', 'MovieController@createMovie');
-Route::post('/createmovie', 'MovieController@storeMovie');
+// with an admin
+Route::middleware(['admin'])->group(function () {
+    Route::get('/createmovie', 'MovieController@createMovie');
+    Route::post('/createmovie', 'MovieController@storeMovie');
+    Route::get('/movies/{id}/edit', 'MovieController@editMovie');
+    Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
+});
 
-Route::get('/movies/{id}/edit', 'MovieController@editMovie');
-Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
+// without an admin
+// Route::get('/createmovie', 'MovieController@createMovie');
+// Route::post('/createmovie', 'MovieController@storeMovie');
+// Route::get('/movies/{id}/edit', 'MovieController@editMovie');
+// Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
+
 
 Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
 Route::post('/email-update/{userId}', 'UserController@updateEmail');
