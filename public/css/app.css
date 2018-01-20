@@ -11833,9 +11833,13 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     background: red !important;
   }
 
-
   #delete-movie-btn:hover {
     color: black !important;
+  }
+
+  #btns-tvshow {
+    margin-top: 10px;
+    margin-left: 0px;
   }
 
   .backdrop-image {
