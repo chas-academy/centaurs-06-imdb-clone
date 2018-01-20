@@ -5,7 +5,7 @@
     @include('includes.messages')
     @include('includes.errors')
     <div class="innerContentContainer">
-        <form data-abide novalidate class="adminform" action="" method="post" enctype="multipart/form-data">
+        <form class="adminform" action="" method="post" enctype="multipart/form-data">
 
             <div class="small-12 columns">
                 <h1>Edit movie</h1>
@@ -25,10 +25,10 @@
                 </div>
                 <div class="foundation-bottom-margin">
                     <label></label> 
-                    <select class="multi-select js-example-placeholder-multiple js-states form-control select2-full-width" name="genre" multiple="multiple" required>
-                    @foreach ($genres as $genre)
-                        <option value="{{ $genre["id"] }}" @if ($genre["id"] === $activeGenre->id) {{ "selected" }} @endif>{{ $genre["genre_name"] }}</option>
-                    @endforeach
+                    <select class="multi-select js-example-placeholder-multiple js-states form-control select2-full-width" name="genres[]" multiple="multiple" required>
+                        @foreach ($genres as $genre)
+                            <option value="{{ $genre["id"] }}" @if (in_array($genre["id"], $activeGenreIds)) {{ "selected" }} @endif>{{ $genre["genre_name"] }}</option>
+                        @endforeach
                     </select>
                     <span class="form-error">Don't forget to add genre.</span>
                 </div>

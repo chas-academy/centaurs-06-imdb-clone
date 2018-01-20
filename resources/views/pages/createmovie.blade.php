@@ -22,7 +22,7 @@
 
                 <div class="foundation-bottom-margin">
                     <label></label> 
-                    <select class="js-example-basic-single multi-select select2-full-width" name="genre" multiple="multiple" required>
+                    <select class="multi-select js-example-placeholder-multiple select2-full-width" name="genres[]" multiple="multiple" required>
                         <option></option>
                         @foreach ($genres as $genre)
                             <option value="{{ $genre["id"] }}">{{ $genre["genre_name"] }}</option>
