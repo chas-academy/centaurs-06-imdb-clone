@@ -14,7 +14,12 @@
     <section class="small-12 flex-align-sb-c">
         @foreach ($tvshows as $tvshow)
             <div class="movie-poster">
-                <div class="movie-rating">
+                <div class="movie-rating delete-btn-cont">
+                    @if(Auth::check())
+                        @if(Auth::user()->type === 'admin')
+                        <a href="/tv-show/{{ $tvshow->id }}/delete"><i class="fa fa-trash delete-review delete-btn" aria-hidden="true"></i></a>
+                        @endif
+                    @endif
                     <p class="rating-num">{{ $tvshow->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div> 

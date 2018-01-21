@@ -36,6 +36,9 @@
                         <a href="#write-reviews">
                             <button class="writer-review" data-toggle="write-reviews">Write a review</button>
                         </a>
+                    @if(Auth::user()->type === 'admin')
+                        <a id="delete-movie-btn" class="writer-review" href="/tv-show/{{ $tvDetails['tvshow']->id }}/delete">Delete this tv-show</a>
+                    @endif
                     @endif
                 </div> 
             </div>
