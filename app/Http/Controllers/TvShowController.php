@@ -216,7 +216,7 @@ class TvShowController extends Controller
 
     }
 
-    public function deleteTvShow($tvshowId)
+    public function deleteTvShow($tvShowId)
     {
         $tvshowModel = new TvShow();
         $tvShowDeleted = $tvshowModel->deleteTvShow($tvShowId);
