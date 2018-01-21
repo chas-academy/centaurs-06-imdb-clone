@@ -216,5 +216,17 @@ class TvShowController extends Controller
 
     }
 
+    public function deleteTvShow($tvshowId)
+    {
+        $tvshowModel = new TvShow();
+        $tvShowDeleted = $tvshowModel->deleteTvShow($tvShowId);
+        if($tvShowDeleted == true) {
+            $message = 'TvShow has been deleted';
+            return redirect('/')->with('message', $message);
+        } else {
+            //Tvshow with that id did not exists in db.
+            return redirect('tv-shows/'. $movieId)->with('error', 'TvShow has not been deleted');
+        }
+    }
 }
 
