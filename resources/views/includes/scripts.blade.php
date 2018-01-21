@@ -12,15 +12,6 @@
             // Event listener for buttons in settings menu
             $('#sign-in').click(function(){menuSettingsHandler('in');});
             $('#sign-up').click(function(){menuSettingsHandler('up');});
-            $('.personproducer').select2({
-                placeholder: "Choose an existing producer"
-                });
-                $('.persondirector').select2({
-                placeholder: "Choose an existing director"
-                });
-                $('.personactor').select2({
-                placeholder: "Choose an existing actor"
-            });
         });
         // Function for handling the click
         function menuSettingsHandler(v)
@@ -125,14 +116,14 @@
         });
 
         //Initialize person (actor/producer..) handling
-        //$(function() {
-        //    $(".js-personlist").each(function(index, el) {
-        //        el = $(el);
-        //        el.personList({
-        //            dataField: el.data('field'),
-        //        });
-        //    });
-        //});
+        $(function() {
+           $(".js-personlist").each(function(index, el) {
+               el = $(el);
+               el.personList({
+                   dataField: el.data('field'),
+               });
+           });
+        });
 
         // Alert when adding a movie from TMDB to our database
         $('.confirm').on('click', function () {
@@ -162,6 +153,11 @@
         var i;
         var slides = document.getElementsByClassName("mySlides");
         var dots = document.getElementsByClassName("dot");
+
+        if (!slides.length) {
+            return;
+        }
+        
         if (n > slides.length) {slideIndex = 1} 
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {

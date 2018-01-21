@@ -228,7 +228,11 @@ class MovieController extends Controller
             $initialActors = Movie::find($id)->actors()->get();
             $initialDirectors = Movie::find($id)->directors()->get();
             $initialProducers = Movie::find($id)->producers()->get();
-            $activeGenre = Movie::find($id)->genres()->first();
+            $activeGenres = Movie::find($id)->genres()->get();
+
+            $activeGenreIds = array_map(function ($model) {
+                return $model["id"];
+            }, $activeGenres->toArray());
 
             $actors = Actor::all()->toArray();
             $directors = Director::all()->toArray();
@@ -236,12 +240,25 @@ class MovieController extends Controller
             $genres = Genre::all()->toArray();
             $releaseyears = range(date('Y'), 1910);
 
-            return view('pages.editmovie', ['movie' => $movie, 'genres' => $genres, 'releaseyears' => $releaseyears, 'actors' => $actors, 'directors' => $directors, 'producers' => $producers, 'activeGenre' => $activeGenre, 'initialActors' => $initialActors, 'initialProducers' => $initialProducers, 'initialDirectors' => $initialDirectors]);
+            return view('pages.editmovie', [
+                'movie' => $movie, 
+                'genres' => $genres, 
+                'releaseyears' => $releaseyears, 
+                'actors' => $actors, 
+                'directors' => $directors, 
+                'producers' => $producers, 
+                'activeGenreIds' => $activeGenreIds, 
+                'initialActors' => $initialActors, 
+                'initialProducers' => $initialProducers, 
+                'initialDirectors' => $initialDirectors
+            ]);
         }
 
         // Store movie
         public function storeMovie(Request $request)
         {
+
+            //Ev ta bort detta?
             $db_actors = Actor::all();
 
             $exisitingActors = array_map(function($actor) {
@@ -301,7 +318,16 @@ class MovieController extends Controller
                 $ledgerProducer->save(); 
             }
 
-            $request->session()->flash('message', 'The movie was been saved');
+            foreach ($request->genres as $genre) {
+                $ledgerGenre = new LedgerGenre;
+                $ledgerGenre->genre_id = $genre;
+                $ledgerGenre->movie_id = $movie->id;
+                $ledgerGenre->timestamps = false;
+                $ledgerGenre->save();
+
+            }
+
+            $request->session()->flash('message', 'The movie has been saved');
 
             return $this->createMovie();
 
@@ -309,6 +335,7 @@ class MovieController extends Controller
 
         public function storeEditedMovie (Request $request, $id) 
         {
+
             $validatedData = $request->validate([
                 'title' => 'required|max:255',
                 'plot' => 'required',
@@ -344,7 +371,10 @@ class MovieController extends Controller
             }
 
             $movie->genres()->detach();
-            $movie->genres()->attach($request->genre);
+            foreach ($request->genres as $genre) 
+            {
+                $movie->genres()->attach($genre);
+            }
 
             $movie->actors()->detach();
             foreach ($actors as $actor) 
@@ -366,6 +396,9 @@ class MovieController extends Controller
 
             $movie->save();
 
+            $request->session()->flash('message', 'The movie has been updated');
+
+            return $this->editMovie($request, $id);
             
         }
         

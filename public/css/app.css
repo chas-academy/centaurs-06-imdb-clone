@@ -11538,116 +11538,230 @@ main .watchlist-movie .flex-align-c-c .fa-close {
   background: red;
 }
 
-#outerContentContainer {
+.outerContentContainer {
   background-color: #E8E8E8;
 }
 
-#outerContentContainer:before {
+.outerContentContainer:before {
   content: "";
   height: 1px;
   margin-top: -1px;
   display: block;
 }
 
-#outerContentContainer #innerContentContainer {
+.outerContentContainer .innerContentContainer {
   width: 90%;
   margin: 0 auto;
   margin-top: 40px;
 }
 
-#outerContentContainer #innerContentContainer h1 {
+.outerContentContainer .innerContentContainer h1 {
   margin-bottom: 0.8em;
 }
 
-#outerContentContainer #innerContentContainer .adminform {
+.outerContentContainer .innerContentContainer .adminform {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#outerContentContainer #innerContentContainer .adminform .button {
+.outerContentContainer .innerContentContainer .adminform .button {
   background-color: #FFCF3F;
   width: 100%;
   font-weight: bold;
 }
 
-#outerContentContainer #innerContentContainer .adminform .js-personlist-new-person-field {
-  width: calc(95% - 10px);
-}
-
-#outerContentContainer #innerContentContainer .adminform ::-webkit-input-placeholder {
+.outerContentContainer .innerContentContainer .adminform ::-webkit-input-placeholder {
   font-weight: 400;
-  color: black;
+  color: #0a0a0a;
 }
 
-#outerContentContainer #innerContentContainer .adminform :-ms-input-placeholder {
+.outerContentContainer .innerContentContainer .adminform :-ms-input-placeholder {
   font-weight: 400;
-  color: black;
+  color: #0a0a0a;
 }
 
-#outerContentContainer #innerContentContainer .adminform ::-ms-input-placeholder {
+.outerContentContainer .innerContentContainer .adminform ::-ms-input-placeholder {
   font-weight: 400;
-  color: black;
+  color: #0a0a0a;
 }
 
-#outerContentContainer #innerContentContainer .adminform ::placeholder {
+.outerContentContainer .innerContentContainer .adminform ::placeholder {
   font-weight: 400;
-  color: black;
+  color: #0a0a0a;
 }
 
-#outerContentContainer #innerContentContainer .adminform .select2 {
+@media only screen and (min-width: 1024px) {
+  .outerContentContainer .innerContentContainer {
+    margin-left: 20%;
+    width: 80%;
+  }
+}
+
+.posterThumbnailWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 1rem 0;
+}
+
+.posterThumbnailWrapper .posterThumbnailText {
+  color: #F03E3E;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: auto 0;
+}
+
+.posterThumbnailWrapper .posterThumbnailImg {
+  margin-left: 16px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cacaca;
+  border-radius: 0;
+}
+
+.foundation-bottom-margin {
+  margin-bottom: 16px;
+}
+
+.foundation-bottom-margin-half {
+  margin-bottom: 8px;
+}
+
+.select2-container--full-width,
+.select2-container--with-add-button {
   width: 100% !important;
-  font-size: 1rem;
 }
 
-#outerContentContainer #innerContentContainer .adminform .select2-search__field {
-  line-height: 0;
-  font-size: 1rem;
+.select2-container--with-add-button {
+  margin-right: 10px;
 }
 
-#outerContentContainer #innerContentContainer .adminform .select2-container {
-  vertical-align: baseline;
+.select2-container--large .select2-selection__rendered {
+  line-height: 38px !important;
 }
 
-#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple {
+.select2-container--large .select2-selection {
+  height: 38px !important;
+}
+
+.select2-container--large .select2-selection__arrow {
+  height: 36px !important;
+}
+
+.select2-container--large .select2-selection--single .select2-selection__arrow b {
+  border-color: #888 transparent transparent transparent !important;
+  margin-left: -7px;
+}
+
+.select2-container--large .select2-selection {
   border: 1px solid #cacaca !important;
   border-radius: 0;
 }
 
-#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-  color: white;
-  marign-right: 4px;
+.select2-container--large .select2-selection--multiple {
+  font-size: 1rem !important;
 }
 
-#outerContentContainer #innerContentContainer .adminform .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: #FFCF3F !important;
-  border-radius: 0;
-  border: none;
-  margin: 6px;
-  font-weight: 400;
-  padding: 2px 8px;
+.select2-container--large .select2-selection--multiple ::-webkit-input-placeholder {
+  color: #999 !important;
 }
 
-#add-person {
+.select2-container--large .select2-selection--multiple :-ms-input-placeholder {
+  color: #999 !important;
+}
+
+.select2-container--large .select2-selection--multiple ::-ms-input-placeholder {
+  color: #999 !important;
+}
+
+.select2-container--large .select2-selection--multiple ::placeholder {
+  color: #999 !important;
+}
+
+.select2-container--large .select2-selection--multiple .select2-selection__rendered {
+  line-height: inherit !important;
+}
+
+.select2-container--large .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+  border: 1px solid #0a0a0a;
+}
+
+.inputfield-grey-placeholder::-webkit-input-placeholder {
+  color: #999 !important;
+}
+
+.inputfield-grey-placeholder:-ms-input-placeholder {
+  color: #999 !important;
+}
+
+.inputfield-grey-placeholder::-ms-input-placeholder {
+  color: #999 !important;
+}
+
+.inputfield-grey-placeholder::placeholder {
+  color: #999 !important;
+}
+
+.selectfield-grey-placeholder:invalid {
+  color: #999;
+}
+
+.personlist-new-person-field {
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.personlist-existing-person-wrapper,
+.personlist-add-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-#add-person #person-btn {
-  width: 10%;
+.personlist-old-person-field {
+  width: calc(95% - 10px);
+}
+
+.personlist-add-button {
   font-weight: bold;
-  padding-bottom: 17px;
 }
 
-#add-person #person-btn .fa-plus-circle {
-  color: #FFCF3F;
+.personlist-add-icon {
+  color: #FFCF3F !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.personlist-choices {
+  list-style-type: none;
+  color: #0a0a0a;
+  padding: 0;
+  margin-left: 0;
+  display: inline-block;
+}
+
+.personlist-item {
+  display: inline-block;
+}
+
+.personlist-item-title {
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.personlist-remove {
+  color: #F03E3E;
+  margin-left: 7px;
+  margin-right: 7px;
+  display: inline-block;
 }
 
 @media only screen and (min-width: 1024px) {
