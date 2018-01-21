@@ -159,4 +159,5 @@ Route::get('/episodes', function() {
 });
 
 Route::get('/admin/managereviews', 'ReviewController@getReviewsOnHold'); // Don't know if the path is right but this prints out the reviews that are on hold.
-
+// Delete TvShow from database
+Route::get('tv-show/{tvShowId}/delete', 'TvShowController@deleteTvShow');
