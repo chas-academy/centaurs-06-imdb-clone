@@ -41113,8 +41113,7 @@ module.exports = function spread(callback) {
 
 $.fn.personList = function (config) {
     var self = this;
-    var myPersons = [];
-
+    var myPersons = self.data('initial') || [];
     var dataField = config.dataField || 'persons';
 
     var existingPersonChooser = self.find(".js-personlist-existing-person-chooser");
@@ -41122,7 +41121,6 @@ $.fn.personList = function (config) {
     var newPersonChooser = self.find(".js-personlist-new-person-field");
     var newPersonAdd = self.find(".js-personlist-new-person-add");
 
-    myPersons = self.data('initial');
     updateList();
 
     existingPersonAdd.click(function (e) {
@@ -41141,7 +41139,9 @@ $.fn.personList = function (config) {
     newPersonAdd.click(function (e) {
         e.preventDefault();
 
-        selectedName = self.find('.js-personlist-new-person-field').val();
+        var field = self.find('.js-personlist-new-person-field');
+
+        selectedName = field.val();
         selectedName = _.trim(selectedName);
 
         if (!selectedName) {
@@ -41153,11 +41153,25 @@ $.fn.personList = function (config) {
             name: selectedName
         };
 
+        if (personExists(person)) {
+            return;
+        }
+
         addPerson(person);
         updateList();
+
+        field.val("");
     });
 
     function addPerson(person) {
+        if (personExists(person)) {
+            return;
+        }
+
+        myPersons.push(person);
+    }
+
+    function personExists(person) {
         var exists = false;
 
         myPersons.forEach(function (personInList) {
@@ -41166,11 +41180,7 @@ $.fn.personList = function (config) {
             }
         });
 
-        if (exists) {
-            return;
-        }
-
-        myPersons.push(person);
+        return exists;
     }
 
     function updateList() {
@@ -41180,19 +41190,20 @@ $.fn.personList = function (config) {
         $.each(myPersons, function (index, person) {
             var existing = Boolean(person.id);
 
-            var el = $('<li>' + '<h3>' + person.name + '</h3>' + '<button class="button secondary js-personlist-remove">X</button>' + '<input type="hidden" name="' + (existing ? dataField + '[]' : dataField + '_new[]') + '" value="' + (existing ? person.id : person.name) + '" />' + '</li>');
+            var el = $('<li class="personlist-item">' + '<p class="personlist-item-title">' + person.name + '</p>' + '<button class="js-personlist-remove personlist-remove"><i class="fa fa-times-circle fa-1x" aria-hidden="true"></i></button>' + '<input type="hidden" name="' + (existing ? dataField + '[]' : dataField + '_new[]') + '" value="' + (existing ? person.id : person.name) + '" />' + '</li>');
 
             list.append(el);
             el.find(".js-personlist-remove").click(function (e) {
                 e.preventDefault();
 
-                removePerson(myPersons, person);
+                removePerson(person);
             });
         });
     }
 
     function removePerson(person) {
         var position = myPersons.indexOf(person);
+
         myPersons.splice(position, 1);
 
         updateList(myPersons);

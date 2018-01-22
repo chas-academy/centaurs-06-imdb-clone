@@ -463,4 +463,40 @@ class TvShow extends Model
         DB::table('ledger_watch_lists')->where('user_id', $userId)->where('tvshow_id', $tvshowId)->delete();
     }
 
+    public function ifTvshowExistsWithId($tvShowId): bool
+    {
+        return DB::table('tv_shows')->where('id', $tvShowId)->exists();
+    }
+
+    public function getAllEpisodes($seasonId)
+    {
+        $episodes = DB::table('episodes')->get()->where('season_id', $seasonId);
+        return $episodes;
+    }
+
+    public function deleteTvShow($tvShowId): bool
+    {
+        if($this->ifTvshowExistsWithId($tvShowId)) {
+            $seasons = $this->getTvShowSeasons($tvShowId);
+            foreach ($seasons as $season) {
+                $episodes = $this->getAllEpisodes($season->id);
+                foreach ($episodes as $episode) {
+                    DB::table('ledger_actors')->where('episode_id', $episode->id)->delete();
+                    DB::table('ledger_directors')->where('episode_id', $episode->id)->delete();
+                    DB::table('ledger_producers')->where('episode_id', $episode->id)->delete();
+                    DB::table('ledger_writers')->where('episode_id', $episode->id)->delete();
+                    DB::table('episodes')->where('id', $episode->id)->delete();
+                }
+                DB::table('seasons')->where('id', $season->id)->delete();
+            }
+            DB::table('ledger_watch_lists')->where('tvshow_id', $tvShowId)->delete();
+            DB::table('ledger_genres')->where('tvshow_id', $tvShowId)->delete();
+            DB::table('tv_shows')->where('id', $tvShowId)->delete();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }
