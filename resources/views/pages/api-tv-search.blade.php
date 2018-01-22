@@ -21,7 +21,7 @@
                     <a href="apitvshow/add/{{$tvshow['id']}}" class="none confirm-tv">
                         @if($tvshow['poster_path'] === null)
                         <img class="poster-size" src="/img/missingposter/missingposter.png" >
-                        <p class="movie-title">{{$tvshow['title']}}</p>
+                        <p class="movie-title">{{$tvshow['name']}}</p>
                         @else
                         <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $tvshow['poster_path'] }}" >
                         @endif
