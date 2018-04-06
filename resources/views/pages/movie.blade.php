@@ -15,7 +15,7 @@
     </form>
 </header>
 <div id="mobile-hide">
-<img class="current-movie backdrop-image" src="https://image.tmdb.org/t/p/w1920{{ $movie->backdrop }}">
+    <img class="current-movie backdrop-image" src="<?= config('app.backdrop_url') . $movie->backdrop ?>" alt="Poster for {{$movie->title}}" title="{{ $movie->title }}" />
 </div>
 <main class="row current-movie">
     <div class="small-12 large-12 movie-flex-align">

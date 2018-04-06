@@ -15,10 +15,10 @@
                     </div>
                     <a href="apimovie/add/{{$movie['id']}}" class="none confirm">
                         @if($movie['poster_path'] === null)
-                        <img class="poster-size" src="/img/missingposter/missingposter.png" >
-                        <p class="movie-title">{{$movie['title']}}</p>
+                            <img class="poster-size" src="/img/missingposter/missingposter.png" alt="No poster image available" title="No poster image available" />
+                            <p class="movie-title">{{$movie['title']}}</p>
                         @else
-                        <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $movie['poster_path'] }}" >
+                            <img class="poster-size" src="<?= config('app.poster_url') . $movie['poster_path']; ?>" alt="Poster image for {{$movie['title']}}" title="{{$movie['title']}}" />
                         @endif
                     </a>
 

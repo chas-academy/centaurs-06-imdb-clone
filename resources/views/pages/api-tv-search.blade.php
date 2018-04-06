@@ -23,7 +23,7 @@
                         <img class="poster-size" src="/img/missingposter/missingposter.png" >
                         <p class="movie-title">{{$tvshow['name']}}</p>
                         @else
-                        <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $tvshow['poster_path'] }}" >
+                        <img class="poster-size" src="<?= config('app.poster_url') . $tvshow['poster_path']; ?>" />
                         @endif
                     </a>
 

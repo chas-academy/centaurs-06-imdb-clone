@@ -230,6 +230,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
     ],
 
-    'imdb_url' => 'https://image.tmdb.org/t/p/w1000'
+    'poster_url' => 'https://image.tmdb.org/t/p/w1280',
+    'backdrop_url' => 'https://image.tmdb.org/t/p/original',
 
 ];

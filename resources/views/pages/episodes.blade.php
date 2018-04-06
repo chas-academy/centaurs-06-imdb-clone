@@ -1,5 +1,6 @@
 @extends('layouts.layout') @section('content')
-<?php $user = Auth::user();
+<?php 
+$user = Auth::user();
 $i = $_GET['episode'];
 $j = $_GET['season'];
 $currentEpisode = 'Episode-' . $i;
@@ -17,7 +18,7 @@ $currentEpisode = 'Episode-' . $i;
     </form>
 </header>
 <div id="mobile-hide">
-<img class="current-movie backdrop-image" src="https://image.tmdb.org/t/p/w1920{{ $episodeDetails['episodes'][$currentEpisode]->backdrop }}">
+    <img class="current-movie backdrop-image" src="<?= config('app.backdrop_url') . $episodeDetails['episodes'][$currentEpisode]->backdrop ?>" alt="Image from episode {{$episodeDetails['episodes'][$currentEpisode]->title}}" title="{{ $episodeDetails['episodes'][$currentEpisode]->title }}">
 </div>
 <main class="row current-movie">
     <div class="small-12 large-12 movie-flex-align">
@@ -32,7 +33,8 @@ $currentEpisode = 'Episode-' . $i;
                     <p class="rating-num">{{ $episodeDetails['episodes'][$currentEpisode]->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($episodeDetails['episodes'][$currentEpisode]->poster) }}">
+                
+                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($episodeDetails['episodes'][$currentEpisode]->poster) }}" alt="Image from {{ $episodeDetails['episodes'][$currentEpisode]->title }}" title="{{ $episodeDetails['episodes'][$currentEpisode]->title }}">
             </div>
 
             <div class="movie-info-section">
@@ -51,10 +53,10 @@ $currentEpisode = 'Episode-' . $i;
                         <b>Seasons: </b>
                         <ul class="episode-list">
                             @if (empty($episodeDetails['seasons']))
-                            <p>No seasons found</p>
+                                <p>No seasons found</p>
                             @else
                             @foreach ($episodeDetails['seasons'] as $season)
-                            <a href="/tv-show/{{ $season->tvshow_id }}/season/{{ $season->season_number }}?episode=1&amp;season={{$season->season_number}}"><li class="episode-number">{{ $season->season_number }}</li></a>
+                                <a href="/tv-show/{{ $season->tvshow_id }}/season/{{ $season->season_number }}?episode=1&amp;season={{$season->season_number}}"><li class="episode-number">{{ $season->season_number }}</li></a>
                             @endforeach
                             @endif
                         </ul>

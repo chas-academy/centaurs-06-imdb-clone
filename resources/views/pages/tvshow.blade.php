@@ -11,7 +11,7 @@
     </form>
 </header>
 <div id="mobile-hide">
-<img class="current-movie backdrop-image" src="https://image.tmdb.org/t/p/w1920{{ $tvDetails['tvshow']->backdrop }}">
+    <img class="current-movie backdrop-image" src="<?= config('app.backdrop_url') . $tvDetails['tvshow']->backdrop ?>" alt="Poster for {{$tvDetails['tvshow']->title}}" title="{{$tvDetails['tvshow']->title}}">
 </div>
 <main class="row current-movie">
     <div class="small-12 large-12 movie-flex-align tvshow-cont">
@@ -26,7 +26,7 @@
                     <p class="rating-num">{{ $tvDetails['tvshow']->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($tvDetails['tvshow']->poster) }}">
+                <img class="poster-image" src="{{ App\Http\Models\Movie::getPosterUrl($tvDetails['tvshow']->poster) }}" alt="Poster for {{$tvDetails['tvshow']->title}}" title="{{$tvDetails['tvshow']->title}}">
 
                 <div id="btns-tvshow" class="small-12 btn-container">
                     <a href="#read-reviews">
@@ -87,7 +87,7 @@
                                 @foreach ($tvDetails['topepisodes'] as $episode)
                                     <div class="mySlides fade">
                                         <div class="numbertext"></div>
-                                            <img src="https://image.tmdb.org/t/p/w1920{{ $episode->poster }}" style="width:100%">
+                                            <img src="<?= config('app.poster_url') . $episode->poster ?>" />
                                         <div class="text">
                                         <h4>{{ $episode->title }}</h4>
                                         <p>{{ $episode->plot }}</h4>

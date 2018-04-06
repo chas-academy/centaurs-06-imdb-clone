@@ -560,7 +560,7 @@ class Movie extends Model
     // Helperfunction to assess what type of imgurl should be returned for posters
     public static function getPosterUrl($poster)
     {
-        $imdbUrl = config('app.imdb_url');
+        $imdbUrl = config('app.poster_url');
 
         if (!$poster) {
             return '/img/missingposter/missingposter.png';
