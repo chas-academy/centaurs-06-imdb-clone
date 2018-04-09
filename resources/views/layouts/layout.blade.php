@@ -4,8 +4,6 @@
    @include('../includes.head')
 </head>
 	<body>
-    
-
     @yield('content')
 
 	@include('../includes.off-canvas')

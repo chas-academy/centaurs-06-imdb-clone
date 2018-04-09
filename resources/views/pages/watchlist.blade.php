@@ -51,7 +51,7 @@
 	    	<div class="small-12 watchlist-movie">
 	            <div class="small-12 flex-align-c-c">
 	                <a href="tv-show/{{ $tvshow->id }}" class="none">
-	                    <img class="poster-size" src="https://image.tmdb.org/t/p/w500{{ $tvshow->poster }}" >
+	                    <img class="poster-size" src="<?= config('app.poster_url') . $tvshow->poster ?>" alt="Image from episode $tvshow->title" title="{{$tvshow->title}}" />
 	                </a>
 	            </div>
 	            <div class="small-12 flex-align-c-c">

@@ -23,6 +23,7 @@ add('writable_dirs', [
     '/var/www/staging.centaurs-imdb.me/public/img/avatars'
 ]);
 
+
 // Hosts
 
 host('production')

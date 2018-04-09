@@ -137,13 +137,6 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
 });
 
-// without an admin
-// Route::get('/createmovie', 'MovieController@createMovie');
-// Route::post('/createmovie', 'MovieController@storeMovie');
-// Route::get('/movies/{id}/edit', 'MovieController@editMovie');
-// Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
-
-
 Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
 Route::post('/email-update/{userId}', 'UserController@updateEmail');
 Route::post('/password-update/{userId}', 'UserController@updatePassword');
@@ -153,10 +146,6 @@ Route::get('/search-tv-api', 'TvShowController@searchTvshowFromApi');
 Route::get('/tv-shows', 'TvShowController@readTvShows');
 Route::get('/tv-show/{tvshowId}', 'TvShowController@list');
 Route::get('/tv-show/{tvshowId}/season/{seasonId}', 'TvShowController@seasonlist');
-
-Route::get('/episodes', function() {
-    return view('pages.episodes');
-});
 
 Route::get('/admin/managereviews', 'ReviewController@getReviewsOnHold'); // Don't know if the path is right but this prints out the reviews that are on hold.
 // Delete TvShow from database
