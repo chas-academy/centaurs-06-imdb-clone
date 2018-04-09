@@ -59,6 +59,12 @@ after('deploy:failed', 'deploy:unlock');
 // Migrate database before symlink new release.
 before('deploy:symlink', 'artisan:migrate');
 
+desc('Clear config cache');
+task('artisan:config:clear', function() {
+  run('{{bin/php}} {{release_path}}/artisan config:clear');
+});
+after('deploy:symlink', 'artisan:config:clear');
+
 desc('Restart PHP-FPM service');
 task('php-fpm:restart', function () {
     run('sudo service php7.1-fpm reload');
