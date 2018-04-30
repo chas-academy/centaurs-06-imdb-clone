@@ -18,21 +18,20 @@ use App\Http\Controllers\TvShowController;
 |
 */
 
+Auth::routes();
+
 // Home Also called index view
 
-Route::get('/', function () 
-{
-    $movieModel = new Movie();
-    $genreModel = new Genre();
-    $movies = array_flatten($movieModel->getAllMovies());
+Route::get('/', function () {
+    $movies = array_flatten(Movie::getAllMovies());
     $movies = ['movie' => $movies];
-    $genres = $genreModel->getAllGenres();
+    $genres = Genre::getAllGenres();
 
     $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres);
 
-    if(Auth::check()) {
+    if (Auth::check()) {
         $userController = new UserController;
-        $user = $userController->profile();
+        $user = Auth::user();
 
         $view = View::make('pages.index')->with('movies', $movies)->with('genres', $genres)->with('user', $user);
     } else {
@@ -46,8 +45,7 @@ Route::get('/login', function () {
     return view('pages.login');
 })->name('login');
 
-Route::get('/watchlist', function () 
-{
+Route::get('/watchlist', function () {
     $user = Auth::user()->id;
     $movieModel = new Movie();
     $genreModel = new Genre();
@@ -65,9 +63,7 @@ Route::get('/movie/{movieId}/addwatchlist', 'MovieController@addMovieToWatchlist
 Route::get('/tv-show/{tvshowId}/addwatchlist', 'TvShowController@addTvshowToWatchlist');
 Route::get('/watchlist/delete/tvshow/{tvshowId}', 'TvShowController@removeTvshowFromWatchlist');
 
-Route::get('movie/{movieId}', function ($movieId)
-{
-
+Route::get('movie/{movieId}', function ($movieId) {
     $movieModel = new Movie();
     $reviewModel = new Review();
     $userModel = new User();
@@ -107,7 +103,6 @@ Route::get('approve/review/{reviewId}', 'ReviewController@approveReview');
 Route::get('profile', 'UserController@profile');
 Route::post('profile', 'UserController@updateAvatar');
 
-
 Route::get('/apimovie/add/{movieApiId}', 'MovieController@searchMovieFromApiById');
 Route::get('/apitvshow/add/{tvshowApiId}', 'TvShowController@searchTvshowFromApiById');
 Route::get('/movietest', 'MovieController@createMovieFromApi');
@@ -116,8 +111,6 @@ Route::get('/createtvgenres', 'MovieController@getTvShowGenres');
 Route::get('/tvshowtest', 'TvShowController@createTvShowFromApi');
 
 Route::get('/search', 'Api\SearchController@search');
-
-Auth::routes();
 
 Route::get('/home', function () {
     return view('pages.index');

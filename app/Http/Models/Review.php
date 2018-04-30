@@ -53,9 +53,8 @@ class Review extends Model
         
         foreach ($reviews as $key => $review) {
             $userId = $reviews[$key]->user_id;
-            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $author = array_first(DB::table('users')->get()->where('id', $userId));
             $reviews[$key]->author = $author;
-            
         }
 
         return $reviews;
@@ -68,9 +67,8 @@ class Review extends Model
         
         foreach ($reviews as $key => $review) {
             $userId = $reviews[$key]->user_id;
-            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $author = array_first(DB::table('users')->get()->where('id', $userId));
             $reviews[$key]->author = $author;
-            
         }
 
         return $reviews;
@@ -81,16 +79,14 @@ class Review extends Model
         $reviews = DB::table('reviews')->orderBy('updated_at')->latest()->get()->where('type', 'hold');
         foreach ($reviews as $key => $review) {
             $userId = $reviews[$key]->user_id;
-            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $author = array_first(DB::table('users')->get()->where('id', $userId));
             $reviews[$key]->author = $author;
-            
         }
 
-       return $reviews;
-
+        return $reviews;
     }
 
-    public function removeReview($reviewId) 
+    public function removeReview($reviewId)
     {
         DB::table('reviews')->where('id', $reviewId)->delete();
     }

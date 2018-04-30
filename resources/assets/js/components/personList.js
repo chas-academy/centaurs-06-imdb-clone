@@ -15,7 +15,7 @@ $.fn.personList = function(config) {
 
         var selectedData = existingPersonChooser.select2('data')[0];
         var person = {
-            id: selectedData.id, 
+            id: selectedData.id,
             name: selectedData.text,
         };
 
@@ -42,8 +42,8 @@ $.fn.personList = function(config) {
 
         if (personExists(person)) {
             return;
-        }    
-        
+        }
+
         addPerson(person);
         updateList();
 
@@ -57,7 +57,7 @@ $.fn.personList = function(config) {
             return;
         }
 
-        myPersons.push(person);    
+        myPersons.push(person);
     }
 
     function personExists(person) {

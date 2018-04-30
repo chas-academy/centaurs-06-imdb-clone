@@ -33,8 +33,7 @@ class User extends Authenticatable
     {
         $user = Auth::user();
         
-        if ($user->type === 'admin')
-        {
+        if ($user->type === 'admin') {
             return true;
         }
 

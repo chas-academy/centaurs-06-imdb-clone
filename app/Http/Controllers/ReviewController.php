@@ -8,7 +8,7 @@ use App\Http\Models\Review;
 
 class ReviewController extends Controller
 {
-    public function addReview(Request $request, $movieId) 
+    public function addReview(Request $request, $movieId)
     {
         $reviewModel = new Review();
         $reviewModel->createReview($request, $movieId);
@@ -22,7 +22,7 @@ class ReviewController extends Controller
         return redirect()->back();
     }
 
-    public function removeReview($reviewId) 
+    public function removeReview($reviewId)
     {
         $reviewModel = new Review();
         $reviewModel->removeReview($reviewId);
@@ -36,7 +36,6 @@ class ReviewController extends Controller
         $view = view('pages.manage-reviews')->with('reviews', $reviews);
 
         return $view;
-
     }
 
     public function approveReview($reviewId)

@@ -14,11 +14,6 @@ use Validator;
 
 class UserController extends Controller
 {
-    public function profile()
-    {
-        return Auth::user();
-    }
-
     public function updateAvatar(Request $request)
     {
         if ($request->hasFile('avatar')) {
@@ -40,7 +35,7 @@ class UserController extends Controller
             if (Auth::user()->id == $userId) {
                 DB::table('ledger_watch_lists')->where('user_id', $userId)->delete();
                 DB::table('users')->where('id', $userId)->delete();
-                
+
                 return redirect('/')->with('message', 'Your account has been deleted!');
             }
             // TODO: handle message (you have to be signed in)
@@ -70,7 +65,7 @@ class UserController extends Controller
     {
         $currentPassword = $request->input('current-password');
         $newPassword = $request->input('new-password');
-    
+
         $validator = Validator::make($request->all(), [
             'current-password' => 'required',
             'new-password' => 'required|string|min:6'
@@ -85,7 +80,7 @@ class UserController extends Controller
         if (!(Hash::check($currentPassword, Auth::user()->password))) {
             return redirect()->back()->with('error', 'Your current password does not match with the password you provided. Please try again.');
         }
-        
+
         if ($currentPassword === $newPassword) {
             return redirect('/')->with('error', 'You are trying to change to the same password. Don\'t');
         }

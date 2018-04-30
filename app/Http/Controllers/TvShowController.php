@@ -13,7 +13,7 @@ use App\Http\Models\Review;
 
 class TvShowController extends Controller
 {
-    public function searchTvshowFromApi(request $request) 
+    public function searchTvshowFromApi(request $request)
     {
         $user = Auth::user();
         $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
@@ -25,7 +25,7 @@ class TvShowController extends Controller
         return view('pages.api-tv-search')->with('hits', $result)->with('user', $user);
     }
 
-    public function searchTvshowFromApiById($tvshowApiId) 
+    public function searchTvshowFromApiById($tvshowApiId)
     {
         $user = Auth::user();
         $api_key = '?api_key=6975fbab174d0a26501b5ba81f0e0b3c';
@@ -51,11 +51,11 @@ class TvShowController extends Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_POSTFIELDS => "{}",
             ));
-            $response = curl_exec($curl);
-            $err = curl_error($curl);
-            $result = json_decode($response, true);
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        $result = json_decode($response, true);
             
-            return $result; 
+        return $result;
     }
 
     public function createTvShowFromApi($result)
@@ -66,17 +66,16 @@ class TvShowController extends Controller
         $seasons = $this->getTvShowSeasons($result);
         $tvShow = $tvShowModel->getTvShowByName($seasons['name']);
         foreach ($seasons['seasons'] as $k => $season) {
-            if($k <> 0) { 
+            if ($k <> 0) {
                 $tvShowModel->createSeasonFromApi($season, $tvShow);
                 
-                for ($i=1; $i <= $season['episode_count']; $i++) { 
-                    
+                for ($i=1; $i <= $season['episode_count']; $i++) {
                     $episodeInfo = $this->getEpisodeInfoFromApi($result['id'], $season['season_number'], $i);
                     $episodeCredits = $this->getEpisodeActorsFromApi($result['id'], $season['season_number'], $i);
 
                     $tvShowModel->createEpisodeFromApi($episodeInfo, $tvShow->id, $seasons);
                     $tvShowModel->createEpisodeStaffFromApi($episodeCredits, $tvShow->id, $episodeInfo);
-                } 
+                }
             }
         }
     }
@@ -112,7 +111,6 @@ class TvShowController extends Controller
         $view = View::make('pages.tvshows')->with('tvshows', $tvshows);
 
         return $view;
-
     }
     public function list($id)
     {
@@ -144,7 +142,6 @@ class TvShowController extends Controller
         $view = View::make('pages.tvshow')->with('tvDetails', $tvDetails);
         
         return $view;
-
     }
     public function seasonlist($tvshowId, $seasonId)
     {
@@ -180,7 +177,6 @@ class TvShowController extends Controller
         $view = View::make('pages.episodes')->with('episodeDetails', $episodeDetails);
         
         return $view;
-        
     }
 
     public function addTvshowToWatchlist($tvshowId)
@@ -191,36 +187,30 @@ class TvShowController extends Controller
         $tvShowModel->addTvshowToWatchlist($userId, $tvshowId);
 
         return redirect('tv-show/'. $tvshowId);
-
     }
 
     public function removeTvshowFromWatchlist($tvshowId)
     {
-
         $userId = Auth::user()->id;
         $tvShowModel = new TvShow();
         $tvShowModel->removeTvshowFromWatchlist($userId, $tvshowId);
 
-        if ($tvshowId)
-        {
+        if ($tvshowId) {
             $message = 'Tvshow has been deleted';
 
             return redirect('/watchlist')->with('message', $message);
-        }
-
-        else {
+        } else {
             $error = 'Tvshow could not be deleted from watchlist, please try again';
 
-            return redirect('/watchlist')->with('error', $error); 
+            return redirect('/watchlist')->with('error', $error);
         }
-
     }
 
     public function deleteTvShow($tvShowId)
     {
         $tvshowModel = new TvShow();
         $tvShowDeleted = $tvshowModel->deleteTvShow($tvShowId);
-        if($tvShowDeleted == true) {
+        if ($tvShowDeleted == true) {
             $message = 'TvShow has been deleted';
             return redirect('/')->with('message', $message);
         } else {
@@ -229,4 +219,3 @@ class TvShowController extends Controller
         }
     }
 }
-

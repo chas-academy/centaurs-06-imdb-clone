@@ -16,7 +16,7 @@ class Director extends Model
         return 'director.name';
     }
 
-        public function movies()
+    public function movies()
     {
         return $this->belongsToMany('App\Http\Models\Movie');
     }
