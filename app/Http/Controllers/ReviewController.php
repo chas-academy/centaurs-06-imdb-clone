@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Validator;
 use Illuminate\Http\Request;
 use App\Http\Models\User;
 use App\Http\Models\Review;
@@ -10,9 +12,35 @@ class ReviewController extends Controller
 {
     public function addReview(Request $request, $movieId)
     {
-        $reviewModel = new Review();
-        $reviewModel->createReview($request, $movieId);
-        return redirect()->back();
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'content'  => 'required|string|max:255',
+            'rating' => 'required|numeric|between:0,5'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect("movie/{$movieId}")
+                        ->withErrors($validator)
+                        ->withInput();
+        } else {
+            $userId = Auth::User()->id;
+            $rating = $request->get('rating');
+            $title = $request->get('title');
+            $content = $request->get('content');
+
+            $review = Review::create([
+                'user_id' => $userId,
+                'movie_id' => $movieId,
+                'tvshow_id' => null,
+                'title' => $title,
+                'content' => $content,
+                'review_rating' => $rating
+            ]);
+
+            $review->save();
+        }
+
+        return redirect()->back()->with('message', 'Review successfully added');
     }
 
     public function addTvReview(Request $request, $tvshowId)
@@ -33,9 +61,9 @@ class ReviewController extends Controller
     {
         $reviewModel = new Review();
         $reviews = $reviewModel->getAllReviewsOnHold();
-        $view = view('pages.manage-reviews')->with('reviews', $reviews);
 
-        return $view;
+
+        return view('pages.manage-reviews')->with('reviews', $reviews);
     }
 
     public function approveReview($reviewId)

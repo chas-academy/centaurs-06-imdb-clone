@@ -6,32 +6,24 @@
     <script>
       $(document).foundation();
       $(document).ready(function() {
-        console.log();
         // Select 2 script foundation
         $(".js-example-basic-single").select2();
-        // Event listener for buttons in settings menu
-        $("#sign-in").click(function() {
-          menuSettingsHandler("in");
-        });
-        $("#sign-up").click(function() {
-          menuSettingsHandler("up");
-        });
+
+        // Event listener for handling closing on mobile
+        $(".mobile-btn-quit").on("click", toggleSettingsMenu);
       });
-      // Function for handling the click
-      function menuSettingsHandler(v) {
-        $("#mobile-btn-wrap").toggle();
-        $("#mobile-btn-back").css("display", "flex");
-        $("#sign-" + v + "-f").css("display", "block");
-        if ($("#sign-" + v + "-f").css("display") == "block") {
-          $("#mobile-btn-quit").hide();
-          $("#mobile-btn-back").click(function(e) {
-            $("#mobile-btn-quit").show();
-            $("#mobile-btn-back").hide();
-            $("#sign-" + v + "-f").css("display", "none");
-            $("#mobile-btn-wrap").css("display", "block");
-          });
-        }
+
+      // Function for handling the click on mobile
+      function toggleSettingsMenu(e) {
+        /**
+        * For some reason the foundation framework doesn't handle
+        * the tap on IOS for this particular button. Using this
+        * handler fixed the issue.
+        **/
+        e.preventDefault();
+        return;
       }
+
       // We don't repeat ourselves, we don't repeat ourselves...
       function generateMovieMarkup(movies) {
         return movies.map(movie => {

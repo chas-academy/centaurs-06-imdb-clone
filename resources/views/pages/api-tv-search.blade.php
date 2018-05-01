@@ -4,10 +4,10 @@
 <main class="row">
     @include('includes.menu-btn')
     @if (isset($message['error']))
-    <?php dd($message) ?>
+
     <section class="small-12" id="statusMsg">
         <p style="color: white">{{$message['error'] or ''}}</p>
-    </section> 
+    </section>
     @endif
 
     <section class="small-12 flex-align-sb-c">
@@ -34,7 +34,7 @@
 </main>
 @include('includes.footer')
 </div>
-@endsection 
+@endsection
 
 @section('page-scripts')
 

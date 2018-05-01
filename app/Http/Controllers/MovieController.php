@@ -31,7 +31,7 @@ class MovieController extends Controller
         $searchMethod = 'search/movie?';
         $query = $searchMethod . '&language=en-US&query=' . $argument . '&page=1&include_adult=false&' . $api_key;
         $result = $this->MovieApi($query);
-            
+
         return view('pages.api-search')->with('hits', $result)->with('user', $user);
     }
 
@@ -42,25 +42,29 @@ class MovieController extends Controller
         $searchMethod = 'movie/';
         $query = $searchMethod . $movieApiId . $api_key . '&page=1&include_adult=false';
         $result = $this->MovieApi($query);
-            
+
         $movieModel = new Movie();
         if ($movieModel->ifMovieExists($result['title'])) {
             $error = 'Movie already exists centaurs-imdb';
-            
+
             return redirect()->back()->with('hits', $result)->with('user', $user)->with('error', $error);
         } else {
             $this->createMovieFromApi($result);
+
             $message = 'Movie has been added to centaurs-imdb';
 
-            return redirect()->back()->with('hits', $result)->with('user', $user)->with('message', $message);
+            return redirect()->back()
+                    ->with('hits', $result)
+                    ->with('user', $user)
+                    ->with('message', $message);
         }
     }
 
     public function MovieApi($query)
     {
         $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
-        
-        
+
+
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.themoviedb.org/3/" . $query,
@@ -85,7 +89,7 @@ class MovieController extends Controller
         $movie->createMovie($result);
         $this->getMovieStaff($result);
     }
-        
+
     public function getMovieStaff($argument)
     {
         $api_key = 'api_key=6975fbab174d0a26501b5ba81f0e0b3c';
@@ -118,35 +122,27 @@ class MovieController extends Controller
         $movie->createMovieGenres($movieGenres);
     }
 
-
-    public function getAllMovies()
-    {
-        $movieModel = new Movie();
-        $movies = $movieModel->getAllMovies();
-        return $movies;
-    }
-
     public function sortByGenre($genre)
     {
         $movieModel = new Movie();
         $sortedMovies = $movieModel->getMoviesByGenre($genre);
         return $sortedMovies;
     }
-        
+
     public function removeMovieFromWatchlist($movieId)
     {
         $userId = Auth::user()->id;
-            
+
         $movieModel = new Movie();
         $movieModel->removeMovieFromWatchlist($userId, $movieId);
-            
+
         if ($movieId) {
             $message = 'Movie has been removed from watchlist';
 
             return redirect('/watchlist')->with('message', $message);
         } else {
             $error = 'Movie could not be deleted from watchlist, please try again';
-            
+
             return redirect('/watchlist')->with('error', 'Movie could not be deleted from watchlist. Please try again');
         }
     }
@@ -160,7 +156,7 @@ class MovieController extends Controller
 
         $movieExistsInWatchlist = $ledgerWatchlistModel->ifMovieExistsInWatchlist($movieId, $userId);
 
-            
+
         if (!$movieExistsInWatchlist) {
             $movieModel->addMovieToWatchlist($userId, $movieId);
             $message = 'Movie has been added to watchlist';
@@ -180,7 +176,6 @@ class MovieController extends Controller
         $producers = Producer::all()->toArray();
         $genres = Genre::all()->toArray();
         $releaseyears = range(date('Y'), 1910);
-            
 
         return view('pages.createmovie', ['actors' => $actors, 'directors' => $directors,'producers' => $producers,'genres' => $genres, 'releaseyears' => $releaseyears]);
     }
@@ -255,7 +250,7 @@ class MovieController extends Controller
         $exisitingActors = array_map(function ($actor) {
             return $actor;
         }, $db_actors->toArray());
-            
+
         $validatedData = $request->validate([
                 'title' => 'required|unique:movies|max:255',
                 'plot' => 'required',
@@ -274,7 +269,7 @@ class MovieController extends Controller
         $movie->plot = $request->plot;
         $movie->playtime = $request->playtimeMins;
         $movie->releasedate = ($request->releaseyear.'-01-01');
-            
+
         $poster = $request->file('poster');
         if ($poster) {
             $poster->store('/public/posters');
@@ -282,7 +277,7 @@ class MovieController extends Controller
         }
 
         $movie->save();
-            
+
         foreach ($actors as $actor) {
             $ledgerActor = new LedgerActor;
             $ledgerActor->actor_id = $actor->id;
@@ -381,7 +376,7 @@ class MovieController extends Controller
 
         return $this->editMovie($request, $id);
     }
-        
+
     public function deleteMovie($movieId)
     {
         $movieModel = new Movie();
@@ -394,7 +389,7 @@ class MovieController extends Controller
         } else {
 
                 //Movie with that id did not exists in db.
-                
+
             return redirect('movie/'. $movieId)->with('error', 'Movie has not been deleted');
         }
     }

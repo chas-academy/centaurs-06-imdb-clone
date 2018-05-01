@@ -16,16 +16,18 @@ header
         .search-btn
             /*      Motion ui class for toggle      */
             &.hidden
+                opacity: 0
                 display: none
         .search-exit-btn
             /*      Motion ui class for toggle      */
             &.visible
+                opacity: 1;
                 display: inline-block
         .search-input
             margin: 0
             width: 90%
             text-align: center
-            padding: 0px 15px 0px 15px 
+            padding: 0px 15px 0px 15px
         select
             width: 48%
             visibility: hidden
@@ -38,7 +40,7 @@ header
 main
     padding: 0px 25px 35px 25px
     section
-        padding: 25px 0px 25px 0px 
+        padding: 25px 0px 25px 0px
     .flex-align-sb-c
         display: flex
         flex-wrap: wrap
@@ -87,7 +89,10 @@ main
 
 /*          Footer Layout            */
 footer
-    padding: 25px 0px 25px 0px
+    &#desk-hide
+        position: absolute;
+        bottom: 0
+        width: 100%
     .footer
         display: flex
         align-items: center
@@ -119,7 +124,6 @@ header
 /*          Main Section Styling         */
 main
     .flex-align-sb-c
-        border-bottom: 1px solid #333333
         .movie-poster
             .movie-rating
                 color: #F1F1F1
@@ -145,7 +149,7 @@ main
 footer
     color: #F1F1F1
     background: #F03E3E
-    button 
+    button
         font-size: 28px
         border-radius: 50%
         background: #F1F1F1

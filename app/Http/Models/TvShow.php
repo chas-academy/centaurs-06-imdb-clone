@@ -75,7 +75,7 @@ class TvShow extends Model
     public function createEpisodeStaffFromApi($episodeCredits, $tvShowId, $episodeInfo)
     {
         $movieModel = new Movie();
-        
+
         if (!empty($episodeCredits['cast'])) {
             foreach ($episodeCredits['cast'] as $cast) {
                 if (!$movieModel->ifActorExists($cast['name'])) {
@@ -83,7 +83,7 @@ class TvShow extends Model
                         'name' => $cast['name']
                         ]);
                 }
-        
+
                 $actor = $movieModel->getActors($cast['name']);
                 $season = $this->getTvShowSeason($episodeInfo['season_number'], $tvShowId);
                 $episode = $this->getEpisode($season->id, $episodeInfo['episode_number']);
@@ -130,7 +130,7 @@ class TvShow extends Model
                         ]);
                     }
                 }
-                
+
                 if ($crew['job'] === 'Writer') {
                     if (!$movieModel->ifWriterExists($crew['name'])) {
                         DB::table('writers')->insert([
@@ -156,9 +156,11 @@ class TvShow extends Model
         $movieModel = new Movie();
         if (!$movieModel->ifGenreEpisodeLedgerExists($tvshowId, $genreIds)) {
             $genres = [];
+
             foreach ($genreIds as $genre) {
                 array_push($genres, $genre['id']);
             }
+
             $genreIds = $movieModel->getGenres($genres);
 
             foreach ($genreIds as $genreId) {
@@ -193,20 +195,13 @@ class TvShow extends Model
     public function getEpisodesFromSpecificSeason($seasonId)
     {
         $episodes = DB::table('episodes')->where('season_id', $seasonId)->get();
-        // dd($episodes);
+
         $episodeNumbers = [];
         foreach ($episodes as $key => $episode) {
-            // $keys = ['Episode-' . ($key + 1)];
-            // $episodeNumbers = array_fill_keys($keys, $episode);
-            // $episodeNumbers[] = $episodeNumbers;
             $episodeName = 'Episode-' . ($key + 1);
             $episodeNumbers[$episodeName] = $episode;
         }
-        // dd($episodeNumbers);
-        // for($i = 0; $i < count($episodes); $i++){
-        //      $episodes[$i] = ['Episode-' . ($number + 1) => $episodes[$i]];
-        // }
-        // dd($episodes);
+
         return $episodeNumbers;
     }
 
@@ -240,7 +235,7 @@ class TvShow extends Model
         foreach ($directors as $director) {
             $directorIds[] = $director->all();
         }
-        
+
         return $directorIds;
     }
 
@@ -281,7 +276,7 @@ class TvShow extends Model
     public function getActorNamesFromActorId($actorIds)
     {
         $actors = [];
-        
+
         foreach ($actorIds as $key => $episodesActorIds) {
             foreach ($episodesActorIds as $actorId) {
                 $episodeName = 'Episode-' . ($key + 1);
@@ -341,7 +336,7 @@ class TvShow extends Model
 
         return $writers;
     }
-    
+
     public function getTvShowSeason($seasonNumber, $tvShowId)
     {
         return DB::table('seasons')->where('season_number', $seasonNumber)->where('tvshow_id', $tvShowId)->first();
@@ -351,7 +346,7 @@ class TvShow extends Model
     {
         return DB::table('tv_shows')->where('title', $tvShowName)->first();
     }
-    
+
     public function ifTvShowExists($TvShowTitle): bool
     {
         return DB::table('tv_shows')->where('title', $TvShowTitle)->exists();
@@ -363,7 +358,7 @@ class TvShow extends Model
             'season_id' => $seasonId,
             'episode_nr'=> $episodeNumber])->exists();
     }
-    
+
     public function IfSeasonExists($tvShowId, $seasonNumber): bool
     {
         return DB::table('seasons')->where('tvshow_id', $tvShowId)->where('season_number', $seasonNumber)->exists();
@@ -373,12 +368,12 @@ class TvShow extends Model
     {
         return DB::table('ledger_writers')->where('writer_id', $writerId)->where('episode_id', $episodeId)->exists();
     }
-    
+
     public function ifEpisodeDirectorLedgerExists($directorId, $episodeId): bool
     {
         return DB::table('ledger_directors')->where('director_id', $directorId)->where('episode_id', $episodeId)->exists();
     }
-    
+
     public function ifEpisodeProducerLedgerExists($producerId, $episodeId): bool
     {
         return DB::table('ledger_producers')->where('producer_id', $producerId)->where('episode_id', $episodeId)->exists();

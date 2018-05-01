@@ -14,16 +14,17 @@ class Movie extends Model
 {
     use Searchable;
 
+    protected $fillable = ['movie_api_id', 'title', 'plot', 'playtime', 'poster', 'backdrop', 'releasedate', 'imdb_rating'];
+
     public function searchableAs()
     {
         return 'movie.title';
     }
 
-    
     public function createMovie($properties)
     {
         if (!$this->ifMovieExists($properties['title'])) {
-            DB::table('movies')->insert([
+            $movie = $this::create([
                 'movie_api_id' => $properties['id'],
                 'title' => $properties['title'],
                 'plot' => $properties['overview'],
@@ -36,12 +37,15 @@ class Movie extends Model
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-            $movie = $this->getMovieByTitle($properties['title']);
+
             $genres = [];
+
             foreach ($properties['genres'] as $genre) {
                 array_push($genres, $genre['id']);
             }
+
             $genres = $this->getGenres($genres);
+
             foreach ($genres as $genre) {
                 DB::table('ledger_genres')->insert([
                     'movie_id' => $movie->id,
@@ -62,9 +66,9 @@ class Movie extends Model
                         'name' => $properties['cast'][$i]['name']
                         ]);
                 }
-    
+
                 $actor = $this->getActors($properties['cast'][$i]['name']);
-                
+
                 if (!$this->ifActorMovieLedgerExists($actor->id, $movie->id)) {
                     DB::table('ledger_actors')->insert([
                         'actor_id' => $actor->id,
@@ -84,7 +88,7 @@ class Movie extends Model
                 }
 
                 $director = $this->getDirectors($crewMember['name']);
-                
+
                 if (!$this->ifMovieDirectorLedgerExists($director->id, $movie->id)) {
                     DB::table('ledger_directors')->insert([
                         'director_id' => $director->id,
@@ -92,7 +96,7 @@ class Movie extends Model
                         ]);
                 }
             }
-                    
+
             if ($crewMember['job'] === 'Producer') {
                 if (!$this->ifProducerExists($crewMember['name'])) {
                     DB::table('producers')->insert([
@@ -100,7 +104,7 @@ class Movie extends Model
                         'name' => $crewMember['name']
                         ]);
                 }
-                    
+
                 $producer = $this->getProducers($crewMember['name']);
 
                 if (!$this->ifMovieProducerLedgerExists($producer->id, $movie->id)) {
@@ -159,7 +163,7 @@ class Movie extends Model
     public function getProducers($name)
     {
         $producerName = DB::table('producers')->get()->where('name', $name);
-       
+
         return array_first($producerName);
     }
 
@@ -187,18 +191,12 @@ class Movie extends Model
     public function getGenres($genreIds)
     {
         $genres = [];
+
         foreach ($genreIds as $id) {
             array_push($genres, DB::table('genres')->get()->where('api_genre_id', $id)->first());
         }
 
         return $genres;
-    }
-
-    public static function getAllMovies()
-    {
-        $movies = DB::table('movies')->get();
-
-        return $movies;
     }
 
     public function getMovieById($movieId)
@@ -217,7 +215,7 @@ class Movie extends Model
         foreach ($actorIds as $actorId) {
             array_push($actors, DB::table('actors')->where('id', $actorId->actor_id)->value('name'));
         }
-        
+
         return $actors;
     }
 
@@ -230,7 +228,7 @@ class Movie extends Model
         foreach ($directorIds as $directorId) {
             array_push($directors, DB::table('directors')->where('id', $directorId->director_id)->value('name'));
         }
-        
+
         return $directors;
     }
 
@@ -243,7 +241,7 @@ class Movie extends Model
         foreach ($producerIds as $producerId) {
             array_push($producers, DB::table('producers')->where('id', $producerId->producer_id)->value('name'));
         }
-        
+
         return $producers;
     }
 
@@ -256,7 +254,7 @@ class Movie extends Model
         foreach ($writerIds as $writerId) {
             array_push($writers, DB::table('writers')->where('id', $writerId->writer_id)->value('name'));
         }
-        
+
         return $writers;
     }
 
@@ -269,7 +267,7 @@ class Movie extends Model
         foreach ($genreIds as $genreId) {
             array_push($genres, DB::table('genres')->where('id', $genreId->genre_id)->value('genre_name'));
         }
-        
+
         return $genres;
     }
 
@@ -315,7 +313,7 @@ class Movie extends Model
             'movie_id' => $movieId
         ]);
     }
-    
+
     public function getMoviesByGenre($genre)
     {
         $genresModel = new Genre();
@@ -488,7 +486,7 @@ class Movie extends Model
     {
         return DB::table('producers')->where('name', $producerName)->exists();
     }
-    
+
     public function ifMovieProducerLedgerExists($producerId, $movieId): bool
     {
         return DB::table('ledger_producers')->where('producer_id', $producerId)->where('movie_id', $movieId)->exists();
@@ -549,6 +547,11 @@ class Movie extends Model
 
     public function genres()
     {
-        return $this->belongsToMany('App\Http\Models\Genre', 'ledger_genres', 'movie_id', 'genre_id');
+        return $this->belongsToMany('App\Http\Models\Genre', 'ledger_genres');
+    }
+
+    public function writers()
+    {
+        return $this->belongsToMany('App\Http\Models\Writer', 'ledger_writers', 'movie_id', 'writer_id');
     }
 }

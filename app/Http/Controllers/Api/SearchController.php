@@ -32,7 +32,7 @@ class SearchController extends Controller
                 ['indexName' => 'director.name', 'query' => $query],
                 ['indexName' => 'producer.name', 'query' => $query]
             ];
-            
+
             $searchResults = $client->multipleQueries($queries, 'indexName');
             $searchResults = array_first($searchResults);
 
@@ -49,7 +49,7 @@ class SearchController extends Controller
                 "producer.movies" => [],
                 "producer.tvshows" => [],
             );
-            
+
             // To get movie from actorname
             foreach ($searchResults as $result) {
                 if (!empty($result['hits'])) {
@@ -78,11 +78,11 @@ class SearchController extends Controller
                             break;
                         default:
                             break;
-                        
+
                     }
                 }
             }
-  
+
             $movies = array_get($results, 'movie.title');
             $tvshows = array_get($results, 'tvshow.title');
             $actorsInMovie = array_get($results, 'actor.movies');
@@ -92,7 +92,7 @@ class SearchController extends Controller
             $movies = array_merge($movies, $actorsInMovie, $directorsInMovie, $producersInMovie);
 
             if (empty($movies)) {
-                $movies = Movie::getAllMovies();
+                $movies = Movie::all();
                 $message = 'No results found, please try with different keywords.';
                 return redirect('/')->with('message', $message)->with('movies', $movies);
             }

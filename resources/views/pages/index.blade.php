@@ -1,4 +1,5 @@
-@extends('layouts.layout') @section('content')
+@extends('layouts.layout')
+@section('content')
 <div class="off-canvas-content" data-off-canvas-content>
     @include('includes.header')
     @include('includes.messages')
@@ -11,7 +12,14 @@
             <a id="movies-link" href="/">Movies</a>
             <a id="tvshows-link" href="/tv-shows">Tv-Shows</a>
         </div>
-        @foreach($movies as $key => $movie)
+
+        @if(!count($movies['movie']) > 0)
+            <section class="small-12 flex-align-sb-c">
+                <h4>Could not find any movies matching current criteria.</h4>
+            </section>
+        @endif
+
+        @forelse($movies as $key => $movie)
             @if ($key === 'movie')
                 <section class="small-12 flex-align-sb-c">
                 @foreach($movies['movie'] as $movie)
@@ -37,7 +45,7 @@
                             <div class="movie-rating">
                                 <p class="rating-num">{{ $movie->imdb_rating }}</p>
                                 <i class="fa fa-star" aria-hidden="true"></i>
-                            </div> 
+                            </div>
                             <a href="movie/{{ $movie->id }}" class="none">
                                 <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
 
@@ -78,7 +86,7 @@
                             <div class="movie-rating">
                                 <p class="rating-num">{{ $movie['imdb_rating'] }}</p>
                                 <i class="fa fa-star" aria-hidden="true"></i>
-                            </div> 
+                            </div>
                             <a href="movie/{{ $movie['id'] }}" class="none">
                             <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie['poster']) }}" >
                                 @if($movie['poster'] === null)
@@ -118,7 +126,7 @@
                             <div class="movie-rating">
                                 <p class="rating-num">{{ $movie->imdb_rating }}</p>
                                 <i class="fa fa-star" aria-hidden="true"></i>
-                            </div> 
+                            </div>
                             <a href="movie/{{ $movie->id }}" class="none">
                             <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
                                 @if($movie->poster === null)
@@ -128,7 +136,7 @@
                         @endif
                         </div>
                     @endforeach
-                    </section>    
+                    </section>
 
                 @elseif ($key === 'directors')
                     <div>
@@ -158,7 +166,7 @@
                             <div class="movie-rating">
                                 <p class="rating-num">{{ $movie->imdb_rating }}</p>
                                 <i class="fa fa-star" aria-hidden="true"></i>
-                            </div> 
+                            </div>
                             <a href="movie/{{ $movie->id }}" class="none">
                             <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
                                 @if($movie->poster === null)
@@ -169,7 +177,7 @@
                         </div>
                     @endforeach
                     </section>
-                
+
                 @elseif ($key === 'producers')
                     <div>
                         <h5>Search results for Directors</h5>
@@ -198,7 +206,7 @@
                             <div class="movie-rating">
                                 <p class="rating-num">{{ $movie->imdb_rating }}</p>
                                 <i class="fa fa-star" aria-hidden="true"></i>
-                            </div> 
+                            </div>
                             <a href="movie/{{ $movie->id }}" class="none">
                             <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($movie->poster) }}" >
                                 @if($movie->poster === null)
@@ -211,7 +219,11 @@
                     </section>
                 @else
             @endif
-        @endforeach
+        @empty
+            <section class="small-12 flex-align-sb-c">
+                <h4>Could not find any movies matching current criteria.</h4>
+            </section>
+        @endforelse
         <div class="algolia-container">
             <a href="https://www.algolia.com/">
                 <img class="algolia" src="{{ asset('img/algolia/search-by-algolia-white.png') }}" >
@@ -221,7 +233,7 @@
 
 @include('includes.footer')
 </div>
-@endsection 
+@endsection
 
 @section('page-scripts')
 

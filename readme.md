@@ -49,9 +49,13 @@ $ php artisan serve
 
 # If using Homestead (this assumes your Homestead directory is in your home folder)
 $ cd ~/Homestead && vagrant ssh -c "cd /home/vagrant/projects/centaurs-06-imdb-clone && php artisan migrate"
-
-
 ```
+
+### Populate the database with some needed defaults
+In order to get up and running you need to visit the following routes:
+
+- `/creategenres`
+- `/createtvgenres`
 
 ## Deploy
 
