@@ -12,8 +12,6 @@ use DB;
 
 class RegisterController extends Controller
 {
-
-
     use RegistersUsers;
 
     /**

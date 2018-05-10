@@ -2,36 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Redirect;
 use Auth;
-use App\Http\Models\User;
 use Hash;
 use Image;
 use View;
 use DB;
 use Validator;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Redirect;
+use App\Http\Models\User;
+
 class UserController extends Controller
 {
-    public function profile()
-    {
-        return Auth::user();
-    }
 
     public function updateAvatar(Request $request)
     {
+        // Let's validate to make sure it's actually an image, of maximum 2MB
+        request()->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
         if ($request->hasFile('avatar')) {
+
             $avatar = $request->file('avatar');
             $filename = time() . "." . $avatar->getClientOriginalExtension();
+
             Image::make($avatar)->resize(300, 300)->save(public_path('/img/avatars/' . $filename));
 
             $user = Auth::user();
             $user->avatar = $filename;
             $user->save();
+
+            return redirect('/')->with('message', 'Your avatar has now been updated!');
         }
 
-        return array('user' => Auth::user());
+
     }
 
     public function deleteAccount($userId)
@@ -40,7 +46,7 @@ class UserController extends Controller
             if (Auth::user()->id == $userId) {
                 DB::table('ledger_watch_lists')->where('user_id', $userId)->delete();
                 DB::table('users')->where('id', $userId)->delete();
-                
+
                 return redirect('/')->with('message', 'Your account has been deleted!');
             }
             // TODO: handle message (you have to be signed in)
@@ -60,7 +66,7 @@ class UserController extends Controller
                 $user = User::find(Auth::user()->id);
                 $user->email = $request->input('new-email');
                 $user->save();
-                // TODO: Nice message and redirect, maybe?
+
                 return redirect('/')->with('message', 'Your email has been updated!');
             }
         }
@@ -70,7 +76,7 @@ class UserController extends Controller
     {
         $currentPassword = $request->input('current-password');
         $newPassword = $request->input('new-password');
-    
+
         $validator = Validator::make($request->all(), [
             'current-password' => 'required',
             'new-password' => 'required|string|min:6'
@@ -85,7 +91,7 @@ class UserController extends Controller
         if (!(Hash::check($currentPassword, Auth::user()->password))) {
             return redirect()->back()->with('error', 'Your current password does not match with the password you provided. Please try again.');
         }
-        
+
         if ($currentPassword === $newPassword) {
             return redirect('/')->with('error', 'You are trying to change to the same password. Don\'t');
         }

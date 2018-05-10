@@ -1,24 +1,27 @@
 #offcanvas-full-screen
     display: flex
-    width: 20%
+    width: map-get($offcanvas-sizes, large)
     -webkit-transform: translateX(0%)
     -ms-transform: translateX(0%)
     transform: translateX(0%)
     overflow-y: inherit
 
 #offcanvas-full-members
-    width: 20%
+    width: map-get($offcanvas-sizes, large)
 
 .offcanvas-full-screen-inner
     width: 100%
 
 .off-canvas-content
-    margin-left: 20%
+    margin-left: map-get($offcanvas-sizes, large)
+    min-height: 100vh
+    height: auto !important;
+    height: 100%;
 
 // Movie-page styling
 
 .current-movie
-    margin-left: 20%
+    padding-left: 400px
     display: flex
     flex-direction: column
     .movie-flex-align
@@ -45,7 +48,7 @@
                     height: auto
                     min-width: 340px
                     max-width: 340px
-                    
+
         .movie-info-section
             margin: 50px
             width: 1000px
@@ -170,6 +173,7 @@
     display: none
 
 #mobile-hide
+    z-index: 1
     display: block
     padding: 35px 25px 10px 25px
     #search-desktop
@@ -187,16 +191,18 @@
         .search-btn
             /*      Motion ui class for toggle      */
             &.hidden
+                opacity: 0
                 display: none
         .search-exit-btn
             /*      Motion ui class for toggle      */
             &.visible
+                opacity: 1
                 display: inline-block
         .search-input
             margin: 0
             width: 90%
             text-align: center
-            padding: 0px 15px 0px 15px 
+            padding: 0px 15px 0px 15px
         select
             width: 48%
             visibility: hidden
@@ -219,12 +225,6 @@
 .delete-review
     color: #F03E3E
     font-size: 2rem !important
-
-#sign-in
-    font-size: 2rem
-
-#sign-up
-    font-size: 2rem
 
 #search-btn
     display: none
@@ -251,6 +251,8 @@
 // Algolia logo styling
 
 .algolia-container
+    bottom: 0
+    border-top: 1px solid #333333
     display: flex
     justify-content: flex-end
     margin-top: 15px
@@ -259,7 +261,7 @@
         height: 20px
 .tv-shows
     margin-left: 20px
-    
+
 #movies-link
     color: white
 

@@ -1,7 +1,12 @@
-@extends('layouts.layout') @section('content')
+@extends('layouts.layout')
+
+@section('content')
+
 @include('includes.errors')
-    @include('includes.messages')
+@include('includes.messages')
+
 <?php $user = Auth::user(); ?>
+
 <header id="desk-hide" class="row">
 
     <div id="desk-hide" class="small-12 header-flex-align-sb-c">
@@ -13,7 +18,10 @@
     <form class="small-12 header-flex-align-sb-c fast" id="search" data-toggler=".visible" data-animate="fade-in fade-out">
         <input type="text" class="search-input" placeholder="Find Movies, Tv Shows and more...">
     </form>
+
 </header>
+
+@if(!empty($movie))
 <div id="mobile-hide">
     <img class="current-movie backdrop-image" src="<?= config('app.backdrop_url') . $movie->backdrop ?>" alt="Poster for {{$movie->title}}" title="{{ $movie->title }}" />
 </div>
@@ -62,10 +70,10 @@
                         <b>Directors</b>
                         <ul class="director">
                             @if (empty($writers))
-                            <p>No writers found</p>
+                                <p>No writers found</p>
                             @else
                             @foreach ($directors as $director)
-                                <li class="person-name">{{ $director }}</li>
+                                <li class="person-name">{{ $director->name }}</li>
                             @endforeach
                             @endif
                         </ul>
@@ -77,7 +85,7 @@
                             <p>No writers found</p>
                             @else
                             @foreach ($writers as $writer)
-                                <li class="person-name">{{ $writer }}</li>
+                                <li class="person-name">{{ $writer->name }}</li>
                             @endforeach
                             @endif
                         </ul>
@@ -85,12 +93,12 @@
                     <div class="movie-crew-card">
                         <b>Producer</b>
                         <ul class="producer">
-                            
+
                             @if (empty($producers))
                             <p>No producers found</p>
                             @else
                             @foreach ($producers as $producer)
-                                <li class="person-name">{{ $producer }}</li>
+                                <li class="person-name">{{ $producer->name }}</li>
                             @endforeach
                             @endif
                         </ul>
@@ -102,11 +110,11 @@
                             <p>No actors found</p>
                             @else
                             @foreach ($actors as $actor)
-                            <li class="person-name">{{ $actor }}</li>
+                            <li class="person-name">{{ $actor->name }}</li>
                             @endforeach
                             @endif
                         </ul>
-                    </div>          
+                    </div>
                 </div>
                 <div class="small-12 movie-plot">
                     <b>Storyline :</b>
@@ -126,34 +134,35 @@
                     <a id="delete-movie-btn" class="writer-review" href="/movie/{{ $movie->id }}/delete">Delete this movie</a>
                 @endif
                 @endif
-            </div> 
+            </div>
         </div>
     </div>
     <div class="small-12 review-flex-align">
         <div id="write-reviews" class="write-reviews" data-toggler=".visible">
-            <div class="review-rate">
-                <form class="write-review-form" action="{{ $movie->id }}/addreview" method="POST">
-                    {{ csrf_field() }}
-                    <fieldset class="rating">
-                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                        <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                        <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                        <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                        <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                    </fieldset>
-            </div>
+            <form id="review-form" class="write-review-form" action="{{ $movie->id }}/addreview" method="POST">
+                {{ csrf_field() }}
+                <fieldset class="rating" form="review-form">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
                 <input type="text" placeholder="Title" name="title">
                 <textarea name="content" id="" cols="30" rows="20" placeholder="Content of review"></textarea>
                 <button class="send-review" type="submit" name=''>Add review</button>
-            </form>                   
+            </form>
+            <div class="review-rate">
+
+            </div>
         </div>
         <div id="read-reviews" class="read-reviews" data-toggler=".visible">
-        @if($reviews->first())
+        @if(!empty($reviews))
             @foreach($reviews as $review)
                 <div id="review-1" class="small-12 review">
                     <div class="small-12 review-rate">
@@ -230,4 +239,9 @@
         </div>
     </div>
 </main>
-@endsection 
+@else
+<main class="row current-movie">
+    <h4>Couldn't find that movie</h4>
+</main>
+@endif
+@endsection

@@ -18,7 +18,7 @@ class CreateLedgerwritersTable extends Migration
             $table->integer('movie_id')->unsigned()->nullable();
             $table->integer('episode_id')->unsigned()->nullable();
         });
-        
+
         Schema::table('ledger_writers', function (Blueprint $table) {
             $table->foreign('writer_id')->references('id')->on('writers');
             $table->foreign('movie_id')->references('id')->on('movies');
@@ -33,6 +33,6 @@ class CreateLedgerwritersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ledgerwriters');
+        Schema::dropIfExists('ledger_writers');
     }
 }

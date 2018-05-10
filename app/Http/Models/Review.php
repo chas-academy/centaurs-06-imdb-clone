@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
+    protected $fillable = ['user_id', 'movie_id', 'title', 'content', 'review_rating'];
+
     public function createReview($request, $movieId)
     {
         $userId = Auth::User()->id;
@@ -50,12 +52,11 @@ class Review extends Model
     {
         $reviews = DB::table('reviews')->orderBy('updated_at', 'desc')->get()->where('movie_id', $movieId)->where('type', 'approved');
         $authors = [];
-        
+
         foreach ($reviews as $key => $review) {
             $userId = $reviews[$key]->user_id;
-            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $author = array_first(DB::table('users')->get()->where('id', $userId));
             $reviews[$key]->author = $author;
-            
         }
 
         return $reviews;
@@ -65,12 +66,11 @@ class Review extends Model
     {
         $reviews = DB::table('reviews')->orderBy('updated_at', 'desc')->get()->where('tvshow_id', $tvshowId)->where('type', 'approved');
         $authors = [];
-        
+
         foreach ($reviews as $key => $review) {
             $userId = $reviews[$key]->user_id;
-            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $author = array_first(DB::table('users')->get()->where('id', $userId));
             $reviews[$key]->author = $author;
-            
         }
 
         return $reviews;
@@ -81,16 +81,14 @@ class Review extends Model
         $reviews = DB::table('reviews')->orderBy('updated_at')->latest()->get()->where('type', 'hold');
         foreach ($reviews as $key => $review) {
             $userId = $reviews[$key]->user_id;
-            $author = array_first(DB::table('users')->get()->where('id', $userId));  
+            $author = array_first(DB::table('users')->get()->where('id', $userId));
             $reviews[$key]->author = $author;
-            
         }
 
-       return $reviews;
-
+        return $reviews;
     }
 
-    public function removeReview($reviewId) 
+    public function removeReview($reviewId)
     {
         DB::table('reviews')->where('id', $reviewId)->delete();
     }
@@ -98,5 +96,10 @@ class Review extends Model
     public function approveReview($reviewId)
     {
         DB::table('reviews')->where('id', $reviewId)->update(['type' => 'approved']);
+    }
+
+    public function author()
+    {
+        return $this->belongsTo('App\Http\Models\User', 'id');
     }
 }

@@ -60,16 +60,58 @@
     padding-left: 15px
     padding-right: 15px
 
+.is-drilldown
+    height: 100%
+    li
+        border-bottom: 1px solid #333333
+        div
+            padding-top: 1rem
+
+.drilldown
+    a
+        background: transparent
+        font-size: 1.25rem
+        line-heigt: 2rem
+        color: white
+    ul.developer
+        &.is-active
+            overflow-x: hidden
+            overflow-y: scroll
+            height: 0
+
+.drilldown .is-drilldown-submenu
+        background: black
+
+.drilldown .js-drilldown-back
+        > a
+            &::before
+                border-color: transparent white transparent transparent
+.drilldown .is-drilldown-submenu-parent
+        > a
+            &::after
+                border-color: transparent transparent transparent #ffffff
 #profile-page
     display: flex
     flex-direction: column
     color: #FFFFFF
-    align-items: flex-end
-    padding-top: 1.5rem
+    align-items: center
+    padding: 1rem 0
+    #avatar
+        display: flex
     .avatar
-        text-align: right
+        text-align: center
+        margin-right: 10px
+    .navigation
+        width: 100%
+        margin: 0
+        list-style-type: none
+        li
+            border-bottom: 1px solid #333333
+        &.back-buttons
+            li
+                border-bottom: none
 
-.width-100
+    .width-100
     width: 100
     text-align: right
 
@@ -81,8 +123,7 @@
 .avatar
     display: flex
     flex-direction: column
-    align-items: flex-end
-    margin-right: 14px
+    align-items: center
     width: 100%
     color: #E2A534
 
@@ -112,11 +153,11 @@
     border: none
 
 #forgot-pwd
+    font-size: 1rem
     display: flex
     justify-content: center
     text-decoration: none
-    color: #ffffff
-
+    color: #FAD400
 .reset
     margin-top: 15px
     color: #151515
@@ -165,12 +206,6 @@
         margin-bottom: 25px
         background-color: #FAD400
 
-#password-form
-    display: none
-    // Allows motion ui to work
-    &.visible
-        display: flex
-
 #footer-side-menu
     display: none
 
@@ -179,54 +214,15 @@
 
 #desk-show
     display: none
-    
-#links
-    font-weight: bold
-    padding-right: 1rem
-    padding-top: 3rem
 
-#white
+.white
     color: #ffffff
     font-size: 1.25rem
     font-weight: bold
 
 #log-out
-    padding-top: 3rem
-    color: #ffffff
-    font-size: 1.25rem
-
-#avatar-page
-    display: none
-
-#add-avatar
-    display: none
-
-#settings,
-#admin-settings
-    display: none
-    padding-right: 1rem
-
-.back-btn
-    display: none
-    padding-right: 1rem
-    padding-top: 5rem
-
-#email-update
-    display: none
-
-#password-update
-    display: none
-
-#delete-account
-    display: none
+    text-align: center
 
 #delete-text
     padding-right: 1rem
     color: #f03e3f
-
-.email-btn
-    color: #ffffff
-    padding-right: 1rem
-
-.email-btn:hover
-    color: #ffffff

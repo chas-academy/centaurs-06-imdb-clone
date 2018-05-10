@@ -20,5 +20,4 @@ class Actor extends Model
     {
         return $this->belongsToMany('App\Http\Models\Movie');
     }
-    
 }

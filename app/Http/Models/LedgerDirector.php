@@ -14,7 +14,6 @@ class LedgerDirector extends Model
         $actsIn = [];
 
         foreach ($directorIds as $directorId) {
-            
             $directormovie = DB::table('ledger_directors')->get()->where('director_id', $directorId);
             $directsIn[] = $directormovie;
         }
@@ -22,14 +21,14 @@ class LedgerDirector extends Model
         $directorInfo = [];
         
         foreach ($directsIn as $movieId) {
-            $directorInfo[] = json_decode (json_encode ($movieId), FALSE);
+            $directorInfo[] = json_decode(json_encode($movieId), false);
         }
 
         $movieIds = [];
         
         foreach ($directorInfo as $movieId) {
             foreach ($movieId as $test) {
-                $movieIds[] = $test->movie_id;  
+                $movieIds[] = $test->movie_id;
             }
         }
         

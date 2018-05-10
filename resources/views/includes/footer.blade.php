@@ -1,8 +1,5 @@
-<footer id="desk-hide" class="row">
+<footer id="desk-hide" class="footer">
     <div class="small-12 footer">
-        <button data-toggle="offcanvas-full-members">
-            <i class="fa fa-users" aria-hidden="true"></i>
-        </button>
-        <p>Curious about us?</p>    
+        <p>Centaurs Movies © 2018</p>
     </div>
 </footer>

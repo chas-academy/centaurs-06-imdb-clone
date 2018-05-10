@@ -4,6 +4,7 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+
 class LedgerWatchList extends Model
 {
     public function ifMovieExistsInWatchlist($movieId, $userId): bool

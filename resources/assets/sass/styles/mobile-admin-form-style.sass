@@ -1,5 +1,5 @@
 .outerContentContainer
-    background-color: #E8E8E8
+    // background-color: #E8E8E8
     $admin-color: #FFCF3F
 
     &:before
@@ -13,7 +13,7 @@
         margin: 0 auto
         margin-top: 40px
 
-        h1  
+        h1
             margin-bottom: 0.8em
 
         .adminform
@@ -30,8 +30,8 @@
 
         @media only screen and (min-width: 1024px)
             .innerContentContainer
-            margin-left: 20%
-            width: 80%
+            padding-left: map-get($offcanvas-sizes, large)
+            width: 100%
 
 .posterThumbnailWrapper
     display: flex

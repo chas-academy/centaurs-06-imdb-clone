@@ -32,12 +32,16 @@ class User extends Authenticatable
     public function isAdmin()
     {
         $user = Auth::user();
-        
-        if ($user->type === 'admin')
-        {
+
+        if ($user->type === 'admin') {
             return true;
         }
 
         return false;
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Http\Models\Review', 'ledger_reviews', 'user_id', 'id');
     }
 }

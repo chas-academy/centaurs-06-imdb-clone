@@ -9,7 +9,7 @@
 	@include('../includes.off-canvas')
 
     @include('../includes.scripts')
-    
+
     @yield('page-scripts')
     </body>
 </html>

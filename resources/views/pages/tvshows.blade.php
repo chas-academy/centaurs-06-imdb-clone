@@ -12,7 +12,7 @@
             <a id="tvshows-link" href="/tv-shows">Tv-Shows</a>
         </div>
     <section class="small-12 flex-align-sb-c">
-        @foreach ($tvshows as $tvshow)
+        @forelse ($tvshows as $tvshow)
             <div class="movie-poster">
                 <div class="movie-rating delete-btn-cont">
                     @if(Auth::check())
@@ -22,7 +22,7 @@
                     @endif
                     <p class="rating-num">{{ $tvshow->imdb_rating }}</p>
                     <i class="fa fa-star" aria-hidden="true"></i>
-                </div> 
+                </div>
                 <a href="tv-show/{{ $tvshow->id }}" class="none">
                     <img class="poster-size" src="{{ App\Http\Models\Movie::getPosterUrl($tvshow->poster) }}" >
                     @if($tvshow->poster === null)
@@ -30,12 +30,19 @@
                     @endif
                 </a>
             </div>
-        @endforeach            
+        @empty
+            <h4>Could not find any shows matching current criteria.</h4>
+        @endforelse
     </section>
+    <div class="algolia-container">
+        <a href="https://www.algolia.com/">
+            <img class="algolia" src="{{ asset('img/algolia/search-by-algolia-white.png') }}" >
+        </a>
+    </div>
 </main>
 @include('includes.footer')
 </div>
-@endsection 
+@endsection
 
 @section('page-scripts')
 

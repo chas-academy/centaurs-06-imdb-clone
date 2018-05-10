@@ -14,7 +14,7 @@ class Genre extends Model
     protected $table = 'genres';
 
     public function getAllGenres()
-    { 
+    {
         $genres = DB::table('genres')->get();
         return $genres;
     }
@@ -22,7 +22,7 @@ class Genre extends Model
     public function searchableAs()
     {
         return 'genre.name';
-    } 
+    }
 
     public function movies()
     {
