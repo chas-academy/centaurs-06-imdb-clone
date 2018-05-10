@@ -59,7 +59,7 @@
                         <p>No genres found</p>
                         @else
                         @foreach ($genres as $genre)
-                            <p class="genre">{{ $genre }}</p>
+                            <p class="genre">{{ $genre->genre_name }}</p>
                         @endforeach
                         @endif
                     </div>
