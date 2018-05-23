@@ -43,11 +43,16 @@ class UserController extends Controller
     public function deleteAccount($userId)
     {
         if (Auth::check()) {
-            if (Auth::user()->id == $userId) {
+            if (Auth::user()->id == $userId || Auth::user()->type === "admin") {
                 DB::table('ledger_watch_lists')->where('user_id', $userId)->delete();
                 DB::table('users')->where('id', $userId)->delete();
 
-                return redirect('/')->with('message', 'Your account has been deleted!');
+                if(Auth::user()->type === "admin") 
+                {
+                    return redirect('/admin/manageusers')->with('message', 'The account has been deleted!');
+
+                }
+                return redirect('/')->with('message', 'your account has been deleted!');
             }
             // TODO: handle message (you have to be signed in)
         } else {
@@ -101,5 +106,38 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/')->with('message', 'Yey, you changed your password');
+    }
+
+    public function getAllUsers() {
+        $users = User::all();
+        return view('pages.manage-users')->with('users', $users);
+    }
+
+    public function updateUser(Request $request, $userId) {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $user = User::findOrFail($userId);
+        if($request->filled('name')) 
+        {
+            $user->name = $name;
+        }
+        if($request->filled('email'))
+        {
+            $user->email = $email;
+        }
+        $user->save();
+        return redirect('/admin/manageusers')->with('message', "Successfully updated user");
+    }
+    public function addNewUser(Request $request)
+    {
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+            $message = $request['email'] . " has been created";
+
+        return redirect('/admin/manageusers')->with('message', $message);
     }
 }
