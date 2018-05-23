@@ -42,11 +42,13 @@ class UserController extends Controller
 
     public function deleteAccount($userId)
     {
+
         if (Auth::check()) {
             if (Auth::user()->id == $userId || Auth::user()->type === "admin") {
                 DB::table('ledger_watch_lists')->where('user_id', $userId)->delete();
+                DB::table('reviews')->where('user_id', $userId)->delete();
+                DB::table('ledger_reviews')->where('user_id', $userId)->delete();
                 DB::table('users')->where('id', $userId)->delete();
-
                 if(Auth::user()->type === "admin") 
                 {
                     return redirect('/admin/manageusers')->with('message', 'The account has been deleted!');
