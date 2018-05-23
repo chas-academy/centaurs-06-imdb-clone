@@ -6,16 +6,20 @@
 <main class="row">
     @include('includes.menu-btn')
     <section class="small-12 flex-align-sb-c">
-        @if(isset($users))
-            @foreach ($users as $key => $user)
-            <div>
-                <h1>{{$user['id']}}</h1>
-                <h2>{{$user['name']}}</h2>
-            </div>
+    @if(Auth::check())
+        @if(Auth::user()->type === 'admin')
+            @if(isset($users))
+                @foreach ($users as $key => $user)
+                <div>
+                    <h1>{{$user['id']}}</h1>
+                    <h2>{{$user['name']}}</h2>
+                </div>
 
-            @endforeach
+                @endforeach
+            @endif
         @endif
-        </select>
+        @endif
+    </select>
 </main>
 @include('includes.footer')
 </div>

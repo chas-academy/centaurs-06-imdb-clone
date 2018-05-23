@@ -104,12 +104,6 @@ class UserController extends Controller
     }
     public function getAllUsers() {
         $users = User::all();
-        // foreach ($users as $key => $user) {
-        //     var_dump($user['name']);
-        // }
-
-        $view = view('pages.manage-users')->with('users', $users);
-
-        return $view;
+        return view('pages.manage-users')->with('users', $users);
     }
 }
