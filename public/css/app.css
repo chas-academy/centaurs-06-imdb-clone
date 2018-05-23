@@ -12401,6 +12401,36 @@ main .watchlist-movie .flex-align-c-c .fa-close {
     color: green;
     font-size: 2rem !important;
   }
+
+  .admin-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 85%;
+    height: 40px;
+    color: #151515;
+    font-weight: 800;
+    background: #FAD400;
+    margin: 15px 0px 25px 0px;
+  }
+
+  .btn-admindelete {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 85%;
+    height: 40px;
+    background-color: #cc4b37;
+    color: #fefefe;
+    font-weight: 800;
+    margin: 15px 0px 25px 0px;
+  }
 }
 
 /* Slideshow container */
