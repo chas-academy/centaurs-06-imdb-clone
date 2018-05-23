@@ -144,3 +144,5 @@ Route::get('/admin/managereviews', 'ReviewController@getReviewsOnHold')->name('m
 
 // Delete TvShow from database
 Route::get('tv-show/{tvShowId}/delete', 'TvShowController@deleteTvShow');
+
+Route::get('/admin/manageusers', 'UsersController@getAllUsers')->name('manageusers');

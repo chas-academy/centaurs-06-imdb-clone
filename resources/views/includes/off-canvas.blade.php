@@ -518,6 +518,9 @@
                                     <li>
                                         <a href="{{ route('managereviews') }}" id="mng-rvws">Manage reviews</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('manageusers') }}" id="mng-users">Manage users</a>
+                                    </li>
                             @endif
                             </ul>
                     </li>
