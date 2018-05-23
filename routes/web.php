@@ -6,6 +6,7 @@ use App\Http\Models\Genre;
 use App\Http\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TvShowController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,6 +128,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/createmovie', 'MovieController@storeMovie');
     Route::get('/movies/{id}/edit', 'MovieController@editMovie');
     Route::post('/movies/{id}/edit', 'MovieController@storeEditedMovie');
+    Route::post('/updateuser/{userId}', 'UserController@updateUser');
+    Route::post('/adduser', 'UserController@addNewUser');
 });
 
 Route::get('/delete-account/{userId}', 'UserController@deleteAccount');
@@ -145,4 +148,4 @@ Route::get('/admin/managereviews', 'ReviewController@getReviewsOnHold')->name('m
 // Delete TvShow from database
 Route::get('tv-show/{tvShowId}/delete', 'TvShowController@deleteTvShow');
 
-Route::get('/admin/manageusers', 'UsersController@getAllUsers')->name('manageusers');
+Route::get('/admin/manageusers', 'UserController@getAllUsers')->name('manageusers');
